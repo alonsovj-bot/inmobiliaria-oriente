@@ -5,6 +5,8 @@ from flask import Flask, request, jsonify, send_from_directory, render_template
 app = Flask(__name__)
 
 BASE     = os.path.dirname(__file__)
+BASE = os.path.dirname(os.path.abspath(__file__))
+
 DATA_DIR = os.path.join(BASE, 'static', 'data')
 PDF_DIR  = os.path.join(BASE, 'static', 'uploads', 'pdfs')
 MAP_DIR  = os.path.join(BASE, 'static', 'uploads', 'mapas')
@@ -98,8 +100,10 @@ def parse_pdf(path):
 # ── ROUTES ───────────────────────────────────────────────────────────────────
 @app.route('/')
 def index():
-    with open(os.path.join(BASE, 'index.html')) as f:
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'index.html')
+    with open(path) as f:
         return f.read()
+
 
 
 
