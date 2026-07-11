@@ -99,7 +99,8 @@ def parse_pdf(path):
 @app.route('/')
 def index():
     with open(os.path.join(BASE, 'index.html')) as f:
-    return f.read()
+        return f.read()
+
 
 
 @app.route('/api/upload-pdf', methods=['POST'])
