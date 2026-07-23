@@ -4,7 +4,6 @@ from flask import Flask, request, jsonify, send_from_directory, render_template
 
 app = Flask(__name__)
 
-BASE     = os.path.dirname(__file__)
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 DATA_DIR = os.path.join(BASE, 'static', 'data')
@@ -103,7 +102,6 @@ def index():
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'index.html')
     with open(path) as f:
         return f.read()
-
 
 
 
