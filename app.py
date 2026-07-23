@@ -4,8 +4,7 @@ from flask import Flask, request, jsonify, send_from_directory, render_template
 
 app = Flask(__name__)
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-
+BASE     = os.path.dirname(__file__)
 DATA_DIR = os.path.join(BASE, 'static', 'data')
 PDF_DIR  = os.path.join(BASE, 'static', 'uploads', 'pdfs')
 MAP_DIR  = os.path.join(BASE, 'static', 'uploads', 'mapas')
@@ -99,11 +98,7 @@ def parse_pdf(path):
 # ── ROUTES ───────────────────────────────────────────────────────────────────
 @app.route('/')
 def index():
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'index.html')
-    with open(path) as f:
-        return f.read()
-
-
+    return render_template('index.html')
 
 @app.route('/api/upload-pdf', methods=['POST'])
 def upload_pdf():
@@ -180,18 +175,33 @@ def save_order():
 @app.route('/api/propiedades/<path:prop_id>/vender', methods=['POST'])
 def vender(prop_id):
     data = request.json or {}
-    vendedor = data.get('vendedor', 'yo')  # 'yo' | 'compañero'
+    vendedor = data.get('vendedor', 'yo')
+    cliente_id = data.get('clienteId')
+
     props = read('props')
+    prop_info = {}
     for p in props:
         if p['id'] == prop_id:
             p['_estado'] = 'vendida'
+            prop_info = {'direccion': p.get('direccion',''), 'fraccionamiento': p.get('fraccionamiento',''), 'precio': p.get('precio',0)}
             break
     write('props', props)
+
+    # Find client info if provided
+    cliente_info = {}
+    if cliente_id:
+        clients = read('clients')
+        cliente = next((c for c in clients if c['id'] == cliente_id), None)
+        if cliente:
+            cliente_info = {'nombre': cliente.get('nombre',''), 'whatsapp': cliente.get('whatsapp','')}
 
     ventas = read('ventas')
     ventas.append({
         'prop_id': prop_id,
+        'prop_info': prop_info,
         'vendedor': vendedor,
+        'cliente_id': cliente_id,
+        'cliente_info': cliente_info,
         'fecha': datetime.now().strftime('%d/%m/%Y %H:%M'),
     })
     write('ventas', ventas)
