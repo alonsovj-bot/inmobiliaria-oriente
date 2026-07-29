@@ -29,32 +29,36 @@ textarea{resize:vertical;}
 .btn-danger{background:#FEECEC;color:#B71C1C;}
 .btn-gold{background:#F4B942;color:#7B3F00;}
 .btn-full{width:100%;}
+.btn-copy{background:#1F4E79;color:#fff;width:100%;}
+.btn-copy.copied{background:#2E7D32;}
 .tag{border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;display:inline-block;}
 .field{margin-bottom:12px;}
 .field label{font-size:12px;color:#666;font-weight:600;display:block;margin-bottom:4px;}
 .field input,.field select,.field textarea{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #E0E0E0;font-size:14px;background:#fff;color:#222;outline:none;-webkit-appearance:none;}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:#2E75B6;}
-.sec-lbl{font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;margin-top:8px;}
-.empty{text-align:center;padding:48px 16px;color:#bbb;}
-.empty-icon{font-size:48px;margin-bottom:8px;}
-.hidden{display:none!important;}
 
-/* Upload area - iOS compatible */
-.upload-area{border:2px dashed #2E75B6;border-radius:12px;padding:22px 12px;text-align:center;background:#F0F7FF;position:relative;cursor:pointer;}
-.upload-area input[type=file]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;-webkit-appearance:none;}
-.upload-area .ua-icon{font-size:32px;display:block;margin-bottom:6px;}
-.upload-area .ua-title{font-weight:700;font-size:14px;color:#2E75B6;}
-.upload-area .ua-sub{font-size:12px;color:#888;margin-top:3px;}
+/* ── FILE UPLOAD — funciona en iOS Safari, iOS Home Screen, Chrome ── */
+.upload-label{display:block;border:2px dashed #2E75B6;border-radius:14px;padding:22px 16px;text-align:center;background:#F0F7FF;cursor:pointer;-webkit-user-select:none;user-select:none;}
+.upload-label:active{background:#E0EFFF;}
+.upload-label input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+.ul-icon{font-size:32px;display:block;margin-bottom:6px;}
+.ul-title{font-weight:700;font-size:15px;color:#2E75B6;}
+.ul-sub{font-size:12px;color:#888;margin-top:3px;}
+.upload-label.processing{border-color:#B45309;background:#FEF3E2;}
+.upload-label.processing .ul-title{color:#B45309;}
+.upload-label.done{border-color:#2E7D32;background:#EDF7EE;}
+.upload-label.done .ul-title{color:#2E7D32;}
 
 /* Stats */
 .stats{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
 .stat{border-radius:8px;padding:6px 12px;text-align:center;min-width:64px;}
 .stat-num{font-weight:800;font-size:20px;}
 .stat-lbl{font-size:11px;font-weight:600;}
-
-/* Sort */
 .sort-bar{display:flex;gap:8px;align-items:center;margin-bottom:10px;}
 .sort-bar select{flex:1;padding:9px 10px;border-radius:10px;border:1.5px solid #E0E0E0;font-size:13px;background:#fff;-webkit-appearance:none;}
+.sec-lbl{font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;margin-top:8px;}
+.empty{text-align:center;padding:48px 16px;color:#bbb;}
+.empty-icon{font-size:48px;margin-bottom:8px;}
 
 /* Prop cards */
 .prop-card{border-radius:16px;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.09);margin-bottom:12px;border:2px solid #eee;}
@@ -76,13 +80,21 @@ textarea{resize:vertical;}
 .prop-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
 .prop-card.dragging{opacity:.4;}
 .prop-card.drag-over{border-color:#F4B942!important;box-shadow:0 0 0 3px #F4B94260;}
-
-/* Alert */
 .alert-box{background:#FFF8E1;border:1px solid #F4B942;border-radius:10px;padding:10px 12px;margin-bottom:12px;}
 .alert-title{font-weight:700;font-size:13px;color:#B45309;margin-bottom:8px;}
 .alert-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px solid #F4DCA0;}
+.new-fracc-banner{background:#E8F5E9;border:1px solid #4CAF50;border-radius:10px;padding:10px 12px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.nf-text{flex:1;font-size:13px;color:#2E7D32;font-weight:600;}
 
-/* Hold button */
+/* Mapas grid */
+.mapas-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.mapa-item{border-radius:12px;overflow:hidden;background:#F0F4F8;position:relative;aspect-ratio:16/9;}
+.mapa-item img{width:100%;height:100%;object-fit:cover;display:block;}
+.mapa-item .mapa-name{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:#fff;font-size:10px;font-weight:700;padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mapa-item .mapa-replace{position:absolute;top:4px;right:4px;}
+.mapa-empty{display:flex;align-items:center;justify-content:center;color:#bbb;font-size:11px;height:100%;}
+
+/* Hold */
 .hold-wrap{position:relative;display:inline-flex;}
 .hold-svg{position:absolute;top:-4px;left:-4px;pointer-events:none;transform:rotate(-90deg);}
 
@@ -97,40 +109,30 @@ textarea{resize:vertical;}
 .client-radio-row:first-child{border-top:none;}
 .client-radio-row input[type=radio]{width:20px;height:20px;accent-color:#1F4E79;flex-shrink:0;}
 
-/* New fracc badge */
-.new-fracc-banner{background:#E8F5E9;border:1px solid #4CAF50;border-radius:10px;padding:10px 12px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.new-fracc-banner .nf-text{flex:1;font-size:13px;color:#2E7D32;font-weight:600;}
-
 /* Fracc checklist */
 .fracc-zone-group{margin-bottom:10px;}
-.fracc-zone-label{font-size:11px;font-weight:800;color:#888;letter-spacing:.5px;margin-bottom:6px;}
-.fracc-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;background:#F8F9FA;margin-bottom:4px;cursor:pointer;}
-.fracc-item input[type=checkbox]{width:18px;height:18px;accent-color:#1F4E79;flex-shrink:0;}
-.fracc-item .fi-name{font-size:14px;color:#333;}
-.fracc-item .fi-dist{font-size:11px;color:#888;margin-left:auto;}
+.fracc-zone-label{font-size:11px;font-weight:800;letter-spacing:.5px;margin-bottom:6px;}
+.fracc-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;background:#F8F9FA;margin-bottom:4px;cursor:pointer;}
+.fracc-item input[type=checkbox]{width:18px;height:18px;accent-color:#1F4E79;flex-shrink:0;pointer-events:none;}
+.fracc-item .fi-name{font-size:13px;color:#333;flex:1;}
+.fracc-item .fi-dist{font-size:11px;color:#888;}
 .fracc-item.selected{background:#EBF3FB;}
 
-/* Tip */
-.tip-card{background:#FEF3E2;border:1px solid #F4B942;border-radius:14px;padding:14px;}
-.tip-title{font-weight:700;font-size:13px;color:#B45309;margin-bottom:8px;}
-.tip-item{font-size:13px;color:#7B5800;margin-bottom:5px;}
-
-/* Zones config */
+/* Zones */
 .zone-card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1.5px solid #eee;}
 .zone-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
 .zone-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
-.zone-name{font-weight:700;font-size:14px;flex:1;}
-.zone-fraccs{display:flex;flex-wrap:wrap;gap:6px;}
+.zone-name{font-weight:700;font-size:14px;flex:1;outline:none;border:none;background:transparent;padding:0;}
+.zone-fraccs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
 .fracc-tag{background:#F0F4F8;border-radius:20px;padding:4px 10px;font-size:12px;color:#333;display:flex;align-items:center;gap:4px;}
-.fracc-tag .rm{color:#B71C1C;font-size:14px;cursor:pointer;font-weight:700;}
-
-/* Copy btn */
-.btn-copy{background:#1F4E79;color:#fff;width:100%;}
-.btn-copy.copied{background:#2E7D32;}
+.fracc-tag .rm{color:#B71C1C;font-size:16px;cursor:pointer;line-height:1;}
+.tip-card{background:#FEF3E2;border:1px solid #F4B942;border-radius:14px;padding:14px;}
+.tip-title{font-weight:700;font-size:13px;color:#B45309;margin-bottom:8px;}
+.tip-item{font-size:13px;color:#7B5800;margin-bottom:5px;}
+.hidden{display:none!important;}
 </style>
 </head>
 <body>
-
 <div id="header">
   <h1>🏠 Oriente Juárez</h1>
   <p>Sector Oriente · Infonavit · Cd. Juárez</p>
@@ -141,14 +143,12 @@ textarea{resize:vertical;}
     <button class="tab-btn" onclick="showTab(3)">Config.</button>
   </div>
 </div>
-
 <div id="content">
   <div id="t0"></div>
   <div id="t1" class="hidden"></div>
   <div id="t2" class="hidden"></div>
   <div id="t3" class="hidden"></div>
 </div>
-
 <div id="modal-bg" class="modal-bg hidden" onclick="closeModal()">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title" id="m-title"></div>
@@ -158,218 +158,133 @@ textarea{resize:vertical;}
   </div>
 </div>
 
+<!-- HIDDEN FILE INPUTS — en el body directamente para máxima compatibilidad iOS -->
+<input type="file" id="fi-pdf"  accept="application/pdf" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" onchange="handlePDF(this)"/>
+<input type="file" id="fi-mapa" accept="image/*"          style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" onchange="handleMapa(this)"/>
+
 <script>
-// ── COORDENADAS PRECARGADAS ───────────────────────────────────────────────────
-const COORDS = {
-  "Riveras del Bravo":      [31.6891, -106.3721],
-  "El Campanario":          [31.6734, -106.3698],
-  "Vistas de Zaragoza":     [31.6812, -106.3654],
-  "Senderos de San Isidro": [31.6698, -106.3812],
-  "Urbivilla del Cedro":    [31.6756, -106.3889],
-  "Jardines de Roma":       [31.6721, -106.3756],
-  "Misiones de Creel":      [31.6743, -106.3834],
-  "Boca del Río":           [31.6867, -106.3698],
-  "Sierra Vista":           [31.6823, -106.3712],
-  "Lomas del Desierto":     [31.6654, -106.3923],
-  "Valle de Fundadores":    [31.6789, -106.3801],
-  "Portal del Roble":       [31.6812, -106.3778],
-  "Villas de Alcalá":       [31.6934, -106.3645],
-  "Parque El Mirador":      [31.6598, -106.3867],
-  "La Cañada":              [31.6612, -106.3845],
-  "Senderos de Oriente":    [31.6745, -106.3698],
+// ── COORDENADAS ───────────────────────────────────────────────────────────────
+const COORDS={
+  "Riveras del Bravo":[31.6891,-106.3721],
+  "El Campanario":[31.6734,-106.3698],
+  "Vistas de Zaragoza":[31.6812,-106.3654],
+  "Senderos de San Isidro":[31.6698,-106.3812],
+  "Urbivilla del Cedro":[31.6756,-106.3889],
+  "Jardines de Roma":[31.6721,-106.3756],
+  "Misiones de Creel":[31.6743,-106.3834],
+  "Boca del Río":[31.6867,-106.3698],
+  "Sierra Vista":[31.6823,-106.3712],
+  "Lomas del Desierto":[31.6654,-106.3923],
+  "Valle de Fundadores":[31.6789,-106.3801],
+  "Portal del Roble":[31.6812,-106.3778],
+  "Villas de Alcalá":[31.6934,-106.3645],
+  "Parque El Mirador":[31.6598,-106.3867],
+  "La Cañada":[31.6612,-106.3845],
+  "Senderos de Oriente":[31.6745,-106.3698],
 };
 
-// ── ZONAS POR DEFECTO ─────────────────────────────────────────────────────────
-const DEFAULT_ZONAS = [
-  {id:'z1', nombre:'Zona 1 — Riveras / Oriente', color:'#1565A8',
-   desc:'Alta densidad, acceso rápido por Talamás Norte.',
-   fraccs:['Riveras del Bravo','El Campanario','Vistas de Zaragoza']},
-  {id:'z2', nombre:'Zona 2 — Talamás Sur / San Isidro', color:'#2E7D32',
-   desc:'Zona suroriente, requiere recorrido propio desde Talamás.',
-   fraccs:['Senderos de San Isidro','Urbivilla del Cedro','Jardines de Roma','Misiones de Creel','Boca del Río','Sierra Vista','Lomas del Desierto']},
-  {id:'z3', nombre:'Zona 3 — Fundadores / Zaragoza', color:'#B45309',
-   desc:'Corredor conectado por Zaragoza-Fundadores.',
-   fraccs:['Valle de Fundadores','Portal del Roble']},
-  {id:'z4', nombre:'Zona 4 — Alcalá / Independencia', color:'#6A1B9A',
-   desc:'Corredor Independencia–Puerto de Palos.',
-   fraccs:['Villas de Alcalá']},
-  {id:'z5', nombre:'Zona 5 — Mirador / Surponiente', color:'#B71C1C',
-   desc:'Sector separado, visitas específicas.',
-   fraccs:['Parque El Mirador','La Cañada']},
+const DEFAULT_ZONAS=[
+  {id:'z1',nombre:'Zona 1 — Riveras / Oriente',color:'#1565A8',desc:'Alta densidad, acceso rápido por Talamás Norte.',fraccs:['Riveras del Bravo','El Campanario','Vistas de Zaragoza']},
+  {id:'z2',nombre:'Zona 2 — Talamás Sur / San Isidro',color:'#2E7D32',desc:'Zona suroriente, requiere recorrido propio desde Talamás.',fraccs:['Senderos de San Isidro','Urbivilla del Cedro','Jardines de Roma','Misiones de Creel','Boca del Río','Sierra Vista','Lomas del Desierto']},
+  {id:'z3',nombre:'Zona 3 — Fundadores / Zaragoza',color:'#B45309',desc:'Corredor conectado por Zaragoza-Fundadores.',fraccs:['Valle de Fundadores','Portal del Roble']},
+  {id:'z4',nombre:'Zona 4 — Alcalá / Independencia',color:'#6A1B9A',desc:'Corredor Independencia–Puerto de Palos.',fraccs:['Villas de Alcalá']},
+  {id:'z5',nombre:'Zona 5 — Mirador / Surponiente',color:'#B71C1C',desc:'Sector separado, visitas específicas.',fraccs:['Parque El Mirador','La Cañada']},
 ];
 
-// ── LOCAL STORAGE ─────────────────────────────────────────────────────────────
-function lsGet(k, def) { try { const v=localStorage.getItem(k); return v?JSON.parse(v):def; } catch { return def; } }
-function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+function lsGet(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
 
-// ── STATE ─────────────────────────────────────────────────────────────────────
-let S = {
-  tab: 0,
-  props: [],
-  clients: [],
-  cfg: lsGet('cfg', {nombre:'', tel:'', wa:''}),
-  zonas: lsGet('zonas', DEFAULT_ZONAS),
-  expanded: null,
-  sortBy: 'custom',
-  dragSrc: null,
-  showClientForm: false,
-  clientForm: {},
-  editClientId: null,
-  filtroEtapa: 'Todos',
-  filtroZona: 'Todas',
-  newFraccs: [], // fraccs detectados en PDF no registrados
+let S={
+  tab:0, props:[], clients:[],
+  cfg:lsGet('cfg',{nombre:'',tel:'',wa:''}),
+  zonas:lsGet('zonas',DEFAULT_ZONAS),
+  expanded:null, sortBy:'custom', dragSrc:null,
+  showClientForm:false, clientForm:{}, editClientId:null,
+  filtroEtapa:'Todos', filtroZona:'Todas',
+  newFraccs:[], mapaFracc:'', mapasPreviews:{},
 };
+let _dragClone=null, _dragOver=null;
 
-// ── HELPERS ───────────────────────────────────────────────────────────────────
-function allFraccs() { return S.zonas.flatMap(z=>z.fraccs); }
+function allFraccs(){return S.zonas.flatMap(z=>z.fraccs);}
+function zonaDeFragg(f=''){const fl=f.toLowerCase();return S.zonas.find(z=>z.fraccs.some(zf=>zf.toLowerCase()===fl||fl.includes(zf.toLowerCase())||zf.toLowerCase().includes(fl)))||null;}
+function distKm(f1,f2){const c1=COORDS[f1],c2=COORDS[f2];if(!c1||!c2)return 999;const R=6371,dLat=(c2[0]-c1[0])*Math.PI/180,dLon=(c2[1]-c1[1])*Math.PI/180;const a=Math.sin(dLat/2)**2+Math.cos(c1[0]*Math.PI/180)*Math.cos(c2[0]*Math.PI/180)*Math.sin(dLon/2)**2;return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));}
+function fraccsSorted(base){return allFraccs().filter(f=>f!==base).sort((a,b)=>distKm(base,a)-distKm(base,b));}
+function matchClients(prop){const fl=(prop.fraccionamiento||'').toLowerCase();const zona=zonaDeFragg(prop.fraccionamiento);return S.clients.filter(c=>{const fi=c.fraccs||[];return fi.some(f=>f.toLowerCase()===fl)||(zona&&c.zona===zona.id)||c.zona==='flex';});}
+function fmtMX(v){const d=v.replace(/\D/g,'').slice(0,10);if(d.length<=3)return d;if(d.length<=6)return d.slice(0,3)+'-'+d.slice(3);return d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);}
+function fmtUS(v){const d=v.replace(/\D/g,'').slice(0,10);if(d.length<=3)return d;if(d.length<=6)return '('+d.slice(0,3)+') '+d.slice(3);return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);}
+function fbText(prop){const chars=(prop.caracteristicas||[]).map(c=>'* '+c).join('\n');return '🏡 ¡Casa en venta en '+prop.direccion+'!\nUbicada en el fracc. '+prop.fraccionamiento+'\n-zona tranquila y con excelente plusvalía.\n\n💰 $'+Number(prop.precio||0).toLocaleString('es-MX')+'\n📄 Aceptamos todo tipo de crédito Infonavit\n\n🧱 Características:\n'+chars+'\n\n📍Ubicación exacta disponible\n\n📲 ¿Te interesa esta casa o buscas otra zona?\nTengo más opciones listas para entrega, en diferentes precios y fraccionamientos.\nEscríbeme sin compromiso al '+(S.cfg.tel||'656-XXX-XXXX')+', o en mi WhatsApp directo\nwa.me/'+(S.cfg.wa||'52656XXXXXXX');}
 
-function zonaDeFragg(fracc='') {
-  const f = fracc.toLowerCase();
-  return S.zonas.find(z=>z.fraccs.some(zf=>zf.toLowerCase()===f||f.includes(zf.toLowerCase())||zf.toLowerCase().includes(f))) || null;
-}
+async function api(method,url,body){const opts={method,headers:{}};if(body instanceof FormData){opts.body=body;}else if(body){opts.headers['Content-Type']='application/json';opts.body=JSON.stringify(body);}const r=await fetch(url,opts);return r.json();}
 
-function distKm(f1, f2) {
-  const c1=COORDS[f1], c2=COORDS[f2];
-  if(!c1||!c2) return 999;
-  const R=6371, dLat=(c2[0]-c1[0])*Math.PI/180, dLon=(c2[1]-c1[1])*Math.PI/180;
-  const a=Math.sin(dLat/2)**2+Math.cos(c1[0]*Math.PI/180)*Math.cos(c2[0]*Math.PI/180)*Math.sin(dLon/2)**2;
-  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-}
-
-function fraccsSortedByProximity(baseFracc) {
-  const fraccs = allFraccs().filter(f=>f!==baseFracc);
-  return fraccs.sort((a,b)=>distKm(baseFracc,a)-distKm(baseFracc,b));
-}
-
-function matchClients(prop) {
-  const fl = (prop.fraccionamiento||'').toLowerCase();
-  const zona = zonaDeFragg(prop.fraccionamiento);
-  return S.clients.filter(c=>{
-    const fi = (c.fraccs||[]);
-    return fi.some(f=>f.toLowerCase()===fl) || (zona&&c.zona===zona.id) || c.zona==='flex';
-  });
-}
-
-function fmtPhone(raw='') {
-  const d = raw.replace(/\D/g,'');
-  if(d.length<=3) return d;
-  if(d.length<=6) return d.slice(0,3)+'-'+d.slice(3);
-  if(d.length<=10) return d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);
-  return d; // US or other
-}
-
-function fmtPhoneUS(raw='') {
-  const d = raw.replace(/\D/g,'');
-  if(d.length<=3) return d;
-  if(d.length<=6) return '('+d.slice(0,3)+') '+d.slice(3);
-  return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6,10);
-}
-
-function fbText(prop) {
-  const chars=(prop.caracteristicas||[]).map(c=>'* '+c).join('\n');
-  const tel=S.cfg.tel||'656-XXX-XXXX';
-  const wa=S.cfg.wa||'52656XXXXXXX';
-  return '🏡 ¡Casa en venta en '+prop.direccion+'!\nUbicada en el fracc. '+prop.fraccionamiento+'\n-zona tranquila y con excelente plusvalía.\n\n💰 $'+Number(prop.precio||0).toLocaleString('es-MX')+'\n📄 Aceptamos todo tipo de crédito Infonavit\n\n🧱 Características:\n'+chars+'\n\n📍Ubicación exacta disponible\n\n📲 ¿Te interesa esta casa o buscas otra zona?\nTengo más opciones listas para entrega, en diferentes precios y fraccionamientos.\nEscríbeme sin compromiso al '+tel+', o en mi WhatsApp directo\nwa.me/'+wa;
-}
-
-// ── API ───────────────────────────────────────────────────────────────────────
-async function api(method, url, body) {
-  const opts={method, headers:{}};
-  if(body instanceof FormData){opts.body=body;}
-  else if(body){opts.headers['Content-Type']='application/json';opts.body=JSON.stringify(body);}
-  const r=await fetch(url,opts);
-  return r.json();
-}
-
-async function loadAll() {
-  const [props, clients, cfg] = await Promise.all([
-    api('GET','/api/propiedades'),
-    api('GET','/api/clientes'),
-    api('GET','/api/config'),
-  ]);
+async function loadAll(){
+  const[props,clients,cfg]=await Promise.all([api('GET','/api/propiedades'),api('GET','/api/clientes'),api('GET','/api/config')]);
   S.props=Array.isArray(props)?props:[];
   S.clients=Array.isArray(clients)?clients:[];
-  if(cfg&&Object.keys(cfg).length){S.cfg={...S.cfg,...cfg};}
-  // Detect new fraccs not in our list
+  if(cfg&&Object.keys(cfg).length)S.cfg={...S.cfg,...cfg};
   const known=new Set(allFraccs().map(f=>f.toLowerCase()));
   S.newFraccs=[];
-  S.props.forEach(p=>{
-    const f=(p.fraccionamiento||'').trim();
-    if(f&&!known.has(f.toLowerCase())&&!S.newFraccs.includes(f)) S.newFraccs.push(f);
-  });
+  S.props.forEach(p=>{const f=(p.fraccionamiento||'').trim();if(f&&!known.has(f.toLowerCase())&&!S.newFraccs.includes(f))S.newFraccs.push(f);});
   renderAll();
 }
 
-// ── TABS ──────────────────────────────────────────────────────────────────────
-function showTab(i){
-  S.tab=i;
-  document.querySelectorAll('.tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));
-  [0,1,2,3].forEach(j=>document.getElementById('t'+j).classList.toggle('hidden',i!==j));
-}
-
-function renderAll(){
-  renderProps();
-  renderClients();
-  renderZonas();
-  renderConfig();
-  updateBadges();
-}
-
-function updateBadges(){
-  const a=S.props.filter(p=>p._estado==='nueva'||p._estado==='precio_cambio').reduce((n,p)=>n+matchClients(p).length,0)+(S.newFraccs.length>0?1:0);
-  const bp=document.getElementById('bp');bp.textContent=a;bp.classList.toggle('hidden',!a);
-  const bc=document.getElementById('bc');bc.textContent=S.clients.length;bc.classList.toggle('hidden',!S.clients.length);
-}
-
-// ── MODAL ─────────────────────────────────────────────────────────────────────
-function showModal(title, sub, btns, bodyEl){
-  document.getElementById('m-title').textContent=title;
-  document.getElementById('m-sub').textContent=sub||'';
-  const mb=document.getElementById('m-body');mb.innerHTML='';
-  if(bodyEl)mb.appendChild(bodyEl);
-  const bb=document.getElementById('m-btns');bb.innerHTML='';
-  (btns||[]).forEach(({label,cls,onClick})=>{
-    const b=document.createElement('button');b.className='btn btn-full '+(cls||'btn-light');
-    b.textContent=label;b.onclick=()=>{closeModal();onClick();};bb.appendChild(b);
-  });
-  document.getElementById('modal-bg').classList.remove('hidden');
-}
+function showTab(i){S.tab=i;document.querySelectorAll('.tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));[0,1,2,3].forEach(j=>document.getElementById('t'+j).classList.toggle('hidden',i!==j));}
+function renderAll(){renderProps();renderClients();renderZonas();renderConfig();updateBadges();}
+function updateBadges(){const a=S.props.filter(p=>p._estado==='nueva'||p._estado==='precio_cambio').reduce((n,p)=>n+matchClients(p).length,0)+(S.newFraccs.length?1:0);const bp=document.getElementById('bp');bp.textContent=a;bp.classList.toggle('hidden',!a);const bc=document.getElementById('bc');bc.textContent=S.clients.length;bc.classList.toggle('hidden',!S.clients.length);}
 function closeModal(){document.getElementById('modal-bg').classList.add('hidden');}
+function showModal(title,sub,btns,bodyEl){document.getElementById('m-title').textContent=title;document.getElementById('m-sub').textContent=sub||'';const mb=document.getElementById('m-body');mb.innerHTML='';if(bodyEl)mb.appendChild(bodyEl);const bb=document.getElementById('m-btns');bb.innerHTML='';(btns||[]).forEach(({label,cls,onClick})=>{const b=document.createElement('button');b.className='btn btn-full '+(cls||'btn-light');b.textContent=label;b.onclick=()=>{closeModal();onClick();};bb.appendChild(b);});document.getElementById('modal-bg').classList.remove('hidden');}
+function copyText(text,btn){const done=()=>{btn.textContent='✓ Copiado';btn.classList.add('copied');setTimeout(()=>{btn.textContent='📋 Copiar texto FB';btn.classList.remove('copied');},2000);};if(navigator.clipboard){navigator.clipboard.writeText(text).then(done).catch(fb);}else fb();function fb(){const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');done();}catch{}document.body.removeChild(ta);}}
 
-// ── COPY ──────────────────────────────────────────────────────────────────────
-function copyText(text, btn){
-  const done=()=>{btn.textContent='✓ Copiado';btn.classList.add('copied');setTimeout(()=>{btn.textContent='📋 Copiar texto FB';btn.classList.remove('copied');},2000);};
-  if(navigator.clipboard){navigator.clipboard.writeText(text).then(done).catch(fallback);}
-  else fallback();
-  function fallback(){const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');done();}catch{}document.body.removeChild(ta);}
+// ── FILE HANDLERS ─────────────────────────────────────────────────────────────
+async function handlePDF(input){
+  const file=input.files[0];if(!file)return;
+  const area=document.getElementById('pdf-upload-area');
+  if(area){area.className='upload-label processing';area.querySelector('.ul-icon').textContent='⏳';area.querySelector('.ul-title').textContent='Procesando PDF…';area.querySelector('.ul-sub').textContent='Extrayendo fichas en el servidor';}
+  try{
+    const fd=new FormData();fd.append('pdf',file);
+    const res=await api('POST','/api/upload-pdf',fd);
+    await loadAll();
+    if(area){area.className='upload-label done';area.querySelector('.ul-icon').textContent='✅';area.querySelector('.ul-title').textContent='¡Listo! '+( res.nuevas||0)+' nuevas, '+(res.actualizadas||0)+' actualizadas';area.querySelector('.ul-sub').textContent='Toca para subir otro PDF';}
+  }catch(e){if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='❌';area.querySelector('.ul-title').textContent='Error al procesar. Intenta de nuevo';area.querySelector('.ul-sub').textContent='';}}
+  input.value='';
+  setTimeout(()=>{if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='📄';area.querySelector('.ul-title').textContent='Toca para subir el PDF';area.querySelector('.ul-sub').textContent='Solo procesa fichas nuevas o con cambios';}},4000);
 }
+
+let _mapaFraccTarget='';
+async function handleMapa(input){
+  const file=input.files[0];if(!file)return;
+  // Show preview modal before uploading
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const body=document.createElement('div');
+    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:10px;margin-bottom:12px;max-height:220px;object-fit:cover;';
+    const lbl=document.createElement('div');lbl.style.cssText='font-size:14px;color:#333;text-align:center;font-weight:600;';lbl.textContent='Fraccionamiento: '+_mapaFraccTarget;
+    body.appendChild(img);body.appendChild(lbl);
+    showModal('Vista previa del mapa','¿Es correcto? Si sí, confírma para subir.',[
+      {label:'✓ Subir mapa',cls:'btn-primary',onClick:async()=>{
+        const fd=new FormData();fd.append('mapa',file);fd.append('fraccionamiento',_mapaFraccTarget);
+        await api('POST','/api/upload-mapa',fd);
+        // Store preview locally
+        S.mapasPreviews[_mapaFraccTarget]=e.target.result;
+        renderProps();renderConfig();
+      }},
+      {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
+    ],body);
+  };
+  reader.readAsDataURL(file);
+  input.value='';
+}
+
+function triggerMapaUpload(fracc){_mapaFraccTarget=fracc;document.getElementById('fi-mapa').click();}
 
 // ── VENTA MODAL ───────────────────────────────────────────────────────────────
 function showVentaModal(prop){
-  const matches=matchClients(prop);
-  let selId=null;
+  const matches=matchClients(prop);let selId=null;
   const body=document.createElement('div');
-
-  const addClientRows=(list, sec)=>{
-    if(!list.length)return;
-    const s=document.createElement('div');s.className='modal-section';s.textContent=sec;body.appendChild(s);
-    list.forEach(c=>{
-      const row=document.createElement('div');row.className='client-radio-row';
-      const r=document.createElement('input');r.type='radio';r.name='vs';r.value=c.id;r.onchange=()=>selId=c.id;
-      const info=document.createElement('div');
-      info.innerHTML='<div style="font-weight:700;font-size:14px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+'</div>';
-      row.appendChild(r);row.appendChild(info);body.appendChild(row);
-    });
-  };
-  addClientRows(matches,'CLIENTES INTERESADOS');
-  addClientRows(S.clients.filter(c=>!matches.find(m=>m.id===c.id)),'OTROS CLIENTES');
-
+  const addRows=(list,sec)=>{if(!list.length)return;const s=document.createElement('div');s.className='modal-section';s.textContent=sec;body.appendChild(s);list.forEach(c=>{const row=document.createElement('div');row.className='client-radio-row';const r=document.createElement('input');r.type='radio';r.name='vs';r.value=c.id;r.onchange=()=>selId=c.id;const info=document.createElement('div');info.innerHTML='<div style="font-weight:700;font-size:14px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+'</div>';row.appendChild(r);row.appendChild(info);body.appendChild(row);});};
+  addRows(matches,'CLIENTES INTERESADOS');
+  addRows(S.clients.filter(c=>!matches.find(m=>m.id===c.id)),'OTROS CLIENTES');
   showModal('🏆 Registrar venta','¿A qué cliente le vendiste?',[
-    {label:'Confirmar venta',cls:'btn-primary',onClick:async()=>{
-      await api('POST','/api/propiedades/'+encodeURIComponent(prop.id)+'/vender',{clienteId:selId});
-      if(selId){await api('DELETE','/api/clientes/'+selId);}
-      await loadAll();
-    }},
+    {label:'Confirmar venta',cls:'btn-primary',onClick:async()=>{await api('POST','/api/propiedades/'+encodeURIComponent(prop.id)+'/vender',{clienteId:selId});if(selId)await api('DELETE','/api/clientes/'+selId);await loadAll();}},
     {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
   ],body);
 }
@@ -377,280 +292,135 @@ function showVentaModal(prop){
 // ── HOLD-TO-SELL ──────────────────────────────────────────────────────────────
 let holdTimer=null,holdPropId=null,holdCircle=null,holdStart=0;
 const HOLD_MS=2000;
-function startHold(propId,circle){
-  holdPropId=propId;holdCircle=circle;holdStart=Date.now();
-  const R=13,C=2*Math.PI*R;
-  circle.style.strokeDasharray=C;circle.style.strokeDashoffset=C;
-  function tick(){
-    const pct=Math.min((Date.now()-holdStart)/HOLD_MS,1);
-    circle.style.strokeDashoffset=C*(1-pct);
-    if(pct<1){holdTimer=requestAnimationFrame(tick);}else{endHold(true);}
-  }
-  holdTimer=requestAnimationFrame(tick);
-}
-function endHold(ok){
-  cancelAnimationFrame(holdTimer);holdTimer=null;
-  if(holdCircle){holdCircle.style.strokeDashoffset=2*Math.PI*13;}
-  if(ok&&holdPropId){const p=S.props.find(x=>x.id===holdPropId);if(p)showVentaModal(p);}
-  holdPropId=null;holdCircle=null;
-}
+function startHold(id,c){holdPropId=id;holdCircle=c;holdStart=Date.now();const R=13,C=2*Math.PI*R;c.style.strokeDasharray=C;c.style.strokeDashoffset=C;function tick(){const p=Math.min((Date.now()-holdStart)/HOLD_MS,1);c.style.strokeDashoffset=C*(1-p);if(p<1)holdTimer=requestAnimationFrame(tick);else endHold(true);}holdTimer=requestAnimationFrame(tick);}
+function endHold(ok){cancelAnimationFrame(holdTimer);holdTimer=null;if(holdCircle)holdCircle.style.strokeDashoffset=2*Math.PI*13;if(ok&&holdPropId){const p=S.props.find(x=>x.id===holdPropId);if(p)showVentaModal(p);}holdPropId=null;holdCircle=null;}
 function cancelHold(){if(holdTimer)endHold(false);}
 
 // ── PROP CARD ─────────────────────────────────────────────────────────────────
-const EST={
-  nueva:        {label:'NUEVA',      color:'#1F4E79',bg:'#EBF3FB',cls:'st-nueva'},
-  precio_cambio:{label:'PRECIO ↓',   color:'#B45309',bg:'#FEF3E2',cls:'st-precio'},
-  vendida:      {label:'VENDIDA',    color:'#B71C1C',bg:'#FEECEC',cls:'st-vendida'},
-  repetida:     {label:'Sin cambio', color:'#999',   bg:'#F5F5F5',cls:''},
-};
-
-let _dragClone=null,_dragOver=null;
+const EST={nueva:{label:'NUEVA',color:'#1F4E79',bg:'#EBF3FB',cls:'st-nueva'},precio_cambio:{label:'PRECIO ↓',color:'#B45309',bg:'#FEF3E2',cls:'st-precio'},vendida:{label:'VENDIDA',color:'#B71C1C',bg:'#FEECEC',cls:'st-vendida'},repetida:{label:'Sin cambio',color:'#999',bg:'#F5F5F5',cls:''}};
 
 function buildPropCard(prop){
-  const est=EST[prop._estado]||EST.repetida;
-  const zona=zonaDeFragg(prop.fraccionamiento);
-  const matches=matchClients(prop);
-  const isOpen=S.expanded===prop.id;
-
-  const card=document.createElement('div');
-  card.className='prop-card '+(est.cls||'');
-  card.dataset.id=prop.id;
-
-  // Header
+  const est=EST[prop._estado]||EST.repetida;const zona=zonaDeFragg(prop.fraccionamiento);const matches=matchClients(prop);const isOpen=S.expanded===prop.id;
+  const card=document.createElement('div');card.className='prop-card '+(est.cls||'');card.dataset.id=prop.id;
   const hdr=document.createElement('div');hdr.className='prop-header';
-
-  const dh=document.createElement('div');dh.className='drag-handle';
-  for(let i=0;i<3;i++){dh.appendChild(Object.assign(document.createElement('span'),{}));}
-
+  const dh=document.createElement('div');dh.className='drag-handle';for(let i=0;i<3;i++)dh.appendChild(document.createElement('span'));
   const info=document.createElement('div');info.className='prop-info';
   const tags=document.createElement('div');tags.style.cssText='display:flex;gap:6px;align-items:center;flex-wrap:wrap;';
   const st=document.createElement('span');st.className='tag';st.style.cssText='background:'+est.bg+';color:'+est.color+';font-weight:800;';st.textContent=est.label;tags.appendChild(st);
   if(matches.length){const at=document.createElement('span');at.className='tag';at.style.cssText='background:#FFF8E1;color:#B45309;font-weight:700;';at.textContent='🔔 '+matches.length;tags.appendChild(at);}
   info.appendChild(tags);
   const ttl=document.createElement('div');ttl.className='prop-title';ttl.textContent=prop.direccion||'Sin dirección';info.appendChild(ttl);
-  const sub=document.createElement('div');sub.className='prop-sub';
-  sub.innerHTML=(prop.fraccionamiento||'—')+' <span style="font-weight:700;color:#1F4E79;margin-left:6px">$'+Number(prop.precio||0).toLocaleString('es-MX')+'</span>';
-  if(prop._estado==='precio_cambio') sub.innerHTML+=' <s style="font-size:11px;color:#999">$'+Number(prop._precioAnterior||0).toLocaleString('es-MX')+'</s>';
+  const sub=document.createElement('div');sub.className='prop-sub';sub.innerHTML=(prop.fraccionamiento||'—')+' <span style="font-weight:700;color:#1F4E79;margin-left:6px">$'+Number(prop.precio||0).toLocaleString('es-MX')+'</span>';
+  if(prop._estado==='precio_cambio')sub.innerHTML+=' <s style="font-size:11px;color:#999">$'+Number(prop._precioAnterior||0).toLocaleString('es-MX')+'</s>';
   info.appendChild(sub);
   if(zona){const zt=document.createElement('span');zt.className='tag';zt.style.cssText='background:'+zona.color+'22;color:'+zona.color+';margin-top:3px;';zt.textContent=zona.nombre;info.appendChild(zt);}
-
   const arrow=document.createElement('div');arrow.className='prop-arrow';arrow.textContent=isOpen?'▲':'▼';
-
   hdr.appendChild(dh);hdr.appendChild(info);hdr.appendChild(arrow);
   hdr.addEventListener('click',e=>{if(e.target.closest('.drag-handle'))return;S.expanded=isOpen?null:prop.id;renderProps();});
   card.appendChild(hdr);
-
-  // Detail
   if(isOpen){
     const det=document.createElement('div');det.className='prop-detail';
-    const img=document.createElement('img');img.className='prop-mapa';img.src='/api/mapa/'+encodeURIComponent(prop.fraccionamiento||'');img.onerror=()=>img.style.display='none';det.appendChild(img);
-
-    if(matches.length){
-      const ab=document.createElement('div');ab.className='alert-box';
-      ab.innerHTML='<div class="alert-title">🔔 Clientes interesados — llama ya</div>';
-      matches.forEach(c=>{
-        const row=document.createElement('div');row.className='alert-row';
-        row.innerHTML='<div><div style="font-weight:700;font-size:13px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+' · '+c.etapa+'</div></div><a href="https://wa.me/52'+(c.whatsapp||'').replace(/\D/g,'')+'" style="background:#25D366;color:#fff;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:700">WhatsApp</a>';
-        ab.appendChild(row);
-      });
-      det.appendChild(ab);
-    }
-
-    if(prop._estado!=='vendida'){
-      const txt=fbText(prop);
-      const fb=document.createElement('div');fb.className='fb-box';
-      fb.innerHTML='<div class="fb-lbl">TEXTO PARA FACEBOOK</div><pre>'+txt+'</pre>';
-      det.appendChild(fb);
-      const cb=document.createElement('button');cb.className='btn btn-copy';cb.textContent='📋 Copiar texto FB';cb.onclick=()=>copyText(txt,cb);det.appendChild(cb);
-    } else {
-      det.innerHTML+='<div style="text-align:center;padding:12px;color:#B71C1C;font-weight:700">🔴 Ya no aparece en el PDF</div>';
-    }
-
+    const img=document.createElement('img');img.className='prop-mapa';
+    // Try local preview first, fallback to server
+    img.src=S.mapasPreviews[prop.fraccionamiento]||('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));
+    img.onerror=()=>img.style.display='none';det.appendChild(img);
+    if(matches.length){const ab=document.createElement('div');ab.className='alert-box';ab.innerHTML='<div class="alert-title">🔔 Clientes interesados — llama ya</div>';matches.forEach(c=>{const row=document.createElement('div');row.className='alert-row';row.innerHTML='<div><div style="font-weight:700;font-size:13px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+' · '+c.etapa+'</div></div><a href="https://wa.me/52'+(c.whatsapp||'').replace(/\D/g,'')+'" style="background:#25D366;color:#fff;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:700">WhatsApp</a>';ab.appendChild(row);});det.appendChild(ab);}
+    if(prop._estado!=='vendida'){const txt=fbText(prop);const fb=document.createElement('div');fb.className='fb-box';fb.innerHTML='<div class="fb-lbl">TEXTO PARA FACEBOOK</div><pre>'+txt+'</pre>';det.appendChild(fb);const cb=document.createElement('button');cb.className='btn btn-copy';cb.textContent='📋 Copiar texto FB';cb.onclick=()=>copyText(txt,cb);det.appendChild(cb);}
+    else det.innerHTML+='<div style="text-align:center;padding:12px;color:#B71C1C;font-weight:700">🔴 Ya no aparece en el PDF</div>';
     const acts=document.createElement('div');acts.className='prop-actions';
-    if(prop._estado!=='vendida'){
-      const R=13,C=2*Math.PI*R,SZ=32;
-      const hw=document.createElement('div');hw.className='hold-wrap';
-      const hb=document.createElement('button');hb.className='btn btn-gold';hb.style.cssText='padding:9px 14px;font-size:13px;';hb.textContent='🏆 Vendí yo';
-      const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-      svg.setAttribute('width',SZ+8);svg.setAttribute('height',SZ+8);svg.className='hold-svg';
-      const circ=document.createElementNS('http://www.w3.org/2000/svg','circle');
-      circ.setAttribute('cx',(SZ+8)/2);circ.setAttribute('cy',(SZ+8)/2);circ.setAttribute('r',R);
-      circ.setAttribute('fill','none');circ.setAttribute('stroke','#F4B942');circ.setAttribute('stroke-width','3');
-      circ.style.strokeDasharray=C;circ.style.strokeDashoffset=C;
-      svg.appendChild(circ);
-      hb.addEventListener('pointerdown',e=>{e.preventDefault();startHold(prop.id,circ);});
-      hb.addEventListener('pointerup',cancelHold);hb.addEventListener('pointerleave',cancelHold);
-      hb.addEventListener('contextmenu',e=>e.preventDefault());
-      hw.appendChild(hb);hw.appendChild(svg);acts.appendChild(hw);
-    }
-    const db=document.createElement('button');db.className='btn btn-danger';db.style.cssText='padding:9px 14px;font-size:13px;';db.textContent='Eliminar';
-    db.onclick=()=>showModal('¿Eliminar ficha?',prop.direccion,[{label:'Sí, eliminar',cls:'btn-danger',onClick:async()=>{await api('DELETE','/api/propiedades/'+encodeURIComponent(prop.id));await loadAll();}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}]);
-    acts.appendChild(db);
-    det.appendChild(acts);
-    card.appendChild(det);
+    if(prop._estado!=='vendida'){const R=13,C=2*Math.PI*R,SZ=32;const hw=document.createElement('div');hw.className='hold-wrap';const hb=document.createElement('button');hb.className='btn btn-gold';hb.style.cssText='padding:9px 14px;font-size:13px;';hb.textContent='🏆 Vendí yo';const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('width',SZ+8);svg.setAttribute('height',SZ+8);svg.className='hold-svg';const circ=document.createElementNS('http://www.w3.org/2000/svg','circle');circ.setAttribute('cx',(SZ+8)/2);circ.setAttribute('cy',(SZ+8)/2);circ.setAttribute('r',R);circ.setAttribute('fill','none');circ.setAttribute('stroke','#F4B942');circ.setAttribute('stroke-width','3');circ.style.strokeDasharray=C;circ.style.strokeDashoffset=C;svg.appendChild(circ);hb.addEventListener('pointerdown',e=>{e.preventDefault();startHold(prop.id,circ);});hb.addEventListener('pointerup',cancelHold);hb.addEventListener('pointerleave',cancelHold);hb.addEventListener('contextmenu',e=>e.preventDefault());hw.appendChild(hb);hw.appendChild(svg);acts.appendChild(hw);}
+    const db=document.createElement('button');db.className='btn btn-danger';db.style.cssText='padding:9px 14px;font-size:13px;';db.textContent='Eliminar';db.onclick=()=>showModal('¿Eliminar ficha?',prop.direccion,[{label:'Sí, eliminar',cls:'btn-danger',onClick:async()=>{await api('DELETE','/api/propiedades/'+encodeURIComponent(prop.id));await loadAll();}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}]);acts.appendChild(db);det.appendChild(acts);card.appendChild(det);
   }
-
-  // Drag (touch)
-  dh.addEventListener('touchstart',e=>{
-    e.preventDefault();S.dragSrc=prop.id;card.classList.add('dragging');
-    const clone=card.cloneNode(true);
-    const r=card.getBoundingClientRect();
-    clone.style.cssText='position:fixed;width:'+r.width+'px;opacity:.85;pointer-events:none;z-index:999;border-radius:16px;left:'+r.left+'px;top:'+r.top+'px;';
-    document.body.appendChild(clone);_dragClone=clone;
-  },{passive:false});
-  dh.addEventListener('touchmove',e=>{
-    e.preventDefault();if(!_dragClone)return;
-    const t=e.touches[0];
-    _dragClone.style.left=(t.clientX-_dragClone.offsetWidth/2)+'px';
-    _dragClone.style.top=(t.clientY-60)+'px';
-    const el=document.elementFromPoint(t.clientX,t.clientY);
-    const tc=el?.closest('.prop-card');
-    if(_dragOver&&_dragOver!==tc)_dragOver.classList.remove('drag-over');
-    if(tc&&tc!==card){tc.classList.add('drag-over');_dragOver=tc;}
-  },{passive:false});
-  dh.addEventListener('touchend',async()=>{
-    if(_dragClone){_dragClone.remove();_dragClone=null;}
-    card.classList.remove('dragging');
-    if(_dragOver){_dragOver.classList.remove('drag-over');const tid=_dragOver.dataset.id;_dragOver=null;if(tid&&S.dragSrc&&tid!==S.dragSrc)await reorder(S.dragSrc,tid);}
-    S.dragSrc=null;
-  });
-  // Drag (mouse)
+  // Touch drag
+  dh.addEventListener('touchstart',e=>{e.preventDefault();S.dragSrc=prop.id;card.classList.add('dragging');const clone=card.cloneNode(true);const r=card.getBoundingClientRect();clone.style.cssText='position:fixed;width:'+r.width+'px;opacity:.85;pointer-events:none;z-index:999;border-radius:16px;left:'+r.left+'px;top:'+r.top+'px;transition:none;';document.body.appendChild(clone);_dragClone=clone;},{passive:false});
+  dh.addEventListener('touchmove',e=>{e.preventDefault();if(!_dragClone)return;const t=e.touches[0];_dragClone.style.left=(t.clientX-_dragClone.offsetWidth/2)+'px';_dragClone.style.top=(t.clientY-60)+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const tc=el?.closest('.prop-card');if(_dragOver&&_dragOver!==tc)_dragOver.classList.remove('drag-over');if(tc&&tc!==card){tc.classList.add('drag-over');_dragOver=tc;}},{passive:false});
+  dh.addEventListener('touchend',async()=>{if(_dragClone){_dragClone.remove();_dragClone=null;}card.classList.remove('dragging');if(_dragOver){_dragOver.classList.remove('drag-over');const tid=_dragOver.dataset.id;_dragOver=null;if(tid&&S.dragSrc&&tid!==S.dragSrc)await reorder(S.dragSrc,tid);}S.dragSrc=null;});
   card.draggable=true;
   card.addEventListener('dragstart',e=>{if(!e.target.closest('.drag-handle')){e.preventDefault();return;}S.dragSrc=prop.id;card.classList.add('dragging');});
   card.addEventListener('dragend',()=>{card.classList.remove('dragging');document.querySelectorAll('.prop-card').forEach(c=>c.classList.remove('drag-over'));});
   card.addEventListener('dragover',e=>{e.preventDefault();card.classList.add('drag-over');});
   card.addEventListener('dragleave',()=>card.classList.remove('drag-over'));
   card.addEventListener('drop',async e=>{e.preventDefault();card.classList.remove('drag-over');if(S.dragSrc&&S.dragSrc!==prop.id)await reorder(S.dragSrc,prop.id);});
-
   return card;
 }
 
-async function reorder(fromId,toId){
-  const ids=S.props.map(p=>p.id);
-  const fi=ids.indexOf(fromId),ti=ids.indexOf(toId);
-  if(fi<0||ti<0)return;
-  ids.splice(fi,1);ids.splice(ti,0,fromId);
-  const map=Object.fromEntries(S.props.map(p=>[p.id,p]));
-  S.props=ids.map(id=>map[id]).filter(Boolean);
-  S.sortBy='custom';renderProps();
-  await api('POST','/api/propiedades/order',{order:ids});
-}
+async function reorder(fromId,toId){const ids=S.props.map(p=>p.id);const fi=ids.indexOf(fromId),ti=ids.indexOf(toId);if(fi<0||ti<0)return;ids.splice(fi,1);ids.splice(ti,0,fromId);const map=Object.fromEntries(S.props.map(p=>[p.id,p]));S.props=ids.map(id=>map[id]).filter(Boolean);S.sortBy='custom';renderProps();await api('POST','/api/propiedades/order',{order:ids});}
+
+function sortedProps(){const ps=[...S.props];if(S.sortBy==='zona')return ps.sort((a,b)=>{const za=zonaDeFragg(a.fraccionamiento);const zb=zonaDeFragg(b.fraccionamiento);return(za?S.zonas.indexOf(za):99)-(zb?S.zonas.indexOf(zb):99);});if(S.sortBy==='precio-asc')return ps.sort((a,b)=>a.precio-b.precio);if(S.sortBy==='precio-desc')return ps.sort((a,b)=>b.precio-a.precio);if(S.sortBy==='nuevo')return ps.sort((a,b)=>{const o={nueva:0,precio_cambio:1,repetida:2,vendida:3};return(o[a._estado]||2)-(o[b._estado]||2);});return ps;}
 
 // ── RENDER PROPIEDADES ────────────────────────────────────────────────────────
-function sortedProps(){
-  const ps=[...S.props];
-  if(S.sortBy==='zona') return ps.sort((a,b)=>{const za=zonaDeFragg(a.fraccionamiento);const zb=zonaDeFragg(b.fraccionamiento);return (za?S.zonas.indexOf(za):99)-(zb?S.zonas.indexOf(zb):99);});
-  if(S.sortBy==='precio-asc') return ps.sort((a,b)=>a.precio-b.precio);
-  if(S.sortBy==='precio-desc') return ps.sort((a,b)=>b.precio-a.precio);
-  if(S.sortBy==='nuevo') return ps.sort((a,b)=>{const o={nueva:0,precio_cambio:1,repetida:2,vendida:3};return(o[a._estado]||2)-(o[b._estado]||2);});
-  return ps;
-}
-
 function renderProps(){
   const c=document.getElementById('t0');c.innerHTML='';
 
-  // New fracc banner
-  if(S.newFraccs.length){
-    S.newFraccs.forEach(f=>{
-      const b=document.createElement('div');b.className='new-fracc-banner';
-      b.innerHTML='<span style="font-size:18px">🆕</span><div class="nf-text">Fracc. no registrado: <b>'+f+'</b></div>';
-      const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:6px 12px;font-size:12px;flex-shrink:0;';btn.textContent='Agregar';
-      btn.onclick=()=>showAddFraccModal(f);
-      b.appendChild(btn);c.appendChild(b);
-    });
-  }
+  // New fracc banners
+  S.newFraccs.forEach(f=>{const b=document.createElement('div');b.className='new-fracc-banner';b.innerHTML='<span style="font-size:18px">🆕</span><div class="nf-text">Fracc. nuevo: <b>'+f+'</b></div>';const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:6px 12px;font-size:12px;flex-shrink:0;';btn.textContent='Agregar';btn.onclick=()=>showAddFraccModal(f);b.appendChild(btn);c.appendChild(b);});
 
-  // PDF upload
+  // PDF upload card — usando label que envuelve el input para máxima compatibilidad iOS
   const uc=document.createElement('div');uc.className='card';
   uc.innerHTML='<div style="font-weight:700;font-size:15px;color:#1F4E79;margin-bottom:10px">📄 PDF del día</div>';
-  const ua=document.createElement('div');ua.className='upload-area';
-  ua.innerHTML='<span class="ua-icon">📄</span><div class="ua-title">Toca para subir el PDF</div><div class="ua-sub">Solo procesa fichas nuevas o con cambios</div>';
-  const fi=document.createElement('input');fi.type='file';fi.accept='application/pdf';fi.setAttribute('capture','');
-  fi.addEventListener('change',async e=>{
-    const file=e.target.files[0];if(!file)return;
-    ua.innerHTML='<span class="ua-icon">⏳</span><div class="ua-title" style="color:#1F4E79">Procesando PDF…</div><div class="ua-sub">Extrayendo fichas del servidor</div>';
-    try{const fd=new FormData();fd.append('pdf',file);await api('POST','/api/upload-pdf',fd);await loadAll();}
-    catch(err){ua.innerHTML='<span class="ua-icon">❌</span><div class="ua-title" style="color:#B71C1C">Error. Intenta de nuevo.</div>';}
-    fi.value='';
-  });
-  ua.appendChild(fi);uc.appendChild(ua);
+  const lbl=document.createElement('label');lbl.className='upload-label';lbl.id='pdf-upload-area';lbl.htmlFor='fi-pdf';
+  lbl.innerHTML='<span class="ul-icon">📄</span><span class="ul-title">Toca para subir el PDF</span><span class="ul-sub">Solo procesa fichas nuevas o con cambios</span>';
+  uc.appendChild(lbl);
+
   if(S.props.length){
     const stats=document.createElement('div');stats.className='stats';
-    [{label:'Nuevas',v:'nueva',color:'#1F4E79',bg:'#EBF3FB'},{label:'Precio↓',v:'precio_cambio',color:'#B45309',bg:'#FEF3E2'},{label:'Vendidas',v:'vendida',color:'#B71C1C',bg:'#FEECEC'},{label:'Igual',v:'repetida',color:'#777',bg:'#F5F5F5'}].forEach(({label,v,color,bg})=>{
-      const s=document.createElement('div');s.className='stat';s.style.background=bg;
-      s.innerHTML='<div class="stat-num" style="color:'+color+'">'+S.props.filter(p=>p._estado===v).length+'</div><div class="stat-lbl" style="color:'+color+'">'+label+'</div>';
-      stats.appendChild(s);
-    });
+    [{l:'Nuevas',v:'nueva',c:'#1F4E79',b:'#EBF3FB'},{l:'Precio↓',v:'precio_cambio',c:'#B45309',b:'#FEF3E2'},{l:'Vendidas',v:'vendida',c:'#B71C1C',b:'#FEECEC'},{l:'Igual',v:'repetida',c:'#777',b:'#F5F5F5'}].forEach(({l,v,c:co,b})=>{const s=document.createElement('div');s.className='stat';s.style.background=b;s.innerHTML='<div class="stat-num" style="color:'+co+'">'+S.props.filter(p=>p._estado===v).length+'</div><div class="stat-lbl" style="color:'+co+'">'+l+'</div>';stats.appendChild(s);});
     uc.appendChild(stats);
   }
   c.appendChild(uc);
 
-  // Mapa upload
+  // Mapas card
   const mc=document.createElement('div');mc.className='card';
-  mc.innerHTML='<div style="font-weight:700;font-size:13px;color:#555;margin-bottom:8px">🗺️ Mapas por fraccionamiento</div>';
-  const mr=document.createElement('div');mr.style.cssText='display:flex;gap:8px;align-items:center;';
-  const ms=document.createElement('select');ms.style.cssText='flex:1;padding:9px 10px;border-radius:10px;border:1.5px solid #E0E0E0;font-size:13px;background:#fff;-webkit-appearance:none;';
-  allFraccs().forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;ms.appendChild(o);});
-  const mua=document.createElement('div');mua.className='upload-area';mua.style.cssText='padding:10px 14px;display:flex;align-items:center;gap:6px;flex-shrink:0;';
-  mua.innerHTML='<span>📷</span><span style="font-weight:700;font-size:13px;color:#2E75B6">Subir</span>';
-  const mi=document.createElement('input');mi.type='file';mi.accept='image/*';
-  mi.addEventListener('change',async e=>{
-    const file=e.target.files[0];if(!file)return;
-    const fd=new FormData();fd.append('mapa',file);fd.append('fraccionamiento',ms.value);
-    try{await api('POST','/api/upload-mapa',fd);mua.innerHTML='<span>✅</span><span style="font-weight:700;font-size:13px;color:#2E7D32">Guardado</span>';setTimeout(()=>{mua.innerHTML='<span>📷</span><span style="font-weight:700;font-size:13px;color:#2E75B6">Subir</span>';},2000);}
-    catch{alert('Error subiendo mapa');}
-    mi.value='';
+  mc.innerHTML='<div style="font-weight:700;font-size:14px;color:#1F4E79;margin-bottom:10px">🗺️ Mapas de fraccionamientos</div>';
+  const grid=document.createElement('div');grid.className='mapas-grid';
+  allFraccs().forEach(f=>{
+    const item=document.createElement('div');item.className='mapa-item';
+    const hasPreview=S.mapasPreviews[f];
+    if(hasPreview){
+      const img=document.createElement('img');img.src=hasPreview;item.appendChild(img);
+    } else {
+      const img=document.createElement('img');img.src='/api/mapa/'+encodeURIComponent(f);
+      img.onerror=()=>{img.style.display='none';const empty=document.createElement('div');empty.className='mapa-empty';empty.textContent='Sin mapa';item.appendChild(empty);};
+      item.appendChild(img);
+    }
+    const nm=document.createElement('div');nm.className='mapa-name';nm.textContent=f;item.appendChild(nm);
+    // Replace button
+    const rb=document.createElement('label');rb.className='mapa-replace';rb.htmlFor='fi-mapa';
+    rb.innerHTML='<span style="background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;font-weight:700;cursor:pointer">📷</span>';
+    rb.addEventListener('click',e=>{_mapaFraccTarget=f;});
+    item.appendChild(rb);
+    grid.appendChild(item);
   });
-  mua.appendChild(mi);mr.appendChild(ms);mr.appendChild(mua);mc.appendChild(mr);c.appendChild(mc);
+  // Add fracc button
+  const addBtn=document.createElement('div');addBtn.className='mapa-item';addBtn.style.cssText='cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;background:#F0F7FF;border:2px dashed #2E75B6;';addBtn.innerHTML='<span style="font-size:24px">+</span><span style="font-size:11px;color:#2E75B6;font-weight:700">Agregar fracc</span>';
+  addBtn.onclick=()=>showAddFraccManual();grid.appendChild(addBtn);
+  mc.appendChild(grid);c.appendChild(mc);
 
   if(!S.props.length){c.innerHTML+='<div class="empty"><div class="empty-icon">🏠</div><div>Sube el PDF del día para empezar</div></div>';return;}
 
-  // Sort bar
   const sb=document.createElement('div');sb.className='sort-bar';sb.innerHTML='<label style="font-size:12px;color:#666;font-weight:600;white-space:nowrap">Ordenar:</label>';
   const ss=document.createElement('select');
   [['custom','Mi orden'],['nuevo','Nuevas primero'],['zona','Por zona'],['precio-asc','Precio ↑'],['precio-desc','Precio ↓']].forEach(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;if(S.sortBy===v)o.selected=true;ss.appendChild(o);});
-  ss.onchange=e=>{S.sortBy=e.target.value;renderProps();};
-  sb.appendChild(ss);c.appendChild(sb);
+  ss.onchange=e=>{S.sortBy=e.target.value;renderProps();};sb.appendChild(ss);c.appendChild(sb);
 
   const secs=[{label:'NUEVAS HOY',color:'#1F4E79',key:'nueva'},{label:'CAMBIO DE PRECIO',color:'#B45309',key:'precio_cambio'},{label:'YA NO DISPONIBLES',color:'#B71C1C',key:'vendida'},{label:'SIN CAMBIOS',color:'#999',key:'repetida'}];
   const sorted=sortedProps();
   if(S.sortBy==='custom'||S.sortBy==='nuevo'){
-    secs.forEach(({label,color,key})=>{
-      const items=sorted.filter(p=>p._estado===key);if(!items.length)return;
-      const l=document.createElement('div');l.className='sec-lbl';l.style.color=color;l.textContent=label+' · '+items.length;c.appendChild(l);
-      items.forEach(p=>c.appendChild(buildPropCard(p)));
-    });
-  } else {
-    sorted.forEach(p=>c.appendChild(buildPropCard(p)));
-  }
+    secs.forEach(({label,color,key})=>{const items=sorted.filter(p=>p._estado===key);if(!items.length)return;const l=document.createElement('div');l.className='sec-lbl';l.style.color=color;l.textContent=label+' · '+items.length;c.appendChild(l);items.forEach(p=>c.appendChild(buildPropCard(p)));});
+  }else sorted.forEach(p=>c.appendChild(buildPropCard(p)));
 }
 
-// ── ADD FRACC MODAL ───────────────────────────────────────────────────────────
-function showAddFraccModal(fracc){
-  const body=document.createElement('div');
-  body.innerHTML='<div style="font-size:13px;color:#555;margin-bottom:12px">¿A qué zona quieres agregar <b>'+fracc+'</b>?</div>';
-  const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;';
-  S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;sel.appendChild(o);});
-  body.appendChild(sel);
-  showModal('Agregar fraccionamiento','',
-    [{label:'Agregar',cls:'btn-primary',onClick:()=>{
-      const z=S.zonas.find(x=>x.id===sel.value);
-      if(z&&!z.fraccs.includes(fracc)){z.fraccs.push(fracc);lsSet('zonas',S.zonas);}
-      S.newFraccs=S.newFraccs.filter(f=>f!==fracc);
-      renderAll();
-    }},{label:'Ignorar',cls:'btn-light',onClick:()=>{S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}}],
-    body
-  );
-}
+function showAddFraccModal(fracc){const body=document.createElement('div');body.innerHTML='<div style="font-size:13px;color:#555;margin-bottom:12px">¿A qué zona agregar <b>'+fracc+'</b>?</div>';const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;sel.appendChild(o);});body.appendChild(sel);showModal('Agregar fraccionamiento','',[ {label:'Agregar',cls:'btn-primary',onClick:()=>{const z=S.zonas.find(x=>x.id===sel.value);if(z&&!z.fraccs.includes(fracc)){z.fraccs.push(fracc);lsSet('zonas',S.zonas);}S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}},{label:'Ignorar',cls:'btn-light',onClick:()=>{S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}}],body);}
+
+function showAddFraccManual(){const body=document.createElement('div');const inp=document.createElement('input');inp.type='text';inp.placeholder='Nombre del fraccionamiento';inp.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;margin-bottom:10px;';const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;sel.appendChild(o);});body.appendChild(inp);body.appendChild(sel);showModal('Agregar fraccionamiento','',[ {label:'Agregar',cls:'btn-primary',onClick:()=>{const val=inp.value.trim();if(!val)return;const z=S.zonas.find(x=>x.id===sel.value);if(z&&!z.fraccs.includes(val)){z.fraccs.push(val);lsSet('zonas',S.zonas);renderAll();}}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}],body);}
 
 // ── CLIENTES ──────────────────────────────────────────────────────────────────
 const ETAPAS=['Nuevo','Contactado','Visita hoy','Negociando','Documentos','Esperando','Ganado','Perdido'];
 const ETAPA_S={'Nuevo':{bg:'#E3F2FD',c:'#1565A8'},'Contactado':{bg:'#E8F5E9',c:'#2E7D32'},'Visita hoy':{bg:'#1F4E79',c:'#fff'},'Negociando':{bg:'#FFF8E1',c:'#B45309'},'Documentos':{bg:'#F3E5F5',c:'#6A1B9A'},'Esperando':{bg:'#FFF3E0',c:'#E65100'},'Ganado':{bg:'#2E7D32',c:'#fff'},'Perdido':{bg:'#B71C1C',c:'#fff'}};
-const BLANK={nombre:'',whatsapp:'',whatsappUS:'',puntos:'',presupuesto:'',zona:'',fraccs:[],fraccBase:'',radioKm:15,recamaras:'',etapa:'Nuevo',notas:''};
+const BLANK={nombre:'',whatsapp:'',whatsappUS:'',puntos:'',presupuesto:'',zona:'',fraccs:[],fraccBase:'',radioKm:'15',recamaras:'',etapa:'Nuevo',notas:''};
 
 function renderClients(){
   const c=document.getElementById('t1');c.innerHTML='';
-  // Filtros
   const fc=document.createElement('div');fc.className='card';fc.style.padding='10px 12px';
   const fr=document.createElement('div');fr.style.cssText='display:flex;gap:8px;margin-bottom:6px;';
   const se=document.createElement('select');se.style.cssText='flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;font-size:12px;background:#fff;-webkit-appearance:none;';
@@ -660,14 +430,12 @@ function renderClients(){
   [{v:'Todas',t:'Todas'},...S.zonas.map(z=>({v:z.id,t:z.nombre.split('—')[0].trim()}))].forEach(({v,t})=>{const o=document.createElement('option');o.value=v;o.textContent=t;if(S.filtroZona===v)o.selected=true;sz.appendChild(o);});
   sz.onchange=e=>{S.filtroZona=e.target.value;renderClients();};
   fr.appendChild(se);fr.appendChild(sz);fc.appendChild(fr);
-  const lista=S.clients.filter(c=>(S.filtroEtapa==='Todos'||c.etapa===S.filtroEtapa)&&(S.filtroZona==='Todas'||c.zona===S.filtroZona));
+  const lista=S.clients.filter(cl=>(S.filtroEtapa==='Todos'||cl.etapa===S.filtroEtapa)&&(S.filtroZona==='Todas'||cl.zona===S.filtroZona));
   fc.appendChild(Object.assign(document.createElement('div'),{style:'font-size:12px;color:#888',textContent:lista.length+' cliente'+(lista.length!==1?'s':'')}));
   c.appendChild(fc);
-
   if(!S.showClientForm){const nb=document.createElement('button');nb.className='btn btn-primary btn-full';nb.style.cssText='margin-bottom:12px;padding:14px;font-size:15px;';nb.textContent='+ Nuevo cliente';nb.onclick=()=>{S.showClientForm=true;S.clientForm={...BLANK,fraccs:[]};S.editClientId=null;renderClients();};c.appendChild(nb);}
   if(S.showClientForm)c.appendChild(buildClientForm());
   if(!lista.length&&!S.showClientForm){c.innerHTML+='<div class="empty"><div class="empty-icon">👤</div><div>Sin clientes aún</div></div>';return;}
-
   lista.forEach(cl=>{
     const zona=S.zonas.find(z=>z.id===cl.zona);const est=ETAPA_S[cl.etapa]||{bg:'#eee',c:'#333'};
     const cc=document.createElement('div');cc.className='card';
@@ -692,221 +460,107 @@ function renderClients(){
 function buildClientForm(){
   const form=document.createElement('div');form.className='card';form.style.border='2px solid #2E75B6';
   form.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">'+(S.editClientId?'Editar cliente':'Nuevo cliente')+'</div>';
-
-  function fld(k,label,type,ph,transform){
-    const d=document.createElement('div');d.className='field';
-    d.innerHTML='<label>'+label+'</label>';
-    const inp=document.createElement('input');inp.type=type||'text';inp.placeholder=ph||'';inp.value=S.clientForm[k]||'';
-    inp.addEventListener('input',e=>{
-      let v=e.target.value;
-      if(transform){v=transform(v);e.target.value=v;}
-      S.clientForm[k]=v;
-      if(k==='fraccBase') updateFraccList();
-    });
-    d.appendChild(inp);return d;
-  }
-  function sfld(k,label,opts){
-    const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+label+'</label>';
-    const s=document.createElement('select');s.style.cssText='-webkit-appearance:none;';
-    opts.forEach(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;if(String(S.clientForm[k])===String(v))o.selected=true;s.appendChild(o);});
-    s.onchange=e=>{S.clientForm[k]=e.target.value;if(k==='zona')updateFraccList();};
-    d.appendChild(s);return d;
-  }
+  function fld(k,lbl,type,ph){const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+lbl+'</label>';const i=document.createElement('input');i.type=type||'text';i.placeholder=ph||'';i.value=S.clientForm[k]||'';i.oninput=e=>{S.clientForm[k]=e.target.value;};d.appendChild(i);return d;}
+  function sfld(k,lbl,opts){const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+lbl+'</label>';const s=document.createElement('select');s.style.webkitAppearance='none';opts.forEach(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;if(String(S.clientForm[k])===String(v))o.selected=true;s.appendChild(o);});s.onchange=e=>{S.clientForm[k]=e.target.value;if(k==='zona'||k==='fraccBase'||k==='radioKm')updateFL();};d.appendChild(s);return d;}
 
   form.appendChild(fld('nombre','Nombre *','text','Nombre completo'));
 
-  // Teléfono MX
-  const telD=document.createElement('div');telD.className='field';telD.innerHTML='<label>WhatsApp *</label>';
-  const telInp=document.createElement('input');telInp.type='tel';telInp.placeholder='656-123-4567';telInp.value=S.clientForm.whatsapp||'';
-  telInp.addEventListener('input',e=>{const f=fmtPhone(e.target.value);e.target.value=f;S.clientForm.whatsapp=f;});
-  telD.appendChild(telInp);form.appendChild(telD);
+  // Tel MX
+  const tmx=document.createElement('div');tmx.className='field';tmx.innerHTML='<label>WhatsApp * (MX)</label>';
+  const imx=document.createElement('input');imx.type='tel';imx.placeholder='656-123-4567';imx.value=S.clientForm.whatsapp||'';
+  imx.addEventListener('input',e=>{const f=fmtMX(e.target.value);e.target.value=f;S.clientForm.whatsapp=f;});tmx.appendChild(imx);form.appendChild(tmx);
 
-  // Teléfono USA
-  const usD=document.createElement('div');usD.className='field';usD.innerHTML='<label>Tel. EUA (opcional)</label>';
-  const usInp=document.createElement('input');usInp.type='tel';usInp.placeholder='(915) 123-4567';usInp.value=S.clientForm.whatsappUS||'';
-  usInp.addEventListener('input',e=>{const f=fmtPhoneUS(e.target.value);e.target.value=f;S.clientForm.whatsappUS=f;});
-  usD.appendChild(usInp);form.appendChild(usD);
+  // Tel USA
+  const tus=document.createElement('div');tus.className='field';tus.innerHTML='<label>Tel. EUA (opcional)</label>';
+  const ius=document.createElement('input');ius.type='tel';ius.placeholder='(915) 123-4567';ius.value=S.clientForm.whatsappUS||'';
+  ius.addEventListener('input',e=>{const f=fmtUS(e.target.value);e.target.value=f;S.clientForm.whatsappUS=f;});tus.appendChild(ius);form.appendChild(tus);
 
   form.appendChild(fld('puntos','Puntos Infonavit','number','ej. 1050'));
   form.appendChild(fld('presupuesto','Presupuesto máx ($)','number','ej. 480000'));
   form.appendChild(sfld('zona','Zona de interés',[['','Seleccionar zona'],...S.zonas.map(z=>[z.id,z.nombre]),['flex','Flexible – cualquier zona']]));
 
-  // Fracc base
-  const fbD=document.createElement('div');fbD.className='field';fbD.innerHTML='<label>Fraccionamiento preferido</label>';
-  const fbSel=document.createElement('select');fbSel.style.cssText='-webkit-appearance:none;';
-  fbSel.innerHTML='<option value="">-- Seleccionar --</option>';
-  allFraccs().forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;if(S.clientForm.fraccBase===f)o.selected=true;fbSel.appendChild(o);});
-  fbSel.onchange=e=>{S.clientForm.fraccBase=e.target.value;updateFraccList();};
-  fbD.appendChild(fbSel);form.appendChild(fbD);
+  // Fracc base select
+  const fbd=document.createElement('div');fbd.className='field';fbd.innerHTML='<label>Fraccionamiento preferido</label>';
+  const fbs=document.createElement('select');fbs.style.webkitAppearance='none';
+  fbs.innerHTML='<option value="">-- Seleccionar --</option>';
+  allFraccs().forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;if(S.clientForm.fraccBase===f)o.selected=true;fbs.appendChild(o);});
+  fbs.onchange=e=>{S.clientForm.fraccBase=e.target.value;updateFL();};fbd.appendChild(fbs);form.appendChild(fbd);
 
-  // Radio
-  form.appendChild(sfld('radioKm','Radio máximo de búsqueda',[['5','5 km'],['10','10 km'],['15','15 km'],['20','20 km'],['30','30 km o más']]));
+  form.appendChild(sfld('radioKm','Radio máximo',[['5','5 km'],['10','10 km'],['15','15 km'],['20','20 km'],['30','30 km o más']]));
   form.appendChild(sfld('recamaras','Recámaras',[['','Indiferente'],['2','2'],['3','3'],['4','4']]));
   form.appendChild(sfld('etapa','Etapa',ETAPAS.map(e=>[e,e])));
 
-  // Fracc list (ordenada por proximidad)
-  const flD=document.createElement('div');flD.className='field';flD.innerHTML='<label>Fraccionamientos de interés <span style="font-weight:400;color:#888">(selecciona los que le interesan)</span></label>';
-  const flC=document.createElement('div');flC.id='fracc-checklist';
-  flD.appendChild(flC);form.appendChild(flD);
+  const fld2=document.createElement('div');fld2.className='field';
+  fld2.innerHTML='<label>Fraccionamientos de interés <span style="font-weight:400;color:#888;font-size:11px">(toca para seleccionar)</span></label>';
+  const flc=document.createElement('div');flc.id='fl-check';fld2.appendChild(flc);form.appendChild(fld2);
 
-  function updateFraccList(){
-    flC.innerHTML='';
-    const base=S.clientForm.fraccBase;
-    const zonaId=S.clientForm.zona;
-    const radio=Number(S.clientForm.radioKm)||15;
-
-    // Get all fraccs sorted by proximity to base (or just zone order)
+  function updateFL(){
+    flc.innerHTML='';
+    const base=S.clientForm.fraccBase;const radio=Number(S.clientForm.radioKm)||15;
     let ordered=[];
-    if(base){
-      const sorted=fraccsSortedByProximity(base);
-      // Filter by radio
-      const filtered=[base,...sorted.filter(f=>distKm(base,f)<=radio)];
-      ordered=filtered;
-    } else if(zonaId&&zonaId!=='flex'){
-      const zona=S.zonas.find(z=>z.id===zonaId);
-      if(zona){
-        ordered=[...zona.fraccs,...allFraccs().filter(f=>!zona.fraccs.includes(f))];
-      } else ordered=allFraccs();
-    } else {
-      ordered=allFraccs();
-    }
-
-    // Group by zone for display
+    if(base){ordered=[base,...fraccsSorted(base).filter(f=>distKm(base,f)<=radio)];}
+    else if(S.clientForm.zona&&S.clientForm.zona!=='flex'){const z=S.zonas.find(x=>x.id===S.clientForm.zona);ordered=z?[...z.fraccs,...allFraccs().filter(f=>!z.fraccs.includes(f))]:allFraccs();}
+    else ordered=allFraccs();
     const done=new Set();
     S.zonas.forEach(zona=>{
-      const inZone=ordered.filter(f=>zona.fraccs.includes(f)&&!done.has(f));
-      if(!inZone.length)return;
+      const inZ=ordered.filter(f=>zona.fraccs.includes(f)&&!done.has(f));if(!inZ.length)return;
       const gl=document.createElement('div');gl.className='fracc-zone-group';
       const zl=document.createElement('div');zl.className='fracc-zone-label';zl.style.color=zona.color;zl.textContent=zona.nombre;gl.appendChild(zl);
-      inZone.forEach(f=>{
+      inZ.forEach(f=>{
         done.add(f);
         const item=document.createElement('div');item.className='fracc-item'+(S.clientForm.fraccs.includes(f)?' selected':'');
         const cb=document.createElement('input');cb.type='checkbox';cb.checked=S.clientForm.fraccs.includes(f);
         const nm=document.createElement('span');nm.className='fi-name';nm.textContent=f;
-        const dist=base&&f!==base?document.createElement('span'):null;
-        if(dist){dist.className='fi-dist';const d=distKm(base,f);dist.textContent=d<50?d.toFixed(1)+' km':'';}
-        cb.onchange=()=>{
-          if(cb.checked){if(!S.clientForm.fraccs.includes(f))S.clientForm.fraccs.push(f);}
-          else{S.clientForm.fraccs=S.clientForm.fraccs.filter(x=>x!==f);}
-          item.classList.toggle('selected',cb.checked);
-        };
-        item.addEventListener('click',e=>{if(e.target===cb)return;cb.checked=!cb.checked;cb.onchange();});
-        item.appendChild(cb);item.appendChild(nm);if(dist)item.appendChild(dist);
-        gl.appendChild(item);
+        const dt=document.createElement('span');dt.className='fi-dist';if(base&&f!==base){const d=distKm(base,f);if(d<50)dt.textContent=d.toFixed(1)+' km';}
+        const tog=()=>{if(cb.checked){if(!S.clientForm.fraccs.includes(f))S.clientForm.fraccs.push(f);}else S.clientForm.fraccs=S.clientForm.fraccs.filter(x=>x!==f);item.classList.toggle('selected',cb.checked);};
+        cb.onchange=tog;item.onclick=e=>{if(e.target===cb)return;cb.checked=!cb.checked;tog();};
+        item.appendChild(cb);item.appendChild(nm);item.appendChild(dt);gl.appendChild(item);
       });
-      flC.appendChild(gl);
+      flc.appendChild(gl);
     });
-    // Uncategorized
-    const extras=ordered.filter(f=>!done.has(f));
-    if(extras.length){
-      const gl=document.createElement('div');gl.className='fracc-zone-group';
-      const zl=document.createElement('div');zl.className='fracc-zone-label';zl.textContent='OTROS';gl.appendChild(zl);
-      extras.forEach(f=>{
-        const item=document.createElement('div');item.className='fracc-item'+(S.clientForm.fraccs.includes(f)?' selected':'');
-        const cb=document.createElement('input');cb.type='checkbox';cb.checked=S.clientForm.fraccs.includes(f);
-        const nm=document.createElement('span');nm.className='fi-name';nm.textContent=f;
-        cb.onchange=()=>{if(cb.checked){if(!S.clientForm.fraccs.includes(f))S.clientForm.fraccs.push(f);}else{S.clientForm.fraccs=S.clientForm.fraccs.filter(x=>x!==f);}item.classList.toggle('selected',cb.checked);};
-        item.addEventListener('click',e=>{if(e.target===cb)return;cb.checked=!cb.checked;cb.onchange();});
-        item.appendChild(cb);item.appendChild(nm);gl.appendChild(item);
-      });
-      flC.appendChild(gl);
-    }
   }
-  updateFraccList();
+  updateFL();
 
-  const nd=document.createElement('div');nd.className='field';nd.innerHTML='<label>Notas</label>';
-  const ta=document.createElement('textarea');ta.rows=2;ta.placeholder='Observaciones…';ta.value=S.clientForm.notas||'';ta.oninput=e=>{S.clientForm.notas=e.target.value;};nd.appendChild(ta);form.appendChild(nd);
-
+  const nd=document.createElement('div');nd.className='field';nd.innerHTML='<label>Notas</label>';const ta=document.createElement('textarea');ta.rows=2;ta.placeholder='Observaciones…';ta.value=S.clientForm.notas||'';ta.oninput=e=>{S.clientForm.notas=e.target.value;};nd.appendChild(ta);form.appendChild(nd);
   const br=document.createElement('div');br.style.cssText='display:flex;gap:8px;margin-top:4px;';
-  const sb=document.createElement('button');sb.className='btn btn-primary';sb.style.cssText='flex:1;padding:13px;';sb.textContent=S.editClientId?'Guardar':'Agregar';
-  sb.onclick=async()=>{
-    if(!S.clientForm.nombre||!S.clientForm.whatsapp)return;
-    if(S.editClientId)await api('PUT','/api/clientes/'+S.editClientId,{...S.clientForm,id:S.editClientId});
-    else await api('POST','/api/clientes',S.clientForm);
-    S.showClientForm=false;S.editClientId=null;S.clientForm={...BLANK,fraccs:[]};await loadAll();
-  };
+  const sb2=document.createElement('button');sb2.className='btn btn-primary';sb2.style.cssText='flex:1;padding:13px;';sb2.textContent=S.editClientId?'Guardar':'Agregar';
+  sb2.onclick=async()=>{if(!S.clientForm.nombre||!S.clientForm.whatsapp)return;if(S.editClientId)await api('PUT','/api/clientes/'+S.editClientId,{...S.clientForm,id:S.editClientId});else await api('POST','/api/clientes',S.clientForm);S.showClientForm=false;S.editClientId=null;S.clientForm={...BLANK,fraccs:[]};await loadAll();};
   const cb2=document.createElement('button');cb2.className='btn btn-light';cb2.style.padding='13px 16px';cb2.textContent='Cancelar';cb2.onclick=()=>{S.showClientForm=false;S.editClientId=null;renderClients();};
-  br.appendChild(sb);br.appendChild(cb2);form.appendChild(br);
-  return form;
+  br.appendChild(sb2);br.appendChild(cb2);form.appendChild(br);return form;
 }
 
 // ── ZONAS ─────────────────────────────────────────────────────────────────────
 function renderZonas(){
   const c=document.getElementById('t2');c.innerHTML='';
-
-  const hd=document.createElement('div');hd.className='card';
-  hd.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🗺️ Zonas y fraccionamientos</div><div style="font-size:12px;color:#888;margin-bottom:12px">Configura las zonas a tu gusto. Solo afecta tu dispositivo.</div>';
+  const hd=document.createElement('div');hd.className='card';hd.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🗺️ Zonas y fraccionamientos</div><div style="font-size:12px;color:#888;margin-bottom:12px">Edita a tu gusto. Solo afecta tu dispositivo.</div>';
   const ab=document.createElement('button');ab.className='btn btn-primary btn-full';ab.style.padding='12px';ab.textContent='+ Agregar zona';
-  ab.onclick=()=>{
-    const nombre=prompt('Nombre de la nueva zona:');if(!nombre)return;
-    S.zonas.push({id:'z'+Date.now(),nombre,color:'#555',desc:'',fraccs:[]});
-    lsSet('zonas',S.zonas);renderZonas();
-  };
+  ab.onclick=()=>{const n=prompt('Nombre de la nueva zona:');if(!n)return;S.zonas.push({id:'z'+Date.now(),nombre:n,color:'#555',desc:'',fraccs:[]});lsSet('zonas',S.zonas);renderZonas();};
   hd.appendChild(ab);c.appendChild(hd);
-
   S.zonas.forEach((zona,zi)=>{
-    const zc=document.createElement('div');zc.className='zone-card';zc.style.borderColor=zona.color+'44';
+    const zc=document.createElement('div');zc.className='zone-card';zc.style.borderColor=zona.color+'55';
     const zh=document.createElement('div');zh.className='zone-header';
     const dot=document.createElement('div');dot.className='zone-dot';dot.style.background=zona.color;
-    const nm=document.createElement('div');nm.className='zone-name';nm.contentEditable=true;nm.textContent=zona.nombre;nm.style.outline='none';
-    nm.addEventListener('blur',()=>{S.zonas[zi].nombre=nm.textContent.trim();lsSet('zonas',S.zonas);});
-    const del=document.createElement('button');del.className='btn btn-danger';del.style.cssText='padding:5px 10px;font-size:12px;';del.textContent='✕';
-    del.onclick=()=>{if(!confirm('¿Eliminar zona '+zona.nombre+'?'))return;S.zonas.splice(zi,1);lsSet('zonas',S.zonas);renderZonas();};
+    const nm=document.createElement('input');nm.className='zone-name';nm.value=zona.nombre;nm.addEventListener('blur',()=>{S.zonas[zi].nombre=nm.value.trim();lsSet('zonas',S.zonas);});
+    const del=document.createElement('button');del.className='btn btn-danger';del.style.cssText='padding:5px 10px;font-size:12px;';del.textContent='✕';del.onclick=()=>{if(!confirm('¿Eliminar zona?'))return;S.zonas.splice(zi,1);lsSet('zonas',S.zonas);renderZonas();};
     zh.appendChild(dot);zh.appendChild(nm);zh.appendChild(del);zc.appendChild(zh);
-
-    // Desc
-    const desc=document.createElement('div');
-    const descT=document.createElement('textarea');descT.style.cssText='width:100%;padding:8px;border-radius:8px;border:1px solid #eee;font-size:12px;color:#666;margin-bottom:8px;';
-    descT.rows=2;descT.value=zona.desc||'';descT.placeholder='Descripción de la zona…';
-    descT.addEventListener('blur',()=>{S.zonas[zi].desc=descT.value;lsSet('zonas',S.zonas);});
-    desc.appendChild(descT);zc.appendChild(desc);
-
-    // Fraccs tags
+    const dt=document.createElement('textarea');dt.style.cssText='width:100%;padding:8px;border-radius:8px;border:1px solid #eee;font-size:12px;color:#666;margin-bottom:8px;';dt.rows=2;dt.value=zona.desc||'';dt.placeholder='Descripción…';dt.addEventListener('blur',()=>{S.zonas[zi].desc=dt.value;lsSet('zonas',S.zonas);});zc.appendChild(dt);
     const ft=document.createElement('div');ft.className='zone-fraccs';
-    zona.fraccs.forEach((f,fi)=>{
-      const tag=document.createElement('div');tag.className='fracc-tag';
-      tag.innerHTML=f;
-      const rm=document.createElement('span');rm.className='rm';rm.textContent='×';
-      rm.onclick=()=>{S.zonas[zi].fraccs.splice(fi,1);lsSet('zonas',S.zonas);renderZonas();};
-      tag.appendChild(rm);ft.appendChild(tag);
-    });
-
-    // Add fracc button
+    zona.fraccs.forEach((f,fi)=>{const tag=document.createElement('div');tag.className='fracc-tag';tag.innerHTML=f;const rm=document.createElement('span');rm.className='rm';rm.textContent='×';rm.onclick=()=>{S.zonas[zi].fraccs.splice(fi,1);lsSet('zonas',S.zonas);renderZonas();};tag.appendChild(rm);ft.appendChild(tag);});
     const addF=document.createElement('button');addF.className='btn btn-light';addF.style.cssText='padding:4px 10px;font-size:12px;border-radius:20px;';addF.textContent='+ Fracc';
     addF.onclick=()=>{
       const body=document.createElement('div');
-      // Select from existing not in zone
       const available=allFraccs().filter(f=>!zona.fraccs.includes(f));
-      const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;margin-bottom:10px;';
-      sel.innerHTML='<option value="">-- Seleccionar --</option>';
-      available.forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;sel.appendChild(o);});
-      // Or type new one
-      const newInp=document.createElement('input');newInp.type='text';newInp.placeholder='O escribe uno nuevo…';newInp.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;margin-top:6px;';
-      body.appendChild(sel);body.appendChild(newInp);
-      showModal('Agregar a '+zona.nombre,'',
-        [{label:'Agregar',cls:'btn-primary',onClick:()=>{
-          const val=(newInp.value.trim()||sel.value).trim();
-          if(!val)return;
-          if(!S.zonas[zi].fraccs.includes(val))S.zonas[zi].fraccs.push(val);
-          lsSet('zonas',S.zonas);renderZonas();
-        }},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}],
-        body
-      );
+      const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;margin-bottom:8px;';
+      sel.innerHTML='<option value="">-- Existente --</option>';available.forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;sel.appendChild(o);});
+      const ni=document.createElement('input');ni.type='text';ni.placeholder='O escribe uno nuevo…';ni.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;';
+      body.appendChild(sel);body.appendChild(ni);
+      showModal('Agregar a '+zona.nombre,'',[ {label:'Agregar',cls:'btn-primary',onClick:()=>{const val=(ni.value.trim()||sel.value).trim();if(!val)return;if(!S.zonas[zi].fraccs.includes(val)){S.zonas[zi].fraccs.push(val);lsSet('zonas',S.zonas);renderZonas();}}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}],body);
     };
-    ft.appendChild(addF);
-    zc.appendChild(ft);
-
-    // Reset
-    const rst=document.createElement('button');rst.className='btn btn-light';rst.style.cssText='padding:6px 12px;font-size:12px;margin-top:8px;';rst.textContent='↺ Restablecer esta zona';
-    rst.onclick=()=>{const def=DEFAULT_ZONAS[zi];if(def){S.zonas[zi]={...def};lsSet('zonas',S.zonas);renderZonas();}};
-    zc.appendChild(rst);
+    ft.appendChild(addF);zc.appendChild(ft);
+    const rst=document.createElement('button');rst.className='btn btn-light';rst.style.cssText='padding:6px 12px;font-size:12px;margin-top:8px;';rst.textContent='↺ Restablecer';rst.onclick=()=>{const d=DEFAULT_ZONAS[zi];if(d){S.zonas[zi]={...d,fraccs:[...d.fraccs]};lsSet('zonas',S.zonas);renderZonas();}};zc.appendChild(rst);
     c.appendChild(zc);
   });
-
-  // Reset all
-  const ra=document.createElement('button');ra.className='btn btn-light btn-full';ra.style.cssText='margin-top:4px;padding:12px;';ra.textContent='↺ Restablecer todas las zonas';
-  ra.onclick=()=>{if(!confirm('¿Restablecer todas las zonas al estado original?'))return;S.zonas=[...DEFAULT_ZONAS.map(z=>({...z,fraccs:[...z.fraccs]}))];lsSet('zonas',S.zonas);renderZonas();};
-  c.appendChild(ra);
+  const ra=document.createElement('button');ra.className='btn btn-light btn-full';ra.style.cssText='margin-top:4px;padding:12px;';ra.textContent='↺ Restablecer todas las zonas';ra.onclick=()=>{if(!confirm('¿Restablecer todo?'))return;S.zonas=DEFAULT_ZONAS.map(z=>({...z,fraccs:[...z.fraccs]}));lsSet('zonas',S.zonas);renderZonas();};c.appendChild(ra);
 }
 
 // ── CONFIG ────────────────────────────────────────────────────────────────────
@@ -914,32 +568,18 @@ function renderConfig(){
   const c=document.getElementById('t3');c.innerHTML='';
   const cc=document.createElement('div');cc.className='card';
   cc.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">⚙️ Mis datos</div>';
-
-  function cfld(k,label,ph,transform){
-    const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+label+'</label>';
-    const inp=document.createElement('input');inp.type='text';inp.placeholder=ph;inp.value=S.cfg[k]||'';
-    inp.addEventListener('input',e=>{let v=e.target.value;if(transform){v=transform(v);e.target.value=v;}S.cfg[k]=v;});
-    d.appendChild(inp);return d;
-  }
-  cc.appendChild(cfld('nombre','Tu nombre (para registro de ventas)','Mi nombre'));
-  cc.appendChild(cfld('tel','Teléfono (aparece en texto FB)','656-XXX-XXXX',v=>{const d=v.replace(/\D/g,'');if(d.length<=3)return d;if(d.length<=6)return d.slice(0,3)+'-'+d.slice(3);if(d.length<=10)return d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);return v;}));
-  cc.appendChild(cfld('wa','WhatsApp para link (wa.me/...)','5265612345678'));
-
+  function cfld(k,lbl,ph,fmt){const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+lbl+'</label>';const i=document.createElement('input');i.type='text';i.placeholder=ph;i.value=S.cfg[k]||'';i.addEventListener('input',e=>{let v=e.target.value;if(fmt){v=fmt(v);e.target.value=v;}S.cfg[k]=v;});d.appendChild(i);return d;}
+  cc.appendChild(cfld('nombre','Tu nombre','Mi nombre'));
+  cc.appendChild(cfld('tel','Teléfono (texto FB)','656-XXX-XXXX',fmtMX));
+  cc.appendChild(cfld('wa','WhatsApp link (wa.me/...)','5265612345678'));
   const sb=document.createElement('button');sb.className='btn btn-primary btn-full';sb.style.padding='13px';sb.textContent='Guardar';
-  sb.onclick=async()=>{
-    lsSet('cfg',S.cfg);
-    await api('POST','/api/config',S.cfg);
-    sb.textContent='✓ Guardado';sb.style.background='#2E7D32';
-    setTimeout(()=>{sb.textContent='Guardar';sb.style.background='#1F4E79';},2000);
-  };
+  sb.onclick=async()=>{lsSet('cfg',S.cfg);await api('POST','/api/config',S.cfg);sb.textContent='✓ Guardado';sb.style.background='#2E7D32';setTimeout(()=>{sb.textContent='Guardar';sb.style.background='#1F4E79';},2000);};
   cc.appendChild(sb);c.appendChild(cc);
-
   const tips=document.createElement('div');tips.className='tip-card';
-  tips.innerHTML='<div class="tip-title">💡 Cómo usar</div>'+['PDF del día — detecta solo fichas nuevas o con cambios','Mantén "Vendí yo" 2 seg → te pregunta el cliente → lo elimina del CRM','Arrastra el ≡ para reordenar fichas','Fraccs nuevos en PDF aparecen con banner para agregar','Pestaña Zonas — edita zonas y fraccionamientos a tu gusto (solo en tu cel)'].map(t=>'<div class="tip-item">· '+t+'</div>').join('');
+  tips.innerHTML='<div class="tip-title">💡 Cómo usar</div>'+['PDF: toca el área azul punteada — en iPhone puedes compartir directo desde WhatsApp','Mapas: toca 📷 en cada fraccionamiento para subir o reemplazar el screenshot','Mantén "Vendí yo" 2 seg → selecciona cliente → se registra y elimina del CRM','Arrastra el ≡ para reordenar fichas a tu gusto','Pestaña Zonas — edita y personaliza solo en tu dispositivo'].map(t=>'<div class="tip-item">· '+t+'</div>').join('');
   c.appendChild(tips);
 }
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
 loadAll();
 </script>
 </body>
