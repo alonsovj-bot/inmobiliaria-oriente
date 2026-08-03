@@ -28,6 +28,7 @@ textarea{resize:vertical;}
 .btn-light{background:#F0F4F8;color:#1F4E79;}
 .btn-danger{background:#FEECEC;color:#B71C1C;}
 .btn-gold{background:#F4B942;color:#7B3F00;}
+.btn-purple{background:#7B2FBE;color:#fff;}
 .btn-full{width:100%;}
 .btn-copy{background:#1F4E79;color:#fff;width:100%;}
 .btn-copy.copied{background:#2E7D32;}
@@ -37,31 +38,40 @@ textarea{resize:vertical;}
 .field input,.field select,.field textarea{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #E0E0E0;font-size:14px;background:#fff;color:#222;outline:none;-webkit-appearance:none;}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:#2E75B6;}
 
-/* ── FILE UPLOAD — funciona en iOS Safari, iOS Home Screen, Chrome ── */
-.upload-label{display:block;border:2px dashed #2E75B6;border-radius:14px;padding:22px 16px;text-align:center;background:#F0F7FF;cursor:pointer;-webkit-user-select:none;user-select:none;}
+/* Upload */
+.upload-label{display:block;border:2px dashed #2E75B6;border-radius:14px;padding:20px 16px;text-align:center;background:#F0F7FF;cursor:pointer;-webkit-user-select:none;user-select:none;margin-bottom:8px;}
 .upload-label:active{background:#E0EFFF;}
-.upload-label input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
-.ul-icon{font-size:32px;display:block;margin-bottom:6px;}
-.ul-title{font-weight:700;font-size:15px;color:#2E75B6;}
-.ul-sub{font-size:12px;color:#888;margin-top:3px;}
 .upload-label.processing{border-color:#B45309;background:#FEF3E2;}
-.upload-label.processing .ul-title{color:#B45309;}
 .upload-label.done{border-color:#2E7D32;background:#EDF7EE;}
+.ul-icon{font-size:28px;display:block;margin-bottom:4px;}
+.ul-title{font-weight:700;font-size:14px;color:#2E75B6;}
+.upload-label.processing .ul-title{color:#B45309;}
 .upload-label.done .ul-title{color:#2E7D32;}
+.ul-sub{font-size:11px;color:#888;margin-top:2px;}
+
+/* WhatsApp instructions */
+.wa-steps{background:#E8F5E9;border:1px solid #4CAF50;border-radius:12px;padding:12px 14px;margin-top:8px;}
+.wa-step{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:13px;color:#2E7D32;}
+.wa-step:last-child{margin-bottom:0;}
+.wa-step-num{background:#2E7D32;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;}
 
 /* Stats */
 .stats{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
-.stat{border-radius:8px;padding:6px 12px;text-align:center;min-width:64px;}
+.stat{border-radius:8px;padding:6px 12px;text-align:center;min-width:60px;}
 .stat-num{font-weight:800;font-size:20px;}
 .stat-lbl{font-size:11px;font-weight:600;}
-.sort-bar{display:flex;gap:8px;align-items:center;margin-bottom:10px;}
-.sort-bar select{flex:1;padding:9px 10px;border-radius:10px;border:1.5px solid #E0E0E0;font-size:13px;background:#fff;-webkit-appearance:none;}
-.sec-lbl{font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;margin-top:8px;}
-.empty{text-align:center;padding:48px 16px;color:#bbb;}
-.empty-icon{font-size:48px;margin-bottom:8px;}
+
+/* Zone group */
+.zone-group{margin-bottom:8px;}
+.zone-group-header{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;margin-bottom:6px;cursor:pointer;-webkit-user-select:none;}
+.zone-group-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.zone-group-name{font-weight:800;font-size:13px;flex:1;}
+.zone-group-count{font-size:12px;font-weight:600;opacity:.7;}
+.zone-group-arrow{font-size:13px;opacity:.5;}
+.zone-group-cards{padding-left:0;}
 
 /* Prop cards */
-.prop-card{border-radius:16px;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.09);margin-bottom:12px;border:2px solid #eee;}
+.prop-card{border-radius:16px;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.09);margin-bottom:10px;border:2px solid #eee;}
 .prop-card.st-nueva{border-color:#1565A8;}
 .prop-card.st-precio{border-color:#B45309;}
 .prop-card.st-vendida{border-color:#B71C1C;}
@@ -73,26 +83,26 @@ textarea{resize:vertical;}
 .prop-sub{font-size:12px;color:#555;margin-top:2px;}
 .prop-arrow{color:#ccc;font-size:15px;flex-shrink:0;align-self:center;margin-left:4px;}
 .prop-detail{padding:0 14px 14px;}
-.prop-mapa{width:100%;border-radius:10px;max-height:160px;object-fit:cover;margin-bottom:12px;display:block;}
+.prop-mapa{width:100%;border-radius:10px;max-height:180px;object-fit:cover;margin-bottom:12px;display:block;}
 .fb-box{background:#F8F9FA;border-radius:10px;padding:12px;margin-bottom:10px;}
 .fb-lbl{font-size:11px;color:#888;font-weight:700;margin-bottom:6px;letter-spacing:1px;}
 .fb-box pre{font-size:12px;line-height:1.6;color:#333;white-space:pre-wrap;font-family:inherit;}
 .prop-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
 .prop-card.dragging{opacity:.4;}
-.prop-card.drag-over{border-color:#F4B942!important;box-shadow:0 0 0 3px #F4B94260;}
+.prop-card.drag-over{border-color:#F4B942!important;box-shadow:0 0 0 3px #F4B94255;}
 .alert-box{background:#FFF8E1;border:1px solid #F4B942;border-radius:10px;padding:10px 12px;margin-bottom:12px;}
 .alert-title{font-weight:700;font-size:13px;color:#B45309;margin-bottom:8px;}
 .alert-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px solid #F4DCA0;}
 .new-fracc-banner{background:#E8F5E9;border:1px solid #4CAF50;border-radius:10px;padding:10px 12px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .nf-text{flex:1;font-size:13px;color:#2E7D32;font-weight:600;}
 
-/* Mapas grid */
+/* Mapas */
 .mapas-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
 .mapa-item{border-radius:12px;overflow:hidden;background:#F0F4F8;position:relative;aspect-ratio:16/9;}
 .mapa-item img{width:100%;height:100%;object-fit:cover;display:block;}
 .mapa-item .mapa-name{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:#fff;font-size:10px;font-weight:700;padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.mapa-item .mapa-replace{position:absolute;top:4px;right:4px;}
-.mapa-empty{display:flex;align-items:center;justify-content:center;color:#bbb;font-size:11px;height:100%;}
+.mapa-replace{position:absolute;top:4px;right:4px;cursor:pointer;}
+.mapa-empty-txt{display:flex;align-items:center;justify-content:center;color:#bbb;font-size:11px;height:100%;}
 
 /* Hold */
 .hold-wrap{position:relative;display:inline-flex;}
@@ -118,17 +128,23 @@ textarea{resize:vertical;}
 .fracc-item .fi-dist{font-size:11px;color:#888;}
 .fracc-item.selected{background:#EBF3FB;}
 
-/* Zones */
+/* Zone config */
 .zone-card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1.5px solid #eee;}
-.zone-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.zone-header-cfg{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
 .zone-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
-.zone-name{font-weight:700;font-size:14px;flex:1;outline:none;border:none;background:transparent;padding:0;}
 .zone-fraccs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
 .fracc-tag{background:#F0F4F8;border-radius:20px;padding:4px 10px;font-size:12px;color:#333;display:flex;align-items:center;gap:4px;}
 .fracc-tag .rm{color:#B71C1C;font-size:16px;cursor:pointer;line-height:1;}
 .tip-card{background:#FEF3E2;border:1px solid #F4B942;border-radius:14px;padding:14px;}
 .tip-title{font-weight:700;font-size:13px;color:#B45309;margin-bottom:8px;}
 .tip-item{font-size:13px;color:#7B5800;margin-bottom:5px;}
+
+/* Image preview modal */
+.img-preview-wrap{width:100%;border-radius:12px;overflow:hidden;background:#000;margin-bottom:10px;}
+.img-preview-wrap img{width:100%;display:block;}
+.sec-lbl{font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;margin-top:8px;}
+.empty{text-align:center;padding:48px 16px;color:#bbb;}
+.empty-icon{font-size:48px;margin-bottom:8px;}
 .hidden{display:none!important;}
 </style>
 </head>
@@ -158,12 +174,11 @@ textarea{resize:vertical;}
   </div>
 </div>
 
-<!-- HIDDEN FILE INPUTS — en el body directamente para máxima compatibilidad iOS -->
-<input type="file" id="fi-pdf"  accept="application/pdf" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" onchange="handlePDF(this)"/>
-<input type="file" id="fi-mapa" accept="image/*"          style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" onchange="handleMapa(this)"/>
+<!-- File inputs en body para máxima compatibilidad iOS -->
+<input type="file" id="fi-pdf"  accept="application/pdf,.pdf" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" onchange="handlePDF(this)"/>
+<input type="file" id="fi-mapa" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" onchange="handleMapa(this)"/>
 
 <script>
-// ── COORDENADAS ───────────────────────────────────────────────────────────────
 const COORDS={
   "Riveras del Bravo":[31.6891,-106.3721],
   "El Campanario":[31.6734,-106.3698],
@@ -185,7 +200,7 @@ const COORDS={
 
 const DEFAULT_ZONAS=[
   {id:'z1',nombre:'Zona 1 — Riveras / Oriente',color:'#1565A8',desc:'Alta densidad, acceso rápido por Talamás Norte.',fraccs:['Riveras del Bravo','El Campanario','Vistas de Zaragoza']},
-  {id:'z2',nombre:'Zona 2 — Talamás Sur / San Isidro',color:'#2E7D32',desc:'Zona suroriente, requiere recorrido propio desde Talamás.',fraccs:['Senderos de San Isidro','Urbivilla del Cedro','Jardines de Roma','Misiones de Creel','Boca del Río','Sierra Vista','Lomas del Desierto']},
+  {id:'z2',nombre:'Zona 2 — Talamás Sur / San Isidro',color:'#2E7D32',desc:'Zona suroriente, requiere recorrido propio.',fraccs:['Senderos de San Isidro','Urbivilla del Cedro','Jardines de Roma','Misiones de Creel','Boca del Río','Sierra Vista','Lomas del Desierto']},
   {id:'z3',nombre:'Zona 3 — Fundadores / Zaragoza',color:'#B45309',desc:'Corredor conectado por Zaragoza-Fundadores.',fraccs:['Valle de Fundadores','Portal del Roble']},
   {id:'z4',nombre:'Zona 4 — Alcalá / Independencia',color:'#6A1B9A',desc:'Corredor Independencia–Puerto de Palos.',fraccs:['Villas de Alcalá']},
   {id:'z5',nombre:'Zona 5 — Mirador / Surponiente',color:'#B71C1C',desc:'Sector separado, visitas específicas.',fraccs:['Parque El Mirador','La Cañada']},
@@ -195,15 +210,17 @@ function lsGet(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d
 function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
 
 let S={
-  tab:0, props:[], clients:[],
+  tab:0,props:[],clients:[],
   cfg:lsGet('cfg',{nombre:'',tel:'',wa:''}),
   zonas:lsGet('zonas',DEFAULT_ZONAS),
-  expanded:null, sortBy:'custom', dragSrc:null,
-  showClientForm:false, clientForm:{}, editClientId:null,
-  filtroEtapa:'Todos', filtroZona:'Todas',
-  newFraccs:[], mapaFracc:'', mapasPreviews:{},
+  expanded:null,dragSrc:null,
+  showClientForm:false,clientForm:{},editClientId:null,
+  filtroEtapa:'Todos',filtroZona:'Todas',
+  newFraccs:[],mapasPreviews:{},
+  collapsedZones:lsGet('collapsedZones',{}),
+  showWASteps:false,
 };
-let _dragClone=null, _dragOver=null;
+let _dragClone=null,_dragOver=null;
 
 function allFraccs(){return S.zonas.flatMap(z=>z.fraccs);}
 function zonaDeFragg(f=''){const fl=f.toLowerCase();return S.zonas.find(z=>z.fraccs.some(zf=>zf.toLowerCase()===fl||fl.includes(zf.toLowerCase())||zf.toLowerCase().includes(fl)))||null;}
@@ -234,38 +251,149 @@ function closeModal(){document.getElementById('modal-bg').classList.add('hidden'
 function showModal(title,sub,btns,bodyEl){document.getElementById('m-title').textContent=title;document.getElementById('m-sub').textContent=sub||'';const mb=document.getElementById('m-body');mb.innerHTML='';if(bodyEl)mb.appendChild(bodyEl);const bb=document.getElementById('m-btns');bb.innerHTML='';(btns||[]).forEach(({label,cls,onClick})=>{const b=document.createElement('button');b.className='btn btn-full '+(cls||'btn-light');b.textContent=label;b.onclick=()=>{closeModal();onClick();};bb.appendChild(b);});document.getElementById('modal-bg').classList.remove('hidden');}
 function copyText(text,btn){const done=()=>{btn.textContent='✓ Copiado';btn.classList.add('copied');setTimeout(()=>{btn.textContent='📋 Copiar texto FB';btn.classList.remove('copied');},2000);};if(navigator.clipboard){navigator.clipboard.writeText(text).then(done).catch(fb);}else fb();function fb(){const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');done();}catch{}document.body.removeChild(ta);}}
 
+// ── GENERAR IMAGEN FICHA + MAPA ───────────────────────────────────────────────
+async function generateFichaImage(prop){
+  const W=900, GAP=20, PAD=32;
+  // Load ficha image from server (page image not available, so render text)
+  // Load mapa image
+  let mapaImg=null;
+  const mapaUrl=S.mapasPreviews[prop.fraccionamiento]||('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));
+  try{
+    mapaImg=await loadImage(mapaUrl);
+  }catch(e){mapaImg=null;}
+
+  // Calculate heights
+  const fichaH=420; // text card height
+  const mapaH=mapaImg?Math.round(mapaImg.height*(W-PAD*2)/mapaImg.width):0;
+  const totalH=fichaH+(mapaH?mapaH+GAP:0)+PAD*2+80;
+
+  const canvas=document.createElement('canvas');
+  canvas.width=W;canvas.height=totalH;
+  const ctx=canvas.getContext('2d');
+
+  // Background
+  ctx.fillStyle='#EEF2F7';
+  ctx.fillRect(0,0,W,totalH);
+
+  // Ficha card
+  const zona=zonaDeFragg(prop.fraccionamiento);
+  const zColor=zona?zona.color:'#1F4E79';
+  roundRect(ctx,PAD,PAD,W-PAD*2,fichaH,20,'#fff');
+
+  // Header bar
+  roundRect(ctx,PAD,PAD,W-PAD*2,80,20,zColor,true);
+  ctx.fillStyle='#fff';
+  ctx.font='bold 28px -apple-system, Arial';
+  ctx.fillText('🏠 '+prop.fraccionamiento,PAD+20,PAD+50);
+
+  // Price badge
+  const priceStr='$'+Number(prop.precio||0).toLocaleString('es-MX');
+  ctx.fillStyle='#F4B942';
+  roundRect(ctx,PAD+20,PAD+90,260,50,10,'#F4B942');
+  ctx.fillStyle='#7B3F00';
+  ctx.font='bold 26px Arial';
+  ctx.fillText(priceStr,PAD+36,PAD+123);
+
+  // Address
+  ctx.fillStyle='#1F4E79';
+  ctx.font='bold 22px Arial';
+  ctx.fillText('📍 '+prop.direccion,PAD+20,PAD+180);
+
+  // Characteristics
+  ctx.fillStyle='#333';
+  ctx.font='18px Arial';
+  const chars=prop.caracteristicas||[];
+  chars.slice(0,8).forEach((c,i)=>{
+    ctx.fillText('• '+c,PAD+20,PAD+220+i*26);
+  });
+
+  // Zona tag
+  if(zona){
+    ctx.fillStyle=zColor+'33';
+    roundRect(ctx,PAD+20,PAD+fichaH-50,300,34,8,zColor+'33');
+    ctx.fillStyle=zColor;
+    ctx.font='bold 16px Arial';
+    ctx.fillText(zona.nombre,PAD+32,PAD+fichaH-27);
+  }
+
+  // Mapa image
+  if(mapaImg&&mapaH>0){
+    const my=PAD+fichaH+GAP;
+    roundRect(ctx,PAD,my,W-PAD*2,mapaH+40,20,'#fff');
+    ctx.save();
+    ctx.beginPath();
+    roundPath(ctx,PAD,my,W-PAD*2,mapaH+40,20);
+    ctx.clip();
+    ctx.drawImage(mapaImg,PAD,my,W-PAD*2,mapaH);
+    // Overlay label
+    ctx.fillStyle='rgba(0,0,0,0.55)';
+    ctx.fillRect(PAD,my+mapaH,W-PAD*2,40);
+    ctx.fillStyle='#fff';
+    ctx.font='bold 18px Arial';
+    ctx.fillText('📍 Zona: '+prop.fraccionamiento,PAD+16,my+mapaH+26);
+    ctx.restore();
+  }
+
+  // Footer
+  ctx.fillStyle='#888';
+  ctx.font='14px Arial';
+  ctx.fillText('Inmobiliaria Casas Juárez · Sector Oriente · Infonavit',PAD,totalH-12);
+
+  return canvas;
+}
+
+function loadImage(src){return new Promise((res,rej)=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>res(img);img.onerror=rej;img.src=src;});}
+
+function roundRect(ctx,x,y,w,h,r,fill,clip){ctx.beginPath();roundPath(ctx,x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill();}}
+function roundPath(ctx,x,y,w,h,r){ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
+
+async function showImageModal(prop){
+  const body=document.createElement('div');
+  const loading=document.createElement('div');loading.style.cssText='text-align:center;padding:20px;color:#888;';loading.textContent='Generando imagen…';body.appendChild(loading);
+  showModal('📸 Imagen para Facebook','Descarga y súbela directamente a Facebook',[],body);
+  try{
+    const canvas=await generateFichaImage(prop);
+    body.innerHTML='';
+    const wrap=document.createElement('div');wrap.className='img-preview-wrap';
+    const img=document.createElement('img');img.src=canvas.toDataURL('image/jpeg',0.92);img.style.width='100%';
+    wrap.appendChild(img);body.appendChild(wrap);
+    const hint=document.createElement('div');hint.style.cssText='font-size:12px;color:#888;text-align:center;margin-bottom:12px;';hint.textContent='Mantén presionada la imagen para guardarla en tu galería';body.appendChild(hint);
+    const dlBtn=document.createElement('a');dlBtn.className='btn btn-primary btn-full';dlBtn.style.cssText='margin-bottom:8px;padding:13px;';dlBtn.textContent='⬇️ Descargar imagen';dlBtn.download='ficha-'+prop.fraccionamiento.replace(/\s/g,'-')+'.jpg';dlBtn.href=canvas.toDataURL('image/jpeg',0.92);
+    body.appendChild(dlBtn);
+    const closeBtn=document.createElement('button');closeBtn.className='btn btn-light btn-full';closeBtn.textContent='Cerrar';closeBtn.onclick=closeModal;body.appendChild(closeBtn);
+  }catch(e){body.innerHTML='<div style="color:#B71C1C;text-align:center;padding:16px">Error generando imagen. Asegúrate de que el mapa esté subido.</div>';}
+}
+
 // ── FILE HANDLERS ─────────────────────────────────────────────────────────────
 async function handlePDF(input){
   const file=input.files[0];if(!file)return;
   const area=document.getElementById('pdf-upload-area');
-  if(area){area.className='upload-label processing';area.querySelector('.ul-icon').textContent='⏳';area.querySelector('.ul-title').textContent='Procesando PDF…';area.querySelector('.ul-sub').textContent='Extrayendo fichas en el servidor';}
+  if(area){area.className='upload-label processing';area.querySelector('.ul-icon').textContent='⏳';area.querySelector('.ul-title').textContent='Procesando PDF…';}
   try{
     const fd=new FormData();fd.append('pdf',file);
     const res=await api('POST','/api/upload-pdf',fd);
     await loadAll();
-    if(area){area.className='upload-label done';area.querySelector('.ul-icon').textContent='✅';area.querySelector('.ul-title').textContent='¡Listo! '+( res.nuevas||0)+' nuevas, '+(res.actualizadas||0)+' actualizadas';area.querySelector('.ul-sub').textContent='Toca para subir otro PDF';}
-  }catch(e){if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='❌';area.querySelector('.ul-title').textContent='Error al procesar. Intenta de nuevo';area.querySelector('.ul-sub').textContent='';}}
+    if(area){area.className='upload-label done';area.querySelector('.ul-icon').textContent='✅';area.querySelector('.ul-title').textContent='¡Listo! '+(res.nuevas||0)+' nuevas · '+(res.actualizadas||0)+' actualizadas';}
+  }catch(e){if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='❌';area.querySelector('.ul-title').textContent='Error al procesar. Intenta de nuevo.';}}
   input.value='';
-  setTimeout(()=>{if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='📄';area.querySelector('.ul-title').textContent='Toca para subir el PDF';area.querySelector('.ul-sub').textContent='Solo procesa fichas nuevas o con cambios';}},4000);
+  setTimeout(()=>{if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='📄';area.querySelector('.ul-title').textContent='Toca para subir el PDF';}},5000);
 }
 
 let _mapaFraccTarget='';
 async function handleMapa(input){
   const file=input.files[0];if(!file)return;
-  // Show preview modal before uploading
   const reader=new FileReader();
   reader.onload=e=>{
     const body=document.createElement('div');
-    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:10px;margin-bottom:12px;max-height:220px;object-fit:cover;';
-    const lbl=document.createElement('div');lbl.style.cssText='font-size:14px;color:#333;text-align:center;font-weight:600;';lbl.textContent='Fraccionamiento: '+_mapaFraccTarget;
+    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:10px;margin-bottom:12px;max-height:240px;object-fit:cover;display:block;';
+    const lbl=document.createElement('div');lbl.style.cssText='font-size:14px;color:#333;text-align:center;font-weight:600;margin-bottom:4px;';lbl.textContent='Fraccionamiento: '+_mapaFraccTarget;
     body.appendChild(img);body.appendChild(lbl);
-    showModal('Vista previa del mapa','¿Es correcto? Si sí, confírma para subir.',[
-      {label:'✓ Subir mapa',cls:'btn-primary',onClick:async()=>{
+    showModal('Vista previa del mapa','¿Se ve correcto?',[
+      {label:'✓ Confirmar y subir',cls:'btn-primary',onClick:async()=>{
         const fd=new FormData();fd.append('mapa',file);fd.append('fraccionamiento',_mapaFraccTarget);
         await api('POST','/api/upload-mapa',fd);
-        // Store preview locally
         S.mapasPreviews[_mapaFraccTarget]=e.target.result;
-        renderProps();renderConfig();
+        renderProps();
       }},
       {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
     ],body);
@@ -273,7 +401,6 @@ async function handleMapa(input){
   reader.readAsDataURL(file);
   input.value='';
 }
-
 function triggerMapaUpload(fracc){_mapaFraccTarget=fracc;document.getElementById('fi-mapa').click();}
 
 // ── VENTA MODAL ───────────────────────────────────────────────────────────────
@@ -283,7 +410,7 @@ function showVentaModal(prop){
   const addRows=(list,sec)=>{if(!list.length)return;const s=document.createElement('div');s.className='modal-section';s.textContent=sec;body.appendChild(s);list.forEach(c=>{const row=document.createElement('div');row.className='client-radio-row';const r=document.createElement('input');r.type='radio';r.name='vs';r.value=c.id;r.onchange=()=>selId=c.id;const info=document.createElement('div');info.innerHTML='<div style="font-weight:700;font-size:14px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+'</div>';row.appendChild(r);row.appendChild(info);body.appendChild(row);});};
   addRows(matches,'CLIENTES INTERESADOS');
   addRows(S.clients.filter(c=>!matches.find(m=>m.id===c.id)),'OTROS CLIENTES');
-  showModal('🏆 Registrar venta','¿A qué cliente le vendiste?',[
+  showModal('🏆 Registrar venta','¿A qué cliente?',[
     {label:'Confirmar venta',cls:'btn-primary',onClick:async()=>{await api('POST','/api/propiedades/'+encodeURIComponent(prop.id)+'/vender',{clienteId:selId});if(selId)await api('DELETE','/api/clientes/'+selId);await loadAll();}},
     {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
   ],body);
@@ -313,26 +440,35 @@ function buildPropCard(prop){
   const sub=document.createElement('div');sub.className='prop-sub';sub.innerHTML=(prop.fraccionamiento||'—')+' <span style="font-weight:700;color:#1F4E79;margin-left:6px">$'+Number(prop.precio||0).toLocaleString('es-MX')+'</span>';
   if(prop._estado==='precio_cambio')sub.innerHTML+=' <s style="font-size:11px;color:#999">$'+Number(prop._precioAnterior||0).toLocaleString('es-MX')+'</s>';
   info.appendChild(sub);
-  if(zona){const zt=document.createElement('span');zt.className='tag';zt.style.cssText='background:'+zona.color+'22;color:'+zona.color+';margin-top:3px;';zt.textContent=zona.nombre;info.appendChild(zt);}
   const arrow=document.createElement('div');arrow.className='prop-arrow';arrow.textContent=isOpen?'▲':'▼';
   hdr.appendChild(dh);hdr.appendChild(info);hdr.appendChild(arrow);
   hdr.addEventListener('click',e=>{if(e.target.closest('.drag-handle'))return;S.expanded=isOpen?null:prop.id;renderProps();});
   card.appendChild(hdr);
+
   if(isOpen){
     const det=document.createElement('div');det.className='prop-detail';
-    const img=document.createElement('img');img.className='prop-mapa';
-    // Try local preview first, fallback to server
-    img.src=S.mapasPreviews[prop.fraccionamiento]||('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));
-    img.onerror=()=>img.style.display='none';det.appendChild(img);
+    // Mapa
+    const mapaImg=document.createElement('img');mapaImg.className='prop-mapa';mapaImg.src=S.mapasPreviews[prop.fraccionamiento]||('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));mapaImg.onerror=()=>mapaImg.style.display='none';det.appendChild(mapaImg);
+    // Clientes
     if(matches.length){const ab=document.createElement('div');ab.className='alert-box';ab.innerHTML='<div class="alert-title">🔔 Clientes interesados — llama ya</div>';matches.forEach(c=>{const row=document.createElement('div');row.className='alert-row';row.innerHTML='<div><div style="font-weight:700;font-size:13px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+' · '+c.etapa+'</div></div><a href="https://wa.me/52'+(c.whatsapp||'').replace(/\D/g,'')+'" style="background:#25D366;color:#fff;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:700">WhatsApp</a>';ab.appendChild(row);});det.appendChild(ab);}
-    if(prop._estado!=='vendida'){const txt=fbText(prop);const fb=document.createElement('div');fb.className='fb-box';fb.innerHTML='<div class="fb-lbl">TEXTO PARA FACEBOOK</div><pre>'+txt+'</pre>';det.appendChild(fb);const cb=document.createElement('button');cb.className='btn btn-copy';cb.textContent='📋 Copiar texto FB';cb.onclick=()=>copyText(txt,cb);det.appendChild(cb);}
-    else det.innerHTML+='<div style="text-align:center;padding:12px;color:#B71C1C;font-weight:700">🔴 Ya no aparece en el PDF</div>';
-    const acts=document.createElement('div');acts.className='prop-actions';
-    if(prop._estado!=='vendida'){const R=13,C=2*Math.PI*R,SZ=32;const hw=document.createElement('div');hw.className='hold-wrap';const hb=document.createElement('button');hb.className='btn btn-gold';hb.style.cssText='padding:9px 14px;font-size:13px;';hb.textContent='🏆 Vendí yo';const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('width',SZ+8);svg.setAttribute('height',SZ+8);svg.className='hold-svg';const circ=document.createElementNS('http://www.w3.org/2000/svg','circle');circ.setAttribute('cx',(SZ+8)/2);circ.setAttribute('cy',(SZ+8)/2);circ.setAttribute('r',R);circ.setAttribute('fill','none');circ.setAttribute('stroke','#F4B942');circ.setAttribute('stroke-width','3');circ.style.strokeDasharray=C;circ.style.strokeDashoffset=C;svg.appendChild(circ);hb.addEventListener('pointerdown',e=>{e.preventDefault();startHold(prop.id,circ);});hb.addEventListener('pointerup',cancelHold);hb.addEventListener('pointerleave',cancelHold);hb.addEventListener('contextmenu',e=>e.preventDefault());hw.appendChild(hb);hw.appendChild(svg);acts.appendChild(hw);}
-    const db=document.createElement('button');db.className='btn btn-danger';db.style.cssText='padding:9px 14px;font-size:13px;';db.textContent='Eliminar';db.onclick=()=>showModal('¿Eliminar ficha?',prop.direccion,[{label:'Sí, eliminar',cls:'btn-danger',onClick:async()=>{await api('DELETE','/api/propiedades/'+encodeURIComponent(prop.id));await loadAll();}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}]);acts.appendChild(db);det.appendChild(acts);card.appendChild(det);
+    if(prop._estado!=='vendida'){
+      const txt=fbText(prop);
+      const fb=document.createElement('div');fb.className='fb-box';fb.innerHTML='<div class="fb-lbl">TEXTO PARA FACEBOOK</div><pre>'+txt+'</pre>';det.appendChild(fb);
+      const acts=document.createElement('div');acts.className='prop-actions';
+      const cb=document.createElement('button');cb.className='btn btn-copy';cb.style.cssText='flex:1;min-width:140px;';cb.textContent='📋 Copiar texto FB';cb.onclick=()=>copyText(txt,cb);acts.appendChild(cb);
+      const imgBtn=document.createElement('button');imgBtn.className='btn btn-purple';imgBtn.style.cssText='flex:1;min-width:140px;';imgBtn.textContent='📸 Generar imagen';imgBtn.onclick=()=>showImageModal(prop);acts.appendChild(imgBtn);
+      det.appendChild(acts);
+      // Sell + Delete row
+      const acts2=document.createElement('div');acts2.className='prop-actions';acts2.style.marginTop='8px';
+      const R=13,C=2*Math.PI*R,SZ=32;const hw=document.createElement('div');hw.className='hold-wrap';const hb=document.createElement('button');hb.className='btn btn-gold';hb.style.cssText='padding:9px 14px;font-size:13px;';hb.textContent='🏆 Vendí yo';const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('width',SZ+8);svg.setAttribute('height',SZ+8);svg.className='hold-svg';const circ=document.createElementNS('http://www.w3.org/2000/svg','circle');circ.setAttribute('cx',(SZ+8)/2);circ.setAttribute('cy',(SZ+8)/2);circ.setAttribute('r',R);circ.setAttribute('fill','none');circ.setAttribute('stroke','#F4B942');circ.setAttribute('stroke-width','3');circ.style.strokeDasharray=C;circ.style.strokeDashoffset=C;svg.appendChild(circ);hb.addEventListener('pointerdown',e=>{e.preventDefault();startHold(prop.id,circ);});hb.addEventListener('pointerup',cancelHold);hb.addEventListener('pointerleave',cancelHold);hb.addEventListener('contextmenu',e=>e.preventDefault());hw.appendChild(hb);hw.appendChild(svg);acts2.appendChild(hw);
+      const db=document.createElement('button');db.className='btn btn-danger';db.style.cssText='padding:9px 14px;font-size:13px;';db.textContent='Eliminar';db.onclick=()=>showModal('¿Eliminar ficha?',prop.direccion,[{label:'Sí, eliminar',cls:'btn-danger',onClick:async()=>{await api('DELETE','/api/propiedades/'+encodeURIComponent(prop.id));await loadAll();}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}]);acts2.appendChild(db);
+      det.appendChild(acts2);
+    }else{det.innerHTML+='<div style="text-align:center;padding:12px;color:#B71C1C;font-weight:700">🔴 Ya no aparece en el PDF</div>';}
+    card.appendChild(det);
   }
+
   // Touch drag
-  dh.addEventListener('touchstart',e=>{e.preventDefault();S.dragSrc=prop.id;card.classList.add('dragging');const clone=card.cloneNode(true);const r=card.getBoundingClientRect();clone.style.cssText='position:fixed;width:'+r.width+'px;opacity:.85;pointer-events:none;z-index:999;border-radius:16px;left:'+r.left+'px;top:'+r.top+'px;transition:none;';document.body.appendChild(clone);_dragClone=clone;},{passive:false});
+  dh.addEventListener('touchstart',e=>{e.preventDefault();S.dragSrc=prop.id;card.classList.add('dragging');const clone=card.cloneNode(true);const r=card.getBoundingClientRect();clone.style.cssText='position:fixed;width:'+r.width+'px;opacity:.85;pointer-events:none;z-index:999;border-radius:16px;left:'+r.left+'px;top:'+r.top+'px;';document.body.appendChild(clone);_dragClone=clone;},{passive:false});
   dh.addEventListener('touchmove',e=>{e.preventDefault();if(!_dragClone)return;const t=e.touches[0];_dragClone.style.left=(t.clientX-_dragClone.offsetWidth/2)+'px';_dragClone.style.top=(t.clientY-60)+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const tc=el?.closest('.prop-card');if(_dragOver&&_dragOver!==tc)_dragOver.classList.remove('drag-over');if(tc&&tc!==card){tc.classList.add('drag-over');_dragOver=tc;}},{passive:false});
   dh.addEventListener('touchend',async()=>{if(_dragClone){_dragClone.remove();_dragClone=null;}card.classList.remove('dragging');if(_dragOver){_dragOver.classList.remove('drag-over');const tid=_dragOver.dataset.id;_dragOver=null;if(tid&&S.dragSrc&&tid!==S.dragSrc)await reorder(S.dragSrc,tid);}S.dragSrc=null;});
   card.draggable=true;
@@ -344,75 +480,113 @@ function buildPropCard(prop){
   return card;
 }
 
-async function reorder(fromId,toId){const ids=S.props.map(p=>p.id);const fi=ids.indexOf(fromId),ti=ids.indexOf(toId);if(fi<0||ti<0)return;ids.splice(fi,1);ids.splice(ti,0,fromId);const map=Object.fromEntries(S.props.map(p=>[p.id,p]));S.props=ids.map(id=>map[id]).filter(Boolean);S.sortBy='custom';renderProps();await api('POST','/api/propiedades/order',{order:ids});}
-
-function sortedProps(){const ps=[...S.props];if(S.sortBy==='zona')return ps.sort((a,b)=>{const za=zonaDeFragg(a.fraccionamiento);const zb=zonaDeFragg(b.fraccionamiento);return(za?S.zonas.indexOf(za):99)-(zb?S.zonas.indexOf(zb):99);});if(S.sortBy==='precio-asc')return ps.sort((a,b)=>a.precio-b.precio);if(S.sortBy==='precio-desc')return ps.sort((a,b)=>b.precio-a.precio);if(S.sortBy==='nuevo')return ps.sort((a,b)=>{const o={nueva:0,precio_cambio:1,repetida:2,vendida:3};return(o[a._estado]||2)-(o[b._estado]||2);});return ps;}
+async function reorder(fromId,toId){const ids=S.props.map(p=>p.id);const fi=ids.indexOf(fromId),ti=ids.indexOf(toId);if(fi<0||ti<0)return;ids.splice(fi,1);ids.splice(ti,0,fromId);const map=Object.fromEntries(S.props.map(p=>[p.id,p]));S.props=ids.map(id=>map[id]).filter(Boolean);renderProps();await api('POST','/api/propiedades/order',{order:ids});}
 
 // ── RENDER PROPIEDADES ────────────────────────────────────────────────────────
 function renderProps(){
   const c=document.getElementById('t0');c.innerHTML='';
 
   // New fracc banners
-  S.newFraccs.forEach(f=>{const b=document.createElement('div');b.className='new-fracc-banner';b.innerHTML='<span style="font-size:18px">🆕</span><div class="nf-text">Fracc. nuevo: <b>'+f+'</b></div>';const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:6px 12px;font-size:12px;flex-shrink:0;';btn.textContent='Agregar';btn.onclick=()=>showAddFraccModal(f);b.appendChild(btn);c.appendChild(b);});
+  S.newFraccs.forEach(f=>{const b=document.createElement('div');b.className='new-fracc-banner';b.innerHTML='<span style="font-size:18px">🆕</span><div class="nf-text">Fracc. no registrado: <b>'+f+'</b></div>';const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:6px 12px;font-size:12px;flex-shrink:0;';btn.textContent='Agregar';btn.onclick=()=>showAddFraccModal(f);b.appendChild(btn);c.appendChild(b);});
 
-  // PDF upload card — usando label que envuelve el input para máxima compatibilidad iOS
+  // Upload card
   const uc=document.createElement('div');uc.className='card';
   uc.innerHTML='<div style="font-weight:700;font-size:15px;color:#1F4E79;margin-bottom:10px">📄 PDF del día</div>';
+
+  // From Files button (label)
   const lbl=document.createElement('label');lbl.className='upload-label';lbl.id='pdf-upload-area';lbl.htmlFor='fi-pdf';
-  lbl.innerHTML='<span class="ul-icon">📄</span><span class="ul-title">Toca para subir el PDF</span><span class="ul-sub">Solo procesa fichas nuevas o con cambios</span>';
+  lbl.innerHTML='<span class="ul-icon">📄</span><span class="ul-title">Desde Archivos / iCloud</span><span class="ul-sub">Toca para seleccionar el PDF</span>';
   uc.appendChild(lbl);
+
+  // From WhatsApp button
+  const waBtn=document.createElement('button');waBtn.className='btn btn-green btn-full';waBtn.style.cssText='margin-bottom:6px;padding:12px;font-size:14px;';waBtn.textContent='💬 Cómo compartir desde WhatsApp';
+  waBtn.onclick=()=>{S.showWASteps=!S.showWASteps;waSteps.classList.toggle('hidden',!S.showWASteps);};
+  uc.appendChild(waBtn);
+
+  const waSteps=document.createElement('div');waSteps.className='wa-steps'+(S.showWASteps?'':' hidden');
+  [
+    'Abre WhatsApp y busca el mensaje con el PDF del inventario',
+    'Mantén presionado el PDF hasta que aparezca el menú',
+    'Toca "Compartir" → "Más" → busca Safari o tu app "Oriente Juárez"',
+    'Si no aparece tu app, elige "Copiar a..." y selecciona la app',
+    'El PDF se cargará automáticamente',
+  ].forEach((txt,i)=>{
+    const step=document.createElement('div');step.className='wa-step';
+    step.innerHTML='<div class="wa-step-num">'+(i+1)+'</div><div>'+txt+'</div>';
+    waSteps.appendChild(step);
+  });
+  uc.appendChild(waSteps);
 
   if(S.props.length){
     const stats=document.createElement('div');stats.className='stats';
-    [{l:'Nuevas',v:'nueva',c:'#1F4E79',b:'#EBF3FB'},{l:'Precio↓',v:'precio_cambio',c:'#B45309',b:'#FEF3E2'},{l:'Vendidas',v:'vendida',c:'#B71C1C',b:'#FEECEC'},{l:'Igual',v:'repetida',c:'#777',b:'#F5F5F5'}].forEach(({l,v,c:co,b})=>{const s=document.createElement('div');s.className='stat';s.style.background=b;s.innerHTML='<div class="stat-num" style="color:'+co+'">'+S.props.filter(p=>p._estado===v).length+'</div><div class="stat-lbl" style="color:'+co+'">'+l+'</div>';stats.appendChild(s);});
+    [{l:'Nuevas',v:'nueva',co:'#1F4E79',b:'#EBF3FB'},{l:'Precio↓',v:'precio_cambio',co:'#B45309',b:'#FEF3E2'},{l:'Vendidas',v:'vendida',co:'#B71C1C',b:'#FEECEC'},{l:'Igual',v:'repetida',co:'#777',b:'#F5F5F5'}].forEach(({l,v,co,b})=>{const s=document.createElement('div');s.className='stat';s.style.background=b;s.innerHTML='<div class="stat-num" style="color:'+co+'">'+S.props.filter(p=>p._estado===v).length+'</div><div class="stat-lbl" style="color:'+co+'">'+l+'</div>';stats.appendChild(s);});
     uc.appendChild(stats);
   }
   c.appendChild(uc);
 
-  // Mapas card
+  // Mapas grid
   const mc=document.createElement('div');mc.className='card';
   mc.innerHTML='<div style="font-weight:700;font-size:14px;color:#1F4E79;margin-bottom:10px">🗺️ Mapas de fraccionamientos</div>';
   const grid=document.createElement('div');grid.className='mapas-grid';
   allFraccs().forEach(f=>{
     const item=document.createElement('div');item.className='mapa-item';
-    const hasPreview=S.mapasPreviews[f];
-    if(hasPreview){
-      const img=document.createElement('img');img.src=hasPreview;item.appendChild(img);
-    } else {
-      const img=document.createElement('img');img.src='/api/mapa/'+encodeURIComponent(f);
-      img.onerror=()=>{img.style.display='none';const empty=document.createElement('div');empty.className='mapa-empty';empty.textContent='Sin mapa';item.appendChild(empty);};
-      item.appendChild(img);
-    }
+    const src=S.mapasPreviews[f]||('/api/mapa/'+encodeURIComponent(f));
+    const img=document.createElement('img');img.src=src;img.alt=f;
+    img.onerror=()=>{img.style.display='none';if(!item.querySelector('.mapa-empty-txt')){const e=document.createElement('div');e.className='mapa-empty-txt';e.textContent='Sin mapa';item.insertBefore(e,item.firstChild);}};
+    item.appendChild(img);
     const nm=document.createElement('div');nm.className='mapa-name';nm.textContent=f;item.appendChild(nm);
-    // Replace button
-    const rb=document.createElement('label');rb.className='mapa-replace';rb.htmlFor='fi-mapa';
-    rb.innerHTML='<span style="background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:3px 7px;font-size:11px;font-weight:700;cursor:pointer">📷</span>';
-    rb.addEventListener('click',e=>{_mapaFraccTarget=f;});
-    item.appendChild(rb);
-    grid.appendChild(item);
+    const rb=document.createElement('div');rb.className='mapa-replace';rb.innerHTML='<span style="background:rgba(0,0,0,.65);color:#fff;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;cursor:pointer">📷</span>';
+    rb.addEventListener('click',e=>{e.stopPropagation();triggerMapaUpload(f);});
+    item.appendChild(rb);grid.appendChild(item);
   });
-  // Add fracc button
-  const addBtn=document.createElement('div');addBtn.className='mapa-item';addBtn.style.cssText='cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;background:#F0F7FF;border:2px dashed #2E75B6;';addBtn.innerHTML='<span style="font-size:24px">+</span><span style="font-size:11px;color:#2E75B6;font-weight:700">Agregar fracc</span>';
-  addBtn.onclick=()=>showAddFraccManual();grid.appendChild(addBtn);
   mc.appendChild(grid);c.appendChild(mc);
 
   if(!S.props.length){c.innerHTML+='<div class="empty"><div class="empty-icon">🏠</div><div>Sube el PDF del día para empezar</div></div>';return;}
 
-  const sb=document.createElement('div');sb.className='sort-bar';sb.innerHTML='<label style="font-size:12px;color:#666;font-weight:600;white-space:nowrap">Ordenar:</label>';
-  const ss=document.createElement('select');
-  [['custom','Mi orden'],['nuevo','Nuevas primero'],['zona','Por zona'],['precio-asc','Precio ↑'],['precio-desc','Precio ↓']].forEach(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;if(S.sortBy===v)o.selected=true;ss.appendChild(o);});
-  ss.onchange=e=>{S.sortBy=e.target.value;renderProps();};sb.appendChild(ss);c.appendChild(sb);
+  // Group by zone (default), with drag support across zones
+  const propsByZona=new Map();
+  S.zonas.forEach(z=>propsByZona.set(z.id,[]));
+  propsByZona.set('sin-zona',[]);
 
-  const secs=[{label:'NUEVAS HOY',color:'#1F4E79',key:'nueva'},{label:'CAMBIO DE PRECIO',color:'#B45309',key:'precio_cambio'},{label:'YA NO DISPONIBLES',color:'#B71C1C',key:'vendida'},{label:'SIN CAMBIOS',color:'#999',key:'repetida'}];
-  const sorted=sortedProps();
-  if(S.sortBy==='custom'||S.sortBy==='nuevo'){
-    secs.forEach(({label,color,key})=>{const items=sorted.filter(p=>p._estado===key);if(!items.length)return;const l=document.createElement('div');l.className='sec-lbl';l.style.color=color;l.textContent=label+' · '+items.length;c.appendChild(l);items.forEach(p=>c.appendChild(buildPropCard(p)));});
-  }else sorted.forEach(p=>c.appendChild(buildPropCard(p)));
+  S.props.forEach(p=>{
+    const z=zonaDeFragg(p.fraccionamiento);
+    const key=z?z.id:'sin-zona';
+    if(!propsByZona.has(key))propsByZona.set(key,[]);
+    propsByZona.get(key).push(p);
+  });
+
+  // Sort within each zone: nuevas first
+  const estadoOrder={nueva:0,precio_cambio:1,repetida:2,vendida:3};
+  propsByZona.forEach((props,key)=>{
+    props.sort((a,b)=>(estadoOrder[a._estado]||2)-(estadoOrder[b._estado]||2));
+  });
+
+  S.zonas.forEach(zona=>{
+    const props=propsByZona.get(zona.id)||[];
+    if(!props.length)return;
+    const collapsed=S.collapsedZones[zona.id];
+    const grp=document.createElement('div');grp.className='zone-group';
+    const gh=document.createElement('div');gh.className='zone-group-header';gh.style.background=zona.color+'18';
+    gh.innerHTML='<div class="zone-group-dot" style="background:'+zona.color+'"></div><div class="zone-group-name" style="color:'+zona.color+'">'+zona.nombre+'</div><div class="zone-group-count" style="color:'+zona.color+'">'+props.length+' ficha'+(props.length!==1?'s':'')+'</div><div class="zone-group-arrow">'+(!collapsed?'▼':'▶')+'</div>';
+    gh.addEventListener('click',()=>{S.collapsedZones[zona.id]=!S.collapsedZones[zona.id];lsSet('collapsedZones',S.collapsedZones);renderProps();});
+    grp.appendChild(gh);
+    if(!collapsed){const gc=document.createElement('div');gc.className='zone-group-cards';props.forEach(p=>gc.appendChild(buildPropCard(p)));grp.appendChild(gc);}
+    c.appendChild(grp);
+  });
+
+  // Sin zona
+  const sinZona=propsByZona.get('sin-zona')||[];
+  if(sinZona.length){
+    const grp=document.createElement('div');grp.className='zone-group';
+    const gh=document.createElement('div');gh.className='zone-group-header';gh.style.background='#eee';
+    gh.innerHTML='<div class="zone-group-dot" style="background:#999"></div><div class="zone-group-name" style="color:#666">Sin zona asignada</div><div class="zone-group-count" style="color:#666">'+sinZona.length+'</div>';
+    grp.appendChild(gh);
+    const gc=document.createElement('div');gc.className='zone-group-cards';sinZona.forEach(p=>gc.appendChild(buildPropCard(p)));grp.appendChild(gc);
+    c.appendChild(grp);
+  }
 }
 
 function showAddFraccModal(fracc){const body=document.createElement('div');body.innerHTML='<div style="font-size:13px;color:#555;margin-bottom:12px">¿A qué zona agregar <b>'+fracc+'</b>?</div>';const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;sel.appendChild(o);});body.appendChild(sel);showModal('Agregar fraccionamiento','',[ {label:'Agregar',cls:'btn-primary',onClick:()=>{const z=S.zonas.find(x=>x.id===sel.value);if(z&&!z.fraccs.includes(fracc)){z.fraccs.push(fracc);lsSet('zonas',S.zonas);}S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}},{label:'Ignorar',cls:'btn-light',onClick:()=>{S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}}],body);}
-
-function showAddFraccManual(){const body=document.createElement('div');const inp=document.createElement('input');inp.type='text';inp.placeholder='Nombre del fraccionamiento';inp.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;margin-bottom:10px;';const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;sel.appendChild(o);});body.appendChild(inp);body.appendChild(sel);showModal('Agregar fraccionamiento','',[ {label:'Agregar',cls:'btn-primary',onClick:()=>{const val=inp.value.trim();if(!val)return;const z=S.zonas.find(x=>x.id===sel.value);if(z&&!z.fraccs.includes(val)){z.fraccs.push(val);lsSet('zonas',S.zonas);renderAll();}}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}],body);}
 
 // ── CLIENTES ──────────────────────────────────────────────────────────────────
 const ETAPAS=['Nuevo','Contactado','Visita hoy','Negociando','Documentos','Esperando','Ganado','Perdido'];
@@ -446,7 +620,6 @@ function renderClients(){
     if(cl.presupuesto)meta.innerHTML+='<span style="font-size:12px;color:#888">💰 $'+Number(cl.presupuesto).toLocaleString('es-MX')+'</span>';
     if(cl.puntos)meta.innerHTML+='<span style="font-size:12px;color:#888">· '+cl.puntos+' pts</span>';
     if(cl.recamaras)meta.innerHTML+='<span style="font-size:12px;color:#888">· '+cl.recamaras+' rec.</span>';
-    if(cl.radioKm)meta.innerHTML+='<span style="font-size:12px;color:#888">· radio '+cl.radioKm+' km</span>';
     cc.appendChild(meta);
     if(cl.notas){const d=document.createElement('div');d.style.cssText='font-size:12px;color:#888;font-style:italic;margin-top:4px;';d.textContent='"'+cl.notas+'"';cc.appendChild(d);}
     const ar=document.createElement('div');ar.style.cssText='display:flex;gap:8px;margin-top:10px;';
@@ -462,103 +635,43 @@ function buildClientForm(){
   form.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">'+(S.editClientId?'Editar cliente':'Nuevo cliente')+'</div>';
   function fld(k,lbl,type,ph){const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+lbl+'</label>';const i=document.createElement('input');i.type=type||'text';i.placeholder=ph||'';i.value=S.clientForm[k]||'';i.oninput=e=>{S.clientForm[k]=e.target.value;};d.appendChild(i);return d;}
   function sfld(k,lbl,opts){const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+lbl+'</label>';const s=document.createElement('select');s.style.webkitAppearance='none';opts.forEach(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;if(String(S.clientForm[k])===String(v))o.selected=true;s.appendChild(o);});s.onchange=e=>{S.clientForm[k]=e.target.value;if(k==='zona'||k==='fraccBase'||k==='radioKm')updateFL();};d.appendChild(s);return d;}
-
   form.appendChild(fld('nombre','Nombre *','text','Nombre completo'));
-
-  // Tel MX
-  const tmx=document.createElement('div');tmx.className='field';tmx.innerHTML='<label>WhatsApp * (MX)</label>';
-  const imx=document.createElement('input');imx.type='tel';imx.placeholder='656-123-4567';imx.value=S.clientForm.whatsapp||'';
-  imx.addEventListener('input',e=>{const f=fmtMX(e.target.value);e.target.value=f;S.clientForm.whatsapp=f;});tmx.appendChild(imx);form.appendChild(tmx);
-
-  // Tel USA
-  const tus=document.createElement('div');tus.className='field';tus.innerHTML='<label>Tel. EUA (opcional)</label>';
-  const ius=document.createElement('input');ius.type='tel';ius.placeholder='(915) 123-4567';ius.value=S.clientForm.whatsappUS||'';
-  ius.addEventListener('input',e=>{const f=fmtUS(e.target.value);e.target.value=f;S.clientForm.whatsappUS=f;});tus.appendChild(ius);form.appendChild(tus);
-
+  const tmx=document.createElement('div');tmx.className='field';tmx.innerHTML='<label>WhatsApp * (MX)</label>';const imx=document.createElement('input');imx.type='tel';imx.placeholder='656-123-4567';imx.value=S.clientForm.whatsapp||'';imx.addEventListener('input',e=>{const f=fmtMX(e.target.value);e.target.value=f;S.clientForm.whatsapp=f;});tmx.appendChild(imx);form.appendChild(tmx);
+  const tus=document.createElement('div');tus.className='field';tus.innerHTML='<label>Tel. EUA (opcional)</label>';const ius=document.createElement('input');ius.type='tel';ius.placeholder='(915) 123-4567';ius.value=S.clientForm.whatsappUS||'';ius.addEventListener('input',e=>{const f=fmtUS(e.target.value);e.target.value=f;S.clientForm.whatsappUS=f;});tus.appendChild(ius);form.appendChild(tus);
   form.appendChild(fld('puntos','Puntos Infonavit','number','ej. 1050'));
   form.appendChild(fld('presupuesto','Presupuesto máx ($)','number','ej. 480000'));
   form.appendChild(sfld('zona','Zona de interés',[['','Seleccionar zona'],...S.zonas.map(z=>[z.id,z.nombre]),['flex','Flexible – cualquier zona']]));
-
-  // Fracc base select
-  const fbd=document.createElement('div');fbd.className='field';fbd.innerHTML='<label>Fraccionamiento preferido</label>';
-  const fbs=document.createElement('select');fbs.style.webkitAppearance='none';
-  fbs.innerHTML='<option value="">-- Seleccionar --</option>';
-  allFraccs().forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;if(S.clientForm.fraccBase===f)o.selected=true;fbs.appendChild(o);});
-  fbs.onchange=e=>{S.clientForm.fraccBase=e.target.value;updateFL();};fbd.appendChild(fbs);form.appendChild(fbd);
-
+  const fbd=document.createElement('div');fbd.className='field';fbd.innerHTML='<label>Fraccionamiento preferido</label>';const fbs=document.createElement('select');fbs.style.webkitAppearance='none';fbs.innerHTML='<option value="">-- Seleccionar --</option>';allFraccs().forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;if(S.clientForm.fraccBase===f)o.selected=true;fbs.appendChild(o);});fbs.onchange=e=>{S.clientForm.fraccBase=e.target.value;updateFL();};fbd.appendChild(fbs);form.appendChild(fbd);
   form.appendChild(sfld('radioKm','Radio máximo',[['5','5 km'],['10','10 km'],['15','15 km'],['20','20 km'],['30','30 km o más']]));
   form.appendChild(sfld('recamaras','Recámaras',[['','Indiferente'],['2','2'],['3','3'],['4','4']]));
   form.appendChild(sfld('etapa','Etapa',ETAPAS.map(e=>[e,e])));
-
-  const fld2=document.createElement('div');fld2.className='field';
-  fld2.innerHTML='<label>Fraccionamientos de interés <span style="font-weight:400;color:#888;font-size:11px">(toca para seleccionar)</span></label>';
-  const flc=document.createElement('div');flc.id='fl-check';fld2.appendChild(flc);form.appendChild(fld2);
-
-  function updateFL(){
-    flc.innerHTML='';
-    const base=S.clientForm.fraccBase;const radio=Number(S.clientForm.radioKm)||15;
-    let ordered=[];
-    if(base){ordered=[base,...fraccsSorted(base).filter(f=>distKm(base,f)<=radio)];}
-    else if(S.clientForm.zona&&S.clientForm.zona!=='flex'){const z=S.zonas.find(x=>x.id===S.clientForm.zona);ordered=z?[...z.fraccs,...allFraccs().filter(f=>!z.fraccs.includes(f))]:allFraccs();}
-    else ordered=allFraccs();
-    const done=new Set();
-    S.zonas.forEach(zona=>{
-      const inZ=ordered.filter(f=>zona.fraccs.includes(f)&&!done.has(f));if(!inZ.length)return;
-      const gl=document.createElement('div');gl.className='fracc-zone-group';
-      const zl=document.createElement('div');zl.className='fracc-zone-label';zl.style.color=zona.color;zl.textContent=zona.nombre;gl.appendChild(zl);
-      inZ.forEach(f=>{
-        done.add(f);
-        const item=document.createElement('div');item.className='fracc-item'+(S.clientForm.fraccs.includes(f)?' selected':'');
-        const cb=document.createElement('input');cb.type='checkbox';cb.checked=S.clientForm.fraccs.includes(f);
-        const nm=document.createElement('span');nm.className='fi-name';nm.textContent=f;
-        const dt=document.createElement('span');dt.className='fi-dist';if(base&&f!==base){const d=distKm(base,f);if(d<50)dt.textContent=d.toFixed(1)+' km';}
-        const tog=()=>{if(cb.checked){if(!S.clientForm.fraccs.includes(f))S.clientForm.fraccs.push(f);}else S.clientForm.fraccs=S.clientForm.fraccs.filter(x=>x!==f);item.classList.toggle('selected',cb.checked);};
-        cb.onchange=tog;item.onclick=e=>{if(e.target===cb)return;cb.checked=!cb.checked;tog();};
-        item.appendChild(cb);item.appendChild(nm);item.appendChild(dt);gl.appendChild(item);
-      });
-      flc.appendChild(gl);
-    });
-  }
+  const fld2=document.createElement('div');fld2.className='field';fld2.innerHTML='<label>Fraccionamientos de interés <span style="font-weight:400;color:#888;font-size:11px">(toca para seleccionar)</span></label>';const flc=document.createElement('div');flc.id='fl-check';fld2.appendChild(flc);form.appendChild(fld2);
+  function updateFL(){flc.innerHTML='';const base=S.clientForm.fraccBase;const radio=Number(S.clientForm.radioKm)||15;let ordered=[];if(base){ordered=[base,...fraccsSorted(base).filter(f=>distKm(base,f)<=radio)];}else if(S.clientForm.zona&&S.clientForm.zona!=='flex'){const z=S.zonas.find(x=>x.id===S.clientForm.zona);ordered=z?[...z.fraccs,...allFraccs().filter(f=>!z.fraccs.includes(f))]:allFraccs();}else ordered=allFraccs();const done=new Set();S.zonas.forEach(zona=>{const inZ=ordered.filter(f=>zona.fraccs.includes(f)&&!done.has(f));if(!inZ.length)return;const gl=document.createElement('div');gl.className='fracc-zone-group';const zl=document.createElement('div');zl.className='fracc-zone-label';zl.style.color=zona.color;zl.textContent=zona.nombre;gl.appendChild(zl);inZ.forEach(f=>{done.add(f);const item=document.createElement('div');item.className='fracc-item'+(S.clientForm.fraccs.includes(f)?' selected':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=S.clientForm.fraccs.includes(f);const nm=document.createElement('span');nm.className='fi-name';nm.textContent=f;const dt=document.createElement('span');dt.className='fi-dist';if(base&&f!==base){const d=distKm(base,f);if(d<50)dt.textContent=d.toFixed(1)+' km';}const tog=()=>{if(cb.checked){if(!S.clientForm.fraccs.includes(f))S.clientForm.fraccs.push(f);}else S.clientForm.fraccs=S.clientForm.fraccs.filter(x=>x!==f);item.classList.toggle('selected',cb.checked);};cb.onchange=tog;item.onclick=e=>{if(e.target===cb)return;cb.checked=!cb.checked;tog();};item.appendChild(cb);item.appendChild(nm);item.appendChild(dt);gl.appendChild(item);});flc.appendChild(gl);});}
   updateFL();
-
   const nd=document.createElement('div');nd.className='field';nd.innerHTML='<label>Notas</label>';const ta=document.createElement('textarea');ta.rows=2;ta.placeholder='Observaciones…';ta.value=S.clientForm.notas||'';ta.oninput=e=>{S.clientForm.notas=e.target.value;};nd.appendChild(ta);form.appendChild(nd);
   const br=document.createElement('div');br.style.cssText='display:flex;gap:8px;margin-top:4px;';
-  const sb2=document.createElement('button');sb2.className='btn btn-primary';sb2.style.cssText='flex:1;padding:13px;';sb2.textContent=S.editClientId?'Guardar':'Agregar';
-  sb2.onclick=async()=>{if(!S.clientForm.nombre||!S.clientForm.whatsapp)return;if(S.editClientId)await api('PUT','/api/clientes/'+S.editClientId,{...S.clientForm,id:S.editClientId});else await api('POST','/api/clientes',S.clientForm);S.showClientForm=false;S.editClientId=null;S.clientForm={...BLANK,fraccs:[]};await loadAll();};
+  const sb=document.createElement('button');sb.className='btn btn-primary';sb.style.cssText='flex:1;padding:13px;';sb.textContent=S.editClientId?'Guardar':'Agregar';sb.onclick=async()=>{if(!S.clientForm.nombre||!S.clientForm.whatsapp)return;if(S.editClientId)await api('PUT','/api/clientes/'+S.editClientId,{...S.clientForm,id:S.editClientId});else await api('POST','/api/clientes',S.clientForm);S.showClientForm=false;S.editClientId=null;S.clientForm={...BLANK,fraccs:[]};await loadAll();};
   const cb2=document.createElement('button');cb2.className='btn btn-light';cb2.style.padding='13px 16px';cb2.textContent='Cancelar';cb2.onclick=()=>{S.showClientForm=false;S.editClientId=null;renderClients();};
-  br.appendChild(sb2);br.appendChild(cb2);form.appendChild(br);return form;
+  br.appendChild(sb);br.appendChild(cb2);form.appendChild(br);return form;
 }
 
 // ── ZONAS ─────────────────────────────────────────────────────────────────────
 function renderZonas(){
   const c=document.getElementById('t2');c.innerHTML='';
   const hd=document.createElement('div');hd.className='card';hd.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🗺️ Zonas y fraccionamientos</div><div style="font-size:12px;color:#888;margin-bottom:12px">Edita a tu gusto. Solo afecta tu dispositivo.</div>';
-  const ab=document.createElement('button');ab.className='btn btn-primary btn-full';ab.style.padding='12px';ab.textContent='+ Agregar zona';
-  ab.onclick=()=>{const n=prompt('Nombre de la nueva zona:');if(!n)return;S.zonas.push({id:'z'+Date.now(),nombre:n,color:'#555',desc:'',fraccs:[]});lsSet('zonas',S.zonas);renderZonas();};
-  hd.appendChild(ab);c.appendChild(hd);
+  const ab=document.createElement('button');ab.className='btn btn-primary btn-full';ab.style.padding='12px';ab.textContent='+ Agregar zona';ab.onclick=()=>{const n=prompt('Nombre de la nueva zona:');if(!n)return;S.zonas.push({id:'z'+Date.now(),nombre:n,color:'#555',desc:'',fraccs:[]});lsSet('zonas',S.zonas);renderZonas();};hd.appendChild(ab);c.appendChild(hd);
   S.zonas.forEach((zona,zi)=>{
     const zc=document.createElement('div');zc.className='zone-card';zc.style.borderColor=zona.color+'55';
-    const zh=document.createElement('div');zh.className='zone-header';
+    const zh=document.createElement('div');zh.className='zone-header-cfg';
     const dot=document.createElement('div');dot.className='zone-dot';dot.style.background=zona.color;
-    const nm=document.createElement('input');nm.className='zone-name';nm.value=zona.nombre;nm.addEventListener('blur',()=>{S.zonas[zi].nombre=nm.value.trim();lsSet('zonas',S.zonas);});
+    const nm=document.createElement('input');nm.style.cssText='flex:1;font-weight:700;font-size:14px;border:none;background:transparent;outline:none;padding:0;';nm.value=zona.nombre;nm.addEventListener('blur',()=>{S.zonas[zi].nombre=nm.value.trim();lsSet('zonas',S.zonas);});
     const del=document.createElement('button');del.className='btn btn-danger';del.style.cssText='padding:5px 10px;font-size:12px;';del.textContent='✕';del.onclick=()=>{if(!confirm('¿Eliminar zona?'))return;S.zonas.splice(zi,1);lsSet('zonas',S.zonas);renderZonas();};
     zh.appendChild(dot);zh.appendChild(nm);zh.appendChild(del);zc.appendChild(zh);
     const dt=document.createElement('textarea');dt.style.cssText='width:100%;padding:8px;border-radius:8px;border:1px solid #eee;font-size:12px;color:#666;margin-bottom:8px;';dt.rows=2;dt.value=zona.desc||'';dt.placeholder='Descripción…';dt.addEventListener('blur',()=>{S.zonas[zi].desc=dt.value;lsSet('zonas',S.zonas);});zc.appendChild(dt);
     const ft=document.createElement('div');ft.className='zone-fraccs';
     zona.fraccs.forEach((f,fi)=>{const tag=document.createElement('div');tag.className='fracc-tag';tag.innerHTML=f;const rm=document.createElement('span');rm.className='rm';rm.textContent='×';rm.onclick=()=>{S.zonas[zi].fraccs.splice(fi,1);lsSet('zonas',S.zonas);renderZonas();};tag.appendChild(rm);ft.appendChild(tag);});
-    const addF=document.createElement('button');addF.className='btn btn-light';addF.style.cssText='padding:4px 10px;font-size:12px;border-radius:20px;';addF.textContent='+ Fracc';
-    addF.onclick=()=>{
-      const body=document.createElement('div');
-      const available=allFraccs().filter(f=>!zona.fraccs.includes(f));
-      const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;margin-bottom:8px;';
-      sel.innerHTML='<option value="">-- Existente --</option>';available.forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;sel.appendChild(o);});
-      const ni=document.createElement('input');ni.type='text';ni.placeholder='O escribe uno nuevo…';ni.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;';
-      body.appendChild(sel);body.appendChild(ni);
-      showModal('Agregar a '+zona.nombre,'',[ {label:'Agregar',cls:'btn-primary',onClick:()=>{const val=(ni.value.trim()||sel.value).trim();if(!val)return;if(!S.zonas[zi].fraccs.includes(val)){S.zonas[zi].fraccs.push(val);lsSet('zonas',S.zonas);renderZonas();}}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}],body);
-    };
-    ft.appendChild(addF);zc.appendChild(ft);
-    const rst=document.createElement('button');rst.className='btn btn-light';rst.style.cssText='padding:6px 12px;font-size:12px;margin-top:8px;';rst.textContent='↺ Restablecer';rst.onclick=()=>{const d=DEFAULT_ZONAS[zi];if(d){S.zonas[zi]={...d,fraccs:[...d.fraccs]};lsSet('zonas',S.zonas);renderZonas();}};zc.appendChild(rst);
-    c.appendChild(zc);
+    const addF=document.createElement('button');addF.className='btn btn-light';addF.style.cssText='padding:4px 10px;font-size:12px;border-radius:20px;';addF.textContent='+ Fracc';addF.onclick=()=>{const body=document.createElement('div');const available=allFraccs().filter(f=>!zona.fraccs.includes(f));const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;margin-bottom:8px;';sel.innerHTML='<option value="">-- Existente --</option>';available.forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;sel.appendChild(o);});const ni=document.createElement('input');ni.type='text';ni.placeholder='O escribe uno nuevo…';ni.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;';body.appendChild(sel);body.appendChild(ni);showModal('Agregar a '+zona.nombre,'',[{label:'Agregar',cls:'btn-primary',onClick:()=>{const val=(ni.value.trim()||sel.value).trim();if(!val)return;if(!S.zonas[zi].fraccs.includes(val)){S.zonas[zi].fraccs.push(val);lsSet('zonas',S.zonas);renderZonas();}}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}],body);};ft.appendChild(addF);zc.appendChild(ft);
+    const rst=document.createElement('button');rst.className='btn btn-light';rst.style.cssText='padding:6px 12px;font-size:12px;margin-top:8px;';rst.textContent='↺ Restablecer';rst.onclick=()=>{const d=DEFAULT_ZONAS[zi];if(d){S.zonas[zi]={...d,fraccs:[...d.fraccs]};lsSet('zonas',S.zonas);renderZonas();}};zc.appendChild(rst);c.appendChild(zc);
   });
   const ra=document.createElement('button');ra.className='btn btn-light btn-full';ra.style.cssText='margin-top:4px;padding:12px;';ra.textContent='↺ Restablecer todas las zonas';ra.onclick=()=>{if(!confirm('¿Restablecer todo?'))return;S.zonas=DEFAULT_ZONAS.map(z=>({...z,fraccs:[...z.fraccs]}));lsSet('zonas',S.zonas);renderZonas();};c.appendChild(ra);
 }
@@ -566,18 +679,11 @@ function renderZonas(){
 // ── CONFIG ────────────────────────────────────────────────────────────────────
 function renderConfig(){
   const c=document.getElementById('t3');c.innerHTML='';
-  const cc=document.createElement('div');cc.className='card';
-  cc.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">⚙️ Mis datos</div>';
+  const cc=document.createElement('div');cc.className='card';cc.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">⚙️ Mis datos</div>';
   function cfld(k,lbl,ph,fmt){const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+lbl+'</label>';const i=document.createElement('input');i.type='text';i.placeholder=ph;i.value=S.cfg[k]||'';i.addEventListener('input',e=>{let v=e.target.value;if(fmt){v=fmt(v);e.target.value=v;}S.cfg[k]=v;});d.appendChild(i);return d;}
-  cc.appendChild(cfld('nombre','Tu nombre','Mi nombre'));
-  cc.appendChild(cfld('tel','Teléfono (texto FB)','656-XXX-XXXX',fmtMX));
-  cc.appendChild(cfld('wa','WhatsApp link (wa.me/...)','5265612345678'));
-  const sb=document.createElement('button');sb.className='btn btn-primary btn-full';sb.style.padding='13px';sb.textContent='Guardar';
-  sb.onclick=async()=>{lsSet('cfg',S.cfg);await api('POST','/api/config',S.cfg);sb.textContent='✓ Guardado';sb.style.background='#2E7D32';setTimeout(()=>{sb.textContent='Guardar';sb.style.background='#1F4E79';},2000);};
-  cc.appendChild(sb);c.appendChild(cc);
-  const tips=document.createElement('div');tips.className='tip-card';
-  tips.innerHTML='<div class="tip-title">💡 Cómo usar</div>'+['PDF: toca el área azul punteada — en iPhone puedes compartir directo desde WhatsApp','Mapas: toca 📷 en cada fraccionamiento para subir o reemplazar el screenshot','Mantén "Vendí yo" 2 seg → selecciona cliente → se registra y elimina del CRM','Arrastra el ≡ para reordenar fichas a tu gusto','Pestaña Zonas — edita y personaliza solo en tu dispositivo'].map(t=>'<div class="tip-item">· '+t+'</div>').join('');
-  c.appendChild(tips);
+  cc.appendChild(cfld('nombre','Tu nombre','Mi nombre'));cc.appendChild(cfld('tel','Teléfono (texto FB)','656-XXX-XXXX',fmtMX));cc.appendChild(cfld('wa','WhatsApp link (wa.me/...)','5265612345678'));
+  const sb=document.createElement('button');sb.className='btn btn-primary btn-full';sb.style.padding='13px';sb.textContent='Guardar';sb.onclick=async()=>{lsSet('cfg',S.cfg);await api('POST','/api/config',S.cfg);sb.textContent='✓ Guardado';sb.style.background='#2E7D32';setTimeout(()=>{sb.textContent='Guardar';sb.style.background='#1F4E79';},2000);};cc.appendChild(sb);c.appendChild(cc);
+  const tips=document.createElement('div');tips.className='tip-card';tips.innerHTML='<div class="tip-title">💡 Cómo usar</div>'+['PDF desde Archivos: toca el área azul · Desde WhatsApp: usa el botón verde','Las fichas se agrupan automáticamente por zona al subir el PDF','📸 Generar imagen = ficha + mapa unidos para subir a Facebook','Mantén "Vendí yo" 2 seg → selecciona cliente → se registra y elimina del CRM','Arrastra el ≡ para reordenar fichas manualmente dentro de cada zona'].map(t=>'<div class="tip-item">· '+t+'</div>').join('');c.appendChild(tips);
 }
 
 loadAll();
