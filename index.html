@@ -38,7 +38,7 @@ textarea{resize:vertical;}
 .field input,.field select,.field textarea{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #E0E0E0;font-size:14px;background:#fff;color:#222;outline:none;-webkit-appearance:none;}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:#2E75B6;}
 
-/* Upload */
+/* Upload areas */
 .upload-label{display:block;border:2px dashed #2E75B6;border-radius:14px;padding:18px 16px;text-align:center;background:#F0F7FF;cursor:pointer;-webkit-user-select:none;user-select:none;margin-bottom:8px;}
 .upload-label:active{background:#E0EFFF;}
 .upload-label.processing{border-color:#B45309;background:#FEF3E2;}
@@ -48,20 +48,16 @@ textarea{resize:vertical;}
 .upload-label.processing .ul-title{color:#B45309;}
 .upload-label.done .ul-title{color:#2E7D32;}
 .ul-sub{font-size:11px;color:#888;margin-top:2px;display:block;}
-
-/* WA Steps */
 .wa-steps{background:#E8F5E9;border:1px solid #4CAF50;border-radius:12px;padding:12px 14px;margin-top:4px;}
 .wa-step{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:13px;color:#1B5E20;}
 .wa-step:last-child{margin-bottom:0;}
 .wa-step-num{background:#2E7D32;color:#fff;border-radius:50%;min-width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-top:1px;}
-
-/* Stats */
 .stats{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
 .stat{border-radius:8px;padding:6px 10px;text-align:center;min-width:56px;}
 .stat-num{font-weight:800;font-size:18px;}
 .stat-lbl{font-size:10px;font-weight:600;}
 
-/* Zone group */
+/* Zone groups */
 .zone-group{margin-bottom:6px;}
 .zone-group-header{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;margin-bottom:6px;cursor:pointer;-webkit-user-select:none;}
 .zone-group-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
@@ -82,7 +78,8 @@ textarea{resize:vertical;}
 .prop-sub{font-size:12px;color:#555;margin-top:2px;}
 .prop-arrow{color:#ccc;font-size:14px;flex-shrink:0;align-self:center;}
 .prop-detail{padding:0 14px 14px;}
-.prop-mapa{width:100%;border-radius:10px;max-height:180px;object-fit:cover;margin-bottom:10px;display:block;}
+.prop-render{width:100%;border-radius:10px;max-height:200px;object-fit:cover;margin-bottom:10px;display:block;background:#F0F4F8;}
+.prop-mapa{width:100%;border-radius:10px;max-height:160px;object-fit:cover;margin-bottom:10px;display:block;}
 .fb-box{background:#F8F9FA;border-radius:10px;padding:12px;margin-bottom:10px;}
 .fb-lbl{font-size:11px;color:#888;font-weight:700;margin-bottom:6px;letter-spacing:1px;}
 .fb-box pre{font-size:12px;line-height:1.6;color:#333;white-space:pre-wrap;font-family:inherit;}
@@ -95,13 +92,22 @@ textarea{resize:vertical;}
 .new-fracc-banner{background:#E8F5E9;border:1px solid #4CAF50;border-radius:10px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
 .nf-text{flex:1;font-size:13px;color:#2E7D32;font-weight:600;}
 
+/* Renders tab */
+.render-model-card{border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:12px;}
+.render-model-img{width:100%;height:180px;object-fit:cover;display:block;background:#EEF2F7;}
+.render-model-empty{display:flex;align-items:center;justify-content:center;height:180px;background:#F8F9FA;flex-direction:column;gap:8px;color:#bbb;}
+.render-model-footer{padding:12px 14px;}
+.render-model-name{font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px;}
+.render-model-desc{font-size:12px;color:#888;margin-bottom:10px;}
+.render-model-actions{display:flex;gap:8px;}
+
 /* Mapas tab */
-.mapa-card{background:#fff;border-radius:14px;padding:0;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:10px;}
+.mapa-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:10px;}
 .mapa-card-img{width:100%;height:140px;object-fit:cover;display:block;background:#EEF2F7;}
 .mapa-card-footer{padding:10px 14px;display:flex;align-items:center;gap:8px;}
 .mapa-card-name{flex:1;font-weight:700;font-size:14px;color:#1F4E79;}
 .mapa-card-zone{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;}
-.mapa-empty-card{display:flex;align-items:center;justify-content:center;height:140px;color:#bbb;font-size:13px;background:#F8F9FA;}
+.mapa-empty-card{display:flex;align-items:center;justify-content:center;height:140px;color:#bbb;font-size:13px;background:#F8F9FA;flex-direction:column;gap:6px;}
 
 /* Hold */
 .hold-wrap{position:relative;display:inline-flex;}
@@ -118,6 +124,10 @@ textarea{resize:vertical;}
 .client-radio-row:first-child{border-top:none;}
 .client-radio-row input[type=radio]{width:20px;height:20px;accent-color:#1F4E79;flex-shrink:0;}
 
+/* Client form — siempre en DOM, show/hide con CSS */
+#client-form-wrap{display:none;background:#fff;border-radius:16px;padding:16px;box-shadow:0 1px 8px rgba(0,0,0,.09);margin-bottom:12px;border:2px solid #2E75B6;}
+#client-form-wrap.visible{display:block;}
+
 /* Fracc checklist */
 .fracc-zone-group{margin-bottom:10px;}
 .fracc-zone-label{font-size:11px;font-weight:800;letter-spacing:.5px;margin-bottom:5px;}
@@ -127,14 +137,13 @@ textarea{resize:vertical;}
 .fracc-item .fi-dist{font-size:11px;color:#888;}
 .fracc-item.selected{background:#EBF3FB;}
 
-/* Zone config */
+/* Zones config */
 .zone-cfg-card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1.5px solid #eee;}
 .zone-cfg-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
 .zone-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
 .zone-fraccs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
 .fracc-tag{background:#F0F4F8;border-radius:20px;padding:4px 10px;font-size:12px;color:#333;display:flex;align-items:center;gap:4px;}
 .fracc-tag .rm{color:#B71C1C;font-size:16px;cursor:pointer;line-height:1;}
-
 .tip-card{background:#FEF3E2;border:1px solid #F4B942;border-radius:14px;padding:14px;}
 .tip-title{font-weight:700;font-size:13px;color:#B45309;margin-bottom:8px;}
 .tip-item{font-size:13px;color:#7B5800;margin-bottom:5px;}
@@ -150,18 +159,138 @@ textarea{resize:vertical;}
   <div id="tabs">
     <button class="tab-btn active" onclick="showTab(0)">Fichas<span class="tab-badge hidden" id="bp"></span></button>
     <button class="tab-btn" onclick="showTab(1)">Clientes<span class="tab-badge hidden" id="bc"></span></button>
-    <button class="tab-btn" onclick="showTab(2)">Mapas</button>
-    <button class="tab-btn" onclick="showTab(3)">Zonas</button>
-    <button class="tab-btn" onclick="showTab(4)">Config.</button>
+    <button class="tab-btn" onclick="showTab(2)">Renders</button>
+    <button class="tab-btn" onclick="showTab(3)">Mapas</button>
+    <button class="tab-btn" onclick="showTab(4)">Zonas</button>
+    <button class="tab-btn" onclick="showTab(5)">Config.</button>
   </div>
 </div>
+
 <div id="content">
+  <!-- TAB 0: FICHAS -->
   <div id="t0"></div>
-  <div id="t1" class="hidden"></div>
-  <div id="t2" class="hidden"></div>
-  <div id="t3" class="hidden"></div>
-  <div id="t4" class="hidden"></div>
+
+  <!-- TAB 1: CLIENTES -->
+  <div id="t1" class="hidden">
+    <div class="card" style="padding:10px 12px">
+      <div style="display:flex;gap:8px;margin-bottom:6px">
+        <select id="fil-etapa" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;font-size:12px;background:#fff;-webkit-appearance:none" onchange="filterClients()">
+          <option>Todos</option>
+          <option>Nuevo</option><option>Contactado</option><option>Visita hoy</option>
+          <option>Negociando</option><option>Documentos</option><option>Esperando</option>
+          <option>Ganado</option><option>Perdido</option>
+        </select>
+        <select id="fil-zona" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;font-size:12px;background:#fff;-webkit-appearance:none" onchange="filterClients()">
+          <option value="">Todas</option>
+        </select>
+      </div>
+      <div id="clients-count" style="font-size:12px;color:#888"></div>
+    </div>
+
+    <button class="btn btn-primary btn-full" style="margin-bottom:12px;padding:14px;font-size:15px" onclick="openClientForm()">+ Nuevo cliente</button>
+
+    <!-- Formulario siempre en DOM -->
+    <div id="client-form-wrap">
+      <div id="client-form-title" style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">Nuevo cliente</div>
+      <div class="field"><label>Nombre *</label><input id="cf-nombre" type="text" placeholder="Nombre completo"/></div>
+      <div class="field"><label>WhatsApp * (MX)</label><input id="cf-tel" type="tel" placeholder="656-123-4567" oninput="this.value=fmtMX(this.value)"/></div>
+      <div class="field"><label>Tel. EUA (opcional)</label><input id="cf-telus" type="tel" placeholder="(915) 123-4567" oninput="this.value=fmtUS(this.value)"/></div>
+      <div class="field"><label>Puntos Infonavit</label><input id="cf-puntos" type="number" placeholder="ej. 1050"/></div>
+      <div class="field"><label>Presupuesto máx ($)</label><input id="cf-ppto" type="number" placeholder="ej. 480000"/></div>
+      <div class="field"><label>Zona de interés</label>
+        <select id="cf-zona" style="-webkit-appearance:none" onchange="updateFraccList()">
+          <option value="">Seleccionar zona</option>
+        </select>
+      </div>
+      <div class="field"><label>Fraccionamiento preferido</label>
+        <select id="cf-fracc-base" style="-webkit-appearance:none" onchange="updateFraccList()">
+          <option value="">-- Seleccionar --</option>
+        </select>
+      </div>
+      <div class="field"><label>Radio máximo</label>
+        <select id="cf-radio" style="-webkit-appearance:none" onchange="updateFraccList()">
+          <option value="5">5 km</option><option value="10">10 km</option>
+          <option value="15" selected>15 km</option><option value="20">20 km</option>
+          <option value="30">30 km o más</option>
+        </select>
+      </div>
+      <div class="field"><label>Recámaras</label>
+        <select id="cf-rec" style="-webkit-appearance:none">
+          <option value="">Indiferente</option><option>2</option><option>3</option><option>4</option>
+        </select>
+      </div>
+      <div class="field"><label>Etapa</label>
+        <select id="cf-etapa" style="-webkit-appearance:none">
+          <option>Nuevo</option><option>Contactado</option><option>Visita hoy</option>
+          <option>Negociando</option><option>Documentos</option><option>Esperando</option>
+          <option>Ganado</option><option>Perdido</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Fraccionamientos de interés <span style="font-weight:400;color:#888;font-size:11px">(toca para seleccionar)</span></label>
+        <div id="fracc-checklist"></div>
+      </div>
+      <div class="field"><label>Notas</label><textarea id="cf-notas" rows="2" placeholder="Observaciones…"></textarea></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-primary" style="flex:1;padding:13px" onclick="saveClient()">Guardar</button>
+        <button class="btn btn-light" style="padding:13px 16px" onclick="closeClientForm()">Cancelar</button>
+      </div>
+    </div>
+
+    <div id="clients-list"></div>
+  </div>
+
+  <!-- TAB 2: RENDERS -->
+  <div id="t2" class="hidden">
+    <div class="card">
+      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🏗️ Renders por modelo</div>
+      <div style="font-size:12px;color:#888">La app detecta automáticamente el número de habitaciones y muestra el render correspondiente en cada ficha.</div>
+    </div>
+    <div id="renders-list"></div>
+  </div>
+
+  <!-- TAB 3: MAPAS -->
+  <div id="t3" class="hidden">
+    <div class="card">
+      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🗺️ Mapas de fraccionamientos</div>
+      <div style="font-size:12px;color:#888">Sube el screenshot del mapa de cada fraccionamiento una sola vez.</div>
+    </div>
+    <div id="mapas-list"></div>
+  </div>
+
+  <!-- TAB 4: ZONAS -->
+  <div id="t4" class="hidden">
+    <div class="card">
+      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🗺️ Zonas y fraccionamientos</div>
+      <div style="font-size:12px;color:#888;margin-bottom:12px">Edita a tu gusto. Solo afecta tu dispositivo.</div>
+      <button class="btn btn-primary btn-full" style="padding:12px" onclick="addZona()">+ Agregar zona</button>
+    </div>
+    <div id="zonas-list"></div>
+    <button class="btn btn-light btn-full" style="margin-top:4px;padding:12px" onclick="resetZonas()">↺ Restablecer todas las zonas</button>
+  </div>
+
+  <!-- TAB 5: CONFIG -->
+  <div id="t5" class="hidden">
+    <div class="card">
+      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">⚙️ Mis datos</div>
+      <div class="field"><label>Tu nombre</label><input id="cfg-nombre" type="text" placeholder="Mi nombre" oninput="S.cfg.nombre=this.value"/></div>
+      <div class="field"><label>Teléfono (texto FB)</label><input id="cfg-tel" type="text" placeholder="656-XXX-XXXX" oninput="this.value=fmtMX(this.value);S.cfg.tel=this.value"/></div>
+      <div class="field"><label>WhatsApp link (wa.me/...)</label><input id="cfg-wa" type="text" placeholder="5265612345678" oninput="S.cfg.wa=this.value"/></div>
+      <button class="btn btn-primary btn-full" style="padding:13px" onclick="saveCfg()">Guardar</button>
+    </div>
+    <div class="tip-card">
+      <div class="tip-title">💡 Cómo usar</div>
+      <div class="tip-item">· PDF desde Archivos: toca el área azul</div>
+      <div class="tip-item">· Desde WhatsApp: toca el botón verde y sigue los pasos</div>
+      <div class="tip-item">· Las fichas se agrupan por zona automáticamente</div>
+      <div class="tip-item">· 📸 Generar imagen = render + mapa para Facebook</div>
+      <div class="tip-item">· Mantén "Vendí yo" 2 seg → registra la venta</div>
+      <div class="tip-item">· Arrastra el ≡ para reordenar fichas</div>
+    </div>
+  </div>
 </div>
+
+<!-- Modal -->
 <div id="modal-bg" class="modal-bg hidden" onclick="closeModal()">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title" id="m-title"></div>
@@ -171,27 +300,22 @@ textarea{resize:vertical;}
   </div>
 </div>
 
-<input type="file" id="fi-pdf" accept="application/pdf,.pdf" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" onchange="handlePDF(this)"/>
-<input type="file" id="fi-mapa" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" onchange="handleMapa(this)"/>
+<!-- File inputs globales -->
+<input type="file" id="fi-pdf"    accept="application/pdf,.pdf" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" onchange="handlePDF(this)"/>
+<input type="file" id="fi-mapa"   accept="image/*"              style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" onchange="handleMapa(this)"/>
+<input type="file" id="fi-render" accept="image/*"              style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" onchange="handleRender(this)"/>
 
 <script>
+// ── DATOS ─────────────────────────────────────────────────────────────────────
 const COORDS={
-  "Riveras del Bravo":[31.6891,-106.3721],
-  "El Campanario":[31.6734,-106.3698],
-  "Vistas de Zaragoza":[31.6812,-106.3654],
-  "Senderos de San Isidro":[31.6698,-106.3812],
-  "Urbivilla del Cedro":[31.6756,-106.3889],
-  "Jardines de Roma":[31.6721,-106.3756],
-  "Misiones de Creel":[31.6743,-106.3834],
-  "Boca del Río":[31.6867,-106.3698],
-  "Sierra Vista":[31.6823,-106.3712],
-  "Lomas del Desierto":[31.6654,-106.3923],
-  "Valle de Fundadores":[31.6789,-106.3801],
-  "Portal del Roble":[31.6812,-106.3778],
-  "Villas de Alcalá":[31.6934,-106.3645],
-  "Parque El Mirador":[31.6598,-106.3867],
-  "La Cañada":[31.6612,-106.3845],
-  "Senderos de Oriente":[31.6745,-106.3698],
+  "Riveras del Bravo":[31.6891,-106.3721],"El Campanario":[31.6734,-106.3698],
+  "Vistas de Zaragoza":[31.6812,-106.3654],"Senderos de San Isidro":[31.6698,-106.3812],
+  "Urbivilla del Cedro":[31.6756,-106.3889],"Jardines de Roma":[31.6721,-106.3756],
+  "Misiones de Creel":[31.6743,-106.3834],"Boca del Río":[31.6867,-106.3698],
+  "Sierra Vista":[31.6823,-106.3712],"Lomas del Desierto":[31.6654,-106.3923],
+  "Valle de Fundadores":[31.6789,-106.3801],"Portal del Roble":[31.6812,-106.3778],
+  "Villas de Alcalá":[31.6934,-106.3645],"Parque El Mirador":[31.6598,-106.3867],
+  "La Cañada":[31.6612,-106.3845],"Senderos de Oriente":[31.6745,-106.3698],
 };
 
 const DEFAULT_ZONAS=[
@@ -202,31 +326,70 @@ const DEFAULT_ZONAS=[
   {id:'z5',nombre:'Zona 5 — Mirador / Surponiente',color:'#B71C1C',desc:'Sector separado, visitas específicas.',fraccs:['Parque El Mirador','La Cañada']},
 ];
 
+// Modelos de render con sus palabras clave
+const RENDER_MODELS=[
+  {id:'r3',nombre:'3 Habitaciones',desc:'Modelo planta baja · 3 recámaras',keywords:['3 hab','3hab','tres hab','3 recam','3rec'],img:null},
+  {id:'r4',nombre:'4 Habitaciones',desc:'Modelo ampliado · 4 recámaras',keywords:['4 hab','4hab','cuatro hab','4 recam','4rec','segunda planta'],img:null},
+  {id:'rc',nombre:'Condominio',desc:'Modelo departamento / condominio',keywords:['condom','depart','2 hab','2hab','dos hab'],img:null},
+];
+
 function lsGet(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}}
 function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
 
 let S={
-  tab:0,props:[],clients:[],
+  tab:0, props:[], clients:[],
   cfg:lsGet('cfg',{nombre:'',tel:'',wa:''}),
   zonas:lsGet('zonas',DEFAULT_ZONAS),
-  expanded:null,dragSrc:null,
-  showClientForm:false,clientForm:{},editClientId:null,
-  filtroEtapa:'Todos',filtroZona:'Todas',
-  newFraccs:[],mapasPreviews:lsGet('mapasPreviews',{}),
-  collapsedZones:lsGet('collapsedZones',{}),
-  showWASteps:false,
+  renders:lsGet('renders',{}), // modelId -> dataUrl
+  mapasPreviews:lsGet('mapas',{}),
+  collapsedZones:lsGet('czones',{}),
+  expanded:null, dragSrc:null,
+  showWASteps:false, newFraccs:[],
+  // client form state
+  editClientId:null,
+  clientFraccs:[],
 };
-let _dragClone=null,_dragOver=null,_mapaFraccTarget='';
+let _dragClone=null,_dragOver=null,_mapaTarget='',_renderTarget='';
 
+// ── UTILS ──────────────────────────────────────────────────────────────────────
 function allFraccs(){return S.zonas.flatMap(z=>z.fraccs);}
 function zonaDeFragg(f=''){const fl=f.toLowerCase();return S.zonas.find(z=>z.fraccs.some(zf=>zf.toLowerCase()===fl||fl.includes(zf.toLowerCase())||zf.toLowerCase().includes(fl)))||null;}
 function distKm(f1,f2){const c1=COORDS[f1],c2=COORDS[f2];if(!c1||!c2)return 999;const R=6371,dLat=(c2[0]-c1[0])*Math.PI/180,dLon=(c2[1]-c1[1])*Math.PI/180;const a=Math.sin(dLat/2)**2+Math.cos(c1[0]*Math.PI/180)*Math.cos(c2[0]*Math.PI/180)*Math.sin(dLon/2)**2;return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));}
-function fraccsSorted(base){return allFraccs().filter(f=>f!==base).sort((a,b)=>distKm(base,a)-distKm(base,b));}
-function matchClients(prop){const fl=(prop.fraccionamiento||'').toLowerCase();const zona=zonaDeFragg(prop.fraccionamiento);return S.clients.filter(c=>{const fi=c.fraccs||[];return fi.some(f=>f.toLowerCase()===fl)||(zona&&c.zona===zona.id)||c.zona==='flex';});}
 function fmtMX(v){const d=v.replace(/\D/g,'').slice(0,10);if(d.length<=3)return d;if(d.length<=6)return d.slice(0,3)+'-'+d.slice(3);return d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);}
 function fmtUS(v){const d=v.replace(/\D/g,'').slice(0,10);if(d.length<=3)return d;if(d.length<=6)return '('+d.slice(0,3)+') '+d.slice(3);return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);}
-function fbText(prop){const chars=(prop.caracteristicas||[]).map(c=>'* '+c).join('\n');return '🏡 ¡Casa en venta en '+prop.direccion+'!\nUbicada en el fracc. '+prop.fraccionamiento+'\n-zona tranquila y con excelente plusvalía.\n\n💰 $'+Number(prop.precio||0).toLocaleString('es-MX')+'\n📄 Aceptamos todo tipo de crédito Infonavit\n\n🧱 Características:\n'+chars+'\n\n📍Ubicación exacta disponible\n\n📲 ¿Te interesa esta casa o buscas otra zona?\nTengo más opciones listas para entrega, en diferentes precios y fraccionamientos.\nEscríbeme sin compromiso al '+(S.cfg.tel||'656-XXX-XXXX')+', o en mi WhatsApp directo\nwa.me/'+(S.cfg.wa||'52656XXXXXXX');}
 
+function getRenderForProp(prop){
+  const text=JSON.stringify(prop.caracteristicas||[]).toLowerCase()+' '+(prop.direccion||'').toLowerCase();
+  for(const m of RENDER_MODELS){
+    if(m.keywords.some(k=>text.includes(k))){
+      return S.renders[m.id]||null;
+    }
+  }
+  // fallback: count rooms in caracteristicas
+  const nums=text.match(/(\d)\s*(hab|rec)/);
+  if(nums){
+    const n=parseInt(nums[1]);
+    if(n>=4&&S.renders['r4'])return S.renders['r4'];
+    if(n===3&&S.renders['r3'])return S.renders['r3'];
+    if(n<=2&&S.renders['rc'])return S.renders['rc'];
+  }
+  return null;
+}
+
+function fbText(prop){
+  const chars=(prop.caracteristicas||[]).map(c=>'* '+c).join('\n');
+  return '🏡 ¡Casa en venta en '+prop.direccion+'!\nUbicada en el fracc. '+prop.fraccionamiento+'\n-zona tranquila y con excelente plusvalía.\n\n💰 $'+Number(prop.precio||0).toLocaleString('es-MX')+'\n📄 Aceptamos todo tipo de crédito Infonavit\n\n🧱 Características:\n'+chars+'\n\n📍Ubicación exacta disponible\n\n📲 ¿Te interesa esta casa o buscas otra zona?\nTengo más opciones listas para entrega, en diferentes precios y fraccionamientos.\nEscríbeme sin compromiso al '+(S.cfg.tel||'656-XXX-XXXX')+', o en mi WhatsApp directo\nwa.me/'+(S.cfg.wa||'52656XXXXXXX');}
+
+function matchClients(prop){
+  const fl=(prop.fraccionamiento||'').toLowerCase();
+  const zona=zonaDeFragg(prop.fraccionamiento);
+  return S.clients.filter(c=>{
+    const fi=c.fraccs||[];
+    return fi.some(f=>f.toLowerCase()===fl)||(zona&&c.zona===zona.id)||c.zona==='flex';
+  });
+}
+
+// ── API ────────────────────────────────────────────────────────────────────────
 async function api(method,url,body){
   const opts={method,headers:{}};
   if(body instanceof FormData){opts.body=body;}
@@ -237,34 +400,33 @@ async function api(method,url,body){
 
 async function loadAll(){
   try{
-    const[props,clients,cfg]=await Promise.all([
-      api('GET','/api/propiedades'),
-      api('GET','/api/clientes'),
-      api('GET','/api/config'),
-    ]);
+    const[props,clients,cfg]=await Promise.all([api('GET','/api/propiedades'),api('GET','/api/clientes'),api('GET','/api/config')]);
     S.props=Array.isArray(props)?props:[];
     S.clients=Array.isArray(clients)?clients:[];
     if(cfg&&Object.keys(cfg).length)S.cfg={...S.cfg,...cfg};
     const known=new Set(allFraccs().map(f=>f.toLowerCase()));
     S.newFraccs=[];
     S.props.forEach(p=>{const f=(p.fraccionamiento||'').trim();if(f&&!known.has(f.toLowerCase())&&!S.newFraccs.includes(f))S.newFraccs.push(f);});
-  }catch(e){console.error('loadAll error',e);}
+  }catch(e){console.error(e);}
   renderAll();
 }
 
+// ── TABS ───────────────────────────────────────────────────────────────────────
 function showTab(i){
   S.tab=i;
   document.querySelectorAll('.tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));
-  [0,1,2,3,4].forEach(j=>document.getElementById('t'+j).classList.toggle('hidden',i!==j));
+  [0,1,2,3,4,5].forEach(j=>document.getElementById('t'+j).classList.toggle('hidden',i!==j));
 }
 
 function renderAll(){
   renderProps();
-  renderClients();
-  renderMapas();
-  renderZonas();
-  renderConfig();
+  renderClientsList();
+  renderRendersTab();
+  renderMapasTab();
+  renderZonasTab();
+  updateCfgInputs();
   updateBadges();
+  populateClientFormDropdowns();
 }
 
 function updateBadges(){
@@ -273,6 +435,7 @@ function updateBadges(){
   const bc=document.getElementById('bc');bc.textContent=S.clients.length;bc.classList.toggle('hidden',!S.clients.length);
 }
 
+// ── MODAL ──────────────────────────────────────────────────────────────────────
 function closeModal(){document.getElementById('modal-bg').classList.add('hidden');}
 function showModal(title,sub,btns,bodyEl){
   document.getElementById('m-title').textContent=title;
@@ -280,13 +443,7 @@ function showModal(title,sub,btns,bodyEl){
   const mb=document.getElementById('m-body');mb.innerHTML='';
   if(bodyEl)mb.appendChild(bodyEl);
   const bb=document.getElementById('m-btns');bb.innerHTML='';
-  (btns||[]).forEach(({label,cls,onClick})=>{
-    const b=document.createElement('button');
-    b.className='btn btn-full '+(cls||'btn-light');
-    b.textContent=label;
-    b.onclick=()=>{closeModal();onClick();};
-    bb.appendChild(b);
-  });
+  (btns||[]).forEach(({label,cls,onClick})=>{const b=document.createElement('button');b.className='btn btn-full '+(cls||'btn-light');b.textContent=label;b.onclick=()=>{closeModal();onClick();};bb.appendChild(b);});
   document.getElementById('modal-bg').classList.remove('hidden');
 }
 
@@ -296,7 +453,7 @@ function copyText(text,btn){
   function fb(){const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');done();}catch{}document.body.removeChild(ta);}
 }
 
-// ── IMAGEN FICHA+MAPA ─────────────────────────────────────────────────────────
+// ── IMAGEN FICHA + RENDER + MAPA ──────────────────────────────────────────────
 async function showImageModal(prop){
   const body=document.createElement('div');
   body.innerHTML='<div style="text-align:center;padding:24px;color:#888">⏳ Generando imagen…</div>';
@@ -305,50 +462,44 @@ async function showImageModal(prop){
     const canvas=await generateImage(prop);
     const dataUrl=canvas.toDataURL('image/jpeg',0.92);
     body.innerHTML='';
-    const img=document.createElement('img');img.src=dataUrl;img.style.cssText='width:100%;border-radius:12px;margin-bottom:10px;display:block;';
-    body.appendChild(img);
+    const img=document.createElement('img');img.src=dataUrl;img.style.cssText='width:100%;border-radius:12px;margin-bottom:10px;display:block;';body.appendChild(img);
     body.innerHTML+='<div style="font-size:12px;color:#888;text-align:center;margin-bottom:10px">Mantén presionada la imagen para guardarla en tu galería</div>';
     const dl=document.createElement('a');dl.className='btn btn-primary btn-full';dl.style.cssText='margin-bottom:8px;padding:13px;';dl.textContent='⬇️ Descargar imagen';dl.download='ficha-'+prop.fraccionamiento+'.jpg';dl.href=dataUrl;body.appendChild(dl);
     const cl=document.createElement('button');cl.className='btn btn-light btn-full';cl.textContent='Cerrar';cl.onclick=closeModal;body.appendChild(cl);
-  }catch(e){body.innerHTML='<div style="color:#B71C1C;text-align:center;padding:16px;font-weight:600">Error al generar imagen.<br>Verifica que el mapa esté subido.</div>';}
+  }catch(e){body.innerHTML='<div style="color:#B71C1C;text-align:center;padding:16px;font-weight:600">Error generando imagen.</div>';}
 }
 
 async function generateImage(prop){
-  const W=900,PAD=28,GAP=16;
+  const W=900,PAD=28,GAP=14;
   const zona=zonaDeFragg(prop.fraccionamiento);
   const zColor=zona?zona.color:'#1F4E79';
-  let mapaImg=null;
-  try{mapaImg=await loadImg(S.mapasPreviews[prop.fraccionamiento]||'/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));}catch(e){}
-  const fichaH=400;
-  const mapaH=mapaImg?Math.round(mapaImg.height*((W-PAD*2)/mapaImg.width)):0;
-  const totalH=PAD+fichaH+(mapaH?GAP+mapaH:0)+PAD;
+  const renderSrc=getRenderForProp(prop);
+  const mapaSrc=S.mapasPreviews[prop.fraccionamiento];
+  let renderImg=null,mapaImg=null;
+  try{if(renderSrc)renderImg=await loadImg(renderSrc);}catch(e){}
+  try{if(mapaSrc)mapaImg=await loadImg(mapaSrc);else mapaImg=await loadImg('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));}catch(e){}
+  const fichaH=380;
+  const renderH=renderImg?200:0;
+  const mapaH=mapaImg?180:0;
+  const totalH=PAD+fichaH+(renderH?GAP+renderH:0)+(mapaH?GAP+mapaH:0)+PAD;
   const cv=document.createElement('canvas');cv.width=W;cv.height=totalH;
   const ctx=cv.getContext('2d');
   ctx.fillStyle='#EEF2F7';ctx.fillRect(0,0,W,totalH);
   // Ficha card
   rrect(ctx,PAD,PAD,W-PAD*2,fichaH,18,'#fff');
-  // Header
-  rrect(ctx,PAD,PAD,W-PAD*2,72,18,zColor);
-  ctx.fillStyle='#fff';ctx.font='bold 26px Arial';ctx.fillText(prop.fraccionamiento,PAD+18,PAD+46);
-  // Price
-  rrect(ctx,PAD+18,PAD+84,240,44,10,'#F4B942');
-  ctx.fillStyle='#7B3F00';ctx.font='bold 24px Arial';ctx.fillText('$'+Number(prop.precio||0).toLocaleString('es-MX'),PAD+30,PAD+113);
-  // Address
-  ctx.fillStyle='#1F4E79';ctx.font='bold 20px Arial';ctx.fillText('📍 '+prop.direccion,PAD+18,PAD+162);
-  // Chars
-  ctx.fillStyle='#333';ctx.font='17px Arial';
-  (prop.caracteristicas||[]).slice(0,9).forEach((c,i)=>ctx.fillText('• '+c,PAD+18,PAD+198+i*24));
-  // Zone tag
-  if(zona){ctx.fillStyle=zColor+'33';rrect(ctx,PAD+18,PAD+fichaH-44,320,32,8,zColor+'33');ctx.fillStyle=zColor;ctx.font='bold 14px Arial';ctx.fillText(zona.nombre,PAD+28,PAD+fichaH-22);}
+  rrect(ctx,PAD,PAD,W-PAD*2,68,18,zColor);
+  ctx.fillStyle='#fff';ctx.font='bold 24px Arial';ctx.fillText(prop.fraccionamiento,PAD+18,PAD+44);
+  rrect(ctx,PAD+18,PAD+80,230,42,10,'#F4B942');
+  ctx.fillStyle='#7B3F00';ctx.font='bold 22px Arial';ctx.fillText('$'+Number(prop.precio||0).toLocaleString('es-MX'),PAD+28,PAD+107);
+  ctx.fillStyle='#1F4E79';ctx.font='bold 19px Arial';ctx.fillText('📍 '+prop.direccion,PAD+18,PAD+154);
+  ctx.fillStyle='#333';ctx.font='16px Arial';
+  (prop.caracteristicas||[]).slice(0,9).forEach((c,i)=>ctx.fillText('• '+c,PAD+18,PAD+188+i*22));
+  if(zona){rrect(ctx,PAD+18,PAD+fichaH-42,320,30,8,zColor+'33');ctx.fillStyle=zColor;ctx.font='bold 13px Arial';ctx.fillText(zona.nombre,PAD+26,PAD+fichaH-20);}
+  // Render
+  let y=PAD+fichaH;
+  if(renderImg){y+=GAP;ctx.save();ctx.beginPath();rpath(ctx,PAD,y,W-PAD*2,renderH,14);ctx.clip();ctx.drawImage(renderImg,PAD,y,W-PAD*2,renderH);ctx.restore();y+=renderH;}
   // Mapa
-  if(mapaImg&&mapaH>0){
-    const my=PAD+fichaH+GAP;
-    ctx.save();ctx.beginPath();rpath(ctx,PAD,my,W-PAD*2,mapaH,18);ctx.clip();
-    ctx.drawImage(mapaImg,PAD,my,W-PAD*2,mapaH);
-    ctx.fillStyle='rgba(0,0,0,.5)';ctx.fillRect(PAD,my+mapaH-36,W-PAD*2,36);
-    ctx.fillStyle='#fff';ctx.font='bold 16px Arial';ctx.fillText('📍 '+prop.fraccionamiento,PAD+14,my+mapaH-12);
-    ctx.restore();
-  }
+  if(mapaImg){y+=GAP;ctx.save();ctx.beginPath();rpath(ctx,PAD,y,W-PAD*2,mapaH,14);ctx.clip();ctx.drawImage(mapaImg,PAD,y,W-PAD*2,mapaH);ctx.fillStyle='rgba(0,0,0,.5)';ctx.fillRect(PAD,y+mapaH-32,W-PAD*2,32);ctx.fillStyle='#fff';ctx.font='bold 14px Arial';ctx.fillText('📍 '+prop.fraccionamiento,PAD+12,y+mapaH-10);ctx.restore();}
   ctx.fillStyle='#aaa';ctx.font='12px Arial';ctx.fillText('Inmobiliaria Casas Juárez · Sector Oriente · Infonavit',PAD,totalH-8);
   return cv;
 }
@@ -356,19 +507,13 @@ function loadImg(src){return new Promise((res,rej)=>{const i=new Image();i.cross
 function rrect(ctx,x,y,w,h,r,fill){ctx.beginPath();rpath(ctx,x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();}
 function rpath(ctx,x,y,w,h,r){ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
 
-// ── FILE HANDLERS ─────────────────────────────────────────────────────────────
+// ── FILE HANDLERS ──────────────────────────────────────────────────────────────
 async function handlePDF(input){
   const file=input.files[0];if(!file)return;
   const area=document.getElementById('pdf-upload-area');
   if(area){area.className='upload-label processing';area.querySelector('.ul-icon').textContent='⏳';area.querySelector('.ul-title').textContent='Procesando PDF…';area.querySelector('.ul-sub').textContent='Extrayendo fichas en el servidor';}
-  try{
-    const fd=new FormData();fd.append('pdf',file);
-    const res=await api('POST','/api/upload-pdf',fd);
-    await loadAll();
-    if(area){area.className='upload-label done';area.querySelector('.ul-icon').textContent='✅';area.querySelector('.ul-title').textContent='¡Listo! '+(res.nuevas||0)+' nuevas · '+(res.actualizadas||0)+' actualizadas';area.querySelector('.ul-sub').textContent='Toca para subir otro PDF';}
-  }catch(e){
-    if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='❌';area.querySelector('.ul-title').textContent='Error al procesar. Intenta de nuevo.';area.querySelector('.ul-sub').textContent='';}
-  }
+  try{const fd=new FormData();fd.append('pdf',file);const res=await api('POST','/api/upload-pdf',fd);await loadAll();if(area){area.className='upload-label done';area.querySelector('.ul-icon').textContent='✅';area.querySelector('.ul-title').textContent='¡Listo! '+(res.nuevas||0)+' nuevas · '+(res.actualizadas||0)+' actualizadas';area.querySelector('.ul-sub').textContent='Toca para subir otro PDF';}}
+  catch(e){if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='❌';area.querySelector('.ul-title').textContent='Error. Intenta de nuevo.';area.querySelector('.ul-sub').textContent='';}}
   input.value='';
   setTimeout(()=>{if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='📄';area.querySelector('.ul-title').textContent='Desde Archivos / iCloud';area.querySelector('.ul-sub').textContent='Toca para seleccionar el PDF';}},5000);
 }
@@ -378,61 +523,56 @@ async function handleMapa(input){
   const reader=new FileReader();
   reader.onload=e=>{
     const body=document.createElement('div');
-    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:10px;margin-bottom:12px;max-height:240px;object-fit:cover;display:block;';
-    body.appendChild(img);
-    body.innerHTML+='<div style="font-size:14px;color:#333;text-align:center;font-weight:600">Fraccionamiento: '+_mapaFraccTarget+'</div>';
+    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:10px;margin-bottom:12px;max-height:240px;object-fit:cover;display:block;';body.appendChild(img);
+    body.innerHTML+='<div style="font-size:14px;color:#333;text-align:center;font-weight:600">Fraccionamiento: '+_mapaTarget+'</div>';
     showModal('Vista previa','¿Se ve correcto?',[
-      {label:'✓ Confirmar y subir',cls:'btn-primary',onClick:async()=>{
-        const fd=new FormData();fd.append('mapa',file);fd.append('fraccionamiento',_mapaFraccTarget);
-        await api('POST','/api/upload-mapa',fd);
-        S.mapasPreviews[_mapaFraccTarget]=e.target.result;
-        lsSet('mapasPreviews',S.mapasPreviews);
-        renderMapas();renderProps();
-      }},
+      {label:'✓ Confirmar y subir',cls:'btn-primary',onClick:async()=>{const fd=new FormData();fd.append('mapa',file);fd.append('fraccionamiento',_mapaTarget);await api('POST','/api/upload-mapa',fd);S.mapasPreviews[_mapaTarget]=e.target.result;lsSet('mapas',S.mapasPreviews);renderMapasTab();renderProps();}},
       {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
     ],body);
   };
-  reader.readAsDataURL(file);
-  input.value='';
+  reader.readAsDataURL(file);input.value='';
 }
-function triggerMapaUpload(fracc){_mapaFraccTarget=fracc;document.getElementById('fi-mapa').click();}
+function triggerMapaUpload(fracc){_mapaTarget=fracc;document.getElementById('fi-mapa').click();}
 
-// ── VENTA MODAL ───────────────────────────────────────────────────────────────
+async function handleRender(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const m=RENDER_MODELS.find(x=>x.id===_renderTarget);
+    const body=document.createElement('div');
+    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:10px;margin-bottom:12px;max-height:240px;object-fit:cover;display:block;';body.appendChild(img);
+    body.innerHTML+='<div style="font-size:14px;color:#333;text-align:center;font-weight:600">Modelo: '+(m?m.nombre:'')+'</div>';
+    showModal('Vista previa del render','¿Se ve correcto?',[
+      {label:'✓ Confirmar',cls:'btn-primary',onClick:()=>{S.renders[_renderTarget]=e.target.result;lsSet('renders',S.renders);renderRendersTab();renderProps();}},
+      {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
+    ],body);
+  };
+  reader.readAsDataURL(file);input.value='';
+}
+function triggerRenderUpload(modelId){_renderTarget=modelId;document.getElementById('fi-render').click();}
+
+// ── VENTA MODAL ────────────────────────────────────────────────────────────────
 function showVentaModal(prop){
   const matches=matchClients(prop);let selId=null;
   const body=document.createElement('div');
-  const addRows=(list,sec)=>{
-    if(!list.length)return;
-    const s=document.createElement('div');s.className='modal-section';s.textContent=sec;body.appendChild(s);
-    list.forEach(c=>{
-      const row=document.createElement('div');row.className='client-radio-row';
-      const r=document.createElement('input');r.type='radio';r.name='vs';r.value=c.id;r.onchange=()=>selId=c.id;
-      const info=document.createElement('div');
-      info.innerHTML='<div style="font-weight:700;font-size:14px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+'</div>';
-      row.appendChild(r);row.appendChild(info);body.appendChild(row);
-    });
-  };
+  const addRows=(list,sec)=>{if(!list.length)return;const s=document.createElement('div');s.className='modal-section';s.textContent=sec;body.appendChild(s);list.forEach(c=>{const row=document.createElement('div');row.className='client-radio-row';const r=document.createElement('input');r.type='radio';r.name='vs';r.value=c.id;r.onchange=()=>selId=c.id;const info=document.createElement('div');info.innerHTML='<div style="font-weight:700;font-size:14px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+'</div>';row.appendChild(r);row.appendChild(info);body.appendChild(row);});};
   addRows(matches,'CLIENTES INTERESADOS');
   addRows(S.clients.filter(c=>!matches.find(m=>m.id===c.id)),'OTROS CLIENTES');
-  if(!S.clients.length){body.innerHTML='<div style="text-align:center;padding:16px;color:#888">No tienes clientes registrados</div>';}
+  if(!S.clients.length)body.innerHTML='<div style="text-align:center;padding:16px;color:#888">Sin clientes registrados</div>';
   showModal('🏆 Registrar venta','¿A qué cliente le vendiste?',[
-    {label:'Confirmar venta',cls:'btn-primary',onClick:async()=>{
-      await api('POST','/api/propiedades/'+encodeURIComponent(prop.id)+'/vender',{clienteId:selId});
-      if(selId)await api('DELETE','/api/clientes/'+selId);
-      await loadAll();
-    }},
+    {label:'Confirmar venta',cls:'btn-primary',onClick:async()=>{await api('POST','/api/propiedades/'+encodeURIComponent(prop.id)+'/vender',{clienteId:selId});if(selId)await api('DELETE','/api/clientes/'+selId);await loadAll();}},
     {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
   ],body);
 }
 
-// ── HOLD-TO-SELL ──────────────────────────────────────────────────────────────
+// ── HOLD-TO-SELL ───────────────────────────────────────────────────────────────
 let holdTimer=null,holdPropId=null,holdCircle=null,holdStart=0;
 const HOLD_MS=2000;
 function startHold(id,c){holdPropId=id;holdCircle=c;holdStart=Date.now();const R=13,C=2*Math.PI*R;c.style.strokeDasharray=C;c.style.strokeDashoffset=C;function tick(){const p=Math.min((Date.now()-holdStart)/HOLD_MS,1);c.style.strokeDashoffset=C*(1-p);if(p<1)holdTimer=requestAnimationFrame(tick);else endHold(true);}holdTimer=requestAnimationFrame(tick);}
 function endHold(ok){cancelAnimationFrame(holdTimer);holdTimer=null;if(holdCircle)holdCircle.style.strokeDashoffset=2*Math.PI*13;if(ok&&holdPropId){const p=S.props.find(x=>x.id===holdPropId);if(p)showVentaModal(p);}holdPropId=null;holdCircle=null;}
 function cancelHold(){if(holdTimer)endHold(false);}
 
-// ── PROP CARD ─────────────────────────────────────────────────────────────────
+// ── PROP CARD ──────────────────────────────────────────────────────────────────
 const EST={nueva:{label:'NUEVA',color:'#1F4E79',bg:'#EBF3FB',cls:'st-nueva'},precio_cambio:{label:'PRECIO ↓',color:'#B45309',bg:'#FEF3E2',cls:'st-precio'},vendida:{label:'VENDIDA',color:'#B71C1C',bg:'#FEECEC',cls:'st-vendida'},repetida:{label:'Sin cambio',color:'#999',bg:'#F5F5F5',cls:''}};
 
 function buildPropCard(prop){
@@ -449,48 +589,40 @@ function buildPropCard(prop){
   if(matches.length){const at=document.createElement('span');at.className='tag';at.style.cssText='background:#FFF8E1;color:#B45309;font-weight:700;';at.textContent='🔔 '+matches.length;tags.appendChild(at);}
   info.appendChild(tags);
   const ttl=document.createElement('div');ttl.className='prop-title';ttl.textContent=prop.direccion||'Sin dirección';info.appendChild(ttl);
-  const sub=document.createElement('div');sub.className='prop-sub';
-  sub.innerHTML=(prop.fraccionamiento||'—')+' <span style="font-weight:700;color:#1F4E79;margin-left:5px">$'+Number(prop.precio||0).toLocaleString('es-MX')+'</span>';
+  const sub=document.createElement('div');sub.className='prop-sub';sub.innerHTML=(prop.fraccionamiento||'—')+' <span style="font-weight:700;color:#1F4E79;margin-left:5px">$'+Number(prop.precio||0).toLocaleString('es-MX')+'</span>';
   if(prop._estado==='precio_cambio')sub.innerHTML+=' <s style="font-size:11px;color:#999">$'+Number(prop._precioAnterior||0).toLocaleString('es-MX')+'</s>';
   info.appendChild(sub);
   const arrow=document.createElement('div');arrow.className='prop-arrow';arrow.textContent=isOpen?'▲':'▼';
   hdr.appendChild(dh);hdr.appendChild(info);hdr.appendChild(arrow);
   hdr.addEventListener('click',e=>{if(e.target.closest('.drag-handle'))return;S.expanded=isOpen?null:prop.id;renderProps();});
   card.appendChild(hdr);
-
   if(isOpen){
     const det=document.createElement('div');det.className='prop-detail';
-    const mi=document.createElement('img');mi.className='prop-mapa';
-    mi.src=S.mapasPreviews[prop.fraccionamiento]||('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));
-    mi.onerror=()=>mi.style.display='none';det.appendChild(mi);
-    if(matches.length){
-      const ab=document.createElement('div');ab.className='alert-box';
-      ab.innerHTML='<div class="alert-title">🔔 Clientes interesados — llama ya</div>';
-      matches.forEach(c=>{const row=document.createElement('div');row.className='alert-row';row.innerHTML='<div><div style="font-weight:700;font-size:13px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+' · '+c.etapa+'</div></div><a href="https://wa.me/52'+(c.whatsapp||'').replace(/\D/g,'')+'" style="background:#25D366;color:#fff;border-radius:8px;padding:6px 11px;font-size:13px;font-weight:700">WhatsApp</a>';ab.appendChild(row);});
-      det.appendChild(ab);
-    }
+    // Render foto
+    const renderSrc=getRenderForProp(prop);
+    if(renderSrc){const ri=document.createElement('img');ri.className='prop-render';ri.src=renderSrc;ri.alt='Render';det.appendChild(ri);}
+    // Mapa
+    const mi=document.createElement('img');mi.className='prop-mapa';mi.src=S.mapasPreviews[prop.fraccionamiento]||('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));mi.onerror=()=>mi.style.display='none';det.appendChild(mi);
+    // Clientes match
+    if(matches.length){const ab=document.createElement('div');ab.className='alert-box';ab.innerHTML='<div class="alert-title">🔔 Clientes interesados — llama ya</div>';matches.forEach(c=>{const row=document.createElement('div');row.className='alert-row';row.innerHTML='<div><div style="font-weight:700;font-size:13px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+' · '+c.etapa+'</div></div><a href="https://wa.me/52'+(c.whatsapp||'').replace(/\D/g,'')+'" style="background:#25D366;color:#fff;border-radius:8px;padding:6px 11px;font-size:13px;font-weight:700">WhatsApp</a>';ab.appendChild(row);});det.appendChild(ab);}
     if(prop._estado!=='vendida'){
       const txt=fbText(prop);
       const fb=document.createElement('div');fb.className='fb-box';fb.innerHTML='<div class="fb-lbl">TEXTO PARA FACEBOOK</div><pre>'+txt+'</pre>';det.appendChild(fb);
-      const acts=document.createElement('div');acts.className='prop-actions';
-      const cb=document.createElement('button');cb.className='btn btn-copy';cb.style.cssText='flex:1;min-width:130px;';cb.textContent='📋 Copiar texto FB';cb.onclick=()=>copyText(txt,cb);acts.appendChild(cb);
-      const ib=document.createElement('button');ib.className='btn btn-purple';ib.style.cssText='flex:1;min-width:130px;';ib.textContent='📸 Generar imagen';ib.onclick=()=>showImageModal(prop);acts.appendChild(ib);
-      det.appendChild(acts);
-      const acts2=document.createElement('div');acts2.className='prop-actions';acts2.style.marginTop='8px';
-      const R=13,C=2*Math.PI*R,SZ=32;
-      const hw=document.createElement('div');hw.className='hold-wrap';
+      const a1=document.createElement('div');a1.className='prop-actions';
+      const cb=document.createElement('button');cb.className='btn btn-copy';cb.style.cssText='flex:1;min-width:130px;';cb.textContent='📋 Copiar texto FB';cb.onclick=()=>copyText(txt,cb);a1.appendChild(cb);
+      const ib=document.createElement('button');ib.className='btn btn-purple';ib.style.cssText='flex:1;min-width:130px;';ib.textContent='📸 Generar imagen';ib.onclick=()=>showImageModal(prop);a1.appendChild(ib);
+      det.appendChild(a1);
+      const a2=document.createElement('div');a2.className='prop-actions';a2.style.marginTop='8px';
+      const R=13,C=2*Math.PI*R,SZ=32;const hw=document.createElement('div');hw.className='hold-wrap';
       const hb=document.createElement('button');hb.className='btn btn-gold';hb.style.cssText='padding:9px 14px;font-size:13px;';hb.textContent='🏆 Vendí yo';
       const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('width',SZ+8);svg.setAttribute('height',SZ+8);svg.className='hold-svg';
       const circ=document.createElementNS('http://www.w3.org/2000/svg','circle');circ.setAttribute('cx',(SZ+8)/2);circ.setAttribute('cy',(SZ+8)/2);circ.setAttribute('r',R);circ.setAttribute('fill','none');circ.setAttribute('stroke','#F4B942');circ.setAttribute('stroke-width','3');circ.style.strokeDasharray=C;circ.style.strokeDashoffset=C;
       svg.appendChild(circ);hb.addEventListener('pointerdown',e=>{e.preventDefault();startHold(prop.id,circ);});hb.addEventListener('pointerup',cancelHold);hb.addEventListener('pointerleave',cancelHold);hb.addEventListener('contextmenu',e=>e.preventDefault());
-      hw.appendChild(hb);hw.appendChild(svg);acts2.appendChild(hw);
-      const db=document.createElement('button');db.className='btn btn-danger';db.style.cssText='padding:9px 14px;font-size:13px;';db.textContent='Eliminar';
-      db.onclick=()=>showModal('¿Eliminar ficha?',prop.direccion,[{label:'Sí, eliminar',cls:'btn-danger',onClick:async()=>{await api('DELETE','/api/propiedades/'+encodeURIComponent(prop.id));await loadAll();}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}]);
-      acts2.appendChild(db);det.appendChild(acts2);
-    }else{det.innerHTML+='<div style="text-align:center;padding:12px;color:#B71C1C;font-weight:700">🔴 Ya no aparece en el PDF</div>';}
+      hw.appendChild(hb);hw.appendChild(svg);a2.appendChild(hw);
+      const db=document.createElement('button');db.className='btn btn-danger';db.style.cssText='padding:9px 14px;font-size:13px;';db.textContent='Eliminar';db.onclick=()=>showModal('¿Eliminar ficha?',prop.direccion,[{label:'Sí, eliminar',cls:'btn-danger',onClick:async()=>{await api('DELETE','/api/propiedades/'+encodeURIComponent(prop.id));await loadAll();}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}]);a2.appendChild(db);det.appendChild(a2);
+    }else det.innerHTML+='<div style="text-align:center;padding:12px;color:#B71C1C;font-weight:700">🔴 Ya no aparece en el PDF</div>';
     card.appendChild(det);
   }
-
   // Touch drag
   dh.addEventListener('touchstart',e=>{e.preventDefault();S.dragSrc=prop.id;card.classList.add('dragging');const clone=card.cloneNode(true);const r=card.getBoundingClientRect();clone.style.cssText='position:fixed;width:'+r.width+'px;opacity:.85;pointer-events:none;z-index:999;border-radius:14px;left:'+r.left+'px;top:'+r.top+'px;';document.body.appendChild(clone);_dragClone=clone;},{passive:false});
   dh.addEventListener('touchmove',e=>{e.preventDefault();if(!_dragClone)return;const t=e.touches[0];_dragClone.style.left=(t.clientX-_dragClone.offsetWidth/2)+'px';_dragClone.style.top=(t.clientY-60)+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const tc=el?.closest('.prop-card');if(_dragOver&&_dragOver!==tc)_dragOver.classList.remove('drag-over');if(tc&&tc!==card){tc.classList.add('drag-over');_dragOver=tc;}},{passive:false});
@@ -504,369 +636,201 @@ function buildPropCard(prop){
   return card;
 }
 
-async function reorder(fromId,toId){
-  const ids=S.props.map(p=>p.id);const fi=ids.indexOf(fromId),ti=ids.indexOf(toId);
-  if(fi<0||ti<0)return;ids.splice(fi,1);ids.splice(ti,0,fromId);
-  const map=Object.fromEntries(S.props.map(p=>[p.id,p]));
-  S.props=ids.map(id=>map[id]).filter(Boolean);
-  renderProps();
-  await api('POST','/api/propiedades/order',{order:ids});
-}
+async function reorder(fromId,toId){const ids=S.props.map(p=>p.id);const fi=ids.indexOf(fromId),ti=ids.indexOf(toId);if(fi<0||ti<0)return;ids.splice(fi,1);ids.splice(ti,0,fromId);const map=Object.fromEntries(S.props.map(p=>[p.id,p]));S.props=ids.map(id=>map[id]).filter(Boolean);renderProps();await api('POST','/api/propiedades/order',{order:ids});}
 
-// ── RENDER PROPIEDADES ────────────────────────────────────────────────────────
+// ── RENDER PROPS TAB ───────────────────────────────────────────────────────────
 function renderProps(){
   const c=document.getElementById('t0');c.innerHTML='';
-
-  // New fracc banners
-  S.newFraccs.forEach(f=>{
-    const b=document.createElement('div');b.className='new-fracc-banner';
-    b.innerHTML='<span style="font-size:18px">🆕</span><div class="nf-text">Fracc. nuevo detectado: <b>'+f+'</b></div>';
-    const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:6px 12px;font-size:12px;flex-shrink:0;';btn.textContent='Agregar';
-    btn.onclick=()=>showAddFraccModal(f);b.appendChild(btn);c.appendChild(b);
-  });
-
-  // Upload PDF card
-  const uc=document.createElement('div');uc.className='card';
-  uc.innerHTML='<div style="font-weight:700;font-size:15px;color:#1F4E79;margin-bottom:10px">📄 PDF del día</div>';
-
-  // Archivos label
+  S.newFraccs.forEach(f=>{const b=document.createElement('div');b.className='new-fracc-banner';b.innerHTML='<span style="font-size:18px">🆕</span><div class="nf-text">Fracc. nuevo: <b>'+f+'</b></div>';const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:6px 12px;font-size:12px;flex-shrink:0;';btn.textContent='Agregar';btn.onclick=()=>showAddFraccModal(f);b.appendChild(btn);c.appendChild(b);});
+  // Upload card
+  const uc=document.createElement('div');uc.className='card';uc.innerHTML='<div style="font-weight:700;font-size:15px;color:#1F4E79;margin-bottom:10px">📄 PDF del día</div>';
   const lbl=document.createElement('label');lbl.id='pdf-upload-area';lbl.className='upload-label';lbl.htmlFor='fi-pdf';
   lbl.innerHTML='<span class="ul-icon">📄</span><span class="ul-title">Desde Archivos / iCloud</span><span class="ul-sub">Toca para seleccionar el PDF</span>';
   uc.appendChild(lbl);
-
-  // WhatsApp button — toggle simple con re-render
-  const waBtn=document.createElement('button');waBtn.className='btn btn-green btn-full';waBtn.style.cssText='padding:11px;font-size:13px;margin-bottom:6px;';waBtn.textContent='💬 '+(S.showWASteps?'Ocultar':'Cómo compartir desde WhatsApp');
-  waBtn.onclick=()=>{S.showWASteps=!S.showWASteps;renderProps();};
-  uc.appendChild(waBtn);
-
+  const waBtn=document.createElement('button');waBtn.className='btn btn-green btn-full';waBtn.style.cssText='padding:11px;font-size:13px;margin-bottom:6px;';waBtn.textContent='💬 '+(S.showWASteps?'Ocultar instrucciones':'Cómo compartir desde WhatsApp');
+  waBtn.onclick=()=>{S.showWASteps=!S.showWASteps;renderProps();};uc.appendChild(waBtn);
   if(S.showWASteps){
     const steps=document.createElement('div');steps.className='wa-steps';
-    [
-      'Abre WhatsApp y encuentra el mensaje con el PDF del inventario',
-      'Mantén presionado el PDF hasta que aparezca el menú',
-      'Toca "Compartir" → busca Safari o tu app "Oriente Juárez"',
-      'Si no aparece tu app, elige "Abrir en..." o "Copiar a..."',
-      'El PDF se procesará automáticamente al abrirse',
-    ].forEach((txt,i)=>{
-      const step=document.createElement('div');step.className='wa-step';
-      step.innerHTML='<div class="wa-step-num">'+(i+1)+'</div><div>'+txt+'</div>';
-      steps.appendChild(step);
-    });
+    ['Abre WhatsApp y encuentra el mensaje con el PDF del inventario','Mantén presionado el PDF hasta que aparezca el menú','Toca "Compartir" → busca Safari o tu app "Oriente Juárez"','Si no aparece tu app, elige "Abrir en..." o "Copiar a..."','El PDF se procesará automáticamente al abrirse'].forEach((txt,i)=>{const step=document.createElement('div');step.className='wa-step';step.innerHTML='<div class="wa-step-num">'+(i+1)+'</div><div>'+txt+'</div>';steps.appendChild(step);});
     uc.appendChild(steps);
   }
-
-  if(S.props.length){
-    const stats=document.createElement('div');stats.className='stats';
-    [{l:'Nuevas',v:'nueva',co:'#1F4E79',b:'#EBF3FB'},{l:'Precio↓',v:'precio_cambio',co:'#B45309',b:'#FEF3E2'},{l:'Vendidas',v:'vendida',co:'#B71C1C',b:'#FEECEC'},{l:'Igual',v:'repetida',co:'#777',b:'#F5F5F5'}].forEach(({l,v,co,b})=>{
-      const s=document.createElement('div');s.className='stat';s.style.background=b;
-      s.innerHTML='<div class="stat-num" style="color:'+co+'">'+S.props.filter(p=>p._estado===v).length+'</div><div class="stat-lbl" style="color:'+co+'">'+l+'</div>';
-      stats.appendChild(s);
-    });
-    uc.appendChild(stats);
-  }
+  if(S.props.length){const stats=document.createElement('div');stats.className='stats';[{l:'Nuevas',v:'nueva',co:'#1F4E79',b:'#EBF3FB'},{l:'Precio↓',v:'precio_cambio',co:'#B45309',b:'#FEF3E2'},{l:'Vendidas',v:'vendida',co:'#B71C1C',b:'#FEECEC'},{l:'Igual',v:'repetida',co:'#777',b:'#F5F5F5'}].forEach(({l,v,co,b})=>{const s=document.createElement('div');s.className='stat';s.style.background=b;s.innerHTML='<div class="stat-num" style="color:'+co+'">'+S.props.filter(p=>p._estado===v).length+'</div><div class="stat-lbl" style="color:'+co+'">'+l+'</div>';stats.appendChild(s);});uc.appendChild(stats);}
   c.appendChild(uc);
-
-  if(!S.props.length){
-    c.innerHTML+='<div class="empty"><div class="empty-icon">🏠</div><div>Sube el PDF del día para empezar</div></div>';
-    return;
-  }
-
-  // Group by zone, sort nuevas first within each zone
+  if(!S.props.length){c.innerHTML+='<div class="empty"><div class="empty-icon">🏠</div><div>Sube el PDF del día para empezar</div></div>';return;}
   const estadoOrder={nueva:0,precio_cambio:1,repetida:2,vendida:3};
-  const propsByZona=new Map();
-  S.zonas.forEach(z=>propsByZona.set(z.id,[]));
-  propsByZona.set('sin-zona',[]);
+  const propsByZona=new Map();S.zonas.forEach(z=>propsByZona.set(z.id,[]));propsByZona.set('sin-zona',[]);
   S.props.forEach(p=>{const z=zonaDeFragg(p.fraccionamiento);const key=z?z.id:'sin-zona';if(!propsByZona.has(key))propsByZona.set(key,[]);propsByZona.get(key).push(p);});
   propsByZona.forEach(props=>props.sort((a,b)=>(estadoOrder[a._estado]||2)-(estadoOrder[b._estado]||2)));
-
-  S.zonas.forEach(zona=>{
-    const props=propsByZona.get(zona.id)||[];if(!props.length)return;
-    const collapsed=S.collapsedZones[zona.id];
-    const grp=document.createElement('div');grp.className='zone-group';
-    const gh=document.createElement('div');gh.className='zone-group-header';gh.style.background=zona.color+'18';
-    gh.innerHTML='<div class="zone-group-dot" style="background:'+zona.color+'"></div><div class="zone-group-name" style="color:'+zona.color+'">'+zona.nombre+'</div><div class="zone-group-count" style="color:'+zona.color+'">'+props.length+' ficha'+(props.length!==1?'s':'')+'</div><div class="zone-group-arrow" style="color:'+zona.color+'">'+(collapsed?'▶':'▼')+'</div>';
-    gh.addEventListener('click',()=>{S.collapsedZones[zona.id]=!S.collapsedZones[zona.id];lsSet('collapsedZones',S.collapsedZones);renderProps();});
-    grp.appendChild(gh);
-    if(!collapsed){const gc=document.createElement('div');props.forEach(p=>gc.appendChild(buildPropCard(p)));grp.appendChild(gc);}
-    c.appendChild(grp);
-  });
-  const sinZ=propsByZona.get('sin-zona')||[];
-  if(sinZ.length){
-    const grp=document.createElement('div');grp.className='zone-group';
-    const gh=document.createElement('div');gh.className='zone-group-header';gh.style.background='#eee';
-    gh.innerHTML='<div class="zone-group-dot" style="background:#999"></div><div class="zone-group-name" style="color:#666">Sin zona asignada</div><div class="zone-group-count" style="color:#666">'+sinZ.length+'</div><div class="zone-group-arrow">▼</div>';
-    grp.appendChild(gh);const gc=document.createElement('div');sinZ.forEach(p=>gc.appendChild(buildPropCard(p)));grp.appendChild(gc);c.appendChild(grp);
-  }
+  S.zonas.forEach(zona=>{const props=propsByZona.get(zona.id)||[];if(!props.length)return;const collapsed=S.collapsedZones[zona.id];const grp=document.createElement('div');grp.className='zone-group';const gh=document.createElement('div');gh.className='zone-group-header';gh.style.background=zona.color+'18';gh.innerHTML='<div class="zone-group-dot" style="background:'+zona.color+'"></div><div class="zone-group-name" style="color:'+zona.color+'">'+zona.nombre+'</div><div class="zone-group-count" style="color:'+zona.color+'">'+props.length+' ficha'+(props.length!==1?'s':'')+'</div><div class="zone-group-arrow" style="color:'+zona.color+'">'+(collapsed?'▶':'▼')+'</div>';gh.addEventListener('click',()=>{S.collapsedZones[zona.id]=!S.collapsedZones[zona.id];lsSet('czones',S.collapsedZones);renderProps();});grp.appendChild(gh);if(!collapsed){const gc=document.createElement('div');props.forEach(p=>gc.appendChild(buildPropCard(p)));grp.appendChild(gc);}c.appendChild(grp);});
+  const sinZ=propsByZona.get('sin-zona')||[];if(sinZ.length){const grp=document.createElement('div');grp.className='zone-group';const gh=document.createElement('div');gh.className='zone-group-header';gh.style.background='#eee';gh.innerHTML='<div class="zone-group-dot" style="background:#999"></div><div class="zone-group-name" style="color:#666">Sin zona asignada</div><div class="zone-group-count" style="color:#666">'+sinZ.length+'</div><div class="zone-group-arrow">▼</div>';grp.appendChild(gh);const gc=document.createElement('div');sinZ.forEach(p=>gc.appendChild(buildPropCard(p)));grp.appendChild(gc);c.appendChild(grp);}
 }
 
 function showAddFraccModal(fracc){
-  const body=document.createElement('div');
-  body.innerHTML='<div style="font-size:13px;color:#555;margin-bottom:12px">¿A qué zona agregar <b>'+fracc+'</b>?</div>';
-  const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;';
-  S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;sel.appendChild(o);});
-  body.appendChild(sel);
-  showModal('Agregar fraccionamiento','',[
-    {label:'Agregar',cls:'btn-primary',onClick:()=>{const z=S.zonas.find(x=>x.id===sel.value);if(z&&!z.fraccs.includes(fracc)){z.fraccs.push(fracc);lsSet('zonas',S.zonas);}S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}},
-    {label:'Ignorar',cls:'btn-light',onClick:()=>{S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}},
-  ],body);
+  const body=document.createElement('div');body.innerHTML='<div style="font-size:13px;color:#555;margin-bottom:12px">¿A qué zona agregar <b>'+fracc+'</b>?</div>';
+  const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;sel.appendChild(o);});body.appendChild(sel);
+  showModal('Agregar fraccionamiento','',[{label:'Agregar',cls:'btn-primary',onClick:()=>{const z=S.zonas.find(x=>x.id===sel.value);if(z&&!z.fraccs.includes(fracc)){z.fraccs.push(fracc);lsSet('zonas',S.zonas);}S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}},{label:'Ignorar',cls:'btn-light',onClick:()=>{S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}}],body);
 }
 
-// ── MAPAS (pestaña) ───────────────────────────────────────────────────────────
-function renderMapas(){
-  const c=document.getElementById('t2');c.innerHTML='';
-  const hd=document.createElement('div');hd.className='card';
-  hd.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🗺️ Mapas de fraccionamientos</div><div style="font-size:12px;color:#888">Sube el screenshot del mapa de cada fraccionamiento una sola vez.</div>';
-  c.appendChild(hd);
+// ── RENDERS TAB ────────────────────────────────────────────────────────────────
+function renderRendersTab(){
+  const c=document.getElementById('renders-list');c.innerHTML='';
+  RENDER_MODELS.forEach(m=>{
+    const card=document.createElement('div');card.className='render-model-card';
+    if(S.renders[m.id]){
+      const img=document.createElement('img');img.className='render-model-img';img.src=S.renders[m.id];img.alt=m.nombre;card.appendChild(img);
+    }else{
+      const empty=document.createElement('div');empty.className='render-model-empty';empty.innerHTML='<span style="font-size:36px">🏗️</span><span>Sin render aún</span>';card.appendChild(empty);
+    }
+    const footer=document.createElement('div');footer.className='render-model-footer';
+    footer.innerHTML='<div class="render-model-name">'+m.nombre+'</div><div class="render-model-desc">'+m.desc+'</div>';
+    const acts=document.createElement('div');acts.className='render-model-actions';
+    const upBtn=document.createElement('button');upBtn.className='btn btn-primary';upBtn.style.cssText='flex:1;padding:9px;font-size:13px;';upBtn.textContent=S.renders[m.id]?'📷 Cambiar':'📷 Subir render';upBtn.onclick=()=>triggerRenderUpload(m.id);acts.appendChild(upBtn);
+    if(S.renders[m.id]){const delBtn=document.createElement('button');delBtn.className='btn btn-danger';delBtn.style.cssText='padding:9px 14px;font-size:13px;';delBtn.textContent='Eliminar';delBtn.onclick=()=>{if(confirm('¿Eliminar render de '+m.nombre+'?')){delete S.renders[m.id];lsSet('renders',S.renders);renderRendersTab();renderProps();}};acts.appendChild(delBtn);}
+    footer.appendChild(acts);card.appendChild(footer);c.appendChild(card);
+  });
+}
 
+// ── MAPAS TAB ──────────────────────────────────────────────────────────────────
+function renderMapasTab(){
+  const c=document.getElementById('mapas-list');c.innerHTML='';
   S.zonas.forEach(zona=>{
-    const fraccs=zona.fraccs;if(!fraccs.length)return;
+    if(!zona.fraccs.length)return;
     const sec=document.createElement('div');sec.style.cssText='font-size:11px;font-weight:800;color:'+zona.color+';letter-spacing:1px;margin:12px 0 6px;';sec.textContent=zona.nombre.toUpperCase();c.appendChild(sec);
-    fraccs.forEach(f=>{
+    zona.fraccs.forEach(f=>{
       const card=document.createElement('div');card.className='mapa-card';
-      const src=S.mapasPreviews[f]||('/api/mapa/'+encodeURIComponent(f));
-      const img=document.createElement('img');img.className='mapa-card-img';img.src=src;img.alt=f;
-      img.onerror=()=>{img.style.display='none';const empty=document.createElement('div');empty.className='mapa-empty-card';empty.innerHTML='<span style="font-size:24px;margin-right:8px">📷</span>Sin mapa — toca Subir';card.insertBefore(empty,card.firstChild);};
-      card.appendChild(img);
+      const src=S.mapasPreviews[f];
+      if(src){const img=document.createElement('img');img.className='mapa-card-img';img.src=src;img.alt=f;card.appendChild(img);}
+      else{
+        const img=document.createElement('img');img.className='mapa-card-img';img.src='/api/mapa/'+encodeURIComponent(f);img.alt=f;
+        img.onerror=()=>{img.style.display='none';const e=document.createElement('div');e.className='mapa-empty-card';e.innerHTML='<span style="font-size:32px">📷</span><span>Sin mapa</span>';card.insertBefore(e,card.firstChild);};
+        card.appendChild(img);
+      }
       const footer=document.createElement('div');footer.className='mapa-card-footer';
       const nm=document.createElement('div');nm.className='mapa-card-name';nm.textContent=f;
       const zt=document.createElement('span');zt.className='mapa-card-zone';zt.style.cssText='background:'+zona.color+'22;color:'+zona.color+';';zt.textContent=zona.nombre.split('—')[0].trim();
-      const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:7px 14px;font-size:13px;flex-shrink:0;';btn.textContent='📷 Subir';
-      btn.onclick=()=>triggerMapaUpload(f);
-      footer.appendChild(nm);footer.appendChild(zt);footer.appendChild(btn);
-      card.appendChild(footer);c.appendChild(card);
+      const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:7px 14px;font-size:13px;flex-shrink:0;';btn.textContent='📷 Subir';btn.onclick=()=>triggerMapaUpload(f);
+      footer.appendChild(nm);footer.appendChild(zt);footer.appendChild(btn);card.appendChild(footer);c.appendChild(card);
     });
   });
 }
 
-// ── CLIENTES ──────────────────────────────────────────────────────────────────
-const ETAPAS=['Nuevo','Contactado','Visita hoy','Negociando','Documentos','Esperando','Ganado','Perdido'];
-const ETAPA_S={'Nuevo':{bg:'#E3F2FD',c:'#1565A8'},'Contactado':{bg:'#E8F5E9',c:'#2E7D32'},'Visita hoy':{bg:'#1F4E79',c:'#fff'},'Negociando':{bg:'#FFF8E1',c:'#B45309'},'Documentos':{bg:'#F3E5F5',c:'#6A1B9A'},'Esperando':{bg:'#FFF3E0',c:'#E65100'},'Ganado':{bg:'#2E7D32',c:'#fff'},'Perdido':{bg:'#B71C1C',c:'#fff'}};
-const BLANK={nombre:'',whatsapp:'',whatsappUS:'',puntos:'',presupuesto:'',zona:'',fraccs:[],fraccBase:'',radioKm:'15',recamaras:'',etapa:'Nuevo',notas:''};
+// ── CLIENTES ───────────────────────────────────────────────────────────────────
+function populateClientFormDropdowns(){
+  const zonasSel=document.getElementById('cf-zona');
+  const fraccSel=document.getElementById('cf-fracc-base');
+  const filtZona=document.getElementById('fil-zona');
+  if(!zonasSel)return;
+  // Zona select en form
+  const curZona=zonasSel.value;
+  zonasSel.innerHTML='<option value="">Seleccionar zona</option>';
+  S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;if(curZona===z.id)o.selected=true;zonasSel.appendChild(o);});
+  zonasSel.innerHTML+='<option value="flex">Flexible – cualquier zona</option>';
+  // Fracc base select
+  const curFragg=fraccSel.value;
+  fraccSel.innerHTML='<option value="">-- Seleccionar --</option>';
+  allFraccs().forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;if(curFragg===f)o.selected=true;fraccSel.appendChild(o);});
+  // Filter zona
+  if(filtZona){const curFilt=filtZona.value;filtZona.innerHTML='<option value="">Todas</option>';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre.split('—')[0].trim();if(curFilt===z.id)o.selected=true;filtZona.appendChild(o);});}
+}
 
-function renderClients(){
-  const c=document.getElementById('t1');c.innerHTML='';
+function updateFraccList(){
+  const base=document.getElementById('cf-fracc-base')?.value||'';
+  const zonaId=document.getElementById('cf-zona')?.value||'';
+  const radio=Number(document.getElementById('cf-radio')?.value)||15;
+  const flc=document.getElementById('fracc-checklist');if(!flc)return;flc.innerHTML='';
+  let ordered=[];
+  if(base){ordered=[base,...allFraccs().filter(f=>f!==base).sort((a,b)=>distKm(base,a)-distKm(base,b)).filter(f=>distKm(base,f)<=radio)];}
+  else if(zonaId&&zonaId!=='flex'){const z=S.zonas.find(x=>x.id===zonaId);ordered=z?[...z.fraccs,...allFraccs().filter(f=>!z.fraccs.includes(f))]:allFraccs();}
+  else ordered=allFraccs();
+  const done=new Set();
+  S.zonas.forEach(zona=>{
+    const inZ=ordered.filter(f=>zona.fraccs.includes(f)&&!done.has(f));if(!inZ.length)return;
+    const gl=document.createElement('div');gl.className='fracc-zone-group';
+    const zl=document.createElement('div');zl.className='fracc-zone-label';zl.style.color=zona.color;zl.textContent=zona.nombre;gl.appendChild(zl);
+    inZ.forEach(f=>{
+      done.add(f);
+      const item=document.createElement('div');item.className='fracc-item'+(S.clientFraccs.includes(f)?' selected':'');
+      const cb=document.createElement('input');cb.type='checkbox';cb.checked=S.clientFraccs.includes(f);
+      const nm=document.createElement('span');nm.className='fi-name';nm.textContent=f;
+      const dt=document.createElement('span');dt.className='fi-dist';if(base&&f!==base){const d=distKm(base,f);if(d<50)dt.textContent=d.toFixed(1)+' km';}
+      const tog=()=>{if(cb.checked){if(!S.clientFraccs.includes(f))S.clientFraccs.push(f);}else S.clientFraccs=S.clientFraccs.filter(x=>x!==f);item.classList.toggle('selected',cb.checked);};
+      cb.onchange=tog;item.onclick=e=>{if(e.target===cb)return;cb.checked=!cb.checked;tog();};
+      item.appendChild(cb);item.appendChild(nm);item.appendChild(dt);gl.appendChild(item);
+    });
+    flc.appendChild(gl);
+  });
+}
 
-  // Filters
-  const fc=document.createElement('div');fc.className='card';fc.style.padding='10px 12px';
-  const fr=document.createElement('div');fr.style.cssText='display:flex;gap:8px;margin-bottom:6px;';
-  const se=document.createElement('select');se.style.cssText='flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;font-size:12px;background:#fff;-webkit-appearance:none;';
-  ['Todos',...ETAPAS].forEach(e=>{const o=document.createElement('option');o.value=e;o.textContent=e;if(S.filtroEtapa===e)o.selected=true;se.appendChild(o);});
-  se.onchange=e=>{S.filtroEtapa=e.target.value;renderClients();};
-  const sz=document.createElement('select');sz.style.cssText='flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;font-size:12px;background:#fff;-webkit-appearance:none;';
-  [{v:'Todas',t:'Todas'},...S.zonas.map(z=>({v:z.id,t:z.nombre.split('—')[0].trim()}))].forEach(({v,t})=>{const o=document.createElement('option');o.value=v;o.textContent=t;if(S.filtroZona===v)o.selected=true;sz.appendChild(o);});
-  sz.onchange=e=>{S.filtroZona=e.target.value;renderClients();};
-  fr.appendChild(se);fr.appendChild(sz);fc.appendChild(fr);
-  const lista=S.clients.filter(cl=>(S.filtroEtapa==='Todos'||cl.etapa===S.filtroEtapa)&&(S.filtroZona==='Todas'||cl.zona===S.filtroZona));
-  const cnt=document.createElement('div');cnt.style.cssText='font-size:12px;color:#888';cnt.textContent=lista.length+' cliente'+(lista.length!==1?'s':'');fc.appendChild(cnt);
-  c.appendChild(fc);
+function openClientForm(client){
+  S.editClientId=client?client.id:null;
+  S.clientFraccs=client?[...(client.fraccs||[])]:[];
+  document.getElementById('client-form-title').textContent=client?'Editar cliente':'Nuevo cliente';
+  document.getElementById('cf-nombre').value=client?.nombre||'';
+  document.getElementById('cf-tel').value=client?.whatsapp||'';
+  document.getElementById('cf-telus').value=client?.whatsappUS||'';
+  document.getElementById('cf-puntos').value=client?.puntos||'';
+  document.getElementById('cf-ppto').value=client?.presupuesto||'';
+  document.getElementById('cf-rec').value=client?.recamaras||'';
+  document.getElementById('cf-etapa').value=client?.etapa||'Nuevo';
+  document.getElementById('cf-notas').value=client?.notas||'';
+  populateClientFormDropdowns();
+  document.getElementById('cf-zona').value=client?.zona||'';
+  document.getElementById('cf-fracc-base').value=client?.fraccBase||'';
+  document.getElementById('cf-radio').value=client?.radioKm||'15';
+  updateFraccList();
+  document.getElementById('client-form-wrap').classList.add('visible');
+  document.getElementById('client-form-wrap').scrollIntoView({behavior:'smooth',block:'start'});
+}
 
-  // New client button
-  const nb=document.createElement('button');nb.className='btn btn-primary btn-full';nb.style.cssText='margin-bottom:12px;padding:14px;font-size:15px;';nb.textContent='+ Nuevo cliente';
-  nb.onclick=()=>{
-    S.showClientForm=true;
-    S.clientForm={...BLANK,fraccs:[]};
-    S.editClientId=null;
-    renderClients();
+function closeClientForm(){
+  document.getElementById('client-form-wrap').classList.remove('visible');
+  S.editClientId=null;S.clientFraccs=[];
+}
+
+async function saveClient(){
+  const nombre=document.getElementById('cf-nombre').value.trim();
+  const tel=document.getElementById('cf-tel').value.trim();
+  if(!nombre||!tel){alert('Nombre y WhatsApp son obligatorios');return;}
+  const data={
+    nombre,whatsapp:tel,
+    whatsappUS:document.getElementById('cf-telus').value.trim(),
+    puntos:document.getElementById('cf-puntos').value,
+    presupuesto:document.getElementById('cf-ppto').value,
+    zona:document.getElementById('cf-zona').value,
+    fraccBase:document.getElementById('cf-fracc-base').value,
+    radioKm:document.getElementById('cf-radio').value,
+    recamaras:document.getElementById('cf-rec').value,
+    etapa:document.getElementById('cf-etapa').value,
+    notas:document.getElementById('cf-notas').value.trim(),
+    fraccs:[...S.clientFraccs],
   };
-  c.appendChild(nb);
+  try{
+    if(S.editClientId){await api('PUT','/api/clientes/'+S.editClientId,{...data,id:S.editClientId});}
+    else{await api('POST','/api/clientes',data);}
+    closeClientForm();
+    await loadAll();
+  }catch(e){alert('Error al guardar. Verifica tu conexión.');}
+}
 
-  // Form (shown inline when active)
-  if(S.showClientForm){
-    c.appendChild(buildClientForm());
-  }
+function filterClients(){renderClientsList();}
 
-  if(!lista.length&&!S.showClientForm){
-    c.innerHTML+='<div class="empty"><div class="empty-icon">👤</div><div>Sin clientes aún</div></div>';
-    return;
-  }
-
+function renderClientsList(){
+  const filtEtapa=document.getElementById('fil-etapa')?.value||'Todos';
+  const filtZona=document.getElementById('fil-zona')?.value||'';
+  const lista=S.clients.filter(cl=>(filtEtapa==='Todos'||cl.etapa===filtEtapa)&&(!filtZona||cl.zona===filtZona));
+  const cnt=document.getElementById('clients-count');if(cnt)cnt.textContent=lista.length+' cliente'+(lista.length!==1?'s':'');
+  const c=document.getElementById('clients-list');if(!c)return;c.innerHTML='';
+  if(!lista.length){c.innerHTML='<div class="empty"><div class="empty-icon">👤</div><div>Sin clientes'+(filtEtapa!=='Todos'||filtZona?' con ese filtro':' aún')+'</div></div>';return;}
+  const ETAPA_S={'Nuevo':{bg:'#E3F2FD',c:'#1565A8'},'Contactado':{bg:'#E8F5E9',c:'#2E7D32'},'Visita hoy':{bg:'#1F4E79',c:'#fff'},'Negociando':{bg:'#FFF8E1',c:'#B45309'},'Documentos':{bg:'#F3E5F5',c:'#6A1B9A'},'Esperando':{bg:'#FFF3E0',c:'#E65100'},'Ganado':{bg:'#2E7D32',c:'#fff'},'Perdido':{bg:'#B71C1C',c:'#fff'}};
   lista.forEach(cl=>{
     const zona=S.zonas.find(z=>z.id===cl.zona);const est=ETAPA_S[cl.etapa]||{bg:'#eee',c:'#333'};
     const cc=document.createElement('div');cc.className='card';
     cc.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><div><div style="font-weight:800;font-size:15px;color:#1F4E79">'+cl.nombre+'</div><div style="font-size:13px;color:#555">'+cl.whatsapp+(cl.whatsappUS?' · '+cl.whatsappUS:'')+'</div></div><span class="tag" style="background:'+est.bg+';color:'+est.c+';font-weight:700;flex-shrink:0">'+cl.etapa+'</span></div>';
     if(zona){const zt=document.createElement('span');zt.className='tag';zt.style.cssText='background:'+zona.color+'22;color:'+zona.color+';';zt.textContent=zona.nombre;cc.appendChild(zt);}
-    if(cl.fraccs&&cl.fraccs.length){const d=document.createElement('div');d.style.cssText='font-size:12px;color:#666;margin-top:5px;';d.textContent='📍 '+cl.fraccs.join(', ');cc.appendChild(d);}
+    if(cl.fraccs?.length){const d=document.createElement('div');d.style.cssText='font-size:12px;color:#666;margin-top:5px;';d.textContent='📍 '+cl.fraccs.join(', ');cc.appendChild(d);}
     const meta=document.createElement('div');meta.style.cssText='display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;';
     if(cl.presupuesto)meta.innerHTML+='<span style="font-size:12px;color:#888">💰 $'+Number(cl.presupuesto).toLocaleString('es-MX')+'</span>';
     if(cl.puntos)meta.innerHTML+='<span style="font-size:12px;color:#888">· '+cl.puntos+' pts</span>';
     if(cl.recamaras)meta.innerHTML+='<span style="font-size:12px;color:#888">· '+cl.recamaras+' rec.</span>';
     cc.appendChild(meta);
-    if(cl.notas){const d=document.createElement('div');d.style.cssText='font-size:12px;color:#888;font-style:italic;margin-top:4px;';d.textContent='"'+cl.notas+'"';cc.appendChild(d);}
-    const ar=document.createElement('div');ar.style.cssText='display:flex;gap:8px;margin-top:10px;';
-    const wa=document.createElement('a');wa.href='https://wa.me/52'+(cl.whatsapp||'').replace(/\D/g,'');wa.className='btn btn-green';wa.style.cssText='flex:1;padding:9px 0;font-size:13px;';wa.textContent='WhatsApp';ar.appendChild(wa);
-    const eb=document.createElement('button');eb.className='btn btn-light';eb.style.cssText='padding:9px 14px;font-size:13px;';eb.textContent='Editar';
-    eb.onclick=()=>{S.showClientForm=true;S.clientForm={...cl,fraccs:[...(cl.fraccs||[])]};S.editClientId=cl.id;renderClients();};ar.appendChild(eb);
-    const db=document.createElement('button');db.className='btn btn-danger';db.style.cssText='padding:9px 12px;font-size:13px;';db.textContent='✕';
-    db.onclick=async()=>{if(confirm('¿Eliminar cliente?')){await api('DELETE','/api/clientes/'+cl.id);await loadAll();}};ar.appendChild(db);
-    cc.appendChild(ar);c.appendChild(cc);
-  });
-}
-
-function buildClientForm(){
-  const form=document.createElement('div');form.className='card';form.style.cssText='border:2px solid #2E75B6;margin-bottom:12px;';
-  form.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">'+(S.editClientId?'Editar cliente':'Nuevo cliente')+'</div>';
-
-  function fld(k,lbl,type,ph){
-    const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+lbl+'</label>';
-    const i=document.createElement('input');i.type=type||'text';i.placeholder=ph||'';i.value=S.clientForm[k]||'';
-    i.oninput=e=>{S.clientForm[k]=e.target.value;};
-    d.appendChild(i);return d;
-  }
-  function sfld(k,lbl,opts){
-    const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+lbl+'</label>';
-    const s=document.createElement('select');s.style.webkitAppearance='none';
-    opts.forEach(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;if(String(S.clientForm[k])===String(v))o.selected=true;s.appendChild(o);});
-    s.onchange=e=>{S.clientForm[k]=e.target.value;if(k==='zona'||k==='fraccBase'||k==='radioKm')updateFL();};
-    d.appendChild(s);return d;
-  }
-
-  form.appendChild(fld('nombre','Nombre *','text','Nombre completo'));
-
-  const tmx=document.createElement('div');tmx.className='field';tmx.innerHTML='<label>WhatsApp * (MX)</label>';
-  const imx=document.createElement('input');imx.type='tel';imx.placeholder='656-123-4567';imx.value=S.clientForm.whatsapp||'';
-  imx.addEventListener('input',e=>{const f=fmtMX(e.target.value);e.target.value=f;S.clientForm.whatsapp=f;});tmx.appendChild(imx);form.appendChild(tmx);
-
-  const tus=document.createElement('div');tus.className='field';tus.innerHTML='<label>Tel. EUA (opcional)</label>';
-  const ius=document.createElement('input');ius.type='tel';ius.placeholder='(915) 123-4567';ius.value=S.clientForm.whatsappUS||'';
-  ius.addEventListener('input',e=>{const f=fmtUS(e.target.value);e.target.value=f;S.clientForm.whatsappUS=f;});tus.appendChild(ius);form.appendChild(tus);
-
-  form.appendChild(fld('puntos','Puntos Infonavit','number','ej. 1050'));
-  form.appendChild(fld('presupuesto','Presupuesto máx ($)','number','ej. 480000'));
-  form.appendChild(sfld('zona','Zona de interés',[['','Seleccionar zona'],...S.zonas.map(z=>[z.id,z.nombre]),['flex','Flexible – cualquier zona']]));
-
-  const fbd=document.createElement('div');fbd.className='field';fbd.innerHTML='<label>Fraccionamiento preferido</label>';
-  const fbs=document.createElement('select');fbs.style.webkitAppearance='none';
-  fbs.innerHTML='<option value="">-- Seleccionar --</option>';
-  allFraccs().forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;if(S.clientForm.fraccBase===f)o.selected=true;fbs.appendChild(o);});
-  fbs.onchange=e=>{S.clientForm.fraccBase=e.target.value;updateFL();};fbd.appendChild(fbs);form.appendChild(fbd);
-
-  form.appendChild(sfld('radioKm','Radio máximo',[['5','5 km'],['10','10 km'],['15','15 km'],['20','20 km'],['30','30 km o más']]));
-  form.appendChild(sfld('recamaras','Recámaras',[['','Indiferente'],['2','2'],['3','3'],['4','4']]));
-  form.appendChild(sfld('etapa','Etapa',ETAPAS.map(e=>[e,e])));
-
-  const fld2=document.createElement('div');fld2.className='field';
-  fld2.innerHTML='<label>Fraccionamientos de interés <span style="font-weight:400;color:#888;font-size:11px">(toca para seleccionar)</span></label>';
-  const flc=document.createElement('div');fld2.appendChild(flc);form.appendChild(fld2);
-
-  function updateFL(){
-    flc.innerHTML='';
-    const base=S.clientForm.fraccBase;const radio=Number(S.clientForm.radioKm)||15;
-    let ordered=[];
-    if(base){ordered=[base,...fraccsSorted(base).filter(f=>distKm(base,f)<=radio)];}
-    else if(S.clientForm.zona&&S.clientForm.zona!=='flex'){const z=S.zonas.find(x=>x.id===S.clientForm.zona);ordered=z?[...z.fraccs,...allFraccs().filter(f=>!z.fraccs.includes(f))]:allFraccs();}
-    else ordered=allFraccs();
-    const done=new Set();
-    S.zonas.forEach(zona=>{
-      const inZ=ordered.filter(f=>zona.fraccs.includes(f)&&!done.has(f));if(!inZ.length)return;
-      const gl=document.createElement('div');gl.className='fracc-zone-group';
-      const zl=document.createElement('div');zl.className='fracc-zone-label';zl.style.color=zona.color;zl.textContent=zona.nombre;gl.appendChild(zl);
-      inZ.forEach(f=>{
-        done.add(f);
-        const item=document.createElement('div');item.className='fracc-item'+(S.clientForm.fraccs.includes(f)?' selected':'');
-        const cb=document.createElement('input');cb.type='checkbox';cb.checked=S.clientForm.fraccs.includes(f);
-        const nm=document.createElement('span');nm.className='fi-name';nm.textContent=f;
-        const dt=document.createElement('span');dt.className='fi-dist';if(base&&f!==base){const d=distKm(base,f);if(d<50)dt.textContent=d.toFixed(1)+' km';}
-        const tog=()=>{if(cb.checked){if(!S.clientForm.fraccs.includes(f))S.clientForm.fraccs.push(f);}else S.clientForm.fraccs=S.clientForm.fraccs.filter(x=>x!==f);item.classList.toggle('selected',cb.checked);};
-        cb.onchange=tog;item.onclick=e=>{if(e.target===cb)return;cb.checked=!cb.checked;tog();};
-        item.appendChild(cb);item.appendChild(nm);item.appendChild(dt);gl.appendChild(item);
-      });
-      flc.appendChild(gl);
-    });
-  }
-  updateFL();
-
-  const nd=document.createElement('div');nd.className='field';nd.innerHTML='<label>Notas</label>';
-  const ta=document.createElement('textarea');ta.rows=2;ta.placeholder='Observaciones…';ta.value=S.clientForm.notas||'';ta.oninput=e=>{S.clientForm.notas=e.target.value;};nd.appendChild(ta);form.appendChild(nd);
-
-  const br=document.createElement('div');br.style.cssText='display:flex;gap:8px;margin-top:4px;';
-  const sb=document.createElement('button');sb.className='btn btn-primary';sb.style.cssText='flex:1;padding:13px;';sb.textContent=S.editClientId?'Guardar':'Agregar';
-  sb.onclick=async()=>{
-    if(!S.clientForm.nombre||!S.clientForm.whatsapp){alert('Nombre y WhatsApp son obligatorios');return;}
-    try{
-      if(S.editClientId)await api('PUT','/api/clientes/'+S.editClientId,{...S.clientForm,id:S.editClientId});
-      else await api('POST','/api/clientes',S.clientForm);
-      S.showClientForm=false;S.editClientId=null;S.clientForm={...BLANK,fraccs:[]};
-      await loadAll();
-    }catch(e){alert('Error al guardar. Intenta de nuevo.');}
-  };
-  const cb2=document.createElement('button');cb2.className='btn btn-light';cb2.style.padding='13px 16px';cb2.textContent='Cancelar';
-  cb2.onclick=()=>{S.showClientForm=false;S.editClientId=null;renderClients();};
-  br.appendChild(sb);br.appendChild(cb2);form.appendChild(br);
-  return form;
-}
-
-// ── ZONAS ─────────────────────────────────────────────────────────────────────
-function renderZonas(){
-  const c=document.getElementById('t3');c.innerHTML='';
-  const hd=document.createElement('div');hd.className='card';
-  hd.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🗺️ Zonas y fraccionamientos</div><div style="font-size:12px;color:#888;margin-bottom:12px">Edita a tu gusto. Solo afecta tu dispositivo.</div>';
-  const ab=document.createElement('button');ab.className='btn btn-primary btn-full';ab.style.padding='12px';ab.textContent='+ Agregar zona';
-  ab.onclick=()=>{const n=prompt('Nombre de la nueva zona:');if(!n)return;S.zonas.push({id:'z'+Date.now(),nombre:n,color:'#555',desc:'',fraccs:[]});lsSet('zonas',S.zonas);renderZonas();};
-  hd.appendChild(ab);c.appendChild(hd);
-
-  S.zonas.forEach((zona,zi)=>{
-    const zc=document.createElement('div');zc.className='zone-cfg-card';zc.style.borderColor=zona.color+'55';
-    const zh=document.createElement('div');zh.className='zone-cfg-header';
-    const dot=document.createElement('div');dot.className='zone-dot';dot.style.background=zona.color;
-    const nm=document.createElement('input');nm.style.cssText='flex:1;font-weight:700;font-size:14px;border:none;background:transparent;outline:none;padding:0;';nm.value=zona.nombre;
-    nm.addEventListener('blur',()=>{S.zonas[zi].nombre=nm.value.trim();lsSet('zonas',S.zonas);});
-    const del=document.createElement('button');del.className='btn btn-danger';del.style.cssText='padding:5px 10px;font-size:12px;';del.textContent='✕';
-    del.onclick=()=>{if(!confirm('¿Eliminar zona?'))return;S.zonas.splice(zi,1);lsSet('zonas',S.zonas);renderZonas();};
-    zh.appendChild(dot);zh.appendChild(nm);zh.appendChild(del);zc.appendChild(zh);
-    const dt=document.createElement('textarea');dt.style.cssText='width:100%;padding:8px;border-radius:8px;border:1px solid #eee;font-size:12px;color:#666;margin-bottom:8px;';dt.rows=2;dt.value=zona.desc||'';dt.placeholder='Descripción…';
-    dt.addEventListener('blur',()=>{S.zonas[zi].desc=dt.value;lsSet('zonas',S.zonas);});zc.appendChild(dt);
-    const ft=document.createElement('div');ft.className='zone-fraccs';
-    zona.fraccs.forEach((f,fi)=>{
-      const tag=document.createElement('div');tag.className='fracc-tag';tag.innerHTML=f;
-      const rm=document.createElement('span');rm.className='rm';rm.textContent='×';
-      rm.onclick=()=>{S.zonas[zi].fraccs.splice(fi,1);lsSet('zonas',S.zonas);renderZonas();};tag.appendChild(rm);ft.appendChild(tag);
-    });
-    const addF=document.createElement('button');addF.className='btn btn-light';addF.style.cssText='padding:4px 10px;font-size:12px;border-radius:20px;';addF.textContent='+ Fracc';
-    addF.onclick=()=>{
-      const body=document.createElement('div');
-      const available=allFraccs().filter(f=>!zona.fraccs.includes(f));
-      const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;margin-bottom:8px;';
-      sel.innerHTML='<option value="">-- Existente --</option>';available.forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;sel.appendChild(o);});
-      const ni=document.createElement('input');ni.type='text';ni.placeholder='O escribe uno nuevo…';ni.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;';
-      body.appendChild(sel);body.appendChild(ni);
-      showModal('Agregar a '+zona.nombre,'',[
-        {label:'Agregar',cls:'btn-primary',onClick:()=>{const val=(ni.value.trim()||sel.value).trim();if(!val)return;if(!S.zonas[zi].fraccs.includes(val)){S.zonas[zi].fraccs.push(val);lsSet('zonas',S.zonas);renderZonas();}}},
-        {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
-      ],body);
-    };
-    ft.appendChild(addF);zc.appendChild(ft);
-    const rst=document.createElement('button');rst.className='btn btn-light';rst.style.cssText='padding:6px 12px;font-size:12px;margin-top:8px;';rst.textContent='↺ Restablecer';
-    rst.onclick=()=>{const d=DEFAULT_ZONAS[zi];if(d){S.zonas[zi]={...d,fraccs:[...d.fraccs]};lsSet('zonas',S.zonas);renderZonas();}};zc.appendChild(rst);
-    c.appendChild(zc);
-  });
-
-  const ra=document.createElement('button');ra.className='btn btn-light btn-full';ra.style.cssText='margin-top:4px;padding:12px;';ra.textContent='↺ Restablecer todas las zonas';
-  ra.onclick=()=>{if(!confirm('¿Restablecer todo?'))return;S.zonas=DEFAULT_ZONAS.map(z=>({...z,fraccs:[...z.fraccs]}));lsSet('zonas',S.zonas);renderZonas();};c.appendChild(ra);
-}
-
-// ── CONFIG ────────────────────────────────────────────────────────────────────
-function renderConfig(){
-  const c=document.getElementById('t4');c.innerHTML='';
-  const cc=document.createElement('div');cc.className='card';
-  cc.innerHTML='<div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">⚙️ Mis datos</div>';
-  function cfld(k,lbl,ph,fmt){
-    const d=document.createElement('div');d.className='field';d.innerHTML='<label>'+lbl+'</label>';
-    const i=document.createElement('input');i.type='text';i.placeholder=ph;i.value=S.cfg[k]||'';
-    i.addEventListener('input',e=>{let v=e.target.value;if(fmt){v=fmt(v);e.target.value=v;}S.cfg[k]=v;});
-    d.appendChild(i);return d;
-  }
-  cc.appendChild(cfld('nombre','Tu nombre','Mi nombre'));
-  cc.appendChild(cfld('tel','Teléfono (texto FB)','656-XXX-XXXX',fmtMX));
-  cc.appendChild(cfld('wa','WhatsApp link (wa.me/...)','5265612345678'));
-  const sb=document.createElement('button');sb.className='btn btn-primary btn-full';sb.style.padding='13px';sb.textContent='Guardar';
-  sb.onclick=async()=>{lsSet('cfg',S.cfg);await api('POST','/api/config',S.cfg);sb.textContent='✓ Guardado';sb.style.background='#2E7D32';setTimeout(()=>{sb.textContent='Guardar';sb.style.background='#1F4E79';},2000);};
-  cc.appendChild(sb);c.appendChild(cc);
-  const tips=document.createElement('div');tips.className='tip-card';
-  tips.innerHTML='<div class="tip-title">💡 Cómo usar</div>'+['PDF desde Archivos: toca el área azul · Desde WhatsApp: sigue los pasos del botón verde','Las fichas se agrupan por zona automáticamente al subir el PDF','📸 Generar imagen = ficha + mapa juntos para subir a Facebook','Mantén "Vendí yo" 2 seg → selecciona cliente → se registra y elimina del CRM','Arrastra el ≡ para reordenar fichas manualmente'].map(t=>'<div class="tip-item">· '+t+'</div>').join('');
-  c.appendChild(tips);
-}
-
-loadAll();
-</script>
-</body>
-</html>
+    if(cl.notas){const d=document.createElement('div');d.style.cssText='font-size:12px;color
