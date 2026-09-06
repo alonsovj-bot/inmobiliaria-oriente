@@ -4,152 +4,130 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <title>Oriente Juárez</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#EEF2F7;min-height:100vh;}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#EEF2F7;min-height:100vh;}
 a{text-decoration:none;color:inherit;}
 input,select,textarea,button{font-family:inherit;font-size:14px;}
-textarea{resize:vertical;}
-#header{background:#1F4E79;padding:12px 16px 0;position:sticky;top:0;z-index:100;}
+#header{background:#1F4E79;padding:12px 14px 0;position:sticky;top:0;z-index:100;}
 #header h1{color:#fff;font-size:16px;font-weight:800;margin-bottom:1px;}
 #header p{color:#9DC3E6;font-size:10px;margin-bottom:8px;}
 #tabs{display:flex;gap:2px;}
-.tab-btn{flex:1;padding:9px 2px;border:none;background:transparent;color:rgba(255,255,255,.65);font-weight:500;font-size:12px;cursor:pointer;border-radius:8px 8px 0 0;position:relative;white-space:nowrap;}
-.tab-btn.active{background:#fff;color:#1F4E79;font-weight:800;}
-.tab-badge{position:absolute;top:3px;right:4px;background:#F4B942;color:#7B3F00;border-radius:10px;padding:1px 4px;font-size:9px;font-weight:800;}
+.tb{flex:1;padding:9px 2px;border:none;background:transparent;color:rgba(255,255,255,.6);font-weight:500;font-size:11px;cursor:pointer;border-radius:8px 8px 0 0;position:relative;white-space:nowrap;}
+.tb.active{background:#fff;color:#1F4E79;font-weight:800;}
+.tbadge{position:absolute;top:3px;right:3px;background:#F4B942;color:#7B3F00;border-radius:10px;padding:1px 4px;font-size:9px;font-weight:800;display:none;}
 #content{padding:12px 12px 80px;}
-.card{background:#fff;border-radius:16px;padding:16px;box-shadow:0 1px 8px rgba(0,0,0,.09);margin-bottom:12px;}
-.btn{border:none;border-radius:10px;padding:11px 16px;font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;-webkit-appearance:none;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.card{background:#fff;border-radius:14px;padding:14px;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:10px;}
+.btn{border:none;border-radius:10px;padding:11px 14px;font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;-webkit-appearance:none;text-align:center;}
 .btn:active{opacity:.75;}
-.btn-primary{background:#1F4E79;color:#fff;}
-.btn-green{background:#25D366;color:#fff;}
-.btn-light{background:#F0F4F8;color:#1F4E79;}
-.btn-danger{background:#FEECEC;color:#B71C1C;}
-.btn-gold{background:#F4B942;color:#7B3F00;}
-.btn-purple{background:#7B2FBE;color:#fff;}
-.btn-full{width:100%;}
-.btn-copy{background:#1F4E79;color:#fff;width:100%;}
-.btn-copy.copied{background:#2E7D32;}
-.tag{border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;display:inline-block;}
-.field{margin-bottom:12px;}
-.field label{font-size:12px;color:#666;font-weight:600;display:block;margin-bottom:4px;}
-.field input,.field select,.field textarea{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid #E0E0E0;font-size:14px;background:#fff;color:#222;outline:none;-webkit-appearance:none;}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:#2E75B6;}
-
-/* Upload areas */
-.upload-label{display:block;border:2px dashed #2E75B6;border-radius:14px;padding:18px 16px;text-align:center;background:#F0F7FF;cursor:pointer;-webkit-user-select:none;user-select:none;margin-bottom:8px;}
-.upload-label:active{background:#E0EFFF;}
-.upload-label.processing{border-color:#B45309;background:#FEF3E2;}
-.upload-label.done{border-color:#2E7D32;background:#EDF7EE;}
-.ul-icon{font-size:26px;display:block;margin-bottom:4px;}
+.bp{background:#1F4E79;color:#fff;}
+.bg{background:#25D366;color:#fff;}
+.bl{background:#F0F4F8;color:#1F4E79;}
+.bd{background:#FEECEC;color:#B71C1C;}
+.bgo{background:#F4B942;color:#7B3F00;}
+.bpu{background:#7B2FBE;color:#fff;}
+.bw{width:100%;}
+.bcp{background:#1F4E79;color:#fff;width:100%;}
+.bcp.ok{background:#2E7D32;}
+.tag{border-radius:6px;padding:2px 7px;font-size:11px;font-weight:700;display:inline-block;}
+.fld{margin-bottom:11px;}
+.fld label{font-size:12px;color:#555;font-weight:600;display:block;margin-bottom:3px;}
+.fld input,.fld select,.fld textarea{width:100%;padding:10px 11px;border-radius:9px;border:1.5px solid #DDD;font-size:14px;background:#fff;color:#222;outline:none;-webkit-appearance:none;}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:#2E75B6;}
+.ulbl{display:block;border:2px dashed #2E75B6;border-radius:12px;padding:16px;text-align:center;background:#F0F7FF;cursor:pointer;margin-bottom:8px;}
+.ulbl:active{background:#E0EFFF;}
+.ulbl.proc{border-color:#B45309;background:#FEF3E2;}
+.ulbl.done{border-color:#2E7D32;background:#EDF7EE;}
+.ul-icon{font-size:24px;display:block;margin-bottom:3px;}
 .ul-title{font-weight:700;font-size:14px;color:#2E75B6;display:block;}
-.upload-label.processing .ul-title{color:#B45309;}
-.upload-label.done .ul-title{color:#2E7D32;}
+.ulbl.proc .ul-title{color:#B45309;}
+.ulbl.done .ul-title{color:#2E7D32;}
 .ul-sub{font-size:11px;color:#888;margin-top:2px;display:block;}
-.wa-steps{background:#E8F5E9;border:1px solid #4CAF50;border-radius:12px;padding:12px 14px;margin-top:4px;}
-.wa-step{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:13px;color:#1B5E20;}
+.wa-box{background:#E8F5E9;border:1px solid #4CAF50;border-radius:10px;padding:10px 12px;margin-top:4px;}
+.wa-step{display:flex;align-items:flex-start;gap:7px;margin-bottom:7px;font-size:12px;color:#1B5E20;}
 .wa-step:last-child{margin-bottom:0;}
-.wa-step-num{background:#2E7D32;color:#fff;border-radius:50%;min-width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-top:1px;}
-.stats{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
-.stat{border-radius:8px;padding:6px 10px;text-align:center;min-width:56px;}
-.stat-num{font-weight:800;font-size:18px;}
-.stat-lbl{font-size:10px;font-weight:600;}
-
-/* Zone groups */
-.zone-group{margin-bottom:6px;}
-.zone-group-header{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;margin-bottom:6px;cursor:pointer;-webkit-user-select:none;}
-.zone-group-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.zone-group-name{font-weight:800;font-size:13px;flex:1;}
-.zone-group-count{font-size:11px;font-weight:600;opacity:.7;}
-.zone-group-arrow{font-size:12px;opacity:.5;}
-
-/* Prop cards */
-.prop-card{border-radius:14px;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:8px;border:2px solid #eee;}
-.prop-card.st-nueva{border-color:#1565A8;}
-.prop-card.st-precio{border-color:#B45309;}
-.prop-card.st-vendida{border-color:#B71C1C;}
-.prop-header{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;cursor:pointer;-webkit-user-select:none;user-select:none;}
-.drag-handle{display:flex;flex-direction:column;gap:4px;padding:6px 4px;opacity:.3;flex-shrink:0;cursor:grab;touch-action:none;}
-.drag-handle span{display:block;width:16px;height:2px;background:#666;border-radius:2px;}
-.prop-info{flex:1;min-width:0;}
-.prop-title{font-weight:700;font-size:14px;color:#1F4E79;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px;}
-.prop-sub{font-size:12px;color:#555;margin-top:2px;}
-.prop-arrow{color:#ccc;font-size:14px;flex-shrink:0;align-self:center;}
-.prop-detail{padding:0 14px 14px;}
-.prop-render{width:100%;border-radius:10px;max-height:200px;object-fit:cover;margin-bottom:10px;display:block;background:#F0F4F8;}
-.prop-mapa{width:100%;border-radius:10px;max-height:160px;object-fit:cover;margin-bottom:10px;display:block;}
-.fb-box{background:#F8F9FA;border-radius:10px;padding:12px;margin-bottom:10px;}
-.fb-lbl{font-size:11px;color:#888;font-weight:700;margin-bottom:6px;letter-spacing:1px;}
-.fb-box pre{font-size:12px;line-height:1.6;color:#333;white-space:pre-wrap;font-family:inherit;}
-.prop-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
-.prop-card.dragging{opacity:.4;}
-.prop-card.drag-over{border-color:#F4B942!important;box-shadow:0 0 0 3px #F4B94255;}
-.alert-box{background:#FFF8E1;border:1px solid #F4B942;border-radius:10px;padding:10px 12px;margin-bottom:10px;}
-.alert-title{font-weight:700;font-size:13px;color:#B45309;margin-bottom:6px;}
-.alert-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-top:1px solid #F4DCA0;}
-.new-fracc-banner{background:#E8F5E9;border:1px solid #4CAF50;border-radius:10px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
-.nf-text{flex:1;font-size:13px;color:#2E7D32;font-weight:600;}
-
-/* Renders tab */
-.render-model-card{border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:12px;}
-.render-model-img{width:100%;height:180px;object-fit:cover;display:block;background:#EEF2F7;}
-.render-model-empty{display:flex;align-items:center;justify-content:center;height:180px;background:#F8F9FA;flex-direction:column;gap:8px;color:#bbb;}
-.render-model-footer{padding:12px 14px;}
-.render-model-name{font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px;}
-.render-model-desc{font-size:12px;color:#888;margin-bottom:10px;}
-.render-model-actions{display:flex;gap:8px;}
-
-/* Mapas tab */
-.mapa-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:10px;}
-.mapa-card-img{width:100%;height:140px;object-fit:cover;display:block;background:#EEF2F7;}
-.mapa-card-footer{padding:10px 14px;display:flex;align-items:center;gap:8px;}
-.mapa-card-name{flex:1;font-weight:700;font-size:14px;color:#1F4E79;}
-.mapa-card-zone{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;}
-.mapa-empty-card{display:flex;align-items:center;justify-content:center;height:140px;color:#bbb;font-size:13px;background:#F8F9FA;flex-direction:column;gap:6px;}
-
-/* Hold */
+.wa-num{background:#2E7D32;color:#fff;border-radius:50%;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;margin-top:1px;}
+.stats{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.stat{border-radius:8px;padding:5px 9px;text-align:center;min-width:54px;}
+.stat-n{font-weight:800;font-size:18px;}
+.stat-l{font-size:10px;font-weight:600;}
+.zgrp{margin-bottom:6px;}
+.zgrp-hdr{display:flex;align-items:center;gap:7px;padding:7px 11px;border-radius:9px;margin-bottom:5px;cursor:pointer;-webkit-user-select:none;}
+.zgrp-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.zgrp-name{font-weight:800;font-size:12px;flex:1;}
+.zgrp-cnt{font-size:11px;font-weight:600;opacity:.7;}
+.pc{border-radius:12px;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.07);margin-bottom:7px;border:2px solid #eee;}
+.pc.sn{border-color:#1565A8;}
+.pc.sp{border-color:#B45309;}
+.pc.sv{border-color:#B71C1C;}
+.phdr{display:flex;gap:9px;align-items:flex-start;padding:11px 12px;cursor:pointer;-webkit-user-select:none;}
+.dh{display:flex;flex-direction:column;gap:4px;padding:5px 3px;opacity:.28;flex-shrink:0;cursor:grab;touch-action:none;}
+.dh span{display:block;width:15px;height:2px;background:#666;border-radius:2px;}
+.pi{flex:1;min-width:0;}
+.pt{font-weight:700;font-size:13px;color:#1F4E79;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px;}
+.ps{font-size:11px;color:#555;margin-top:2px;}
+.pa{color:#ccc;font-size:13px;flex-shrink:0;align-self:center;}
+.pdet{padding:0 12px 12px;}
+.pmapa{width:100%;border-radius:9px;max-height:160px;object-fit:cover;margin-bottom:9px;display:block;}
+.prender{width:100%;border-radius:9px;max-height:180px;object-fit:cover;margin-bottom:9px;display:block;}
+.fbbox{background:#F8F9FA;border-radius:9px;padding:11px;margin-bottom:9px;}
+.fblbl{font-size:11px;color:#888;font-weight:700;margin-bottom:5px;letter-spacing:1px;}
+.fbbox pre{font-size:11px;line-height:1.55;color:#333;white-space:pre-wrap;font-family:inherit;}
+.pacts{display:flex;gap:7px;margin-top:8px;flex-wrap:wrap;}
+.pc.drag{opacity:.4;}
+.pc.dov{border-color:#F4B942!important;box-shadow:0 0 0 2px #F4B94255;}
+.abox{background:#FFF8E1;border:1px solid #F4B942;border-radius:9px;padding:9px 11px;margin-bottom:9px;}
+.atitle{font-weight:700;font-size:12px;color:#B45309;margin-bottom:5px;}
+.arow{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-top:1px solid #F4DCA0;}
+.nfb{background:#E8F5E9;border:1px solid #4CAF50;border-radius:9px;padding:9px 11px;margin-bottom:7px;display:flex;align-items:center;gap:7px;}
+.nft{flex:1;font-size:12px;color:#2E7D32;font-weight:600;}
 .hold-wrap{position:relative;display:inline-flex;}
 .hold-svg{position:absolute;top:-4px;left:-4px;pointer-events:none;transform:rotate(-90deg);}
-
-/* Modal */
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;display:flex;align-items:flex-end;}
-.modal{background:#fff;border-radius:20px 20px 0 0;padding:24px 20px 48px;width:100%;max-height:88vh;overflow-y:auto;}
-.modal-title{font-size:17px;font-weight:800;color:#1F4E79;margin-bottom:4px;}
-.modal-sub{font-size:13px;color:#888;margin-bottom:14px;}
-.modal-section{font-size:11px;font-weight:800;color:#999;margin:12px 0 6px;letter-spacing:.5px;}
-.modal-btns{display:flex;flex-direction:column;gap:10px;margin-top:14px;}
-.client-radio-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #f0f0f0;}
-.client-radio-row:first-child{border-top:none;}
-.client-radio-row input[type=radio]{width:20px;height:20px;accent-color:#1F4E79;flex-shrink:0;}
-
-/* Client form — siempre en DOM, show/hide con CSS */
-#client-form-wrap{display:none;background:#fff;border-radius:16px;padding:16px;box-shadow:0 1px 8px rgba(0,0,0,.09);margin-bottom:12px;border:2px solid #2E75B6;}
-#client-form-wrap.visible{display:block;}
-
-/* Fracc checklist */
-.fracc-zone-group{margin-bottom:10px;}
-.fracc-zone-label{font-size:11px;font-weight:800;letter-spacing:.5px;margin-bottom:5px;}
-.fracc-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;background:#F8F9FA;margin-bottom:3px;cursor:pointer;}
-.fracc-item input[type=checkbox]{width:18px;height:18px;accent-color:#1F4E79;flex-shrink:0;pointer-events:none;}
-.fracc-item .fi-name{font-size:13px;color:#333;flex:1;}
-.fracc-item .fi-dist{font-size:11px;color:#888;}
-.fracc-item.selected{background:#EBF3FB;}
-
-/* Zones config */
-.zone-cfg-card{border-radius:12px;padding:12px 14px;margin-bottom:10px;border:1.5px solid #eee;}
-.zone-cfg-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-.zone-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
-.zone-fraccs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
-.fracc-tag{background:#F0F4F8;border-radius:20px;padding:4px 10px;font-size:12px;color:#333;display:flex;align-items:center;gap:4px;}
-.fracc-tag .rm{color:#B71C1C;font-size:16px;cursor:pointer;line-height:1;}
-.tip-card{background:#FEF3E2;border:1px solid #F4B942;border-radius:14px;padding:14px;}
-.tip-title{font-weight:700;font-size:13px;color:#B45309;margin-bottom:8px;}
-.tip-item{font-size:13px;color:#7B5800;margin-bottom:5px;}
-.empty{text-align:center;padding:40px 16px;color:#bbb;}
-.empty-icon{font-size:44px;margin-bottom:8px;}
-.hidden{display:none!important;}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:flex-end;}
+.modal{background:#fff;border-radius:18px 18px 0 0;padding:22px 18px 46px;width:100%;max-height:88vh;overflow-y:auto;}
+.modal-title{font-size:16px;font-weight:800;color:#1F4E79;margin-bottom:3px;}
+.modal-sub{font-size:13px;color:#888;margin-bottom:13px;}
+.modal-sec{font-size:10px;font-weight:800;color:#999;margin:11px 0 5px;letter-spacing:.5px;}
+.modal-btns{display:flex;flex-direction:column;gap:9px;margin-top:13px;}
+.crrw{display:flex;align-items:center;gap:11px;padding:9px 0;border-top:1px solid #f0f0f0;}
+.crrw:first-child{border-top:none;}
+.crrw input[type=radio]{width:19px;height:19px;accent-color:#1F4E79;flex-shrink:0;}
+.fzg{margin-bottom:9px;}
+.fzl{font-size:10px;font-weight:800;letter-spacing:.5px;margin-bottom:4px;}
+.fi{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:7px;background:#F8F9FA;margin-bottom:3px;cursor:pointer;}
+.fi input[type=checkbox]{width:17px;height:17px;accent-color:#1F4E79;flex-shrink:0;pointer-events:none;}
+.fi .fin{font-size:13px;color:#333;flex:1;}
+.fi .fid{font-size:10px;color:#888;}
+.fi.sel{background:#EBF3FB;}
+.rcard{border-radius:13px;overflow:hidden;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.07);margin-bottom:11px;}
+.rimg{width:100%;height:170px;object-fit:cover;display:block;background:#EEF2F7;}
+.rempty{display:flex;align-items:center;justify-content:center;height:170px;background:#F8F9FA;flex-direction:column;gap:7px;color:#bbb;}
+.rfooter{padding:11px 13px;}
+.rname{font-weight:800;font-size:14px;color:#1F4E79;margin-bottom:3px;}
+.rdesc{font-size:12px;color:#888;margin-bottom:9px;}
+.mcard{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.07);margin-bottom:9px;}
+.mcard-img{width:100%;height:130px;object-fit:cover;display:block;background:#EEF2F7;}
+.mcard-footer{padding:9px 12px;display:flex;align-items:center;gap:7px;}
+.mcard-name{flex:1;font-weight:700;font-size:13px;color:#1F4E79;}
+.mcard-zone{font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;}
+.mempty{display:flex;align-items:center;justify-content:center;height:130px;color:#bbb;font-size:12px;background:#F8F9FA;flex-direction:column;gap:5px;}
+.zcfg{border-radius:11px;padding:11px 13px;margin-bottom:9px;border:1.5px solid #eee;}
+.zcfg-hdr{display:flex;align-items:center;gap:7px;margin-bottom:7px;}
+.zdot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+.ztags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;}
+.ztag{background:#F0F4F8;border-radius:18px;padding:3px 9px;font-size:11px;color:#333;display:flex;align-items:center;gap:3px;}
+.ztag .rm{color:#B71C1C;font-size:15px;cursor:pointer;line-height:1;}
+.tipc{background:#FEF3E2;border:1px solid #F4B942;border-radius:13px;padding:13px;}
+.tipt{font-weight:700;font-size:12px;color:#B45309;margin-bottom:7px;}
+.tipi{font-size:12px;color:#7B5800;margin-bottom:4px;}
+.empty{text-align:center;padding:36px 14px;color:#bbb;}
+.empty-i{font-size:42px;margin-bottom:7px;}
+/* Client form */
+#cform{display:none;background:#fff;border-radius:14px;padding:14px;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:10px;border:2px solid #2E75B6;}
+#cform.show{display:block;}
 </style>
 </head>
 <body>
@@ -157,153 +135,144 @@ textarea{resize:vertical;}
   <h1>🏠 Oriente Juárez</h1>
   <p>Sector Oriente · Infonavit · Cd. Juárez</p>
   <div id="tabs">
-    <button class="tab-btn active" onclick="showTab(0)">Fichas<span class="tab-badge hidden" id="bp"></span></button>
-    <button class="tab-btn" onclick="showTab(1)">Clientes<span class="tab-badge hidden" id="bc"></span></button>
-    <button class="tab-btn" onclick="showTab(2)">Renders</button>
-    <button class="tab-btn" onclick="showTab(3)">Mapas</button>
-    <button class="tab-btn" onclick="showTab(4)">Zonas</button>
-    <button class="tab-btn" onclick="showTab(5)">Config.</button>
+    <button class="tb active" onclick="showTab(0)">Fichas<span class="tbadge" id="bp"></span></button>
+    <button class="tb" onclick="showTab(1)">Clientes<span class="tbadge" id="bc"></span></button>
+    <button class="tb" onclick="showTab(2)">Renders</button>
+    <button class="tb" onclick="showTab(3)">Mapas</button>
+    <button class="tb" onclick="showTab(4)">Zonas</button>
+    <button class="tb" onclick="showTab(5)">Config.</button>
   </div>
 </div>
 
 <div id="content">
-  <!-- TAB 0: FICHAS -->
-  <div id="t0"></div>
+  <!-- FICHAS -->
+  <div id="t0" class="tab-panel active"></div>
 
-  <!-- TAB 1: CLIENTES -->
-  <div id="t1" class="hidden">
-    <div class="card" style="padding:10px 12px">
-      <div style="display:flex;gap:8px;margin-bottom:6px">
-        <select id="fil-etapa" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;font-size:12px;background:#fff;-webkit-appearance:none" onchange="filterClients()">
-          <option>Todos</option>
-          <option>Nuevo</option><option>Contactado</option><option>Visita hoy</option>
-          <option>Negociando</option><option>Documentos</option><option>Esperando</option>
-          <option>Ganado</option><option>Perdido</option>
+  <!-- CLIENTES -->
+  <div id="t1" class="tab-panel">
+    <div class="card" style="padding:9px 11px;margin-bottom:9px">
+      <div style="display:flex;gap:7px;margin-bottom:5px">
+        <select id="fe" style="flex:1;padding:7px;border-radius:7px;border:1px solid #ddd;font-size:11px;background:#fff;-webkit-appearance:none" onchange="renderClients()">
+          <option>Todos</option><option>Nuevo</option><option>Contactado</option>
+          <option>Visita hoy</option><option>Negociando</option><option>Documentos</option>
+          <option>Esperando</option><option>Ganado</option><option>Perdido</option>
         </select>
-        <select id="fil-zona" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd;font-size:12px;background:#fff;-webkit-appearance:none" onchange="filterClients()">
+        <select id="fz" style="flex:1;padding:7px;border-radius:7px;border:1px solid #ddd;font-size:11px;background:#fff;-webkit-appearance:none" onchange="renderClients()">
           <option value="">Todas</option>
         </select>
       </div>
-      <div id="clients-count" style="font-size:12px;color:#888"></div>
+      <div id="ccnt" style="font-size:11px;color:#888"></div>
     </div>
-
-    <button class="btn btn-primary btn-full" style="margin-bottom:12px;padding:14px;font-size:15px" onclick="openClientForm()">+ Nuevo cliente</button>
-
-    <!-- Formulario siempre en DOM -->
-    <div id="client-form-wrap">
-      <div id="client-form-title" style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">Nuevo cliente</div>
-      <div class="field"><label>Nombre *</label><input id="cf-nombre" type="text" placeholder="Nombre completo"/></div>
-      <div class="field"><label>WhatsApp * (MX)</label><input id="cf-tel" type="tel" placeholder="656-123-4567" oninput="this.value=fmtMX(this.value)"/></div>
-      <div class="field"><label>Tel. EUA (opcional)</label><input id="cf-telus" type="tel" placeholder="(915) 123-4567" oninput="this.value=fmtUS(this.value)"/></div>
-      <div class="field"><label>Puntos Infonavit</label><input id="cf-puntos" type="number" placeholder="ej. 1050"/></div>
-      <div class="field"><label>Presupuesto máx ($)</label><input id="cf-ppto" type="number" placeholder="ej. 480000"/></div>
-      <div class="field"><label>Zona de interés</label>
-        <select id="cf-zona" style="-webkit-appearance:none" onchange="updateFraccList()">
-          <option value="">Seleccionar zona</option>
-        </select>
+    <button class="btn bp bw" style="margin-bottom:10px;padding:13px;font-size:14px" onclick="openCForm()">+ Nuevo cliente</button>
+    <!-- Formulario fijo en DOM -->
+    <div id="cform">
+      <div id="cform-title" style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:12px">Nuevo cliente</div>
+      <div class="fld"><label>Nombre *</label><input id="cf-n" type="text" placeholder="Nombre completo"/></div>
+      <div class="fld"><label>WhatsApp * (MX)</label><input id="cf-t" type="tel" placeholder="656-123-4567" oninput="this.value=fmtMX(this.value)"/></div>
+      <div class="fld"><label>Tel. EUA (opcional)</label><input id="cf-tu" type="tel" placeholder="(915) 123-4567" oninput="this.value=fmtUS(this.value)"/></div>
+      <div class="fld"><label>Puntos Infonavit</label><input id="cf-pt" type="number" placeholder="ej. 1050"/></div>
+      <div class="fld"><label>Presupuesto máx ($)</label><input id="cf-pp" type="number" placeholder="ej. 480000"/></div>
+      <div class="fld"><label>Zona de interés</label>
+        <select id="cf-z" style="-webkit-appearance:none" onchange="updateFL()"><option value="">Seleccionar zona</option></select>
       </div>
-      <div class="field"><label>Fraccionamiento preferido</label>
-        <select id="cf-fracc-base" style="-webkit-appearance:none" onchange="updateFraccList()">
-          <option value="">-- Seleccionar --</option>
-        </select>
+      <div class="fld"><label>Fraccionamiento preferido</label>
+        <select id="cf-fb" style="-webkit-appearance:none" onchange="updateFL()"><option value="">-- Seleccionar --</option></select>
       </div>
-      <div class="field"><label>Radio máximo</label>
-        <select id="cf-radio" style="-webkit-appearance:none" onchange="updateFraccList()">
+      <div class="fld"><label>Radio máximo</label>
+        <select id="cf-r" style="-webkit-appearance:none" onchange="updateFL()">
           <option value="5">5 km</option><option value="10">10 km</option>
-          <option value="15" selected>15 km</option><option value="20">20 km</option>
-          <option value="30">30 km o más</option>
+          <option value="15" selected>15 km</option><option value="20">20 km</option><option value="30">30 km o más</option>
         </select>
       </div>
-      <div class="field"><label>Recámaras</label>
+      <div class="fld"><label>Recámaras</label>
         <select id="cf-rec" style="-webkit-appearance:none">
           <option value="">Indiferente</option><option>2</option><option>3</option><option>4</option>
         </select>
       </div>
-      <div class="field"><label>Etapa</label>
-        <select id="cf-etapa" style="-webkit-appearance:none">
+      <div class="fld"><label>Etapa</label>
+        <select id="cf-e" style="-webkit-appearance:none">
           <option>Nuevo</option><option>Contactado</option><option>Visita hoy</option>
           <option>Negociando</option><option>Documentos</option><option>Esperando</option>
           <option>Ganado</option><option>Perdido</option>
         </select>
       </div>
-      <div class="field">
-        <label>Fraccionamientos de interés <span style="font-weight:400;color:#888;font-size:11px">(toca para seleccionar)</span></label>
-        <div id="fracc-checklist"></div>
+      <div class="fld">
+        <label>Fraccionamientos de interés <span style="font-weight:400;color:#888;font-size:10px">(toca para seleccionar)</span></label>
+        <div id="fcl"></div>
       </div>
-      <div class="field"><label>Notas</label><textarea id="cf-notas" rows="2" placeholder="Observaciones…"></textarea></div>
-      <div style="display:flex;gap:8px">
-        <button class="btn btn-primary" style="flex:1;padding:13px" onclick="saveClient()">Guardar</button>
-        <button class="btn btn-light" style="padding:13px 16px" onclick="closeClientForm()">Cancelar</button>
+      <div class="fld"><label>Notas</label><textarea id="cf-no" rows="2" placeholder="Observaciones…"></textarea></div>
+      <div style="display:flex;gap:7px">
+        <button class="btn bp" style="flex:1;padding:12px" onclick="saveClient()">Guardar</button>
+        <button class="btn bl" style="padding:12px 14px" onclick="closeCForm()">Cancelar</button>
       </div>
     </div>
-
-    <div id="clients-list"></div>
+    <div id="clist"></div>
   </div>
 
-  <!-- TAB 2: RENDERS -->
-  <div id="t2" class="hidden">
+  <!-- RENDERS -->
+  <div id="t2" class="tab-panel">
     <div class="card">
-      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🏗️ Renders por modelo</div>
-      <div style="font-size:12px;color:#888">La app detecta automáticamente el número de habitaciones y muestra el render correspondiente en cada ficha.</div>
+      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:3px">🏗️ Renders por modelo</div>
+      <div style="font-size:12px;color:#888">La app detecta las habitaciones de cada ficha y muestra el render correspondiente.</div>
     </div>
-    <div id="renders-list"></div>
+    <div id="rlist"></div>
   </div>
 
-  <!-- TAB 3: MAPAS -->
-  <div id="t3" class="hidden">
+  <!-- MAPAS -->
+  <div id="t3" class="tab-panel">
     <div class="card">
-      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🗺️ Mapas de fraccionamientos</div>
-      <div style="font-size:12px;color:#888">Sube el screenshot del mapa de cada fraccionamiento una sola vez.</div>
+      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:3px">🗺️ Mapas de fraccionamientos</div>
+      <div style="font-size:12px;color:#888">Sube el mapa de cada fraccionamiento una sola vez.</div>
     </div>
-    <div id="mapas-list"></div>
+    <div id="mlist"></div>
   </div>
 
-  <!-- TAB 4: ZONAS -->
-  <div id="t4" class="hidden">
+  <!-- ZONAS -->
+  <div id="t4" class="tab-panel">
     <div class="card">
-      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:4px">🗺️ Zonas y fraccionamientos</div>
-      <div style="font-size:12px;color:#888;margin-bottom:12px">Edita a tu gusto. Solo afecta tu dispositivo.</div>
-      <button class="btn btn-primary btn-full" style="padding:12px" onclick="addZona()">+ Agregar zona</button>
+      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:3px">🗺️ Zonas y fraccionamientos</div>
+      <div style="font-size:12px;color:#888;margin-bottom:10px">Edita a tu gusto. Solo afecta tu dispositivo.</div>
+      <button class="btn bp bw" style="padding:11px" onclick="addZona()">+ Agregar zona</button>
     </div>
-    <div id="zonas-list"></div>
-    <button class="btn btn-light btn-full" style="margin-top:4px;padding:12px" onclick="resetZonas()">↺ Restablecer todas las zonas</button>
+    <div id="zlist"></div>
+    <button class="btn bl bw" style="margin-top:3px;padding:11px" onclick="resetZonas()">↺ Restablecer todas las zonas</button>
   </div>
 
-  <!-- TAB 5: CONFIG -->
-  <div id="t5" class="hidden">
+  <!-- CONFIG -->
+  <div id="t5" class="tab-panel">
     <div class="card">
-      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:14px">⚙️ Mis datos</div>
-      <div class="field"><label>Tu nombre</label><input id="cfg-nombre" type="text" placeholder="Mi nombre" oninput="S.cfg.nombre=this.value"/></div>
-      <div class="field"><label>Teléfono (texto FB)</label><input id="cfg-tel" type="text" placeholder="656-XXX-XXXX" oninput="this.value=fmtMX(this.value);S.cfg.tel=this.value"/></div>
-      <div class="field"><label>WhatsApp link (wa.me/...)</label><input id="cfg-wa" type="text" placeholder="5265612345678" oninput="S.cfg.wa=this.value"/></div>
-      <button class="btn btn-primary btn-full" style="padding:13px" onclick="saveCfg()">Guardar</button>
+      <div style="font-weight:800;font-size:15px;color:#1F4E79;margin-bottom:12px">⚙️ Mis datos</div>
+      <div class="fld"><label>Tu nombre</label><input id="cfg-n" type="text" placeholder="Mi nombre" oninput="S.cfg.nombre=this.value"/></div>
+      <div class="fld"><label>Teléfono (texto FB)</label><input id="cfg-t" type="text" placeholder="656-XXX-XXXX" oninput="this.value=fmtMX(this.value);S.cfg.tel=this.value"/></div>
+      <div class="fld"><label>WhatsApp (wa.me/...)</label><input id="cfg-w" type="text" placeholder="5265612345678" oninput="S.cfg.wa=this.value"/></div>
+      <button class="btn bp bw" style="padding:12px" onclick="saveCfg()">Guardar</button>
     </div>
-    <div class="tip-card">
-      <div class="tip-title">💡 Cómo usar</div>
-      <div class="tip-item">· PDF desde Archivos: toca el área azul</div>
-      <div class="tip-item">· Desde WhatsApp: toca el botón verde y sigue los pasos</div>
-      <div class="tip-item">· Las fichas se agrupan por zona automáticamente</div>
-      <div class="tip-item">· 📸 Generar imagen = render + mapa para Facebook</div>
-      <div class="tip-item">· Mantén "Vendí yo" 2 seg → registra la venta</div>
-      <div class="tip-item">· Arrastra el ≡ para reordenar fichas</div>
+    <div class="tipc">
+      <div class="tipt">💡 Cómo usar</div>
+      <div class="tipi">· PDF desde Archivos: toca el área azul</div>
+      <div class="tipi">· Desde WhatsApp: usa el botón verde y sigue los pasos</div>
+      <div class="tipi">· Las fichas se agrupan por zona automáticamente</div>
+      <div class="tipi">· 📸 Generar imagen = render + mapa para Facebook</div>
+      <div class="tipi">· Mantén "Vendí yo" 2 seg → registra la venta</div>
+      <div class="tipi">· Arrastra el ≡ para reordenar fichas</div>
     </div>
   </div>
 </div>
 
 <!-- Modal -->
-<div id="modal-bg" class="modal-bg hidden" onclick="closeModal()">
+<div id="mbg" class="modal-bg" style="display:none" onclick="closeModal()">
   <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-title" id="m-title"></div>
-    <div class="modal-sub" id="m-sub"></div>
-    <div id="m-body"></div>
-    <div class="modal-btns" id="m-btns"></div>
+    <div class="modal-title" id="mt"></div>
+    <div class="modal-sub" id="ms"></div>
+    <div id="mb"></div>
+    <div class="modal-btns" id="mbtns"></div>
   </div>
 </div>
 
-<!-- File inputs globales -->
-<input type="file" id="fi-pdf"    accept="application/pdf,.pdf" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" onchange="handlePDF(this)"/>
-<input type="file" id="fi-mapa"   accept="image/*"              style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" onchange="handleMapa(this)"/>
-<input type="file" id="fi-render" accept="image/*"              style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" onchange="handleRender(this)"/>
+<!-- File inputs -->
+<input type="file" id="fi-pdf"    accept="application/pdf,.pdf" style="position:absolute;width:1px;height:1px;opacity:0" onchange="handlePDF(this)"/>
+<input type="file" id="fi-mapa"   accept="image/*"              style="position:absolute;width:1px;height:1px;opacity:0" onchange="handleMapa(this)"/>
+<input type="file" id="fi-render" accept="image/*"              style="position:absolute;width:1px;height:1px;opacity:0" onchange="handleRender(this)"/>
 
 <script>
 // ── DATOS ─────────────────────────────────────────────────────────────────────
@@ -315,445 +284,405 @@ const COORDS={
   "Sierra Vista":[31.6823,-106.3712],"Lomas del Desierto":[31.6654,-106.3923],
   "Valle de Fundadores":[31.6789,-106.3801],"Portal del Roble":[31.6812,-106.3778],
   "Villas de Alcalá":[31.6934,-106.3645],"Parque El Mirador":[31.6598,-106.3867],
-  "La Cañada":[31.6612,-106.3845],"Senderos de Oriente":[31.6745,-106.3698],
+  "La Cañada":[31.6612,-106.3845],"Senderos de Oriente":[31.6745,-106.3698]
 };
-
-const DEFAULT_ZONAS=[
+const DZ=[
   {id:'z1',nombre:'Zona 1 — Riveras / Oriente',color:'#1565A8',desc:'Alta densidad, acceso rápido por Talamás Norte.',fraccs:['Riveras del Bravo','El Campanario','Vistas de Zaragoza']},
   {id:'z2',nombre:'Zona 2 — Talamás Sur / San Isidro',color:'#2E7D32',desc:'Zona suroriente, requiere recorrido propio.',fraccs:['Senderos de San Isidro','Urbivilla del Cedro','Jardines de Roma','Misiones de Creel','Boca del Río','Sierra Vista','Lomas del Desierto']},
   {id:'z3',nombre:'Zona 3 — Fundadores / Zaragoza',color:'#B45309',desc:'Corredor conectado por Zaragoza-Fundadores.',fraccs:['Valle de Fundadores','Portal del Roble']},
   {id:'z4',nombre:'Zona 4 — Alcalá / Independencia',color:'#6A1B9A',desc:'Corredor Independencia–Puerto de Palos.',fraccs:['Villas de Alcalá']},
-  {id:'z5',nombre:'Zona 5 — Mirador / Surponiente',color:'#B71C1C',desc:'Sector separado, visitas específicas.',fraccs:['Parque El Mirador','La Cañada']},
+  {id:'z5',nombre:'Zona 5 — Mirador / Surponiente',color:'#B71C1C',desc:'Sector separado, visitas específicas.',fraccs:['Parque El Mirador','La Cañada']}
+];
+const RENDERS=[
+  {id:'r3',nombre:'3 Habitaciones',desc:'Modelo planta baja · 3 recámaras',kw:['3 hab','3hab','tres hab','3 rec']},
+  {id:'r4',nombre:'4 Habitaciones',desc:'Modelo ampliado · 4 recámaras o más',kw:['4 hab','4hab','cuatro hab','4 rec','segunda planta','2da planta']},
+  {id:'rc',nombre:'Condominio',desc:'Modelo departamento / condominio',kw:['condom','depart','2 hab','2hab','dos hab']}
 ];
 
-// Modelos de render con sus palabras clave
-const RENDER_MODELS=[
-  {id:'r3',nombre:'3 Habitaciones',desc:'Modelo planta baja · 3 recámaras',keywords:['3 hab','3hab','tres hab','3 recam','3rec'],img:null},
-  {id:'r4',nombre:'4 Habitaciones',desc:'Modelo ampliado · 4 recámaras',keywords:['4 hab','4hab','cuatro hab','4 recam','4rec','segunda planta'],img:null},
-  {id:'rc',nombre:'Condominio',desc:'Modelo departamento / condominio',keywords:['condom','depart','2 hab','2hab','dos hab'],img:null},
-];
-
-function lsGet(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}}
-function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
+function lg(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}}
+function ls(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
 
 let S={
-  tab:0, props:[], clients:[],
-  cfg:lsGet('cfg',{nombre:'',tel:'',wa:''}),
-  zonas:lsGet('zonas',DEFAULT_ZONAS),
-  renders:lsGet('renders',{}), // modelId -> dataUrl
-  mapasPreviews:lsGet('mapas',{}),
-  collapsedZones:lsGet('czones',{}),
-  expanded:null, dragSrc:null,
-  showWASteps:false, newFraccs:[],
-  // client form state
-  editClientId:null,
-  clientFraccs:[],
+  tab:0,props:[],clients:[],
+  cfg:lg('cfg',{nombre:'',tel:'',wa:''}),
+  zonas:lg('zonas',DZ),
+  renders:lg('renders',{}),
+  mapas:lg('mapas',{}),
+  czones:lg('czones',{}),
+  expanded:null,dragSrc:null,
+  waOpen:false,newFraccs:[],
+  editCId:null,cFraccs:[]
 };
-let _dragClone=null,_dragOver=null,_mapaTarget='',_renderTarget='';
+let _dc=null,_do=null,_mt='',_rt='';
 
-// ── UTILS ──────────────────────────────────────────────────────────────────────
-function allFraccs(){return S.zonas.flatMap(z=>z.fraccs);}
-function zonaDeFragg(f=''){const fl=f.toLowerCase();return S.zonas.find(z=>z.fraccs.some(zf=>zf.toLowerCase()===fl||fl.includes(zf.toLowerCase())||zf.toLowerCase().includes(fl)))||null;}
-function distKm(f1,f2){const c1=COORDS[f1],c2=COORDS[f2];if(!c1||!c2)return 999;const R=6371,dLat=(c2[0]-c1[0])*Math.PI/180,dLon=(c2[1]-c1[1])*Math.PI/180;const a=Math.sin(dLat/2)**2+Math.cos(c1[0]*Math.PI/180)*Math.cos(c2[0]*Math.PI/180)*Math.sin(dLon/2)**2;return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));}
+function aF(){return S.zonas.flatMap(z=>z.fraccs);}
+function zF(f){const fl=f.toLowerCase();return S.zonas.find(z=>z.fraccs.some(zf=>zf.toLowerCase()===fl||fl.includes(zf.toLowerCase())||zf.toLowerCase().includes(fl)))||null;}
+function dKm(f1,f2){const c1=COORDS[f1],c2=COORDS[f2];if(!c1||!c2)return 999;const R=6371,dLat=(c2[0]-c1[0])*Math.PI/180,dLon=(c2[1]-c1[1])*Math.PI/180;const a=Math.sin(dLat/2)**2+Math.cos(c1[0]*Math.PI/180)*Math.cos(c2[0]*Math.PI/180)*Math.sin(dLon/2)**2;return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));}
 function fmtMX(v){const d=v.replace(/\D/g,'').slice(0,10);if(d.length<=3)return d;if(d.length<=6)return d.slice(0,3)+'-'+d.slice(3);return d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);}
 function fmtUS(v){const d=v.replace(/\D/g,'').slice(0,10);if(d.length<=3)return d;if(d.length<=6)return '('+d.slice(0,3)+') '+d.slice(3);return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);}
+function getRender(prop){const txt=JSON.stringify(prop.caracteristicas||[]).toLowerCase();for(const m of RENDERS){if(m.kw.some(k=>txt.includes(k)))return S.renders[m.id]||null;}const nm=txt.match(/(\d)\s*(hab|rec)/);if(nm){const n=parseInt(nm[1]);if(n>=4&&S.renders['r4'])return S.renders['r4'];if(n===3&&S.renders['r3'])return S.renders['r3'];if(n<=2&&S.renders['rc'])return S.renders['rc'];}return null;}
+function fbTxt(p){const ch=(p.caracteristicas||[]).map(c=>'* '+c).join('\n');return '🏡 ¡Casa en venta en '+p.direccion+'!\nUbicada en el fracc. '+p.fraccionamiento+'\n-zona tranquila y con excelente plusvalía.\n\n💰 $'+Number(p.precio||0).toLocaleString('es-MX')+'\n📄 Aceptamos todo tipo de crédito Infonavit\n\n🧱 Características:\n'+ch+'\n\n📍Ubicación exacta disponible\n\n📲 ¿Te interesa esta casa o buscas otra zona?\nTengo más opciones listas para entrega, en diferentes precios y fraccionamientos.\nEscríbeme sin compromiso al '+(S.cfg.tel||'656-XXX-XXXX')+', o en mi WhatsApp directo\nwa.me/'+(S.cfg.wa||'52656XXXXXXX');}
+function mClients(p){const fl=(p.fraccionamiento||'').toLowerCase();const z=zF(p.fraccionamiento);return S.clients.filter(c=>{const fi=c.fraccs||[];return fi.some(f=>f.toLowerCase()===fl)||(z&&c.zona===z.id)||c.zona==='flex';});}
 
-function getRenderForProp(prop){
-  const text=JSON.stringify(prop.caracteristicas||[]).toLowerCase()+' '+(prop.direccion||'').toLowerCase();
-  for(const m of RENDER_MODELS){
-    if(m.keywords.some(k=>text.includes(k))){
-      return S.renders[m.id]||null;
-    }
-  }
-  // fallback: count rooms in caracteristicas
-  const nums=text.match(/(\d)\s*(hab|rec)/);
-  if(nums){
-    const n=parseInt(nums[1]);
-    if(n>=4&&S.renders['r4'])return S.renders['r4'];
-    if(n===3&&S.renders['r3'])return S.renders['r3'];
-    if(n<=2&&S.renders['rc'])return S.renders['rc'];
-  }
-  return null;
-}
-
-function fbText(prop){
-  const chars=(prop.caracteristicas||[]).map(c=>'* '+c).join('\n');
-  return '🏡 ¡Casa en venta en '+prop.direccion+'!\nUbicada en el fracc. '+prop.fraccionamiento+'\n-zona tranquila y con excelente plusvalía.\n\n💰 $'+Number(prop.precio||0).toLocaleString('es-MX')+'\n📄 Aceptamos todo tipo de crédito Infonavit\n\n🧱 Características:\n'+chars+'\n\n📍Ubicación exacta disponible\n\n📲 ¿Te interesa esta casa o buscas otra zona?\nTengo más opciones listas para entrega, en diferentes precios y fraccionamientos.\nEscríbeme sin compromiso al '+(S.cfg.tel||'656-XXX-XXXX')+', o en mi WhatsApp directo\nwa.me/'+(S.cfg.wa||'52656XXXXXXX');}
-
-function matchClients(prop){
-  const fl=(prop.fraccionamiento||'').toLowerCase();
-  const zona=zonaDeFragg(prop.fraccionamiento);
-  return S.clients.filter(c=>{
-    const fi=c.fraccs||[];
-    return fi.some(f=>f.toLowerCase()===fl)||(zona&&c.zona===zona.id)||c.zona==='flex';
-  });
-}
-
-// ── API ────────────────────────────────────────────────────────────────────────
-async function api(method,url,body){
-  const opts={method,headers:{}};
-  if(body instanceof FormData){opts.body=body;}
-  else if(body){opts.headers['Content-Type']='application/json';opts.body=JSON.stringify(body);}
-  const r=await fetch(url,opts);
-  return r.json();
+// ── API ───────────────────────────────────────────────────────────────────────
+async function api(m,u,b){
+  try{
+    const o={method:m,headers:{}};
+    if(b instanceof FormData)o.body=b;
+    else if(b){o.headers['Content-Type']='application/json';o.body=JSON.stringify(b);}
+    const r=await fetch(u,o);
+    return await r.json();
+  }catch(e){console.error('API error',m,u,e);return {};}
 }
 
 async function loadAll(){
   try{
-    const[props,clients,cfg]=await Promise.all([api('GET','/api/propiedades'),api('GET','/api/clientes'),api('GET','/api/config')]);
+    const[props,clients,cfg]=await Promise.all([
+      api('GET','/api/propiedades'),
+      api('GET','/api/clientes'),
+      api('GET','/api/config')
+    ]);
     S.props=Array.isArray(props)?props:[];
     S.clients=Array.isArray(clients)?clients:[];
-    if(cfg&&Object.keys(cfg).length)S.cfg={...S.cfg,...cfg};
-    const known=new Set(allFraccs().map(f=>f.toLowerCase()));
+    if(cfg&&typeof cfg==='object'&&cfg.tel!==undefined)S.cfg={...S.cfg,...cfg};
+    const kn=new Set(aF().map(f=>f.toLowerCase()));
     S.newFraccs=[];
-    S.props.forEach(p=>{const f=(p.fraccionamiento||'').trim();if(f&&!known.has(f.toLowerCase())&&!S.newFraccs.includes(f))S.newFraccs.push(f);});
-  }catch(e){console.error(e);}
-  renderAll();
+    S.props.forEach(p=>{const f=(p.fraccionamiento||'').trim();if(f&&!kn.has(f.toLowerCase())&&!S.newFraccs.includes(f))S.newFraccs.push(f);});
+  }catch(e){console.error('loadAll',e);}
+  render();
 }
 
-// ── TABS ───────────────────────────────────────────────────────────────────────
+// ── TABS ──────────────────────────────────────────────────────────────────────
 function showTab(i){
   S.tab=i;
-  document.querySelectorAll('.tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));
-  [0,1,2,3,4,5].forEach(j=>document.getElementById('t'+j).classList.toggle('hidden',i!==j));
+  document.querySelectorAll('.tb').forEach((b,j)=>b.classList.toggle('active',i===j));
+  document.querySelectorAll('.tab-panel').forEach((p,j)=>p.classList.toggle('active',i===j));
 }
 
-function renderAll(){
-  renderProps();
-  renderClientsList();
-  renderRendersTab();
-  renderMapasTab();
-  renderZonasTab();
-  updateCfgInputs();
+function render(){
+  renderFichas();
+  renderClients();
+  renderRenders();
+  renderMapas();
+  renderZonas();
+  updateCfg();
   updateBadges();
-  populateClientFormDropdowns();
+  populateCFormDDs();
 }
 
 function updateBadges(){
-  const a=S.props.filter(p=>p._estado==='nueva'||p._estado==='precio_cambio').reduce((n,p)=>n+matchClients(p).length,0)+(S.newFraccs.length?1:0);
-  const bp=document.getElementById('bp');bp.textContent=a;bp.classList.toggle('hidden',!a);
-  const bc=document.getElementById('bc');bc.textContent=S.clients.length;bc.classList.toggle('hidden',!S.clients.length);
+  const a=S.props.filter(p=>p._estado==='nueva'||p._estado==='precio_cambio').reduce((n,p)=>n+mClients(p).length,0)+(S.newFraccs.length?1:0);
+  const bp=document.getElementById('bp');bp.textContent=a;bp.style.display=a?'':'none';
+  const bc=document.getElementById('bc');bc.textContent=S.clients.length;bc.style.display=S.clients.length?'':'none';
 }
 
-// ── MODAL ──────────────────────────────────────────────────────────────────────
-function closeModal(){document.getElementById('modal-bg').classList.add('hidden');}
+// ── MODAL ─────────────────────────────────────────────────────────────────────
+function closeModal(){document.getElementById('mbg').style.display='none';}
 function showModal(title,sub,btns,bodyEl){
-  document.getElementById('m-title').textContent=title;
-  document.getElementById('m-sub').textContent=sub||'';
-  const mb=document.getElementById('m-body');mb.innerHTML='';
-  if(bodyEl)mb.appendChild(bodyEl);
-  const bb=document.getElementById('m-btns');bb.innerHTML='';
-  (btns||[]).forEach(({label,cls,onClick})=>{const b=document.createElement('button');b.className='btn btn-full '+(cls||'btn-light');b.textContent=label;b.onclick=()=>{closeModal();onClick();};bb.appendChild(b);});
-  document.getElementById('modal-bg').classList.remove('hidden');
+  document.getElementById('mt').textContent=title;
+  document.getElementById('ms').textContent=sub||'';
+  const mb=document.getElementById('mb');mb.innerHTML='';if(bodyEl)mb.appendChild(bodyEl);
+  const mbt=document.getElementById('mbtns');mbt.innerHTML='';
+  (btns||[]).forEach(({l,cls,fn})=>{const b=document.createElement('button');b.className='btn bw '+(cls||'bl');b.textContent=l;b.onclick=()=>{closeModal();fn();};mbt.appendChild(b);});
+  document.getElementById('mbg').style.display='flex';
 }
 
-function copyText(text,btn){
-  const done=()=>{btn.textContent='✓ Copiado';btn.classList.add('copied');setTimeout(()=>{btn.textContent='📋 Copiar texto FB';btn.classList.remove('copied');},2000);};
-  if(navigator.clipboard){navigator.clipboard.writeText(text).then(done).catch(fb);}else fb();
-  function fb(){const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');done();}catch{}document.body.removeChild(ta);}
+function cpTxt(text,btn){
+  const ok=()=>{btn.textContent='✓ Copiado';btn.classList.add('ok');setTimeout(()=>{btn.textContent='📋 Copiar texto FB';btn.classList.remove('ok');},2000);};
+  if(navigator.clipboard)navigator.clipboard.writeText(text).then(ok).catch(fb);else fb();
+  function fb(){const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0;top:0;left:0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');ok();}catch{}document.body.removeChild(ta);}
 }
 
-// ── IMAGEN FICHA + RENDER + MAPA ──────────────────────────────────────────────
-async function showImageModal(prop){
-  const body=document.createElement('div');
-  body.innerHTML='<div style="text-align:center;padding:24px;color:#888">⏳ Generando imagen…</div>';
-  showModal('📸 Imagen para Facebook','Descarga y súbela directamente',[],body);
+// ── IMAGEN ────────────────────────────────────────────────────────────────────
+async function showImgModal(prop){
+  const bd=document.createElement('div');bd.innerHTML='<div style="text-align:center;padding:20px;color:#888">⏳ Generando…</div>';
+  showModal('📸 Imagen para Facebook','Descarga y sube a Facebook',[],bd);
   try{
-    const canvas=await generateImage(prop);
-    const dataUrl=canvas.toDataURL('image/jpeg',0.92);
-    body.innerHTML='';
-    const img=document.createElement('img');img.src=dataUrl;img.style.cssText='width:100%;border-radius:12px;margin-bottom:10px;display:block;';body.appendChild(img);
-    body.innerHTML+='<div style="font-size:12px;color:#888;text-align:center;margin-bottom:10px">Mantén presionada la imagen para guardarla en tu galería</div>';
-    const dl=document.createElement('a');dl.className='btn btn-primary btn-full';dl.style.cssText='margin-bottom:8px;padding:13px;';dl.textContent='⬇️ Descargar imagen';dl.download='ficha-'+prop.fraccionamiento+'.jpg';dl.href=dataUrl;body.appendChild(dl);
-    const cl=document.createElement('button');cl.className='btn btn-light btn-full';cl.textContent='Cerrar';cl.onclick=closeModal;body.appendChild(cl);
-  }catch(e){body.innerHTML='<div style="color:#B71C1C;text-align:center;padding:16px;font-weight:600">Error generando imagen.</div>';}
+    const cv=await genImg(prop);const du=cv.toDataURL('image/jpeg',.92);
+    bd.innerHTML='';
+    const img=document.createElement('img');img.src=du;img.style.cssText='width:100%;border-radius:10px;margin-bottom:9px;display:block;';bd.appendChild(img);
+    bd.innerHTML+='<div style="font-size:11px;color:#888;text-align:center;margin-bottom:9px">Mantén presionada la imagen para guardarla</div>';
+    const dl=document.createElement('a');dl.className='btn bp bw';dl.style.cssText='margin-bottom:7px;padding:12px;';dl.textContent='⬇️ Descargar imagen';dl.download='ficha.jpg';dl.href=du;bd.appendChild(dl);
+    const cl=document.createElement('button');cl.className='btn bl bw';cl.textContent='Cerrar';cl.onclick=closeModal;bd.appendChild(cl);
+  }catch(e){bd.innerHTML='<div style="color:#B71C1C;text-align:center;padding:14px;font-weight:600">Error generando imagen.</div>';}
 }
-
-async function generateImage(prop){
-  const W=900,PAD=28,GAP=14;
-  const zona=zonaDeFragg(prop.fraccionamiento);
-  const zColor=zona?zona.color:'#1F4E79';
-  const renderSrc=getRenderForProp(prop);
-  const mapaSrc=S.mapasPreviews[prop.fraccionamiento];
-  let renderImg=null,mapaImg=null;
-  try{if(renderSrc)renderImg=await loadImg(renderSrc);}catch(e){}
-  try{if(mapaSrc)mapaImg=await loadImg(mapaSrc);else mapaImg=await loadImg('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));}catch(e){}
-  const fichaH=380;
-  const renderH=renderImg?200:0;
-  const mapaH=mapaImg?180:0;
-  const totalH=PAD+fichaH+(renderH?GAP+renderH:0)+(mapaH?GAP+mapaH:0)+PAD;
-  const cv=document.createElement('canvas');cv.width=W;cv.height=totalH;
+async function genImg(p){
+  const W=900,PAD=26,G=12;const z=zF(p.fraccionamiento);const zC=z?z.color:'#1F4E79';
+  const rSrc=getRender(p);const mSrc=S.mapas[p.fraccionamiento];
+  let ri=null,mi=null;
+  try{if(rSrc)ri=await ldImg(rSrc);}catch(e){}
+  try{if(mSrc)mi=await ldImg(mSrc);else mi=await ldImg('/api/mapa/'+encodeURIComponent(p.fraccionamiento||''));}catch(e){}
+  const fH=370,rH=ri?190:0,mH=mi?170:0;
+  const tH=PAD+fH+(rH?G+rH:0)+(mH?G+mH:0)+PAD;
+  const cv=document.createElement('canvas');cv.width=W;cv.height=tH;
   const ctx=cv.getContext('2d');
-  ctx.fillStyle='#EEF2F7';ctx.fillRect(0,0,W,totalH);
-  // Ficha card
-  rrect(ctx,PAD,PAD,W-PAD*2,fichaH,18,'#fff');
-  rrect(ctx,PAD,PAD,W-PAD*2,68,18,zColor);
-  ctx.fillStyle='#fff';ctx.font='bold 24px Arial';ctx.fillText(prop.fraccionamiento,PAD+18,PAD+44);
-  rrect(ctx,PAD+18,PAD+80,230,42,10,'#F4B942');
-  ctx.fillStyle='#7B3F00';ctx.font='bold 22px Arial';ctx.fillText('$'+Number(prop.precio||0).toLocaleString('es-MX'),PAD+28,PAD+107);
-  ctx.fillStyle='#1F4E79';ctx.font='bold 19px Arial';ctx.fillText('📍 '+prop.direccion,PAD+18,PAD+154);
-  ctx.fillStyle='#333';ctx.font='16px Arial';
-  (prop.caracteristicas||[]).slice(0,9).forEach((c,i)=>ctx.fillText('• '+c,PAD+18,PAD+188+i*22));
-  if(zona){rrect(ctx,PAD+18,PAD+fichaH-42,320,30,8,zColor+'33');ctx.fillStyle=zColor;ctx.font='bold 13px Arial';ctx.fillText(zona.nombre,PAD+26,PAD+fichaH-20);}
-  // Render
-  let y=PAD+fichaH;
-  if(renderImg){y+=GAP;ctx.save();ctx.beginPath();rpath(ctx,PAD,y,W-PAD*2,renderH,14);ctx.clip();ctx.drawImage(renderImg,PAD,y,W-PAD*2,renderH);ctx.restore();y+=renderH;}
-  // Mapa
-  if(mapaImg){y+=GAP;ctx.save();ctx.beginPath();rpath(ctx,PAD,y,W-PAD*2,mapaH,14);ctx.clip();ctx.drawImage(mapaImg,PAD,y,W-PAD*2,mapaH);ctx.fillStyle='rgba(0,0,0,.5)';ctx.fillRect(PAD,y+mapaH-32,W-PAD*2,32);ctx.fillStyle='#fff';ctx.font='bold 14px Arial';ctx.fillText('📍 '+prop.fraccionamiento,PAD+12,y+mapaH-10);ctx.restore();}
-  ctx.fillStyle='#aaa';ctx.font='12px Arial';ctx.fillText('Inmobiliaria Casas Juárez · Sector Oriente · Infonavit',PAD,totalH-8);
+  ctx.fillStyle='#EEF2F7';ctx.fillRect(0,0,W,tH);
+  rr(ctx,PAD,PAD,W-PAD*2,fH,16,'#fff');
+  rr(ctx,PAD,PAD,W-PAD*2,65,16,zC);
+  ctx.fillStyle='#fff';ctx.font='bold 23px Arial';ctx.fillText(p.fraccionamiento,PAD+16,PAD+42);
+  rr(ctx,PAD+16,PAD+77,220,40,9,'#F4B942');
+  ctx.fillStyle='#7B3F00';ctx.font='bold 21px Arial';ctx.fillText('$'+Number(p.precio||0).toLocaleString('es-MX'),PAD+26,PAD+103);
+  ctx.fillStyle='#1F4E79';ctx.font='bold 18px Arial';ctx.fillText('📍 '+p.direccion,PAD+16,PAD+148);
+  ctx.fillStyle='#333';ctx.font='15px Arial';
+  (p.caracteristicas||[]).slice(0,9).forEach((c,i)=>ctx.fillText('• '+c,PAD+16,PAD+178+i*21));
+  if(z){rr(ctx,PAD+16,PAD+fH-40,300,29,7,zC+'33');ctx.fillStyle=zC;ctx.font='bold 12px Arial';ctx.fillText(z.nombre,PAD+24,PAD+fH-19);}
+  let y=PAD+fH;
+  if(ri){y+=G;ctx.save();ctx.beginPath();rp(ctx,PAD,y,W-PAD*2,rH,13);ctx.clip();ctx.drawImage(ri,PAD,y,W-PAD*2,rH);ctx.restore();y+=rH;}
+  if(mi){y+=G;ctx.save();ctx.beginPath();rp(ctx,PAD,y,W-PAD*2,mH,13);ctx.clip();ctx.drawImage(mi,PAD,y,W-PAD*2,mH);ctx.fillStyle='rgba(0,0,0,.45)';ctx.fillRect(PAD,y+mH-30,W-PAD*2,30);ctx.fillStyle='#fff';ctx.font='bold 13px Arial';ctx.fillText('📍 '+p.fraccionamiento,PAD+11,y+mH-9);ctx.restore();}
+  ctx.fillStyle='#bbb';ctx.font='11px Arial';ctx.fillText('Inmobiliaria Casas Juárez · Sector Oriente · Infonavit',PAD,tH-7);
   return cv;
 }
-function loadImg(src){return new Promise((res,rej)=>{const i=new Image();i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=rej;i.src=src;});}
-function rrect(ctx,x,y,w,h,r,fill){ctx.beginPath();rpath(ctx,x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();}
-function rpath(ctx,x,y,w,h,r){ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
+function ldImg(src){return new Promise((res,rej)=>{const i=new Image();i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=rej;i.src=src;});}
+function rr(ctx,x,y,w,h,r,f){ctx.beginPath();rp(ctx,x,y,w,h,r);ctx.fillStyle=f;ctx.fill();}
+function rp(ctx,x,y,w,h,r){ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
 
-// ── FILE HANDLERS ──────────────────────────────────────────────────────────────
-async function handlePDF(input){
-  const file=input.files[0];if(!file)return;
-  const area=document.getElementById('pdf-upload-area');
-  if(area){area.className='upload-label processing';area.querySelector('.ul-icon').textContent='⏳';area.querySelector('.ul-title').textContent='Procesando PDF…';area.querySelector('.ul-sub').textContent='Extrayendo fichas en el servidor';}
-  try{const fd=new FormData();fd.append('pdf',file);const res=await api('POST','/api/upload-pdf',fd);await loadAll();if(area){area.className='upload-label done';area.querySelector('.ul-icon').textContent='✅';area.querySelector('.ul-title').textContent='¡Listo! '+(res.nuevas||0)+' nuevas · '+(res.actualizadas||0)+' actualizadas';area.querySelector('.ul-sub').textContent='Toca para subir otro PDF';}}
-  catch(e){if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='❌';area.querySelector('.ul-title').textContent='Error. Intenta de nuevo.';area.querySelector('.ul-sub').textContent='';}}
-  input.value='';
-  setTimeout(()=>{if(area){area.className='upload-label';area.querySelector('.ul-icon').textContent='📄';area.querySelector('.ul-title').textContent='Desde Archivos / iCloud';area.querySelector('.ul-sub').textContent='Toca para seleccionar el PDF';}},5000);
+// ── FILE HANDLERS ─────────────────────────────────────────────────────────────
+async function handlePDF(inp){
+  const file=inp.files[0];if(!file)return;
+  const area=document.getElementById('pdfarea');
+  if(area){area.className='ulbl proc';area.querySelector('.ul-icon').textContent='⏳';area.querySelector('.ul-title').textContent='Procesando PDF…';area.querySelector('.ul-sub').textContent='Extrayendo fichas';}
+  try{
+    const fd=new FormData();fd.append('pdf',file);
+    const res=await api('POST','/api/upload-pdf',fd);
+    await loadAll();
+    if(area){area.className='ulbl done';area.querySelector('.ul-icon').textContent='✅';area.querySelector('.ul-title').textContent='¡Listo! '+(res.nuevas||0)+' nuevas · '+(res.actualizadas||0)+' actualizadas';area.querySelector('.ul-sub').textContent='Toca para subir otro PDF';}
+  }catch(e){if(area){area.className='ulbl';area.querySelector('.ul-icon').textContent='❌';area.querySelector('.ul-title').textContent='Error. Intenta de nuevo.';area.querySelector('.ul-sub').textContent='';}}
+  inp.value='';
+  setTimeout(()=>{if(area){area.className='ulbl';area.querySelector('.ul-icon').textContent='📄';area.querySelector('.ul-title').textContent='Desde Archivos / iCloud';area.querySelector('.ul-sub').textContent='Toca para seleccionar el PDF';}},5000);
 }
-
-async function handleMapa(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const body=document.createElement('div');
-    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:10px;margin-bottom:12px;max-height:240px;object-fit:cover;display:block;';body.appendChild(img);
-    body.innerHTML+='<div style="font-size:14px;color:#333;text-align:center;font-weight:600">Fraccionamiento: '+_mapaTarget+'</div>';
+async function handleMapa(inp){
+  const file=inp.files[0];if(!file)return;
+  const rd=new FileReader();
+  rd.onload=e=>{
+    const bd=document.createElement('div');
+    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:9px;margin-bottom:10px;max-height:230px;object-fit:cover;display:block;';bd.appendChild(img);
+    bd.innerHTML+='<div style="font-size:13px;color:#333;text-align:center;font-weight:600">'+_mt+'</div>';
     showModal('Vista previa','¿Se ve correcto?',[
-      {label:'✓ Confirmar y subir',cls:'btn-primary',onClick:async()=>{const fd=new FormData();fd.append('mapa',file);fd.append('fraccionamiento',_mapaTarget);await api('POST','/api/upload-mapa',fd);S.mapasPreviews[_mapaTarget]=e.target.result;lsSet('mapas',S.mapasPreviews);renderMapasTab();renderProps();}},
-      {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
-    ],body);
+      {l:'✓ Confirmar y subir',cls:'bp',fn:async()=>{const fd=new FormData();fd.append('mapa',file);fd.append('fraccionamiento',_mt);await api('POST','/api/upload-mapa',fd);S.mapas[_mt]=e.target.result;ls('mapas',S.mapas);renderMapas();renderFichas();}},
+      {l:'Cancelar',cls:'bl',fn:()=>{}}
+    ],bd);
   };
-  reader.readAsDataURL(file);input.value='';
+  rd.readAsDataURL(file);inp.value='';
 }
-function triggerMapaUpload(fracc){_mapaTarget=fracc;document.getElementById('fi-mapa').click();}
-
-async function handleRender(input){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const m=RENDER_MODELS.find(x=>x.id===_renderTarget);
-    const body=document.createElement('div');
-    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:10px;margin-bottom:12px;max-height:240px;object-fit:cover;display:block;';body.appendChild(img);
-    body.innerHTML+='<div style="font-size:14px;color:#333;text-align:center;font-weight:600">Modelo: '+(m?m.nombre:'')+'</div>';
+function trigMapa(f){_mt=f;document.getElementById('fi-mapa').click();}
+async function handleRender(inp){
+  const file=inp.files[0];if(!file)return;
+  const rd=new FileReader();
+  rd.onload=e=>{
+    const m=RENDERS.find(x=>x.id===_rt);
+    const bd=document.createElement('div');
+    const img=document.createElement('img');img.src=e.target.result;img.style.cssText='width:100%;border-radius:9px;margin-bottom:10px;max-height:230px;object-fit:cover;display:block;';bd.appendChild(img);
+    bd.innerHTML+='<div style="font-size:13px;color:#333;text-align:center;font-weight:600">Modelo: '+(m?m.nombre:'')+'</div>';
     showModal('Vista previa del render','¿Se ve correcto?',[
-      {label:'✓ Confirmar',cls:'btn-primary',onClick:()=>{S.renders[_renderTarget]=e.target.result;lsSet('renders',S.renders);renderRendersTab();renderProps();}},
-      {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
-    ],body);
+      {l:'✓ Confirmar',cls:'bp',fn:()=>{S.renders[_rt]=e.target.result;ls('renders',S.renders);renderRenders();renderFichas();}},
+      {l:'Cancelar',cls:'bl',fn:()=>{}}
+    ],bd);
   };
-  reader.readAsDataURL(file);input.value='';
+  rd.readAsDataURL(file);inp.value='';
 }
-function triggerRenderUpload(modelId){_renderTarget=modelId;document.getElementById('fi-render').click();}
+function trigRender(id){_rt=id;document.getElementById('fi-render').click();}
 
-// ── VENTA MODAL ────────────────────────────────────────────────────────────────
-function showVentaModal(prop){
-  const matches=matchClients(prop);let selId=null;
-  const body=document.createElement('div');
-  const addRows=(list,sec)=>{if(!list.length)return;const s=document.createElement('div');s.className='modal-section';s.textContent=sec;body.appendChild(s);list.forEach(c=>{const row=document.createElement('div');row.className='client-radio-row';const r=document.createElement('input');r.type='radio';r.name='vs';r.value=c.id;r.onchange=()=>selId=c.id;const info=document.createElement('div');info.innerHTML='<div style="font-weight:700;font-size:14px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+'</div>';row.appendChild(r);row.appendChild(info);body.appendChild(row);});};
-  addRows(matches,'CLIENTES INTERESADOS');
-  addRows(S.clients.filter(c=>!matches.find(m=>m.id===c.id)),'OTROS CLIENTES');
-  if(!S.clients.length)body.innerHTML='<div style="text-align:center;padding:16px;color:#888">Sin clientes registrados</div>';
-  showModal('🏆 Registrar venta','¿A qué cliente le vendiste?',[
-    {label:'Confirmar venta',cls:'btn-primary',onClick:async()=>{await api('POST','/api/propiedades/'+encodeURIComponent(prop.id)+'/vender',{clienteId:selId});if(selId)await api('DELETE','/api/clientes/'+selId);await loadAll();}},
-    {label:'Cancelar',cls:'btn-light',onClick:()=>{}},
-  ],body);
+// ── VENTA ─────────────────────────────────────────────────────────────────────
+function showVenta(prop){
+  const mc=mClients(prop);let selId=null;
+  const bd=document.createElement('div');
+  const addR=(list,sec)=>{if(!list.length)return;const s=document.createElement('div');s.className='modal-sec';s.textContent=sec;bd.appendChild(s);list.forEach(c=>{const row=document.createElement('div');row.className='crrw';const r=document.createElement('input');r.type='radio';r.name='vs';r.value=c.id;r.onchange=()=>selId=c.id;const info=document.createElement('div');info.innerHTML='<div style="font-weight:700;font-size:13px">'+c.nombre+'</div><div style="font-size:11px;color:#888">'+c.whatsapp+'</div>';row.appendChild(r);row.appendChild(info);bd.appendChild(row);});};
+  addR(mc,'CLIENTES INTERESADOS');
+  addR(S.clients.filter(c=>!mc.find(m=>m.id===c.id)),'OTROS CLIENTES');
+  if(!S.clients.length)bd.innerHTML='<div style="text-align:center;padding:14px;color:#888">Sin clientes registrados</div>';
+  showModal('🏆 Registrar venta','¿A qué cliente?',[
+    {l:'Confirmar venta',cls:'bp',fn:async()=>{await api('POST','/api/propiedades/'+encodeURIComponent(prop.id)+'/vender',{clienteId:selId});if(selId)await api('DELETE','/api/clientes/'+selId);await loadAll();}},
+    {l:'Cancelar',cls:'bl',fn:()=>{}}
+  ],bd);
 }
 
-// ── HOLD-TO-SELL ───────────────────────────────────────────────────────────────
-let holdTimer=null,holdPropId=null,holdCircle=null,holdStart=0;
-const HOLD_MS=2000;
-function startHold(id,c){holdPropId=id;holdCircle=c;holdStart=Date.now();const R=13,C=2*Math.PI*R;c.style.strokeDasharray=C;c.style.strokeDashoffset=C;function tick(){const p=Math.min((Date.now()-holdStart)/HOLD_MS,1);c.style.strokeDashoffset=C*(1-p);if(p<1)holdTimer=requestAnimationFrame(tick);else endHold(true);}holdTimer=requestAnimationFrame(tick);}
-function endHold(ok){cancelAnimationFrame(holdTimer);holdTimer=null;if(holdCircle)holdCircle.style.strokeDashoffset=2*Math.PI*13;if(ok&&holdPropId){const p=S.props.find(x=>x.id===holdPropId);if(p)showVentaModal(p);}holdPropId=null;holdCircle=null;}
-function cancelHold(){if(holdTimer)endHold(false);}
+// ── HOLD ──────────────────────────────────────────────────────────────────────
+let ht=null,hid=null,hc=null,hs=0;const HM=2000;
+function startH(id,c){hid=id;hc=c;hs=Date.now();const R=13,C=2*Math.PI*R;c.style.strokeDasharray=C;c.style.strokeDashoffset=C;function t(){const p=Math.min((Date.now()-hs)/HM,1);c.style.strokeDashoffset=C*(1-p);if(p<1)ht=requestAnimationFrame(t);else endH(true);}ht=requestAnimationFrame(t);}
+function endH(ok){cancelAnimationFrame(ht);ht=null;if(hc)hc.style.strokeDashoffset=2*Math.PI*13;if(ok&&hid){const p=S.props.find(x=>x.id===hid);if(p)showVenta(p);}hid=null;hc=null;}
+function stopH(){if(ht)endH(false);}
 
-// ── PROP CARD ──────────────────────────────────────────────────────────────────
-const EST={nueva:{label:'NUEVA',color:'#1F4E79',bg:'#EBF3FB',cls:'st-nueva'},precio_cambio:{label:'PRECIO ↓',color:'#B45309',bg:'#FEF3E2',cls:'st-precio'},vendida:{label:'VENDIDA',color:'#B71C1C',bg:'#FEECEC',cls:'st-vendida'},repetida:{label:'Sin cambio',color:'#999',bg:'#F5F5F5',cls:''}};
+// ── PROP CARD ─────────────────────────────────────────────────────────────────
+const EST={nueva:{l:'NUEVA',c:'#1F4E79',b:'#EBF3FB',cls:'sn'},precio_cambio:{l:'PRECIO ↓',c:'#B45309',b:'#FEF3E2',cls:'sp'},vendida:{l:'VENDIDA',c:'#B71C1C',b:'#FEECEC',cls:'sv'},repetida:{l:'Sin cambio',c:'#999',b:'#F5F5F5',cls:''}};
 
-function buildPropCard(prop){
+function buildCard(prop){
   const est=EST[prop._estado]||EST.repetida;
-  const zona=zonaDeFragg(prop.fraccionamiento);
-  const matches=matchClients(prop);
-  const isOpen=S.expanded===prop.id;
-  const card=document.createElement('div');card.className='prop-card '+(est.cls||'');card.dataset.id=prop.id;
-  const hdr=document.createElement('div');hdr.className='prop-header';
-  const dh=document.createElement('div');dh.className='drag-handle';for(let i=0;i<3;i++)dh.appendChild(document.createElement('span'));
-  const info=document.createElement('div');info.className='prop-info';
-  const tags=document.createElement('div');tags.style.cssText='display:flex;gap:5px;align-items:center;flex-wrap:wrap;';
-  const st=document.createElement('span');st.className='tag';st.style.cssText='background:'+est.bg+';color:'+est.color+';font-weight:800;';st.textContent=est.label;tags.appendChild(st);
-  if(matches.length){const at=document.createElement('span');at.className='tag';at.style.cssText='background:#FFF8E1;color:#B45309;font-weight:700;';at.textContent='🔔 '+matches.length;tags.appendChild(at);}
-  info.appendChild(tags);
-  const ttl=document.createElement('div');ttl.className='prop-title';ttl.textContent=prop.direccion||'Sin dirección';info.appendChild(ttl);
-  const sub=document.createElement('div');sub.className='prop-sub';sub.innerHTML=(prop.fraccionamiento||'—')+' <span style="font-weight:700;color:#1F4E79;margin-left:5px">$'+Number(prop.precio||0).toLocaleString('es-MX')+'</span>';
-  if(prop._estado==='precio_cambio')sub.innerHTML+=' <s style="font-size:11px;color:#999">$'+Number(prop._precioAnterior||0).toLocaleString('es-MX')+'</s>';
+  const z=zF(prop.fraccionamiento);const mc=mClients(prop);const isOpen=S.expanded===prop.id;
+  const card=document.createElement('div');card.className='pc '+(est.cls||'');card.dataset.id=prop.id;
+  // Header
+  const hdr=document.createElement('div');hdr.className='phdr';
+  const dh=document.createElement('div');dh.className='dh';for(let i=0;i<3;i++)dh.appendChild(document.createElement('span'));
+  const info=document.createElement('div');info.className='pi';
+  const tgs=document.createElement('div');tgs.style.cssText='display:flex;gap:4px;align-items:center;flex-wrap:wrap;';
+  const st=document.createElement('span');st.className='tag';st.style.cssText='background:'+est.b+';color:'+est.c+';font-weight:800;';st.textContent=est.l;tgs.appendChild(st);
+  if(mc.length){const at=document.createElement('span');at.className='tag';at.style.cssText='background:#FFF8E1;color:#B45309;font-weight:700;';at.textContent='🔔 '+mc.length;tgs.appendChild(at);}
+  info.appendChild(tgs);
+  const ttl=document.createElement('div');ttl.className='pt';ttl.textContent=prop.direccion||'Sin dirección';info.appendChild(ttl);
+  const sub=document.createElement('div');sub.className='ps';sub.innerHTML=(prop.fraccionamiento||'—')+' <span style="font-weight:700;color:#1F4E79;margin-left:4px">$'+Number(prop.precio||0).toLocaleString('es-MX')+'</span>';
+  if(prop._estado==='precio_cambio')sub.innerHTML+=' <s style="font-size:10px;color:#999">$'+Number(prop._precioAnterior||0).toLocaleString('es-MX')+'</s>';
   info.appendChild(sub);
-  const arrow=document.createElement('div');arrow.className='prop-arrow';arrow.textContent=isOpen?'▲':'▼';
-  hdr.appendChild(dh);hdr.appendChild(info);hdr.appendChild(arrow);
-  hdr.addEventListener('click',e=>{if(e.target.closest('.drag-handle'))return;S.expanded=isOpen?null:prop.id;renderProps();});
+  const arr=document.createElement('div');arr.className='pa';arr.textContent=isOpen?'▲':'▼';
+  hdr.appendChild(dh);hdr.appendChild(info);hdr.appendChild(arr);
+  hdr.addEventListener('click',e=>{if(e.target.closest('.dh'))return;S.expanded=isOpen?null:prop.id;renderFichas();});
   card.appendChild(hdr);
+
   if(isOpen){
-    const det=document.createElement('div');det.className='prop-detail';
+    const det=document.createElement('div');det.className='pdet';
     // Render foto
-    const renderSrc=getRenderForProp(prop);
-    if(renderSrc){const ri=document.createElement('img');ri.className='prop-render';ri.src=renderSrc;ri.alt='Render';det.appendChild(ri);}
+    const rSrc=getRender(prop);
+    if(rSrc){const ri=document.createElement('img');ri.className='prender';ri.src=rSrc;ri.alt='Render';det.appendChild(ri);}
     // Mapa
-    const mi=document.createElement('img');mi.className='prop-mapa';mi.src=S.mapasPreviews[prop.fraccionamiento]||('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));mi.onerror=()=>mi.style.display='none';det.appendChild(mi);
-    // Clientes match
-    if(matches.length){const ab=document.createElement('div');ab.className='alert-box';ab.innerHTML='<div class="alert-title">🔔 Clientes interesados — llama ya</div>';matches.forEach(c=>{const row=document.createElement('div');row.className='alert-row';row.innerHTML='<div><div style="font-weight:700;font-size:13px">'+c.nombre+'</div><div style="font-size:12px;color:#888">'+c.whatsapp+' · '+c.etapa+'</div></div><a href="https://wa.me/52'+(c.whatsapp||'').replace(/\D/g,'')+'" style="background:#25D366;color:#fff;border-radius:8px;padding:6px 11px;font-size:13px;font-weight:700">WhatsApp</a>';ab.appendChild(row);});det.appendChild(ab);}
+    const mi=document.createElement('img');mi.className='pmapa';mi.src=S.mapas[prop.fraccionamiento]||('/api/mapa/'+encodeURIComponent(prop.fraccionamiento||''));mi.onerror=()=>mi.style.display='none';det.appendChild(mi);
+    // Alertas clientes
+    if(mc.length){const ab=document.createElement('div');ab.className='abox';ab.innerHTML='<div class="atitle">🔔 Clientes interesados — llama ya</div>';mc.forEach(c=>{const row=document.createElement('div');row.className='arow';row.innerHTML='<div><div style="font-weight:700;font-size:12px">'+c.nombre+'</div><div style="font-size:11px;color:#888">'+c.whatsapp+' · '+c.etapa+'</div></div><a href="https://wa.me/52'+(c.whatsapp||'').replace(/\D/g,'')+'" style="background:#25D366;color:#fff;border-radius:7px;padding:5px 10px;font-size:12px;font-weight:700">WhatsApp</a>';ab.appendChild(row);});det.appendChild(ab);}
     if(prop._estado!=='vendida'){
-      const txt=fbText(prop);
-      const fb=document.createElement('div');fb.className='fb-box';fb.innerHTML='<div class="fb-lbl">TEXTO PARA FACEBOOK</div><pre>'+txt+'</pre>';det.appendChild(fb);
-      const a1=document.createElement('div');a1.className='prop-actions';
-      const cb=document.createElement('button');cb.className='btn btn-copy';cb.style.cssText='flex:1;min-width:130px;';cb.textContent='📋 Copiar texto FB';cb.onclick=()=>copyText(txt,cb);a1.appendChild(cb);
-      const ib=document.createElement('button');ib.className='btn btn-purple';ib.style.cssText='flex:1;min-width:130px;';ib.textContent='📸 Generar imagen';ib.onclick=()=>showImageModal(prop);a1.appendChild(ib);
+      const txt=fbTxt(prop);
+      const fb=document.createElement('div');fb.className='fbbox';fb.innerHTML='<div class="fblbl">TEXTO PARA FACEBOOK</div><pre>'+txt+'</pre>';det.appendChild(fb);
+      const a1=document.createElement('div');a1.className='pacts';
+      const cb=document.createElement('button');cb.className='bcp';cb.style.cssText='flex:1;min-width:120px;padding:10px;border-radius:9px;border:none;font-weight:700;font-size:13px;cursor:pointer;';cb.textContent='📋 Copiar texto FB';cb.onclick=()=>cpTxt(txt,cb);a1.appendChild(cb);
+      const ib=document.createElement('button');ib.className='btn bpu';ib.style.cssText='flex:1;min-width:120px;padding:10px;font-size:13px;';ib.textContent='📸 Generar imagen';ib.onclick=()=>showImgModal(prop);a1.appendChild(ib);
       det.appendChild(a1);
-      const a2=document.createElement('div');a2.className='prop-actions';a2.style.marginTop='8px';
-      const R=13,C=2*Math.PI*R,SZ=32;const hw=document.createElement('div');hw.className='hold-wrap';
-      const hb=document.createElement('button');hb.className='btn btn-gold';hb.style.cssText='padding:9px 14px;font-size:13px;';hb.textContent='🏆 Vendí yo';
+      const a2=document.createElement('div');a2.className='pacts';a2.style.marginTop='7px';
+      const R=13,C=2*Math.PI*R,SZ=30;const hw=document.createElement('div');hw.className='hold-wrap';
+      const hb=document.createElement('button');hb.className='btn bgo';hb.style.cssText='padding:8px 13px;font-size:12px;';hb.textContent='🏆 Vendí yo';
       const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('width',SZ+8);svg.setAttribute('height',SZ+8);svg.className='hold-svg';
       const circ=document.createElementNS('http://www.w3.org/2000/svg','circle');circ.setAttribute('cx',(SZ+8)/2);circ.setAttribute('cy',(SZ+8)/2);circ.setAttribute('r',R);circ.setAttribute('fill','none');circ.setAttribute('stroke','#F4B942');circ.setAttribute('stroke-width','3');circ.style.strokeDasharray=C;circ.style.strokeDashoffset=C;
-      svg.appendChild(circ);hb.addEventListener('pointerdown',e=>{e.preventDefault();startHold(prop.id,circ);});hb.addEventListener('pointerup',cancelHold);hb.addEventListener('pointerleave',cancelHold);hb.addEventListener('contextmenu',e=>e.preventDefault());
+      svg.appendChild(circ);hb.addEventListener('pointerdown',e=>{e.preventDefault();startH(prop.id,circ);});hb.addEventListener('pointerup',stopH);hb.addEventListener('pointerleave',stopH);hb.addEventListener('contextmenu',e=>e.preventDefault());
       hw.appendChild(hb);hw.appendChild(svg);a2.appendChild(hw);
-      const db=document.createElement('button');db.className='btn btn-danger';db.style.cssText='padding:9px 14px;font-size:13px;';db.textContent='Eliminar';db.onclick=()=>showModal('¿Eliminar ficha?',prop.direccion,[{label:'Sí, eliminar',cls:'btn-danger',onClick:async()=>{await api('DELETE','/api/propiedades/'+encodeURIComponent(prop.id));await loadAll();}},{label:'Cancelar',cls:'btn-light',onClick:()=>{}}]);a2.appendChild(db);det.appendChild(a2);
-    }else det.innerHTML+='<div style="text-align:center;padding:12px;color:#B71C1C;font-weight:700">🔴 Ya no aparece en el PDF</div>';
+      const db=document.createElement('button');db.className='btn bd';db.style.cssText='padding:8px 13px;font-size:12px;';db.textContent='Eliminar';
+      db.onclick=()=>showModal('¿Eliminar ficha?',prop.direccion,[{l:'Sí, eliminar',cls:'bd',fn:async()=>{await api('DELETE','/api/propiedades/'+encodeURIComponent(prop.id));await loadAll();}},{l:'Cancelar',cls:'bl',fn:()=>{}}]);
+      a2.appendChild(db);det.appendChild(a2);
+    }else det.innerHTML+='<div style="text-align:center;padding:10px;color:#B71C1C;font-weight:700">🔴 Ya no aparece en el PDF</div>';
     card.appendChild(det);
   }
   // Touch drag
-  dh.addEventListener('touchstart',e=>{e.preventDefault();S.dragSrc=prop.id;card.classList.add('dragging');const clone=card.cloneNode(true);const r=card.getBoundingClientRect();clone.style.cssText='position:fixed;width:'+r.width+'px;opacity:.85;pointer-events:none;z-index:999;border-radius:14px;left:'+r.left+'px;top:'+r.top+'px;';document.body.appendChild(clone);_dragClone=clone;},{passive:false});
-  dh.addEventListener('touchmove',e=>{e.preventDefault();if(!_dragClone)return;const t=e.touches[0];_dragClone.style.left=(t.clientX-_dragClone.offsetWidth/2)+'px';_dragClone.style.top=(t.clientY-60)+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const tc=el?.closest('.prop-card');if(_dragOver&&_dragOver!==tc)_dragOver.classList.remove('drag-over');if(tc&&tc!==card){tc.classList.add('drag-over');_dragOver=tc;}},{passive:false});
-  dh.addEventListener('touchend',async()=>{if(_dragClone){_dragClone.remove();_dragClone=null;}card.classList.remove('dragging');if(_dragOver){_dragOver.classList.remove('drag-over');const tid=_dragOver.dataset.id;_dragOver=null;if(tid&&S.dragSrc&&tid!==S.dragSrc)await reorder(S.dragSrc,tid);}S.dragSrc=null;});
+  dh.addEventListener('touchstart',e=>{e.preventDefault();S.dragSrc=prop.id;card.classList.add('drag');const cl=card.cloneNode(true);const r=card.getBoundingClientRect();cl.style.cssText='position:fixed;width:'+r.width+'px;opacity:.85;pointer-events:none;z-index:999;border-radius:12px;left:'+r.left+'px;top:'+r.top+'px;';document.body.appendChild(cl);_dc=cl;},{passive:false});
+  dh.addEventListener('touchmove',e=>{e.preventDefault();if(!_dc)return;const t=e.touches[0];_dc.style.left=(t.clientX-_dc.offsetWidth/2)+'px';_dc.style.top=(t.clientY-55)+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const tc=el?.closest('.pc');if(_do&&_do!==tc)_do.classList.remove('dov');if(tc&&tc!==card){tc.classList.add('dov');_do=tc;}},{passive:false});
+  dh.addEventListener('touchend',async()=>{if(_dc){_dc.remove();_dc=null;}card.classList.remove('drag');if(_do){_do.classList.remove('dov');const tid=_do.dataset.id;_do=null;if(tid&&S.dragSrc&&tid!==S.dragSrc)await reorder(S.dragSrc,tid);}S.dragSrc=null;});
   card.draggable=true;
-  card.addEventListener('dragstart',e=>{if(!e.target.closest('.drag-handle')){e.preventDefault();return;}S.dragSrc=prop.id;card.classList.add('dragging');});
-  card.addEventListener('dragend',()=>{card.classList.remove('dragging');document.querySelectorAll('.prop-card').forEach(c=>c.classList.remove('drag-over'));});
-  card.addEventListener('dragover',e=>{e.preventDefault();card.classList.add('drag-over');});
-  card.addEventListener('dragleave',()=>card.classList.remove('drag-over'));
-  card.addEventListener('drop',async e=>{e.preventDefault();card.classList.remove('drag-over');if(S.dragSrc&&S.dragSrc!==prop.id)await reorder(S.dragSrc,prop.id);});
+  card.addEventListener('dragstart',e=>{if(!e.target.closest('.dh')){e.preventDefault();return;}S.dragSrc=prop.id;card.classList.add('drag');});
+  card.addEventListener('dragend',()=>{card.classList.remove('drag');document.querySelectorAll('.pc').forEach(c=>c.classList.remove('dov'));});
+  card.addEventListener('dragover',e=>{e.preventDefault();card.classList.add('dov');});
+  card.addEventListener('dragleave',()=>card.classList.remove('dov'));
+  card.addEventListener('drop',async e=>{e.preventDefault();card.classList.remove('dov');if(S.dragSrc&&S.dragSrc!==prop.id)await reorder(S.dragSrc,prop.id);});
   return card;
 }
 
-async function reorder(fromId,toId){const ids=S.props.map(p=>p.id);const fi=ids.indexOf(fromId),ti=ids.indexOf(toId);if(fi<0||ti<0)return;ids.splice(fi,1);ids.splice(ti,0,fromId);const map=Object.fromEntries(S.props.map(p=>[p.id,p]));S.props=ids.map(id=>map[id]).filter(Boolean);renderProps();await api('POST','/api/propiedades/order',{order:ids});}
+async function reorder(fId,tId){const ids=S.props.map(p=>p.id);const fi=ids.indexOf(fId),ti=ids.indexOf(tId);if(fi<0||ti<0)return;ids.splice(fi,1);ids.splice(ti,0,fId);const m=Object.fromEntries(S.props.map(p=>[p.id,p]));S.props=ids.map(id=>m[id]).filter(Boolean);renderFichas();await api('POST','/api/propiedades/order',{order:ids});}
 
-// ── RENDER PROPS TAB ───────────────────────────────────────────────────────────
-function renderProps(){
+// ── FICHAS TAB ────────────────────────────────────────────────────────────────
+function renderFichas(){
   const c=document.getElementById('t0');c.innerHTML='';
-  S.newFraccs.forEach(f=>{const b=document.createElement('div');b.className='new-fracc-banner';b.innerHTML='<span style="font-size:18px">🆕</span><div class="nf-text">Fracc. nuevo: <b>'+f+'</b></div>';const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:6px 12px;font-size:12px;flex-shrink:0;';btn.textContent='Agregar';btn.onclick=()=>showAddFraccModal(f);b.appendChild(btn);c.appendChild(b);});
+  // New fracc banners
+  S.newFraccs.forEach(f=>{const b=document.createElement('div');b.className='nfb';b.innerHTML='<span style="font-size:16px">🆕</span><div class="nft">Fracc. nuevo: <b>'+f+'</b></div>';const btn=document.createElement('button');btn.className='btn bp';btn.style.cssText='padding:5px 11px;font-size:11px;flex-shrink:0;';btn.textContent='Agregar';btn.onclick=()=>showAddFracc(f);b.appendChild(btn);c.appendChild(b);});
   // Upload card
-  const uc=document.createElement('div');uc.className='card';uc.innerHTML='<div style="font-weight:700;font-size:15px;color:#1F4E79;margin-bottom:10px">📄 PDF del día</div>';
-  const lbl=document.createElement('label');lbl.id='pdf-upload-area';lbl.className='upload-label';lbl.htmlFor='fi-pdf';
+  const uc=document.createElement('div');uc.className='card';
+  uc.innerHTML='<div style="font-weight:700;font-size:14px;color:#1F4E79;margin-bottom:9px">📄 PDF del día</div>';
+  const lbl=document.createElement('label');lbl.id='pdfarea';lbl.className='ulbl';lbl.htmlFor='fi-pdf';
   lbl.innerHTML='<span class="ul-icon">📄</span><span class="ul-title">Desde Archivos / iCloud</span><span class="ul-sub">Toca para seleccionar el PDF</span>';
   uc.appendChild(lbl);
-  const waBtn=document.createElement('button');waBtn.className='btn btn-green btn-full';waBtn.style.cssText='padding:11px;font-size:13px;margin-bottom:6px;';waBtn.textContent='💬 '+(S.showWASteps?'Ocultar instrucciones':'Cómo compartir desde WhatsApp');
-  waBtn.onclick=()=>{S.showWASteps=!S.showWASteps;renderProps();};uc.appendChild(waBtn);
-  if(S.showWASteps){
-    const steps=document.createElement('div');steps.className='wa-steps';
-    ['Abre WhatsApp y encuentra el mensaje con el PDF del inventario','Mantén presionado el PDF hasta que aparezca el menú','Toca "Compartir" → busca Safari o tu app "Oriente Juárez"','Si no aparece tu app, elige "Abrir en..." o "Copiar a..."','El PDF se procesará automáticamente al abrirse'].forEach((txt,i)=>{const step=document.createElement('div');step.className='wa-step';step.innerHTML='<div class="wa-step-num">'+(i+1)+'</div><div>'+txt+'</div>';steps.appendChild(step);});
-    uc.appendChild(steps);
+  const waBtn=document.createElement('button');waBtn.className='btn bg bw';waBtn.style.cssText='padding:10px;font-size:12px;margin-bottom:5px;';waBtn.textContent='💬 '+(S.waOpen?'Ocultar':'Cómo compartir desde WhatsApp');
+  waBtn.onclick=()=>{S.waOpen=!S.waOpen;renderFichas();};uc.appendChild(waBtn);
+  if(S.waOpen){
+    const wb=document.createElement('div');wb.className='wa-box';
+    ['Abre WhatsApp y encuentra el mensaje con el PDF','Mantén presionado el PDF hasta que aparezca el menú','Toca "Compartir" → busca Safari o tu app','Si no aparece tu app, elige "Abrir en..." o "Copiar a..."','El PDF se procesará automáticamente'].forEach((t,i)=>{const s=document.createElement('div');s.className='wa-step';s.innerHTML='<div class="wa-num">'+(i+1)+'</div><div>'+t+'</div>';wb.appendChild(s);});
+    uc.appendChild(wb);
   }
-  if(S.props.length){const stats=document.createElement('div');stats.className='stats';[{l:'Nuevas',v:'nueva',co:'#1F4E79',b:'#EBF3FB'},{l:'Precio↓',v:'precio_cambio',co:'#B45309',b:'#FEF3E2'},{l:'Vendidas',v:'vendida',co:'#B71C1C',b:'#FEECEC'},{l:'Igual',v:'repetida',co:'#777',b:'#F5F5F5'}].forEach(({l,v,co,b})=>{const s=document.createElement('div');s.className='stat';s.style.background=b;s.innerHTML='<div class="stat-num" style="color:'+co+'">'+S.props.filter(p=>p._estado===v).length+'</div><div class="stat-lbl" style="color:'+co+'">'+l+'</div>';stats.appendChild(s);});uc.appendChild(stats);}
+  if(S.props.length){
+    const st=document.createElement('div');st.className='stats';
+    [{l:'Nuevas',v:'nueva',c:'#1F4E79',b:'#EBF3FB'},{l:'Precio↓',v:'precio_cambio',c:'#B45309',b:'#FEF3E2'},{l:'Vendidas',v:'vendida',c:'#B71C1C',b:'#FEECEC'},{l:'Igual',v:'repetida',c:'#777',b:'#F5F5F5'}].forEach(({l,v,c,b})=>{const s=document.createElement('div');s.className='stat';s.style.background=b;s.innerHTML='<div class="stat-n" style="color:'+c+'">'+S.props.filter(p=>p._estado===v).length+'</div><div class="stat-l" style="color:'+c+'">'+l+'</div>';st.appendChild(s);});
+    uc.appendChild(st);
+  }
   c.appendChild(uc);
-  if(!S.props.length){c.innerHTML+='<div class="empty"><div class="empty-icon">🏠</div><div>Sube el PDF del día para empezar</div></div>';return;}
-  const estadoOrder={nueva:0,precio_cambio:1,repetida:2,vendida:3};
-  const propsByZona=new Map();S.zonas.forEach(z=>propsByZona.set(z.id,[]));propsByZona.set('sin-zona',[]);
-  S.props.forEach(p=>{const z=zonaDeFragg(p.fraccionamiento);const key=z?z.id:'sin-zona';if(!propsByZona.has(key))propsByZona.set(key,[]);propsByZona.get(key).push(p);});
-  propsByZona.forEach(props=>props.sort((a,b)=>(estadoOrder[a._estado]||2)-(estadoOrder[b._estado]||2)));
-  S.zonas.forEach(zona=>{const props=propsByZona.get(zona.id)||[];if(!props.length)return;const collapsed=S.collapsedZones[zona.id];const grp=document.createElement('div');grp.className='zone-group';const gh=document.createElement('div');gh.className='zone-group-header';gh.style.background=zona.color+'18';gh.innerHTML='<div class="zone-group-dot" style="background:'+zona.color+'"></div><div class="zone-group-name" style="color:'+zona.color+'">'+zona.nombre+'</div><div class="zone-group-count" style="color:'+zona.color+'">'+props.length+' ficha'+(props.length!==1?'s':'')+'</div><div class="zone-group-arrow" style="color:'+zona.color+'">'+(collapsed?'▶':'▼')+'</div>';gh.addEventListener('click',()=>{S.collapsedZones[zona.id]=!S.collapsedZones[zona.id];lsSet('czones',S.collapsedZones);renderProps();});grp.appendChild(gh);if(!collapsed){const gc=document.createElement('div');props.forEach(p=>gc.appendChild(buildPropCard(p)));grp.appendChild(gc);}c.appendChild(grp);});
-  const sinZ=propsByZona.get('sin-zona')||[];if(sinZ.length){const grp=document.createElement('div');grp.className='zone-group';const gh=document.createElement('div');gh.className='zone-group-header';gh.style.background='#eee';gh.innerHTML='<div class="zone-group-dot" style="background:#999"></div><div class="zone-group-name" style="color:#666">Sin zona asignada</div><div class="zone-group-count" style="color:#666">'+sinZ.length+'</div><div class="zone-group-arrow">▼</div>';grp.appendChild(gh);const gc=document.createElement('div');sinZ.forEach(p=>gc.appendChild(buildPropCard(p)));grp.appendChild(gc);c.appendChild(grp);}
+  if(!S.props.length){c.innerHTML+='<div class="empty"><div class="empty-i">🏠</div><div>Sube el PDF del día para empezar</div></div>';return;}
+  const EO={nueva:0,precio_cambio:1,repetida:2,vendida:3};
+  const pz=new Map();S.zonas.forEach(z=>pz.set(z.id,[]));pz.set('x',[]);
+  S.props.forEach(p=>{const z=zF(p.fraccionamiento);const k=z?z.id:'x';if(!pz.has(k))pz.set(k,[]);pz.get(k).push(p);});
+  pz.forEach(ps=>ps.sort((a,b)=>(EO[a._estado]||2)-(EO[b._estado]||2)));
+  S.zonas.forEach(zona=>{
+    const ps=pz.get(zona.id)||[];if(!ps.length)return;
+    const col=S.czones[zona.id];const g=document.createElement('div');g.className='zgrp';
+    const gh=document.createElement('div');gh.className='zgrp-hdr';gh.style.background=zona.color+'18';
+    gh.innerHTML='<div class="zgrp-dot" style="background:'+zona.color+'"></div><div class="zgrp-name" style="color:'+zona.color+'">'+zona.nombre+'</div><div class="zgrp-cnt" style="color:'+zona.color+'">'+ps.length+' ficha'+(ps.length!==1?'s':'')+'</div><div class="zgrp-arrow" style="color:'+zona.color+'">'+(col?'▶':'▼')+'</div>';
+    gh.onclick=()=>{S.czones[zona.id]=!S.czones[zona.id];ls('czones',S.czones);renderFichas();};
+    g.appendChild(gh);if(!col){const gc=document.createElement('div');ps.forEach(p=>gc.appendChild(buildCard(p)));g.appendChild(gc);}
+    c.appendChild(g);
+  });
+  const sx=pz.get('x')||[];if(sx.length){const g=document.createElement('div');g.className='zgrp';const gh=document.createElement('div');gh.className='zgrp-hdr';gh.style.background='#eee';gh.innerHTML='<div class="zgrp-dot" style="background:#999"></div><div class="zgrp-name" style="color:#666">Sin zona asignada</div><div class="zgrp-cnt" style="color:#666">'+sx.length+'</div>';g.appendChild(gh);const gc=document.createElement('div');sx.forEach(p=>gc.appendChild(buildCard(p)));g.appendChild(gc);c.appendChild(g);}
 }
 
-function showAddFraccModal(fracc){
-  const body=document.createElement('div');body.innerHTML='<div style="font-size:13px;color:#555;margin-bottom:12px">¿A qué zona agregar <b>'+fracc+'</b>?</div>';
-  const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:10px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;sel.appendChild(o);});body.appendChild(sel);
-  showModal('Agregar fraccionamiento','',[{label:'Agregar',cls:'btn-primary',onClick:()=>{const z=S.zonas.find(x=>x.id===sel.value);if(z&&!z.fraccs.includes(fracc)){z.fraccs.push(fracc);lsSet('zonas',S.zonas);}S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}},{label:'Ignorar',cls:'btn-light',onClick:()=>{S.newFraccs=S.newFraccs.filter(f=>f!==fracc);renderAll();}}],body);
-}
+function showAddFracc(f){const bd=document.createElement('div');bd.innerHTML='<div style="font-size:13px;color:#555;margin-bottom:11px">¿A qué zona agregar <b>'+f+'</b>?</div>';const sel=document.createElement('select');sel.style.cssText='width:100%;padding:10px;border-radius:9px;border:1.5px solid #ddd;font-size:14px;background:#fff;-webkit-appearance:none;';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;sel.appendChild(o);});bd.appendChild(sel);showModal('Agregar fraccionamiento','',[{l:'Agregar',cls:'bp',fn:()=>{const z=S.zonas.find(x=>x.id===sel.value);if(z&&!z.fraccs.includes(f)){z.fraccs.push(f);ls('zonas',S.zonas);}S.newFraccs=S.newFraccs.filter(x=>x!==f);render();}},{l:'Ignorar',cls:'bl',fn:()=>{S.newFraccs=S.newFraccs.filter(x=>x!==f);render();}}],bd);}
 
-// ── RENDERS TAB ────────────────────────────────────────────────────────────────
-function renderRendersTab(){
-  const c=document.getElementById('renders-list');c.innerHTML='';
-  RENDER_MODELS.forEach(m=>{
-    const card=document.createElement('div');card.className='render-model-card';
-    if(S.renders[m.id]){
-      const img=document.createElement('img');img.className='render-model-img';img.src=S.renders[m.id];img.alt=m.nombre;card.appendChild(img);
-    }else{
-      const empty=document.createElement('div');empty.className='render-model-empty';empty.innerHTML='<span style="font-size:36px">🏗️</span><span>Sin render aún</span>';card.appendChild(empty);
-    }
-    const footer=document.createElement('div');footer.className='render-model-footer';
-    footer.innerHTML='<div class="render-model-name">'+m.nombre+'</div><div class="render-model-desc">'+m.desc+'</div>';
-    const acts=document.createElement('div');acts.className='render-model-actions';
-    const upBtn=document.createElement('button');upBtn.className='btn btn-primary';upBtn.style.cssText='flex:1;padding:9px;font-size:13px;';upBtn.textContent=S.renders[m.id]?'📷 Cambiar':'📷 Subir render';upBtn.onclick=()=>triggerRenderUpload(m.id);acts.appendChild(upBtn);
-    if(S.renders[m.id]){const delBtn=document.createElement('button');delBtn.className='btn btn-danger';delBtn.style.cssText='padding:9px 14px;font-size:13px;';delBtn.textContent='Eliminar';delBtn.onclick=()=>{if(confirm('¿Eliminar render de '+m.nombre+'?')){delete S.renders[m.id];lsSet('renders',S.renders);renderRendersTab();renderProps();}};acts.appendChild(delBtn);}
-    footer.appendChild(acts);card.appendChild(footer);c.appendChild(card);
+// ── RENDERS ───────────────────────────────────────────────────────────────────
+function renderRenders(){
+  const c=document.getElementById('rlist');c.innerHTML='';
+  RENDERS.forEach(m=>{
+    const card=document.createElement('div');card.className='rcard';
+    if(S.renders[m.id]){const img=document.createElement('img');img.className='rimg';img.src=S.renders[m.id];img.alt=m.nombre;card.appendChild(img);}
+    else{const e=document.createElement('div');e.className='rempty';e.innerHTML='<span style="font-size:34px">🏗️</span><span>Sin render aún</span>';card.appendChild(e);}
+    const ft=document.createElement('div');ft.className='rfooter';
+    ft.innerHTML='<div class="rname">'+m.nombre+'</div><div class="rdesc">'+m.desc+'</div>';
+    const acts=document.createElement('div');acts.style.cssText='display:flex;gap:7px;';
+    const ub=document.createElement('button');ub.className='btn bp';ub.style.cssText='flex:1;padding:8px;font-size:12px;';ub.textContent=S.renders[m.id]?'📷 Cambiar':'📷 Subir render';ub.onclick=()=>trigRender(m.id);acts.appendChild(ub);
+    if(S.renders[m.id]){const db=document.createElement('button');db.className='btn bd';db.style.cssText='padding:8px 13px;font-size:12px;';db.textContent='Eliminar';db.onclick=()=>{if(confirm('¿Eliminar render de '+m.nombre+'?')){delete S.renders[m.id];ls('renders',S.renders);renderRenders();renderFichas();}};acts.appendChild(db);}
+    ft.appendChild(acts);card.appendChild(ft);c.appendChild(card);
   });
 }
 
-// ── MAPAS TAB ──────────────────────────────────────────────────────────────────
-function renderMapasTab(){
-  const c=document.getElementById('mapas-list');c.innerHTML='';
+// ── MAPAS ─────────────────────────────────────────────────────────────────────
+function renderMapas(){
+  const c=document.getElementById('mlist');c.innerHTML='';
   S.zonas.forEach(zona=>{
     if(!zona.fraccs.length)return;
-    const sec=document.createElement('div');sec.style.cssText='font-size:11px;font-weight:800;color:'+zona.color+';letter-spacing:1px;margin:12px 0 6px;';sec.textContent=zona.nombre.toUpperCase();c.appendChild(sec);
+    const sec=document.createElement('div');sec.style.cssText='font-size:10px;font-weight:800;color:'+zona.color+';letter-spacing:1px;margin:10px 0 5px;';sec.textContent=zona.nombre.toUpperCase();c.appendChild(sec);
     zona.fraccs.forEach(f=>{
-      const card=document.createElement('div');card.className='mapa-card';
-      const src=S.mapasPreviews[f];
-      if(src){const img=document.createElement('img');img.className='mapa-card-img';img.src=src;img.alt=f;card.appendChild(img);}
-      else{
-        const img=document.createElement('img');img.className='mapa-card-img';img.src='/api/mapa/'+encodeURIComponent(f);img.alt=f;
-        img.onerror=()=>{img.style.display='none';const e=document.createElement('div');e.className='mapa-empty-card';e.innerHTML='<span style="font-size:32px">📷</span><span>Sin mapa</span>';card.insertBefore(e,card.firstChild);};
-        card.appendChild(img);
-      }
-      const footer=document.createElement('div');footer.className='mapa-card-footer';
-      const nm=document.createElement('div');nm.className='mapa-card-name';nm.textContent=f;
-      const zt=document.createElement('span');zt.className='mapa-card-zone';zt.style.cssText='background:'+zona.color+'22;color:'+zona.color+';';zt.textContent=zona.nombre.split('—')[0].trim();
-      const btn=document.createElement('button');btn.className='btn btn-primary';btn.style.cssText='padding:7px 14px;font-size:13px;flex-shrink:0;';btn.textContent='📷 Subir';btn.onclick=()=>triggerMapaUpload(f);
-      footer.appendChild(nm);footer.appendChild(zt);footer.appendChild(btn);card.appendChild(footer);c.appendChild(card);
+      const card=document.createElement('div');card.className='mcard';
+      if(S.mapas[f]){const img=document.createElement('img');img.className='mcard-img';img.src=S.mapas[f];img.alt=f;card.appendChild(img);}
+      else{const img=document.createElement('img');img.className='mcard-img';img.src='/api/mapa/'+encodeURIComponent(f);img.alt=f;img.onerror=()=>{img.style.display='none';const e=document.createElement('div');e.className='mempty';e.innerHTML='<span style="font-size:28px">📷</span><span>Sin mapa</span>';card.insertBefore(e,card.firstChild);};card.appendChild(img);}
+      const ft=document.createElement('div');ft.className='mcard-footer';
+      const nm=document.createElement('div');nm.className='mcard-name';nm.textContent=f;
+      const zt=document.createElement('span');zt.className='mcard-zone';zt.style.cssText='background:'+zona.color+'22;color:'+zona.color+';';zt.textContent=zona.nombre.split('—')[0].trim();
+      const btn=document.createElement('button');btn.className='btn bp';btn.style.cssText='padding:6px 12px;font-size:12px;flex-shrink:0;';btn.textContent='📷 Subir';btn.onclick=()=>trigMapa(f);
+      ft.appendChild(nm);ft.appendChild(zt);ft.appendChild(btn);card.appendChild(ft);c.appendChild(card);
     });
   });
 }
 
-// ── CLIENTES ───────────────────────────────────────────────────────────────────
-function populateClientFormDropdowns(){
-  const zonasSel=document.getElementById('cf-zona');
-  const fraccSel=document.getElementById('cf-fracc-base');
-  const filtZona=document.getElementById('fil-zona');
-  if(!zonasSel)return;
-  // Zona select en form
-  const curZona=zonasSel.value;
-  zonasSel.innerHTML='<option value="">Seleccionar zona</option>';
-  S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;if(curZona===z.id)o.selected=true;zonasSel.appendChild(o);});
-  zonasSel.innerHTML+='<option value="flex">Flexible – cualquier zona</option>';
-  // Fracc base select
-  const curFragg=fraccSel.value;
-  fraccSel.innerHTML='<option value="">-- Seleccionar --</option>';
-  allFraccs().forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;if(curFragg===f)o.selected=true;fraccSel.appendChild(o);});
-  // Filter zona
-  if(filtZona){const curFilt=filtZona.value;filtZona.innerHTML='<option value="">Todas</option>';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre.split('—')[0].trim();if(curFilt===z.id)o.selected=true;filtZona.appendChild(o);});}
+// ── CLIENTES ──────────────────────────────────────────────────────────────────
+const ES={'Nuevo':{b:'#E3F2FD',c:'#1565A8'},'Contactado':{b:'#E8F5E9',c:'#2E7D32'},'Visita hoy':{b:'#1F4E79',c:'#fff'},'Negociando':{b:'#FFF8E1',c:'#B45309'},'Documentos':{b:'#F3E5F5',c:'#6A1B9A'},'Esperando':{b:'#FFF3E0',c:'#E65100'},'Ganado':{b:'#2E7D32',c:'#fff'},'Perdido':{b:'#B71C1C',c:'#fff'}};
+
+function populateCFormDDs(){
+  const cz=document.getElementById('cf-z');if(!cz)return;
+  const curZ=cz.value;cz.innerHTML='<option value="">Seleccionar zona</option>';
+  S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre;if(curZ===z.id)o.selected=true;cz.appendChild(o);});
+  cz.innerHTML+='<option value="flex">Flexible</option>';
+  const cf=document.getElementById('cf-fb');if(!cf)return;
+  const curF=cf.value;cf.innerHTML='<option value="">-- Seleccionar --</option>';
+  aF().forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;if(curF===f)o.selected=true;cf.appendChild(o);});
+  const fz=document.getElementById('fz');if(fz){const curFZ=fz.value;fz.innerHTML='<option value="">Todas</option>';S.zonas.forEach(z=>{const o=document.createElement('option');o.value=z.id;o.textContent=z.nombre.split('—')[0].trim();if(curFZ===z.id)o.selected=true;fz.appendChild(o);});}
 }
 
-function updateFraccList(){
-  const base=document.getElementById('cf-fracc-base')?.value||'';
-  const zonaId=document.getElementById('cf-zona')?.value||'';
-  const radio=Number(document.getElementById('cf-radio')?.value)||15;
-  const flc=document.getElementById('fracc-checklist');if(!flc)return;flc.innerHTML='';
+function updateFL(){
+  const base=document.getElementById('cf-fb')?.value||'';
+  const zonaId=document.getElementById('cf-z')?.value||'';
+  const radio=Number(document.getElementById('cf-r')?.value)||15;
+  const flc=document.getElementById('fcl');if(!flc)return;flc.innerHTML='';
   let ordered=[];
-  if(base){ordered=[base,...allFraccs().filter(f=>f!==base).sort((a,b)=>distKm(base,a)-distKm(base,b)).filter(f=>distKm(base,f)<=radio)];}
-  else if(zonaId&&zonaId!=='flex'){const z=S.zonas.find(x=>x.id===zonaId);ordered=z?[...z.fraccs,...allFraccs().filter(f=>!z.fraccs.includes(f))]:allFraccs();}
-  else ordered=allFraccs();
+  if(base){ordered=[base,...aF().filter(f=>f!==base).sort((a,b)=>dKm(base,a)-dKm(base,b)).filter(f=>dKm(base,f)<=radio)];}
+  else if(zonaId&&zonaId!=='flex'){const z=S.zonas.find(x=>x.id===zonaId);ordered=z?[...z.fraccs,...aF().filter(f=>!z.fraccs.includes(f))]:aF();}
+  else ordered=aF();
   const done=new Set();
   S.zonas.forEach(zona=>{
     const inZ=ordered.filter(f=>zona.fraccs.includes(f)&&!done.has(f));if(!inZ.length)return;
-    const gl=document.createElement('div');gl.className='fracc-zone-group';
-    const zl=document.createElement('div');zl.className='fracc-zone-label';zl.style.color=zona.color;zl.textContent=zona.nombre;gl.appendChild(zl);
+    const gl=document.createElement('div');gl.className='fzg';
+    const zl=document.createElement('div');zl.className='fzl';zl.style.color=zona.color;zl.textContent=zona.nombre;gl.appendChild(zl);
     inZ.forEach(f=>{
       done.add(f);
-      const item=document.createElement('div');item.className='fracc-item'+(S.clientFraccs.includes(f)?' selected':'');
-      const cb=document.createElement('input');cb.type='checkbox';cb.checked=S.clientFraccs.includes(f);
-      const nm=document.createElement('span');nm.className='fi-name';nm.textContent=f;
-      const dt=document.createElement('span');dt.className='fi-dist';if(base&&f!==base){const d=distKm(base,f);if(d<50)dt.textContent=d.toFixed(1)+' km';}
-      const tog=()=>{if(cb.checked){if(!S.clientFraccs.includes(f))S.clientFraccs.push(f);}else S.clientFraccs=S.clientFraccs.filter(x=>x!==f);item.classList.toggle('selected',cb.checked);};
+      const item=document.createElement('div');item.className='fi'+(S.cFraccs.includes(f)?' sel':'');
+      const cb=document.createElement('input');cb.type='checkbox';cb.checked=S.cFraccs.includes(f);
+      const nm=document.createElement('span');nm.className='fin';nm.textContent=f;
+      const dt=document.createElement('span');dt.className='fid';if(base&&f!==base){const d=dKm(base,f);if(d<50)dt.textContent=d.toFixed(1)+' km';}
+      const tog=()=>{if(cb.checked){if(!S.cFraccs.includes(f))S.cFraccs.push(f);}else S.cFraccs=S.cFraccs.filter(x=>x!==f);item.classList.toggle('sel',cb.checked);};
       cb.onchange=tog;item.onclick=e=>{if(e.target===cb)return;cb.checked=!cb.checked;tog();};
       item.appendChild(cb);item.appendChild(nm);item.appendChild(dt);gl.appendChild(item);
     });
@@ -761,76 +690,103 @@ function updateFraccList(){
   });
 }
 
-function openClientForm(client){
-  S.editClientId=client?client.id:null;
-  S.clientFraccs=client?[...(client.fraccs||[])]:[];
-  document.getElementById('client-form-title').textContent=client?'Editar cliente':'Nuevo cliente';
-  document.getElementById('cf-nombre').value=client?.nombre||'';
-  document.getElementById('cf-tel').value=client?.whatsapp||'';
-  document.getElementById('cf-telus').value=client?.whatsappUS||'';
-  document.getElementById('cf-puntos').value=client?.puntos||'';
-  document.getElementById('cf-ppto').value=client?.presupuesto||'';
-  document.getElementById('cf-rec').value=client?.recamaras||'';
-  document.getElementById('cf-etapa').value=client?.etapa||'Nuevo';
-  document.getElementById('cf-notas').value=client?.notas||'';
-  populateClientFormDropdowns();
-  document.getElementById('cf-zona').value=client?.zona||'';
-  document.getElementById('cf-fracc-base').value=client?.fraccBase||'';
-  document.getElementById('cf-radio').value=client?.radioKm||'15';
-  updateFraccList();
-  document.getElementById('client-form-wrap').classList.add('visible');
-  document.getElementById('client-form-wrap').scrollIntoView({behavior:'smooth',block:'start'});
+function openCForm(cl){
+  S.editCId=cl?cl.id:null;S.cFraccs=cl?[...(cl.fraccs||[])]:[];
+  document.getElementById('cform-title').textContent=cl?'Editar cliente':'Nuevo cliente';
+  document.getElementById('cf-n').value=cl?.nombre||'';
+  document.getElementById('cf-t').value=cl?.whatsapp||'';
+  document.getElementById('cf-tu').value=cl?.whatsappUS||'';
+  document.getElementById('cf-pt').value=cl?.puntos||'';
+  document.getElementById('cf-pp').value=cl?.presupuesto||'';
+  document.getElementById('cf-rec').value=cl?.recamaras||'';
+  document.getElementById('cf-e').value=cl?.etapa||'Nuevo';
+  document.getElementById('cf-no').value=cl?.notas||'';
+  populateCFormDDs();
+  document.getElementById('cf-z').value=cl?.zona||'';
+  document.getElementById('cf-fb').value=cl?.fraccBase||'';
+  document.getElementById('cf-r').value=cl?.radioKm||'15';
+  updateFL();
+  document.getElementById('cform').classList.add('show');
+  document.getElementById('cform').scrollIntoView({behavior:'smooth',block:'start'});
 }
-
-function closeClientForm(){
-  document.getElementById('client-form-wrap').classList.remove('visible');
-  S.editClientId=null;S.clientFraccs=[];
-}
+function closeCForm(){document.getElementById('cform').classList.remove('show');S.editCId=null;S.cFraccs=[];}
 
 async function saveClient(){
-  const nombre=document.getElementById('cf-nombre').value.trim();
-  const tel=document.getElementById('cf-tel').value.trim();
-  if(!nombre||!tel){alert('Nombre y WhatsApp son obligatorios');return;}
-  const data={
-    nombre,whatsapp:tel,
-    whatsappUS:document.getElementById('cf-telus').value.trim(),
-    puntos:document.getElementById('cf-puntos').value,
-    presupuesto:document.getElementById('cf-ppto').value,
-    zona:document.getElementById('cf-zona').value,
-    fraccBase:document.getElementById('cf-fracc-base').value,
-    radioKm:document.getElementById('cf-radio').value,
-    recamaras:document.getElementById('cf-rec').value,
-    etapa:document.getElementById('cf-etapa').value,
-    notas:document.getElementById('cf-notas').value.trim(),
-    fraccs:[...S.clientFraccs],
-  };
+  const n=document.getElementById('cf-n').value.trim();
+  const t=document.getElementById('cf-t').value.trim();
+  if(!n||!t){alert('Nombre y WhatsApp son obligatorios');return;}
+  const data={nombre:n,whatsapp:t,whatsappUS:document.getElementById('cf-tu').value.trim(),puntos:document.getElementById('cf-pt').value,presupuesto:document.getElementById('cf-pp').value,zona:document.getElementById('cf-z').value,fraccBase:document.getElementById('cf-fb').value,radioKm:document.getElementById('cf-r').value,recamaras:document.getElementById('cf-rec').value,etapa:document.getElementById('cf-e').value,notas:document.getElementById('cf-no').value.trim(),fraccs:[...S.cFraccs]};
   try{
-    if(S.editClientId){await api('PUT','/api/clientes/'+S.editClientId,{...data,id:S.editClientId});}
-    else{await api('POST','/api/clientes',data);}
-    closeClientForm();
-    await loadAll();
-  }catch(e){alert('Error al guardar. Verifica tu conexión.');}
+    if(S.editCId)await api('PUT','/api/clientes/'+S.editCId,{...data,id:S.editCId});
+    else await api('POST','/api/clientes',data);
+    closeCForm();await loadAll();
+  }catch(e){alert('Error al guardar.');}
 }
 
-function filterClients(){renderClientsList();}
-
-function renderClientsList(){
-  const filtEtapa=document.getElementById('fil-etapa')?.value||'Todos';
-  const filtZona=document.getElementById('fil-zona')?.value||'';
-  const lista=S.clients.filter(cl=>(filtEtapa==='Todos'||cl.etapa===filtEtapa)&&(!filtZona||cl.zona===filtZona));
-  const cnt=document.getElementById('clients-count');if(cnt)cnt.textContent=lista.length+' cliente'+(lista.length!==1?'s':'');
-  const c=document.getElementById('clients-list');if(!c)return;c.innerHTML='';
-  if(!lista.length){c.innerHTML='<div class="empty"><div class="empty-icon">👤</div><div>Sin clientes'+(filtEtapa!=='Todos'||filtZona?' con ese filtro':' aún')+'</div></div>';return;}
-  const ETAPA_S={'Nuevo':{bg:'#E3F2FD',c:'#1565A8'},'Contactado':{bg:'#E8F5E9',c:'#2E7D32'},'Visita hoy':{bg:'#1F4E79',c:'#fff'},'Negociando':{bg:'#FFF8E1',c:'#B45309'},'Documentos':{bg:'#F3E5F5',c:'#6A1B9A'},'Esperando':{bg:'#FFF3E0',c:'#E65100'},'Ganado':{bg:'#2E7D32',c:'#fff'},'Perdido':{bg:'#B71C1C',c:'#fff'}};
-  lista.forEach(cl=>{
-    const zona=S.zonas.find(z=>z.id===cl.zona);const est=ETAPA_S[cl.etapa]||{bg:'#eee',c:'#333'};
+function renderClients(){
+  populateCFormDDs();
+  const fe=document.getElementById('fe')?.value||'Todos';
+  const fz=document.getElementById('fz')?.value||'';
+  const lista=S.clients.filter(c=>(fe==='Todos'||c.etapa===fe)&&(!fz||c.zona===fz));
+  const cnt=document.getElementById('ccnt');if(cnt)cnt.textContent=lista.length+' cliente'+(lista.length!==1?'s':'');
+  const cl=document.getElementById('clist');if(!cl)return;cl.innerHTML='';
+  if(!lista.length){cl.innerHTML='<div class="empty"><div class="empty-i">👤</div><div>Sin clientes</div></div>';return;}
+  lista.forEach(c=>{
+    const z=S.zonas.find(x=>x.id===c.zona);const es=ES[c.etapa]||{b:'#eee',c:'#333'};
     const cc=document.createElement('div');cc.className='card';
-    cc.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><div><div style="font-weight:800;font-size:15px;color:#1F4E79">'+cl.nombre+'</div><div style="font-size:13px;color:#555">'+cl.whatsapp+(cl.whatsappUS?' · '+cl.whatsappUS:'')+'</div></div><span class="tag" style="background:'+est.bg+';color:'+est.c+';font-weight:700;flex-shrink:0">'+cl.etapa+'</span></div>';
-    if(zona){const zt=document.createElement('span');zt.className='tag';zt.style.cssText='background:'+zona.color+'22;color:'+zona.color+';';zt.textContent=zona.nombre;cc.appendChild(zt);}
-    if(cl.fraccs?.length){const d=document.createElement('div');d.style.cssText='font-size:12px;color:#666;margin-top:5px;';d.textContent='📍 '+cl.fraccs.join(', ');cc.appendChild(d);}
-    const meta=document.createElement('div');meta.style.cssText='display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;';
-    if(cl.presupuesto)meta.innerHTML+='<span style="font-size:12px;color:#888">💰 $'+Number(cl.presupuesto).toLocaleString('es-MX')+'</span>';
-    if(cl.puntos)meta.innerHTML+='<span style="font-size:12px;color:#888">· '+cl.puntos+' pts</span>';
-    if(cl.recamaras)meta.innerHTML+='<span style="font-size:12px;color:#888">· '+cl.recamaras+' rec.</span>';
-    cc.appendChild(meta);
-    if(cl.notas){const d=document.createElement('div');d.style.cssText='font-size:12px;color
+    cc.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px"><div><div style="font-weight:800;font-size:14px;color:#1F4E79">'+c.nombre+'</div><div style="font-size:12px;color:#555">'+c.whatsapp+(c.whatsappUS?' · '+c.whatsappUS:'')+'</div></div><span class="tag" style="background:'+es.b+';color:'+es.c+';font-weight:700;flex-shrink:0">'+c.etapa+'</span></div>';
+    if(z){const zt=document.createElement('span');zt.className='tag';zt.style.cssText='background:'+z.color+'22;color:'+z.color+';';zt.textContent=z.nombre;cc.appendChild(zt);}
+    if(c.fraccs?.length){const d=document.createElement('div');d.style.cssText='font-size:11px;color:#666;margin-top:4px;';d.textContent='📍 '+c.fraccs.join(', ');cc.appendChild(d);}
+    const m=document.createElement('div');m.style.cssText='display:flex;gap:7px;margin-top:3px;flex-wrap:wrap;';
+    if(c.presupuesto)m.innerHTML+='<span style="font-size:11px;color:#888">💰 $'+Number(c.presupuesto).toLocaleString('es-MX')+'</span>';
+    if(c.puntos)m.innerHTML+='<span style="font-size:11px;color:#888">· '+c.puntos+' pts</span>';
+    if(c.recamaras)m.innerHTML+='<span style="font-size:11px;color:#888">· '+c.recamaras+' rec.</span>';
+    cc.appendChild(m);
+    if(c.notas){const d=document.createElement('div');d.style.cssText='font-size:11px;color:#888;font-style:italic;margin-top:3px;';d.textContent='"'+c.notas+'"';cc.appendChild(d);}
+    const ar=document.createElement('div');ar.style.cssText='display:flex;gap:7px;margin-top:9px;';
+    const wa=document.createElement('a');wa.href='https://wa.me/52'+c.whatsapp.replace(/\D/g,'');wa.className='btn bg';wa.style.cssText='flex:1;padding:8px 0;font-size:12px;';wa.textContent='WhatsApp';ar.appendChild(wa);
+    const eb=document.createElement('button');eb.className='btn bl';eb.style.cssText='padding:8px 12px;font-size:12px;';eb.textContent='Editar';eb.onclick=()=>openCForm(c);ar.appendChild(eb);
+    const db=document.createElement('button');db.className='btn bd';db.style.cssText='padding:8px 10px;font-size:12px;';db.textContent='✕';db.onclick=async()=>{if(confirm('¿Eliminar?')){await api('DELETE','/api/clientes/'+c.id);await loadAll();}};ar.appendChild(db);
+    cc.appendChild(ar);cl.appendChild(cc);
+  });
+}
+
+// ── ZONAS ─────────────────────────────────────────────────────────────────────
+function addZona(){const n=prompt('Nombre:');if(!n)return;S.zonas.push({id:'z'+Date.now(),nombre:n,color:'#555',desc:'',fraccs:[]});ls('zonas',S.zonas);renderZonas();}
+function resetZonas(){if(!confirm('¿Restablecer?'))return;S.zonas=DZ.map(z=>({...z,fraccs:[...z.fraccs]}));ls('zonas',S.zonas);render();}
+
+function renderZonas(){
+  const c=document.getElementById('zlist');c.innerHTML='';
+  S.zonas.forEach((zona,zi)=>{
+    const zc=document.createElement('div');zc.className='zcfg';zc.style.borderColor=zona.color+'55';
+    const zh=document.createElement('div');zh.className='zcfg-hdr';
+    const dot=document.createElement('div');dot.className='zdot';dot.style.background=zona.color;
+    const nm=document.createElement('input');nm.style.cssText='flex:1;font-weight:700;font-size:13px;border:none;background:transparent;outline:none;padding:0;';nm.value=zona.nombre;nm.addEventListener('blur',()=>{S.zonas[zi].nombre=nm.value.trim();ls('zonas',S.zonas);});
+    const del=document.createElement('button');del.className='btn bd';del.style.cssText='padding:4px 9px;font-size:11px;';del.textContent='✕';del.onclick=()=>{if(!confirm('¿Eliminar zona?'))return;S.zonas.splice(zi,1);ls('zonas',S.zonas);renderZonas();render();};
+    zh.appendChild(dot);zh.appendChild(nm);zh.appendChild(del);zc.appendChild(zh);
+    const dt=document.createElement('textarea');dt.style.cssText='width:100%;padding:7px;border-radius:7px;border:1px solid #eee;font-size:11px;color:#666;margin-bottom:7px;';dt.rows=2;dt.value=zona.desc||'';dt.placeholder='Descripción…';dt.addEventListener('blur',()=>{S.zonas[zi].desc=dt.value;ls('zonas',S.zonas);});zc.appendChild(dt);
+    const zt=document.createElement('div');zt.className='ztags';
+    zona.fraccs.forEach((f,fi)=>{const tag=document.createElement('div');tag.className='ztag';tag.innerHTML=f;const rm=document.createElement('span');rm.className='rm';rm.textContent='×';rm.onclick=()=>{S.zonas[zi].fraccs.splice(fi,1);ls('zonas',S.zonas);renderZonas();};tag.appendChild(rm);zt.appendChild(tag);});
+    const addF=document.createElement('button');addF.className='btn bl';addF.style.cssText='padding:3px 9px;font-size:11px;border-radius:16px;';addF.textContent='+ Fracc';
+    addF.onclick=()=>{const bd=document.createElement('div');const sel=document.createElement('select');sel.style.cssText='width:100%;padding:9px;border-radius:9px;border:1.5px solid #ddd;font-size:13px;background:#fff;-webkit-appearance:none;margin-bottom:7px;';sel.innerHTML='<option value="">-- Existente --</option>';aF().filter(f=>!zona.fraccs.includes(f)).forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;sel.appendChild(o);});const ni=document.createElement('input');ni.type='text';ni.placeholder='O escribe uno nuevo…';ni.style.cssText='width:100%;padding:9px;border-radius:9px;border:1.5px solid #ddd;font-size:13px;';bd.appendChild(sel);bd.appendChild(ni);showModal('Agregar a '+zona.nombre,'',[{l:'Agregar',cls:'bp',fn:()=>{const val=(ni.value.trim()||sel.value).trim();if(!val)return;if(!S.zonas[zi].fraccs.includes(val)){S.zonas[zi].fraccs.push(val);ls('zonas',S.zonas);renderZonas();}}},{l:'Cancelar',cls:'bl',fn:()=>{}}],bd);};
+    zt.appendChild(addF);zc.appendChild(zt);
+    const rst=document.createElement('button');rst.className='btn bl';rst.style.cssText='padding:5px 11px;font-size:11px;margin-top:7px;';rst.textContent='↺ Restablecer';rst.onclick=()=>{const d=DZ[zi];if(d){S.zonas[zi]={...d,fraccs:[...d.fraccs]};ls('zonas',S.zonas);renderZonas();}};zc.appendChild(rst);
+    c.appendChild(zc);
+  });
+}
+
+// ── CONFIG ────────────────────────────────────────────────────────────────────
+function updateCfg(){
+  const n=document.getElementById('cfg-n');const t=document.getElementById('cfg-t');const w=document.getElementById('cfg-w');
+  if(n)n.value=S.cfg.nombre||'';if(t)t.value=S.cfg.tel||'';if(w)w.value=S.cfg.wa||'';
+}
+async function saveCfg(){
+  ls('cfg',S.cfg);await api('POST','/api/config',S.cfg);
+  const btn=document.querySelector('#t5 .btn');if(btn){btn.textContent='✓ Guardado';btn.style.background='#2E7D32';setTimeout(()=>{btn.textContent='Guardar';btn.style.background='#1F4E79';},2000);}
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+loadAll();
+</script>
+</body>
+</html>
