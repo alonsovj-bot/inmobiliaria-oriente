@@ -1,13 +1,13 @@
 import os
 import json
 import uuid
+import re
 import subprocess
 from flask import Flask, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__, static_folder='static')
 
-# ── RUTAS DE DATOS ────────────────────────────────────────────────────────────
 DATA_DIR    = os.path.join('static', 'data')
 MAPAS_DIR   = os.path.join('static', 'mapas')
 UPLOADS_DIR = os.path.join('static', 'uploads')
@@ -21,7 +21,6 @@ CONFIG_FILE  = os.path.join(DATA_DIR, 'config.json')
 VENTAS_FILE  = os.path.join(DATA_DIR, 'ventas.json')
 ORDER_FILE   = os.path.join(DATA_DIR, 'order.json')
 
-# ── HELPERS JSON ──────────────────────────────────────────────────────────────
 def read_json(path, default):
     try:
         if os.path.exists(path):
@@ -35,7 +34,6 @@ def write_json(path, data):
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-# ── SERVIR FRONTEND ───────────────────────────────────────────────────────────
 @app.route('/')
 def index():
     return send_from_directory('.', 'index.html')
@@ -43,6 +41,118 @@ def index():
 @app.route('/static/<path:filename>')
 def static_files(filename):
     return send_from_directory('static', filename)
+
+# ── PARSER PDF ────────────────────────────────────────────────────────────────
+def is_skip_line(line):
+    """Líneas de relleno del PDF que deben ignorarse."""
+    l = line.lower().strip()
+    return (
+        l.startswith('imagen') or
+        l.startswith('ustrativa') or
+        l.startswith('en proceso') or
+        l.startswith('aun no') or
+        l.startswith('asignada') or
+        l.startswith('remodelad') or
+        l in ('en', 'enproceso', 'procesode', 'deremodelacion', 'remodelacion') or
+        l == ''
+    )
+
+def parse_page(page_text):
+    """Parsea una página del PDF (una ficha por página)."""
+    lines = [l.strip() for l in page_text.split('\n')]
+    precio = None
+    precio_idx = None
+    caracteristicas = []
+
+    # 1. Encontrar el precio
+    for idx, line in enumerate(lines):
+        clean = line.replace('$', '').replace(',', '').replace(' ', '')
+        m = re.match(r'^(\d+)$', clean)
+        if m:
+            val = int(m.group(1))
+            if 100000 < val < 50000000:
+                precio = val
+                precio_idx = idx
+                break
+
+    if precio is None or precio_idx is None:
+        return None
+
+    # 2. Características (bullets antes del precio)
+    current_char = None
+    for line in lines[:precio_idx]:
+        if is_skip_line(line):
+            if current_char:
+                caracteristicas.append(current_char)
+                current_char = None
+            continue
+        if line == '•':
+            if current_char is not None:
+                caracteristicas.append(current_char)
+            current_char = ''
+        elif line.startswith('•'):
+            if current_char is not None:
+                caracteristicas.append(current_char)
+            current_char = line[1:].strip()
+        elif current_char is not None:
+            current_char = (current_char + ' ' + line).strip()
+    if current_char:
+        caracteristicas.append(current_char)
+
+    # 3. Dirección y fraccionamiento (después del precio)
+    post = [l.strip() for l in lines[precio_idx + 1:] if l.strip()]
+    direccion = None
+    fraccionamiento = None
+
+    for line in post:
+        if is_skip_line(line):
+            continue
+        # Limpiar sufijos de "Imagen Ilustrativa:"
+        line = re.sub(r'\s*[Ii]magen\s+[Ii]lustratival?:?\s*$', '', line).strip()
+        if not line:
+            continue
+        if re.match(r'^[Uu]strativa', line, re.I):
+            continue
+        if direccion is None:
+            direccion = line
+        elif fraccionamiento is None:
+            fraccionamiento = line
+            break
+
+    # Limpiar fraccionamiento de basura adicional
+    if fraccionamiento:
+        fraccionamiento = re.sub(r'\s*[Ii]magen.*$', '', fraccionamiento).strip()
+
+    chars_clean = [c for c in caracteristicas if c and len(c) > 1]
+
+    return {
+        'direccion': direccion or '',
+        'fraccionamiento': fraccionamiento or '',
+        'precio': precio,
+        'caracteristicas': chars_clean,
+    }
+
+def parse_pdf(pdf_path):
+    """Extrae todas las fichas del PDF."""
+    try:
+        result = subprocess.run(
+            ['pdftotext', pdf_path, '-'],
+            capture_output=True, text=True, timeout=60
+        )
+        text = result.stdout
+    except Exception as e:
+        print('pdftotext error:', e)
+        return []
+
+    pages = text.split('\x0c')  # form feed = separador de página
+    fichas = []
+    for page in pages:
+        if not page.strip():
+            continue
+        parsed = parse_page(page)
+        if parsed and parsed['precio'] and parsed['direccion']:
+            fichas.append(parsed)
+    return fichas
 
 # ── PROPIEDADES ───────────────────────────────────────────────────────────────
 @app.route('/api/propiedades', methods=['GET'])
@@ -70,7 +180,6 @@ def vender(prop_id):
 
     prop = next((p for p in props if p['id'] == prop_id), None)
     if prop:
-        # Guardar en ventas permanentes
         venta = {
             'id': str(uuid.uuid4()),
             'fecha': data.get('fecha', ''),
@@ -81,8 +190,6 @@ def vender(prop_id):
         }
         ventas.insert(0, venta)
         write_json(VENTAS_FILE, ventas)
-
-        # Marcar como vendida en inventario
         prop['_estado'] = 'vendida'
         write_json(PROPS_FILE, props)
 
@@ -96,70 +203,6 @@ def delete_prop(prop_id):
     return jsonify({'ok': True})
 
 # ── UPLOAD PDF ────────────────────────────────────────────────────────────────
-def parse_pdf(pdf_path):
-    """Extrae fichas del PDF usando pdftotext."""
-    try:
-        result = subprocess.run(
-            ['pdftotext', '-layout', pdf_path, '-'],
-            capture_output=True, text=True, timeout=30
-        )
-        text = result.stdout
-    except Exception as e:
-        print('pdftotext error:', e)
-        return []
-
-    fichas = []
-    current = {}
-    lines = text.split('\n')
-
-    for line in lines:
-        line = line.strip()
-        if not line:
-            if current.get('direccion') and current.get('precio'):
-                fichas.append(current)
-                current = {}
-            continue
-
-        low = line.lower()
-
-        # Detectar precio
-        import re
-        precio_match = re.search(r'\$?\s*([\d,]+(?:\.\d{2})?)', line)
-        if precio_match and ('precio' in low or '$' in line):
-            precio_str = precio_match.group(1).replace(',', '')
-            try:
-                precio = float(precio_str)
-                if precio > 100000:
-                    current['precio'] = precio
-                    continue
-            except ValueError:
-                pass
-
-        # Detectar fraccionamiento
-        fracs_keywords = ['riveras', 'campanario', 'zaragoza', 'san isidro',
-                          'cedro', 'roma', 'creel', 'boca del río', 'sierra vista',
-                          'desierto', 'fundadores', 'roble', 'alcalá', 'mirador',
-                          'cañada', 'oriente', 'fraccionamiento', 'fracc']
-        if any(k in low for k in fracs_keywords) and 'fraccionamiento' not in current:
-            current['fraccionamiento'] = line.title()
-            continue
-
-        # Detectar dirección (calle + número)
-        if re.search(r'\d{3,}', line) and 'direccion' not in current:
-            current['direccion'] = line
-            continue
-
-        # Características
-        if len(line) > 3 and not line.startswith('#'):
-            if 'caracteristicas' not in current:
-                current['caracteristicas'] = []
-            current['caracteristicas'].append(line)
-
-    if current.get('direccion') and current.get('precio'):
-        fichas.append(current)
-
-    return fichas
-
 @app.route('/api/upload-pdf', methods=['POST'])
 def upload_pdf():
     if 'pdf' not in request.files:
@@ -170,38 +213,32 @@ def upload_pdf():
     pdf_path = os.path.join(UPLOADS_DIR, filename)
     f.save(pdf_path)
 
-    # Parsear fichas
     new_fichas = parse_pdf(pdf_path)
-
-    # Cargar inventario anterior para comparar
     old_props = read_json(PROPS_FILE, [])
-    ventas = read_json(VENTAS_FILE, [])
-    sold_ids = {v.get('propId') for v in ventas}
 
-    # Construir nuevo inventario — reemplaza completamente
+    # Mapa de propiedades anteriores por clave
     old_map = {}
     for p in old_props:
-        key = (p.get('direccion','').lower(), str(p.get('precio','')))
-        old_map[key] = p
+        key = p.get('direccion', '').lower().strip()
+        if key:
+            old_map[key] = p
 
     new_props = []
     nuevas = 0
     actualizadas = 0
 
     for ficha in new_fichas:
-        pid = str(uuid.uuid4())
-        key = (ficha.get('direccion','').lower(), str(ficha.get('precio','')))
+        key = ficha.get('direccion', '').lower().strip()
         if key in old_map:
             old = old_map[key]
-            estado = 'repetida'
+            pid = old.get('id', str(uuid.uuid4()))
             if old.get('precio') != ficha.get('precio'):
                 estado = 'precio_cambio'
-                ficha['_precioAnterior'] = old.get('precio')
                 actualizadas += 1
             else:
-                pass  # sin cambio
-            pid = old.get('id', pid)
+                estado = 'repetida'
         else:
+            pid = str(uuid.uuid4())
             estado = 'nueva'
             nuevas += 1
 
@@ -213,16 +250,15 @@ def upload_pdf():
             'caracteristicas': ficha.get('caracteristicas', []),
             '_estado': estado,
         }
-        if '_precioAnterior' in ficha:
-            prop['_precioAnterior'] = ficha['_precioAnterior']
+        if estado == 'precio_cambio':
+            prop['_precioAnterior'] = old_map[key].get('precio', 0)
+
         new_props.append(prop)
 
-    # Las propiedades marcadas como vendidas en ventas se mantienen
-    # (no se re-agregan al inventario activo)
+    # Reemplazar inventario completo (lógica definida: cada PDF reemplaza el anterior)
     write_json(PROPS_FILE, new_props)
     write_json(ORDER_FILE, [p['id'] for p in new_props])
 
-    # Limpiar PDF
     try:
         os.remove(pdf_path)
     except Exception:
@@ -242,14 +278,14 @@ def upload_mapa():
         return jsonify({'error': 'No file'}), 400
     f = request.files['mapa']
     fracc = request.form.get('fraccionamiento', 'sin-nombre')
-    safe = secure_filename(fracc.replace(' ', '_').replace('/', '-') + '.jpg')
+    safe = secure_filename(fracc.replace(' ', '_').replace('/', '-')) + '.jpg'
     path = os.path.join(MAPAS_DIR, safe)
     f.save(path)
     return jsonify({'ok': True, 'path': '/static/mapas/' + safe})
 
 @app.route('/api/mapa/<fracc>')
 def get_mapa(fracc):
-    safe = secure_filename(fracc.replace(' ', '_').replace('/', '-') + '.jpg')
+    safe = secure_filename(fracc.replace(' ', '_').replace('/', '-')) + '.jpg'
     path = os.path.join(MAPAS_DIR, safe)
     if os.path.exists(path):
         return send_from_directory(MAPAS_DIR, safe)
